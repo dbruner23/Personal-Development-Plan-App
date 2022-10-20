@@ -1,13 +1,23 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import React from 'react'
+import React, { useState } from 'react'
 import { signIn, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
   const { data: session } = useSession()
-  console.log(session)
+  const [username, setUsername] = useState('')
+  const saveUser = trpc.useraction.saveUser.useMutation();
+  const router = useRouter();
+  
+  const handleSubmit = async () => {
+    const newUser = await saveUser.mutateAsync({ username: username })
+    console.log(newUser);
+    window.localStorage.setItem('user', JSON.stringify(newUser));
+    router.push(`/dashboard`)
+  }
 
   return (
     <>
@@ -19,14 +29,21 @@ const Home: NextPage = () => {
       <main className="container mx-auto flex min-h-screen flex-col gap-2 items-center justify-center p-4">
         <div className="text-2xl font-semibold">Welcome to Dacreed New Horizons</div>
         <p>your intelligent career journey mapping tool</p>
-        <p>Create an account to begin</p>
-        <button onClick={() => signIn('google', {callbackUrl: 'http://localhost:3000/dashboard'})} className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">
+        <p>Create a username to begin</p>
+        <input 
+          className="border p-2"
+          type="text"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+        />
+        <button onClick={handleSubmit} className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">Get Started</button> 
+        {/* <button onClick={() => signIn('google', {callbackUrl: 'http://localhost:3000/dashboard'})} className="hidden px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full ">
           Sign up with Google
         </button>
-        <p>Already have an account?</p>
-        <button onClick={() => signIn(undefined, {callbackUrl: 'http://localhost:3000/dashboard' })} className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">
+        <p className="hidden">Already have an account?</p>
+        <button onClick={() => signIn(undefined, {callbackUrl: 'http://localhost:3000/dashboard' })} className="hidden px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">
           Sign in
-        </button>
+        </button> */}
 
       </main>
     </>
