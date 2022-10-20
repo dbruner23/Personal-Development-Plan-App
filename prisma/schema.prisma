@@ -64,3 +64,8 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model UserActions {
+    id String @id @default(cuid())
+    username String
+}
