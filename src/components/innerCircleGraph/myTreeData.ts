@@ -18,7 +18,7 @@ const myTreeData = [
                           name: "course C",
                           children: [
                             {
-                              name: "you've reached your goal",
+                              name: "You've reached your goal",
                             },
                           ],
                         },
@@ -34,10 +34,10 @@ const myTreeData = [
           name: "path 2",
           children: [
             {
-              name: "This course will take you to your goal",
+              name: "Course D1 - This course will take you to your goal",
             },
             {
-              name: "This course will also take you to your goal",
+              name: "Course D2 - This course will also take you to your goal",
             },
           ],
         },
