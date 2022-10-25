@@ -14,7 +14,6 @@ const Home: NextPage = () => {
   
   const handleSubmit = async () => {
     const newUser = await saveUser.mutateAsync({ username: username })
-    console.log(newUser);
     window.localStorage.setItem('user', JSON.stringify(newUser));
     router.push(`/dashboard`)
   }

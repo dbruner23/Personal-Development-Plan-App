@@ -19,6 +19,7 @@
     "@trpc/server": "10.0.0-proxy-beta.17",
     "cookie": "^0.5.0",
     "jsonwebtoken": "^8.5.1",
+    "mus": "0.0.4",
     "next": "12.3.1",
     "next-auth": "^4.12.3",
     "react": "18.2.0",
