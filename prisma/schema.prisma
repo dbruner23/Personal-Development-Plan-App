@@ -68,5 +68,4 @@ model VerificationToken {
 model UserActions {
     id String @id @default(cuid())
     username String
-    mousemove Int[]
 }
