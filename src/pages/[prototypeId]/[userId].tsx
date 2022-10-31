@@ -5,6 +5,9 @@ import Examplesite from '../../components/prototypes/d1/Examplesite'
 import NodeMap from '../../components/prototypes/d2/NodeMap'
 import Loading from '../../components/Loading'
 import TubeMap from '../../components/prototypes/d3/TubeMap'
+import S1 from '../../components/prototypes/s1/prototypeS1'
+import S2 from '../../components/prototypes/s2/S2'
+import S3 from '../../components/prototypes/s3/S3'
 
 type Props = {}
 
@@ -21,6 +24,12 @@ const Prototype = (props: Props) => {
                 return <NodeMap />
             case 'd3':
                 return <TubeMap />
+            case 's1':
+                return <S1 />
+            case 's2':
+                return <S2 />
+            case 's3':
+                return <S3 />
             default:
                 return <Loading />
         }

@@ -54,7 +54,7 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
-            <Link href="/prototypeS1">
+            <Link href={`s1/${userdetails?.id}`}>
                 <Image 
                 src={PrototypeS1image} 
                 alt="image of prototype 1S"
@@ -62,7 +62,7 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
-            <Link href="/prototype/S2">
+                <Link href={`s2/${userdetails?.id}`}>
                 <Image 
                 src={PrototypeS2image} 
                 alt="image of prototype 2S"
@@ -70,7 +70,7 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
-            <Link href="/prototype/S3">
+                <Link href={`s3/${userdetails?.id}`}>
                 <Image 
                 src={PrototypeS3image} 
                 alt="image of prototype 3S"
