@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Map from '../../../components/prototypes/d1/map'
+import Examplesite from '../../../components/prototypes/d1/Examplesite'
 
 
 type Props = {}
@@ -29,6 +29,8 @@ const AllUserHeatmap = (props: Props) => {
     })
 
     const occurrences = adjustedCoordsarray.reduce(function (acc: any, curr: any) {
+      console.log(acc) 
+      console.log(curr)
       return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
     }, {});
 
@@ -58,7 +60,7 @@ const AllUserHeatmap = (props: Props) => {
   return (
     <div className="flex relative ">
       <canvas id="myCanvas" width={width} height={height} className="absolute z-10"></canvas>
-      <Map/>
+      <Examplesite/>
     </div>
   )
 }

@@ -13,9 +13,12 @@ import PrototypeD1image from '../components/prototypes/s2/img/PrototypeD1.jpg'
 import PrototypeS3image from '../components/prototypes/s2/img/PrototypeS3.png'
 
 
-type Props = {}
+type Props = {
+}
 
 const dashboard = (props: Props) => {
+
+    // const { Track, trackEvent } = useTracking({ page: "dashboard" })
     const { data: session, status } = useSession()
     const router = useRouter()
     interface IUser {
@@ -43,7 +46,7 @@ const dashboard = (props: Props) => {
 
             <div className="flex flex-row justify-between gap-5 flex-wrap">
 
-            <Link href={`/prototype/${userdetails?.id}`}>
+            <Link href={`/d2/${userdetails?.id}`}>
             <Image 
                 src={PrototypeD1image} 
                 alt="image of prototype 1D"
@@ -74,6 +77,11 @@ const dashboard = (props: Props) => {
                 className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                 </Image>
             </Link>
+            <Link href={`/d1/${userdetails?.id}`}>
+                <div className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
+                     Prototype 1
+                </div>
+            </Link>
 
             </div>
 
@@ -88,3 +96,4 @@ const dashboard = (props: Props) => {
 }
 
 export default dashboard
+
