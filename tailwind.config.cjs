@@ -4,7 +4,26 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        load: {
+          '0%' : {
+            transform: 'rotate(0deg)',
+            strokeDashoffset: '20',
+          }, 
+          '50%' : {
+            strokeDashoffset: '0',
+          },
+          '100%' : {
+            transform: "rotate(360deg)",
+            strokeDashoffset: '-32'
+          }
+        }
+      },
+      animation: {
+        loading: 'load 2s linear infinite'
+      }
+    },
   },
   plugins: [],
 };
