@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import OurTree from "../components/innerCircleGraph/OurTree";
+import QuestionaireButton from "../components/questionnaire/QuestionaireButton";
 
 
 const prototypeS1 = () => {
@@ -28,10 +29,11 @@ const prototypeS1 = () => {
 
 <div className="flex justify-center my-12">
 <Link href={"/dashboard"} >
-<button className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">
- back to dashboard
+<button className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-md mr-4 text-sm">
+ BACK TO DASHBOARD
 </button>
 </Link>
+<QuestionaireButton/>
 </div>
 
 </main>

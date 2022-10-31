@@ -5,6 +5,7 @@ import Pathway1Popover from "../../components/prototypes/s2/Pathway1Popover";
 import Pathway2Popover from "../../components/prototypes/s2/Pathway2Popover";
 import Pathway3Popover from "../../components/prototypes/s2/Pathway3Popover";
 import SimpleLineChart from "../../components/prototypes/s2/SimpleLineChart";
+import QuestionaireButton from "../../components/questionnaire/QuestionaireButton";
 
 const prototypeS2 = () => {
   return (
@@ -37,10 +38,11 @@ const prototypeS2 = () => {
 
 <div className="flex justify-center my-12">
 <Link href={"/dashboard"} >
-<button className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">
- back to dashboard
+<button className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-md mr-4 text-sm">
+ BACK TO DASHBOARD
 </button>
 </Link>
+<QuestionaireButton/>
 </div>
 
 </main>

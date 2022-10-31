@@ -9,6 +9,8 @@ import { string } from 'zod';
 import Image from 'next/future/image';
 import PrototypeS1image from '../components/innerCircleGraph/img/prototypeS1.png'
 import PrototypeS2image from '../components/prototypes/s2/img/graphS2.png'
+import PrototypeD1image from '../components/prototypes/s2/img/PrototypeD1.jpg'
+import PrototypeS3image from '../components/prototypes/s2/img/PrototypeS3.png'
 
 
 type Props = {}
@@ -42,7 +44,11 @@ const dashboard = (props: Props) => {
             <div className="flex flex-row justify-between gap-5 flex-wrap">
 
             <Link href={`/prototype/${userdetails?.id}`}>
-                <div className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">Prototype 1</div>
+            <Image 
+                src={PrototypeD1image} 
+                alt="image of prototype 1D"
+                className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
+                </Image>
             </Link>
 
             <Link href="/prototypeS1">
@@ -57,6 +63,14 @@ const dashboard = (props: Props) => {
                 <Image 
                 src={PrototypeS2image} 
                 alt="image of prototype 2S"
+                className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
+                </Image>
+            </Link>
+
+            <Link href="/prototype/S3">
+                <Image 
+                src={PrototypeS3image} 
+                alt="image of prototype 3S"
                 className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                 </Image>
             </Link>
