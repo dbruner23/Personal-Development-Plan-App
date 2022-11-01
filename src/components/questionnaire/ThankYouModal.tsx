@@ -21,8 +21,7 @@ export default function ThankYouModal() {
   const router = useRouter()
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
-    window.localStorage.clear();
-    router.push('/')
+    router.push('/dashboard')
 };
   
 

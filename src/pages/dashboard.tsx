@@ -11,6 +11,7 @@ import PrototypeS1image from '../components/innerCircleGraph/img/prototypeS1.png
 import PrototypeS2image from '../components/prototypes/s2/img/graphS2.png'
 import PrototypeD1image from '../components/prototypes/s2/img/PrototypeD1.jpg'
 import PrototypeS3image from '../components/prototypes/s2/img/PrototypeS3.png'
+import PrototypeS4image from '../components/prototypes/s2/img/PrototypeS4.png'
 
 
 type Props = {
@@ -77,6 +78,15 @@ const dashboard = (props: Props) => {
                 className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                 </Image>
             </Link>
+
+            <Link href={`s4/${userdetails?.id}`}>
+                <Image 
+                src={PrototypeS4image} 
+                alt="image of prototype 4S"
+                className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
+                </Image>
+            </Link>
+
             <Link href={`/d1/${userdetails?.id}`}>
                 <div className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                      Prototype 1
