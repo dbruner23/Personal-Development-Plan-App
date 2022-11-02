@@ -4,23 +4,38 @@ import Head from "next/head";
 import MenuItem from '@mui/material/MenuItem';
 import { Button } from "@mui/material";
 import ThankYouModal from "../components/questionnaire/ThankYouModal";
+import PrototypeS1image from '../components/innerCircleGraph/img/prototypeS1.png'
+import PrototypeS2image from '../components/prototypes/s2/img/graphS2.png'
+import PrototypeD1image from '../components/prototypes/s2/img/PrototypeD1.jpg'
+import PrototypeS3image from '../components/prototypes/s2/img/PrototypeS3.png'
+import PrototypeS4image from '../components/prototypes/s2/img/PrototypeS4.png'
+import Image from "next/future/image";
 
 const prototypes = [
   {
     value: '1',
     label: 'Prototype 1',
+    src: '/PrototypeD1.jpg',
   },
   {
     value: '2',
     label: 'Prototype 2',
+    src: '/prototypeS1.png',
   },
   {
     value: '3',
     label: 'Prototype 3',
+    src: '/graphS2.png',
   },
   {
     value: '4',
     label: 'Prototype 4',
+    src: '/PrototypeS3.png',
+  },
+  {
+    value: '5',
+    label: 'Prototype 5',
+    src: '/PrototypeS4.png',
   },
 ];
 
@@ -49,6 +64,10 @@ const feedback = () => {
            <p>We really appreciate you taking the time to complete this short Prototype feedback form</p>
         </div>
 
+        <div>
+        
+        </div>
+
     <div className="flex justify-center mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl">
 
           <div className="mb-14 mx-auto">
@@ -60,9 +79,14 @@ const feedback = () => {
           onChange={handleChange}
           helperText="Please select your favourite Prototype"
         >
-          {prototypes.map((option) => (
+          {prototypes.map((option) => (    
             <MenuItem key={option.value} value={option.value}>
-              {option.label}
+              {option.label} 
+              <Image 
+                src={option.src}
+                alt={option.label}
+                width="90"
+                height="90"/>
             </MenuItem>
           ))}
         </TextField>
