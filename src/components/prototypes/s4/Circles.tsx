@@ -79,7 +79,7 @@ const color = d3
     "Accountant",
     "Team-Lead"
   ] as CategoryKeys[])
-  .range(["#6cac6c", "#1a811a", "#206720", "#787", "#969", "#ca5bca"])
+  .range(["#6c7cac", "#2282b9", "#7381e4", "#787788", "#969", "#ca5bca"])
   .unknown("#F00");
 
   

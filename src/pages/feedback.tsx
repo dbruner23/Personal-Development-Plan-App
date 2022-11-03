@@ -37,6 +37,11 @@ const prototypes = [
     label: 'Prototype 5',
     src: '/PrototypeS4.png',
   },
+  {
+    value: '6',
+    label: 'Prototype 6',
+    src: '/PrototypeS5.png',
+  },
 ];
 
 const feedback = () => {

@@ -38,8 +38,13 @@ const graph2Data = [
     {
       name: "July",
       one: 34,
-      two: 34,
-      three: 34,
+      two: 30,
+      
+    }
+    ,
+    {
+      name: "Aug",
+      one: 10,
     }
   ];
 
