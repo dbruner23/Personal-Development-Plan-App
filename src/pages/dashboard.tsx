@@ -77,6 +77,11 @@ const dashboard = (props: Props) => {
                 className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                 </Image>
             </Link>
+            <Link href={`/d4/${userdetails?.id}`}>
+                <div className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
+                     Collapsible Force
+                </div>
+            </Link>
             <Link href={`/d1/${userdetails?.id}`}>
                 <div className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                      Prototype 1
