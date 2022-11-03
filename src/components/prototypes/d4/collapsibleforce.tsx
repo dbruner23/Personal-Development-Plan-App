@@ -1,8 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as d3 from 'd3'
 import careerData from '../../../data/readme.json'
+import Checkbox from '@mui/material/Checkbox';
+import Chip from '@mui/material/Chip';
+import Box from '@mui/material/Box';
 import TextField from "@mui/material/TextField";
 import MenuItem from '@mui/material/MenuItem';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import FormHelperText from '@mui/material/FormHelperText';
+import ListItemText from '@mui/material/ListItemText';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
 import { Button } from "@mui/material";
 import { formControlUnstyledClasses } from '@mui/base';
 import { comment } from 'postcss';
@@ -15,7 +26,19 @@ type Props = {}
 const CollapsibleForce = (props: Props) => {
     const [data, setData] = useState(careerData)
     const [started, setStarted] = useState(false)
-    const [userInput, setUserInput] = useState({ name: '', seekscope: '', })
+    const [userInput, setUserInput] = useState({
+        goal: '', seekscope: '', interestfields: [], worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
+    })
+    console.log(userInput)
+    const careerfields = [
+        'engineering', 'management', 'medical', 'finance', 'other'
+    ]
+    const edfields = [
+        'computer science', 'philosophy', 'visual arts', 'history', 'other'
+    ]
+    const certs = [
+        'legal compliance', 'nz tax law', 'other' 
+    ]
     const [recommend1, setRecommend1] = useState('analytics')
     const [infoDisplay, setInfoDisplay] = useState(false)
     const [infoData, setInfoData] = useState({ name: '' })
@@ -25,13 +48,13 @@ const CollapsibleForce = (props: Props) => {
     
 
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUserInput({ ...userInput, [e.target.name]: e.target.value });
+    const handleChange = (event: any) => {
+        setUserInput({ ...userInput, [event.target.name]: event.target.value,});
     }
 
     const handleSubmit = () => {
         // filter displayed data based on user input
-        if (userInput.name === 'vis') {
+        if (userInput.goal === 'vis') {
             let dataArr : any[] = Object.entries(data);
             let newArr = dataArr[1][1].filter((element: { name: string; }) => {
                 return element.name !== 'vis'
@@ -40,7 +63,7 @@ const CollapsibleForce = (props: Props) => {
             setData(newData)
         }      
         // will set recommended path based on user input run through algorithm
-        setRecommend1(userInput.name)
+        setRecommend1(userInput.goal)
         setStarted(true)
     }
     
@@ -219,51 +242,173 @@ const CollapsibleForce = (props: Props) => {
 
     return (
         <div className="flex justify-center items-center w-screen h-screen">
-            <div id="input-form" className={`${started ? 'hidden' : 'flex'} w-1/3 max-h-screen overflow-scrool left-10 top-10 fixed justify-center mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
+            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-5/6 w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
                 <div className="flex flex-col justify-center mb-14 mx-auto">
-                    <label className="flex w-ful text-sm mb-2">Which of the following best describes you?</label>
+                    <label className="flex w-ful text-sm mb-2">Which of the following best describes your current professional development interest?</label>
                     <div className="mb-10 mx-auto">
                         <TextField
                             id="outlined-select-currency"
                             select
                             label="Select"
+                            name="seekscope"
                             value={userInput.seekscope}
                             onChange={handleChange}
-                            helperText="Choose an option."
-                            sx={{ width: '25vw'}}
+                            sx={{ width: '25vw' }}
                         >
-                            <MenuItem value={"specific"}>I want to explore opportunities in my current carreer field.</MenuItem>
-                            <MenuItem value={"general"}>I want to explore opportunities in various fields.</MenuItem>
+                            <MenuItem value={"specific"}>I want to explore advancement opportunities in my current field.</MenuItem>
+                            <MenuItem value={"general"}>I want to explore possible paths in a few particular areas of interest.</MenuItem>
+                            <MenuItem value={"broad"}>I want to explore broadly and discover new opportunities.</MenuItem>
                         </TextField>
                     </div>
-                    <label className="flex w-ful text-sm mb-2">Do you know what fields you are most interested in exploring?</label>
-                    <div className="mb-10 mx-auto">
-                        <TextField
-                            id="outlined-select-currency"
-                            select
-                            label="Select"
-                            value={userInput.seekscope}
-                            onChange={handleChange}
-                            sx={{ width: '25vw'}}
-                            helperText="Which of these options best describes you currently?"
-                        >
-                            <MenuItem value={"specific"}>I want to explore opportunities in my current carreer field.</MenuItem>
-                            <MenuItem value={"general"}>I want to explore opportunities in various fields.</MenuItem>
-                        </TextField>
+                    <label className="flex w-full text-sm mb-2">Which career field(s)/path(s) are you most interested to explore?</label>
+                    <div className="mb-10">
+                    <InputLabel id="demo-multiple-checkbox-label">(Choose all that apply)</InputLabel>
+                    <Select
+                        labelId="demo-multiple-checkbox-label"
+                        id="demo-multiple-checkbox"
+                        multiple
+                        name="interestfields"
+                        value={userInput.interestfields}
+                        onChange={handleChange}
+                        sx={{ width: '25vw'}}
+                        input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+                        renderValue={(selected) => (
+                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                                {selected.map((value) => (
+                                    <Chip key={value} label={value} />
+                                ))}
+                            </Box>
+                        )}
+                    >
+                        {careerfields.map((field) => (
+                            <MenuItem key={field} value={field}>
+                                {field}
+                            </MenuItem>
+                        ))}
+                    </Select>
                     </div>
+                    <label className="flex w-full text-sm mb-2">Is there a particular position or role that you aspire to attain?</label>
                     <div className="mb-10 ">
                         <TextField
                             id="outlined-multiline-flexible"
                             label="your answer here..."
-                            name="name"
-                            value={userInput.name}
+                            name="goal"
+                            value={userInput.goal}
                             onChange={handleChange}
                             multiline
                             maxRows={10}
-                            sx={{ width: '25vw', backgroundColor: '#f3f6fa' }}
+                            sx={{ width: '25vw', }}
+                            helperText="You can leave this blank if you're unsure."
                         />
                     </div>
-                    
+                    <label className="flex w-ful text-sm mb-2">What is/was your highest level professional role?</label>
+                    <div className="mb-10 mx-auto">
+                        <TextField
+                            id="outlined-select-currency"
+                            select
+                            label="Select"
+                            value={userInput.worklevel}
+                            onChange={handleChange}
+                            sx={{ width: '25vw' }}
+                        >
+                            <MenuItem value={"intern"}>Intern</MenuItem>
+                            <MenuItem value={"junior"}>Junior</MenuItem>
+                            <MenuItem value={"middle"}>Mid-level</MenuItem>
+                            <MenuItem value={"senior"}>Senior</MenuItem>
+                            <MenuItem value={"executive"}>Executive</MenuItem>   
+                        </TextField>
+                    </div>
+                    <label className="flex w-ful text-sm mb-2">In what field is/was this role?</label>
+                    <div className="mb-10 mx-auto">
+                        <TextField
+                            id="outlined-select-currency"
+                            select
+                            label="Select"
+                            name="backgroundfield"
+                            value={userInput.backgroundfield}
+                            onChange={handleChange}
+                            sx={{ width: '25vw' }}
+                        >
+                            {careerfields.map((field) => (
+                                <MenuItem key={field} value={field}>
+                                    {field}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                    </div>
+                    <label className="flex w-ful text-sm mb-2">What is your highest level of education?</label>
+                    <div className="mb-10 mx-auto">
+                        <TextField
+                            id="outlined-select-currency"
+                            select
+                            label="Select"
+                            value={userInput.worklevel}
+                            onChange={handleChange}
+                            sx={{ width: '25vw' }}
+                        >
+                            <MenuItem value={"highschool"}>High School</MenuItem>
+                            <MenuItem value={"diploma"}>Polytech</MenuItem>
+                            <MenuItem value={"bachelors"}>Bachelors</MenuItem>
+                            <MenuItem value={"masters"}>Masters</MenuItem>
+                            <MenuItem value={"phd"}>Phd.</MenuItem>
+                            <MenuItem value={"postdoc"}>Postdoctorate</MenuItem>
+                        </TextField>
+                    </div>
+                    <label className="flex w-full text-sm mb-2">In what subject(s)?</label>
+                    <div className="mb-10">
+                        <InputLabel id="demo-multiple-checkbox-label">(Choose all that apply)</InputLabel>
+                        <Select
+                            labelId="demo-multiple-checkbox-label"
+                            id="demo-multiple-checkbox"
+                            multiple
+                            name="interestfields"
+                            value={userInput.educationfields}
+                            onChange={handleChange}
+                            sx={{ width: '25vw' }}
+                            input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+                            renderValue={(selected) => (
+                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                                    {selected.map((value) => (
+                                        <Chip key={value} label={value} />
+                                    ))}
+                                </Box>
+                            )}
+                        >
+                            {edfields.map((field) => (
+                                <MenuItem key={field} value={field}>
+                                    {field}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </div>
+                    <label className="flex w-full text-sm mb-2">Do you have any other degrees, diplomas, certifications, or Dacreed qualifications?</label>
+                    <div className="mb-10">
+                        <InputLabel id="demo-multiple-checkbox-label">(Choose all that apply)</InputLabel>
+                        <Select
+                            labelId="demo-multiple-checkbox-label"
+                            id="demo-multiple-checkbox"
+                            multiple
+                            name="interestfields"
+                            value={userInput.certifications}
+                            onChange={handleChange}
+                            sx={{ width: '25vw' }}
+                            input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+                            renderValue={(selected) => (
+                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                                    {selected.map((value) => (
+                                        <Chip key={value} label={value} />
+                                    ))}
+                                </Box>
+                            )}
+                        >
+                            {certs.map((cert) => (
+                                <MenuItem key={cert} value={cert}>
+                                    {cert}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </div>
+
                     <Button variant="contained" className="bg-[#1848C8]" onClick={() => handleSubmit()}>
                         Submit
                     </Button>
