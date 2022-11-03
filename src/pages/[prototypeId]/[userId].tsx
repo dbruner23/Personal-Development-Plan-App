@@ -8,6 +8,8 @@ import TubeMap from '../../components/prototypes/d3/TubeMap'
 import S1 from '../../components/prototypes/s1/prototypeS1'
 import S2 from '../../components/prototypes/s2/S2'
 import S3 from '../../components/prototypes/s3/S3'
+import S4 from '../../components/prototypes/s4/S4'
+import S5 from '../../components/prototypes/s5/S5'
 
 type Props = {}
 
@@ -30,6 +32,10 @@ const Prototype = (props: Props) => {
                 return <S2 />
             case 's3':
                 return <S3 />
+            case 's4':
+                return <S4 />
+            case 's5':
+                return <S5 />
             default:
                 return <Loading />
         }

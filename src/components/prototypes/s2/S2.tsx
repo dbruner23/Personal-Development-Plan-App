@@ -18,7 +18,7 @@ const prototypeS2 = () => {
 </div>
 
 <div className="flex justify-center text-center">
-<p>The graph below shows you the 3 different pathways to reach your goal over the next 6 months and the amout of hours you can expect to spend on the path per month </p>
+<p>The graph below shows you the 3 different pathways to reach your goal over the next 7 months and the amout of hours you can expect to spend on the path per month </p>
 </div>
 
 <div className="flex justify-center my-8 gap-10">
