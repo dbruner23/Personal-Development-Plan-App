@@ -80,6 +80,13 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
+            <Link href={`/d4/${userdetails?.id}`}>
+                <div className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
+                     Collapsible Force
+                </div>
+            </Link>
+
+
             <Link href={`s4/${userdetails?.id}`}>
                 <Image 
                 src={PrototypeS4image} 

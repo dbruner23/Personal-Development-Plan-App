@@ -34,7 +34,7 @@ const NodeMap = (props: Props) => {
       .text(`circle.highlighted { stroke: orangred; fill: orangered; }`);
 
     const delaunay = d3.Delaunay.from<any>(data, d => x(d[0]), d => y(d[1]));
-    console.log(delaunay)
+    
   
     const g = svg.append("g");
 
@@ -59,11 +59,25 @@ const NodeMap = (props: Props) => {
       g.style("stroke-width", 3 / Math.sqrt(transform.k));
       points.attr("r", 3 / Math.sqrt(transform.k));
     });
-   
-
+    
+    
+    // const draw = (p) => {
+    //   for 
+    // }
+    
+    
     return svg
+      //path set
+      .on("click", (event: any) => {
+        let start = 0;
+        start = delaunay.find(...d3.pointer(event));
+        
+          
+          
+      })
       .call(zoom)
       .call(zoom.transform, d3.zoomIdentity)
+      //recalc on zoom 
       .on("pointermove", (event: any) => {
         const p: any = transform.invert(d3.pointer(event));
         const i = delaunay.find(...p);
