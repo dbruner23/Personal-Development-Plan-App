@@ -103,6 +103,14 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
+            <Link href={`s6/${userdetails?.id}`}>
+                <Image 
+                src={PrototypeS5image} 
+                alt="image of prototype 6S"
+                className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
+                </Image>
+            </Link>
+
             <Link href={`/d1/${userdetails?.id}`}>
                 <div className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                      Prototype 1
