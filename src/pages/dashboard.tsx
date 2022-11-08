@@ -11,8 +11,11 @@ import PrototypeS1image from '../components/innerCircleGraph/img/prototypeS1.png
 import PrototypeS2image from '../components/prototypes/s2/img/graphS2.png'
 import PrototypeD1image from '../components/prototypes/s2/img/PrototypeD1.jpg'
 import PrototypeS3image from '../components/prototypes/s2/img/PrototypeS3.png'
+import PrototypeD2image from '../components/prototypes/s2/img/PrototypeD2.png'
 import PrototypeS4image from '../components/prototypes/s2/img/PrototypeS4.png'
 import PrototypeS5image from '../components/prototypes/s2/img/PrototypeS5.png'
+import PrototypeS6image from '../components/prototypes/s2/img/PrototypeS6.png'
+import QuestionaireButton from '../components/questionnaire/QuestionaireButton';
 
 
 type Props = {
@@ -81,9 +84,11 @@ const dashboard = (props: Props) => {
             </Link>
 
             <Link href={`/d4/${userdetails?.id}`}>
-                <div className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
-                     Collapsible Force
-                </div>
+            <Image 
+                src={PrototypeD2image} 
+                alt="image of prototype D2"
+                className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
+                </Image>
             </Link>
 
 
@@ -105,7 +110,7 @@ const dashboard = (props: Props) => {
 
             <Link href={`s6/${userdetails?.id}`}>
                 <Image 
-                src={PrototypeS5image} 
+                src={PrototypeS6image} 
                 alt="image of prototype 6S"
                 className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                 </Image>
@@ -119,9 +124,13 @@ const dashboard = (props: Props) => {
 
             </div>
 
-            <button onClick={() => logOut()} className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">
+        <div className="my-10">
+            <button onClick={() => logOut()} className="px-5 py-2 mr-6 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">
                 Sign Out
             </button>
+
+            <QuestionaireButton />
+        </div>
             {/* <button onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })} className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">
                 Sign Out
             </button> */}

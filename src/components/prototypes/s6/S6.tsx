@@ -14,15 +14,15 @@ const prototypeS6 = () => {
 
         <div className="my-12 flex justify-center flex-col text-center">
           <h2 className="text-5xl font-semibold">
-            Your Software Development career pathways
+            Your Tech career pathways
           </h2>
         </div>
         
          <div className=" text-center text-3xl">
-           <p>Hover over each cube to see the different ways to achieve your goal.</p>
+           <p>Click on each cube to see the different ways you could achieve your goal.</p>
          </div>
 
-          <div className="my-12 flex justify-center max-w-full">
+          <div className="my-12 flex justify-center max-w-full bg-[#103e41] rounded-lg hover:rounded-full">
             <Cubes/>
           </div>
 

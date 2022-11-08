@@ -2,13 +2,7 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import Head from "next/head";
 import MenuItem from '@mui/material/MenuItem';
-import { Button } from "@mui/material";
 import ThankYouModal from "../components/questionnaire/ThankYouModal";
-import PrototypeS1image from '../components/innerCircleGraph/img/prototypeS1.png'
-import PrototypeS2image from '../components/prototypes/s2/img/graphS2.png'
-import PrototypeD1image from '../components/prototypes/s2/img/PrototypeD1.jpg'
-import PrototypeS3image from '../components/prototypes/s2/img/PrototypeS3.png'
-import PrototypeS4image from '../components/prototypes/s2/img/PrototypeS4.png'
 import Image from "next/future/image";
 
 const prototypes = [
@@ -35,12 +29,22 @@ const prototypes = [
   {
     value: '5',
     label: 'Prototype 5',
-    src: '/PrototypeS4.png',
+    src: '/PrototypeD2.png',
   },
   {
     value: '6',
     label: 'Prototype 6',
+    src: '/PrototypeS4.png',
+  },
+  {
+    value: '7',
+    label: 'Prototype 7',
     src: '/PrototypeS5.png',
+  },
+  {
+    value: '8',
+    label: 'Prototype 8',
+    src: '/PrototypeS6.png',
   },
 ];
 

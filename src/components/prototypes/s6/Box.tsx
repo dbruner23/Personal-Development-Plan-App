@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { MeshProps, useFrame } from '@react-three/fiber';
+// import { Text, Html } from '@react-three/drei'
 
 type BoxProps = {
   size?: [number, number, number];
@@ -7,12 +8,12 @@ type BoxProps = {
   boxSpeed?: number;
 } & MeshProps;
 
-export const Box = ({ size = [1, 1, 1], color = '#FFFFFF', boxSpeed = 0.01, ...meshProps }: BoxProps) => {
+export const Box = ({ size = [1, 1, 1], color = '#bcb4b4', boxSpeed = 0.01, ...meshProps }: BoxProps) => {
   const boxRef = useRef<MeshProps | null>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
 
-  // It is react-three-fiber way to trigger ansimation
+  // It is react-three-fiber way to trigger animation
   // each frame we are changing x, y, z rotation of our box
   useFrame(() => {
     if (!boxRef.current) {
@@ -30,7 +31,7 @@ export const Box = ({ size = [1, 1, 1], color = '#FFFFFF', boxSpeed = 0.01, ...m
       return 'yellow';
     }
     if (isHovered && !isSelected) {
-      return 'red';
+      return '#cd2eab';
     }
     return color;
   }, [color, isHovered, isSelected]);
@@ -46,6 +47,7 @@ export const Box = ({ size = [1, 1, 1], color = '#FFFFFF', boxSpeed = 0.01, ...m
     >
       <boxGeometry args={size} />
       <meshStandardMaterial color={calculatedColor} />
+      {/* <Html>text here</Html> */}
     </mesh>
   );
 };
