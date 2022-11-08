@@ -31,7 +31,7 @@ export default function SphereModal1() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-          Become an agile User Experince (UX) Designer with Mission Ready
+          Professional Scrum Master™ (PSM) is the premium certification for anyone wanting to master Scrum.
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           2 day course.
