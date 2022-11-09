@@ -11,7 +11,9 @@ import S3 from '../../components/prototypes/s3/S3'
 import CollapsibleForce from '../../components/prototypes/d4/collapsibleforce'
 import S4 from '../../components/prototypes/s4/S4'
 import S5 from '../../components/prototypes/s5/S5'
+import DelaunayMap from '../../components/prototypes/d5/DelaunayMap'
 import S6 from '../../components/prototypes/s6/S6'
+
 
 
 type Props = {}
@@ -30,7 +32,9 @@ const Prototype = (props: Props) => {
             case 'd3':
                 return <TubeMap />
             case 'd4':
-                return <CollapsibleForce/>
+                return <CollapsibleForce />
+            case 'd5':
+                return <DelaunayMap />
             case 's1':
                 return <S1 />
             case 's2':

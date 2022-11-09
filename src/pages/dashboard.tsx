@@ -75,7 +75,7 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
-                <Link href={`s3/${userdetails?.id}`}>
+            <Link href={`s3/${userdetails?.id}`}>
                 <Image 
                 src={PrototypeS3image} 
                 alt="image of prototype 3S"

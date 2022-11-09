@@ -1,0 +1,265 @@
+{
+    "name": "Start",
+    "children": [
+        {
+            "name": "University Degree in Finance",
+            "photo": "https://upload.wikimedia.org/wikipedia/commons/c/cd/University-of-Alabama-EngineeringResearchCenter-01.jpg",
+            "summary": "A 4-year university degree is the standard starting place for many carrers in finance. The link below provides information searchable by different criteria on global universities offering degrees in financial services.",
+            "time": 4,
+            "fulltimeEd": "false",
+            "link": "https://www.topuniversities.com/university-rankings/university-subject-rankings/2022/accounting-finance",
+            "children": [
+                {
+                    "name": "Internship",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "The most direct path into Investment Banking directly from an undergraduate degreee is to do an internship with an investment banking firm",
+                    "time": 0.5,
+                    "parttime": false,
+                    "link": "",
+                    "children": [
+                        {
+                            "name": "Junior Investment Banker",
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "summary": "This is a common first role in the field of investment banking. You will ",
+                            "time" : 2,
+                            "salary": 70000,
+                            "link": "https://www.seek.co.nz/junior-investment-banking-jobs",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?heroEntityKey=urn%3Ali%3Aautocomplete%3A860019258&keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&position=0&searchId=94140b38-3a7e-486a-9311-12316a7ba04b&sid=p89",
+                            "children": [
+                                {
+                                    "name": "Investment Banking Analyst",
+                                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                    "summary": "Investment banking analysts raise capital for businesses and individuals by issuing debt and selling equity. They oversee mergers, conduct research, and assist in preparing legal and financial documents related to their transactions. Investment banking analysts conduct research and review financial information as well as market trends. They create and implement financial models to review deals and determine profitability. They oversee merger-and-acquisition, and supervise IPOs and private-equity settlements.",
+                                    "salary": 81872,
+                                    "time": 5,
+                                    "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6180%2C6175",
+                                    "linkedIn": "https://www.linkedin.com/search/results/PEOPLE/?keywords=financial%20analyst&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=mPE",
+                                    "children": [
+                                        {
+                                            "name": "Senior I. Banking Analyst",
+                                            "photo": "",
+                                            "summary": "",
+                                            "link": "",
+                                            "linkedIn": ""
+                                        },
+                                        {
+                                            "name": "Investment Banking Associate",
+                                            "photo": "",
+                                            "summary": "",
+                                            "link": "",
+                                            "linkedIn": "",
+                                            "children": [
+                                                {
+                                                    "name": "Senior Finanical Advisor",
+                                                    "photo": "",
+                                                    "summary": "",
+                                                    "link": "",
+                                                    "linkedIn": ""
+                                                },
+                                                {
+                                                    "name": "Managing Director",
+                                                    "photo": "",
+                                                    "summary": "",
+                                                    "link": "",
+                                                    "linkedIn": ""
+                                                },
+                                                {
+                                                    "name": "Senior Vice President",
+                                                    "photo": "",
+                                                    "summary": "",
+                                                    "link": "",
+                                                    "linkedIn": ""
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Investment Banking Associate",
+                                    "photo": "",
+                                    "summary": "",
+                                    "link": "",
+                                    "linkedIn": "",
+                                    "children": [
+                                        {
+                                            "name": "Senior Finanical Advisor",
+                                            "photo": "",
+                                            "summary": "",
+                                            "link": "",
+                                            "linkedIn": ""
+                                        },
+                                        {
+                                            "name": "Managing Director",
+                                            "photo": "",
+                                            "summary": "",
+                                            "link": "",
+                                            "linkedIn": ""
+                                        },
+                                        {
+                                            "name": "Senior Vice President",
+                                            "photo": "",
+                                            "summary": "",
+                                            "link": "",
+                                            "linkedIn": ""
+                                        }
+                                        
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "MBA",
+                    "photo": "data:image/jpeg;base64,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",
+                    "summary": "Whether you already have an undergraduate degree in finance, or have a degree and/or previous work experience in another field, and MBA is a great option to advance your finance career. The link below provides information searchable by different criteria on global universities offering MBA programmes.",
+                    "link": "https://www.topuniversities.com/university-rankings/mba-rankings/global/2022",
+                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=mba&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=KoX",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "MBA",
+            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+            "summary": "Whether you already have an undergraduate degree in finance, or have a degree and/or previous work experience in another field, and MBA is a great option to advance your finance career. The link below provides information searchable by different criteria on global universities offering MBA programmes.",
+            "link": "https://www.topuniversities.com/university-rankings/mba-rankings/global/2022",
+            "time": 2,
+            "parttime": true,
+            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=mba&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=KoX",
+            "children": [
+                {
+                    "name": "Investment Banking Analyst",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "Investment banking analysts raise capital for businesses and individuals by issuing debt and selling equity. They oversee mergers, conduct research, and assist in preparing legal and financial documents related to their transactions. Investment banking analysts conduct research and review financial information as well as market trends. They create and implement financial models to review deals and determine profitability. They oversee merger-and-acquisition, and supervise IPOs and private-equity settlements.",
+                    "salary": 81872,
+                    "time": 5,
+                    "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6180%2C6175",
+                    "linkedIn": "https://www.linkedin.com/search/results/PEOPLE/?keywords=financial%20analyst&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=mPE",
+                    "children": [
+                        {
+                            "name": "Senior Finanical Advisor",
+                            "photo": "",
+                            "summary": "",
+                            "link": "",
+                            "linkedIn": ""
+                        },
+                        {
+                            "name": "Managing Director",
+                            "photo": "",
+                            "summary": "",
+                            "link": "",
+                            "linkedIn": ""
+                        },
+                        {
+                            "name": "Senior Vice President",
+                            "photo": "",
+                            "summary": "",
+                            "link": "",
+                            "linkedIn": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Accounting manager",
+                    "photo": "",
+                    "summary": "",
+                    "link": "",
+                    "linkedIn": ""
+                },
+                {
+                    "name": "Finance manager",
+                    "photo": "",
+                    "summary": "",
+                    "link": "",
+                    "linkedIn": ""
+                },
+                {
+                    "name": "Data Analyst",
+                    "photo": "",
+                    "summary": "",
+                    "link": "",
+                    "linkedIn": ""
+                },
+                {
+                    "name": "Marketing manager",
+                    "photo": "",
+                    "summary": "",
+                    "link": "",
+                    "linkedIn": ""
+                },
+                {
+                    "name": "Risk manager",
+                    "photo": "",
+                    "summary": "",
+                    "link": "",
+                    "linkedIn": ""
+                }
+                
+            ]
+        },
+        {
+            "name": "Junior Analyst",
+            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+            "summary": "Some banks now offer Junior Analyst programs for non-traditional candidates coming from different career backgrounds. Most ot these will still require candidates to have a 4 year university degree in some subject. The below link provides information on such offerings.",
+            "time": 2,
+            "parttime": false,
+            "link": "https://www.goldmansachs.com/careers/students/programs/americas/new-analyst-program.html",
+            "children": [
+
+            ]
+        },
+        {
+            "name": "Dacreed CFA Qualification",
+            "photo": "data:image/png;base64,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",
+            "summary": "The CFA is widely considered as the leading qualification for the financial sector. There are currently more than 175,000 CFA charterholders globally. A sizable proportion of these are involved within the investment banking sector.",
+            "time": 0.5,
+            "parttime": true,
+            "link": "https://www.dacreed.com/",
+            "linkedIn": "https://www.linkedin.com/search/results/PEOPLE/?keywords=financial%20analyst&network=%5B%22F%22%5D&origin=GLOBAL_SEARCH_HEADER&sid=N%3Af",
+            "children": [
+                {
+                    "name": "Investment Banking Analyst",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "Investment banking analysts raise capital for businesses and individuals by issuing debt and selling equity. They oversee mergers, conduct research, and assist in preparing legal and financial documents related to their transactions. Investment banking analysts conduct research and review financial information as well as market trends. They create and implement financial models to review deals and determine profitability. They oversee merger-and-acquisition, and supervise IPOs and private-equity settlements.",
+                    "salary": 81872,
+                    "time": 5,
+                    "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6180%2C6175",
+                    "linkedIn": "https://www.linkedin.com/search/results/PEOPLE/?keywords=financial%20analyst&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=mPE",
+                    "children": [
+                        {
+                            "name": "Senior Finanical Advisor",
+                            "photo": "",
+                            "summary": "",
+                            "link": "",
+                            "linkedIn": ""
+                        },
+                        {
+                            "name": "Managing Director",
+                            "photo": "",
+                            "summary": "",
+                            "link": "",
+                            "linkedIn": ""
+                        },
+                        {
+                            "name": "Senior Vice President",
+                            "photo": "",
+                            "summary": "",
+                            "link": "",
+                            "linkedIn": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "",
+            "photo": "",
+            "summary": "",
+            "link": "",
+            "linkedIn": ""
+
+        }
+
+    ]
+}
