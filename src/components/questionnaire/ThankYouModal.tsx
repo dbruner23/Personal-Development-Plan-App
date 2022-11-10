@@ -16,7 +16,11 @@ const style = {
   p: 4,
 };
 
-export default function ThankYouModal() {
+type Props = {
+  handleSubmit: () => void
+}
+
+export default function ThankYouModal(props: Props) {
   const [open, setOpen] = React.useState(false);
   const router = useRouter()
   const handleOpen = () => setOpen(true);
@@ -27,7 +31,7 @@ export default function ThankYouModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen} variant="contained" className="bg-[#1848C8]">
+      <Button onClick={() => { handleOpen(); props.handleSubmit(); } } variant="contained" className="bg-[#1848C8]">
        Submit Feedback
       </Button>
       <Modal

@@ -346,7 +346,7 @@ const CollapsibleForce = (props: Props) => {
 
 
     return (
-        <div className="flex justify-center items-center w-screen h-screen">
+        <div className="flex justify-center items-center w-screen h-90vh">
             <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-5/6 w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
                 <div className="flex flex-col justify-center mb-14 mx-auto">
                     <label className="flex w-ful text-sm mb-2">Which of the following best describes your current professional development interest?</label>
@@ -603,7 +603,7 @@ const CollapsibleForce = (props: Props) => {
                 )}
                 
             </div>
-            <svg ref={svgRef} className="overflow-visible" ></svg>
+            <svg ref={svgRef} className="h-screen w-screen overflow-visible" ></svg>
         </div>
     )
 }

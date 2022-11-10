@@ -210,5 +210,52 @@ Mus.prototype = {
         return this.recording;
     },
 
+    getMousemoveCoordinates: function (frames: any) {
+        let mousemovecoords: any[] = []
+        for (let i = 0; i < frames.length - 1; i++) {
+            if (frames[i][0] === "m") {
+                mousemovecoords.push([frames[i][1], frames[i][2]])
+            }
+        }
+        return mousemovecoords
+    },
+
+    getClickCoordinates: function (frames:any) {
+        const clickcoords: any = []
+        for (let i = 0; i < frames.length - 1; i++) {
+            if (frames[i][0] === "c") {
+                clickcoords.push([frames[i][1], frames[i][2]])
+            }
+        }
+        return clickcoords
+    },
+
+    getScrollCoordinates: function (frames:any) {
+        const scrollcoords: any = []
+        for (let i = 0; i < frames.length - 1; i++) {
+            if (frames[i][0] === "s") {
+                scrollcoords.push([frames[i][1], frames[i][2]])
+            }
+        }
+        return scrollcoords
+    },
+
+    timeSlice: function (startedAt : any) {
+        let time = (new Date().getTime() / 1000 - (startedAt))
+        return time
+    },
+
+    // toggleRecord: function (isRecording:any, record: any, stop:any, getMousemoveCoordinates:any, timeSlice:any, getClickCoordinates:any ) {
+    //     if (!isRecording()) {
+    //         record(getMousemoveCoordinates);
+    //     } else {
+    //         stop();
+    //         const time = timeSlice()
+    //         const mousemove = getMousemoveCoordinates();
+    //         const clicks = getClickCoordinates();
+    //         console.log("time: " + time + " mousemove: " + mousemove + "clicks: " + clicks)
+    //     }
+    // },
+
 
 }
