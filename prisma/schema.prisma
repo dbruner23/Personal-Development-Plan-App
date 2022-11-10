@@ -58,6 +58,8 @@ model VerificationToken {
 }
 
 model UserActions {
-  id       String @id @default(cuid())
-  username String
+  id         String @id @default(cuid())
+  username   String
+  pttrials   Json
+  ptfeedback Json
 }

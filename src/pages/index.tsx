@@ -10,12 +10,12 @@ import { useRouter } from "next/router";
 const Home: NextPage = () => {
   const { data: session } = useSession()
   const [username, setUsername] = useState('')
-  const saveUser = trpc.useraction.saveUser.useMutation();
+  // const saveUser = trpc.useraction.saveUser.useMutation();
   const router = useRouter();
   
   const handleSubmit = async () => {
-    const newUser = await saveUser.mutateAsync({ username: username })
-    window.localStorage.setItem('user', JSON.stringify(newUser));
+    // const newUser = await saveUser.mutateAsync({ username: username })
+    window.localStorage.setItem('user', JSON.stringify(username));
     router.push(`/dashboard`)
   }
 
