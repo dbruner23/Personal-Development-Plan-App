@@ -4,8 +4,10 @@ import Head from "next/head";
 import MenuItem from '@mui/material/MenuItem';
 import ThankYouModal from "../components/questionnaire/ThankYouModal";
 import Image from "next/future/image";
+import RatingsButtonsGroup from "../components/questionnaire/RatingsButtonsGroup";
 import Button from '@mui/material/Button';
 import { trpc } from "../utils/trpc";
+
 
 const prototypes = [
   {
@@ -149,6 +151,8 @@ const feedback = () => {
               sx={{ width: '45vw', backgroundColor: '#f3f6fa'  }}
             ></TextField>
           </div>
+
+          <RatingsButtonsGroup/>
 
           <div className="flex justify-center">
               <ThankYouModal handleSubmit={handleSubmit} />
