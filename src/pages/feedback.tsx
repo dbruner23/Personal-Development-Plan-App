@@ -5,6 +5,9 @@ import MenuItem from '@mui/material/MenuItem';
 import ThankYouModal from "../components/questionnaire/ThankYouModal";
 import Image from "next/future/image";
 import RatingsButtonsGroup from "../components/questionnaire/RatingsButtonsGroup";
+import Button from '@mui/material/Button';
+import { trpc } from "../utils/trpc";
+
 
 const prototypes = [
   {
@@ -50,11 +53,24 @@ const prototypes = [
 ];
 
 const feedback = () => {
-  const [favPrototype, setFavPrototype] = useState('1');
+  const [feedback, setFeedback] = useState({ favourite: '' });
+  const savePttrials = trpc.useraction.savePttrials.useMutation();
+  
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFavPrototype(event.target.value);
+    setFeedback({...feedback, [event.target.name]: event.target.value});
   };
+
+  const handleSubmit = async () => {
+    const pttrials = (window.localStorage.getItem("pttrials"));
+    const username = (window.localStorage.getItem("user"));
+    const feedbackData = JSON.stringify(feedback);
+    if (pttrials !== null && username !== null ) {
+        await savePttrials.mutateAsync({ pttrials, username, feedbackData })  
+      } 
+       
+  }
+
   return (
     <>
       <Head>
@@ -85,7 +101,8 @@ const feedback = () => {
           id="outlined-select-currency"
           select
           label="Select"
-          value={favPrototype}
+          name="favourite"
+          value={feedback.favourite}
           onChange={handleChange}
           helperText="Please select your favourite Prototype"
         >
@@ -138,12 +155,8 @@ const feedback = () => {
           <RatingsButtonsGroup/>
 
           <div className="flex justify-center">
-          <ThankYouModal/>
+              <ThankYouModal handleSubmit={handleSubmit} />
           </div>
-
-          {/* <Button variant="contained" className="bg-[#1848C8]">
-       Submit Feedback
-      </Button> */}
         </div>
         </div>
       </main>

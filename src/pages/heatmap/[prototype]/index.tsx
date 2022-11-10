@@ -6,8 +6,8 @@ type Props = {}
 
 const AllUserHeatmap = (props: Props) => {
   const recordWindow = {
-    height: 400,
-    width: 1221
+    width: 1221,
+    height: 400
   }
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(0)
@@ -23,7 +23,6 @@ const AllUserHeatmap = (props: Props) => {
       if (coordinates[0] && coordinates[1]) {
         const x = coordinates[0] * window?.innerWidth / recordWindow.width;
         const y = coordinates[1] * window?.outerHeight / recordWindow.height;
-        console.log(window.outerHeight)
         return [x, y]
       }
     })
