@@ -3,19 +3,28 @@ const myTreeData = [
       name: "Start",
       children: [
         {
-          name: "path 1",
+          name: "Study with Mission Ready",
+          attributes: {
+            time: '6-8 months',
+          },
           children: [
-            {
-              name: "course A",
-              children: [
                 {
-                  name: "certificate A",
+                  name: "Full Stack Developer Certificate (Level 4)",
+                  attributes: {
+                    time: '12 weeks',
+                  },
                   children: [
                     {
-                      name: "certificate B",
+                      name: "Cloud and Devops Developer Certificate (Level 5)",
+                      attributes: {
+                        time: '9 weeks',
+                      },
                       children: [
                         {
-                          name: "course C",
+                          name: "MENTORED INDUSTRY LEARNING EXPERIENCE Certificate (Level 6)",
+                          attributes: {
+                            time: '10 weeks',
+                          },
                           children: [
                             {
                               name: "You've reached your goal",
@@ -27,41 +36,49 @@ const myTreeData = [
                   ],
                 },
               ],
+        },
+        {
+          name: "Study at University",
+          attributes: {
+            time: '3 years',
+          },
+          children: [
+            {
+              name: "Bachelor of Software Engineering",
+              attributes: {
+                university: 'AUT',
+              },
+            },
+            {
+              name: "Bachelor of Engineering",
+              attributes: {
+                university: 'Waikato University',
+              },
             },
           ],
         },
         {
-          name: "path 2",
+          name: "ME - Software Engineering",
+          attributes: {
+            time: '1 year ',
+          },
           children: [
             {
-              name: "Course D1 - This course will take you to your goal",
-            },
-            {
-              name: "Course D2 - This course will also take you to your goal",
-            },
-          ],
-        },
-        {
-          name: "path 3",
-          children: [
-            {
-              name: "course 1",
+              name: "Master of Software Engineering",
               children: [
                 {
-                  name: "certificate 1A",
-                  children: [
-                    {
-                      name: "certificate 1B",
+                  name: "University of Waikato",
                       children: [
                         {
                           name: "You've reached your goal",
                         },
                       ],
                     },
-                  ],
-                },
                 {
-                  name: "course 2",
+                  name: "Victoria University Wellington",
+                  attributes: {
+                    degree: 'Master of Software Development',
+                  },
                   children: [
                     {
                       name: "You've reached your goal",
@@ -71,7 +88,10 @@ const myTreeData = [
               ],
             },
             {
-              name: "certificate 3",
+              name: "Postgraduate study in Software Engineering",
+              attributes: {
+                university: 'University of Auckland',
+              },
                   children: [
                     {
                       name: "You've reached your goal",
