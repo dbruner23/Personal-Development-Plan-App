@@ -18,18 +18,10 @@ const prototypeS1 = () => {
 <p>Click Start to see your career development options</p>
 </div>
  
-<div className="flex justify-center my-12 max-h-full" >
+<div className="flex justify-center my-2 max-h-full" >
 <OurTree/>
 </div>
 
-<div className="flex justify-center my-12">
-<Link href={"/dashboard"} >
-<button className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-md mr-4 text-sm">
- BACK TO DASHBOARD
-</button>
-</Link>
-<QuestionaireButton/>
-</div>
 
 </main>
       

@@ -61,12 +61,12 @@ const circlePack = <T extends unknown>(
 };
 
 const data: DataType[] = [
-  { name: "Manager", size: 24 },
-  { name: "Assistant", size: 10 },
-  { name: "Account-Director", size: 30 },
-  { name: "CEO", size: 46 },
-  { name: "Accountant", size: 16 },
-  { name: "Team-Lead", size: 20 }
+  { name: "Assistant", size: 12 },
+  { name: "Accountant", size: 22 },
+  { name: "Team-Lead", size: 28 },
+  { name: "Manager", size: 32 },
+  { name: "Account-Director", size: 38 },
+  { name: "CEO", size: 50 },
 ];
 
 const color = d3
@@ -122,14 +122,30 @@ const Circles = () => {
   );
 
   return (
-    <div className="flex row ">
-        {/* <div>
+    <div>
+      <div className="flex row items-center">
+        <div className="w-74 bg-[#dddfe6] p-8 rounded-lg">
         {data.map((result, index) =>(
-            <p key={index}>Goal: {result.name}. This will take you {result.size} months.</p>
+        <div>
+
+          <div>
+            <p key={index}>Your goal is to become: <span className="font-bold text-[#90377b]">{result.name}</span>?</p>
+          </div>
+
+          <div>
+           <p key={index}>It might take you around <span className="font-bold">{result.size} months </span> to achieve this goal.</p>
+          </div>
+
+          <br/>
+
+        </div>
+            
         ))}
-        </div> */}
-      <svg ref={chart.ref} width={chart.width} height={chart.height}>
-      </svg>
+
+      </div>
+         <svg ref={chart.ref} width={chart.width} height={chart.height}>
+         </svg>
+      </div>
     </div>
   );
 }

@@ -119,6 +119,10 @@ const feedback = () => {
         </TextField>
           </div>
 
+        <div className="mb-4">
+          <RatingsButtonsGroup/>
+        </div>
+
           <label className="text-sm mb-2">Let us know one thing you really like about this Prototype</label>
           <div className="mb-14 ">
             <TextField
@@ -152,7 +156,6 @@ const feedback = () => {
             ></TextField>
           </div>
 
-          <RatingsButtonsGroup/>
 
           <div className="flex justify-center">
               <ThankYouModal handleSubmit={handleSubmit} />

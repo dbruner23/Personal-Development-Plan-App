@@ -1,6 +1,3 @@
-import { Button} from "@mui/material";
-import Head from "next/head";
-import Link from "next/link";
 import Pathway1Popover from "./Pathway1Popover";
 import Pathway2Popover from "./Pathway2Popover";
 import Pathway3Popover from "./Pathway3Popover";
@@ -11,14 +8,15 @@ const prototypeS2 = () => {
   return (
     <>
       
-<main className='mx-auto my-12 max-w-full'>
+<main className='mx-auto mt-4 max-w-full'>
   
 <div className="flex justify-center my-12 ">
-<h2 className="text-2xl font-semibold">Thank you for choosing this Prototype</h2>
+<h2 className="text-2xl font-semibold text-center">This Prototype shows 3 different objectives that can be achieved over a 7 months period as part of your Professional development goals </h2>
 </div>
 
-<div className="flex justify-center text-center">
-<p>The graph below shows you the 3 different pathways to reach your goal over the next 7 months and the amout of hours you can expect to spend on the path per month </p>
+<div className="flex justify-center text-center flex-col">
+<p>The graphs below show the amout of hours you can expect to spend on each of the objectives per month. </p>
+<p>The idea is to give you a better understanding of the amount of time required in reaching a goal. </p>
 </div>
 
 <div className="flex justify-center my-8 gap-10">
@@ -31,14 +29,6 @@ const prototypeS2 = () => {
 <SimpleLineChart/>
 </div>
 
-<div className="flex justify-center my-12">
-<Link href={"/dashboard"} >
-<button className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-md mr-4 text-sm">
- BACK TO DASHBOARD
-</button>
-</Link>
-<QuestionaireButton/>
-</div>
 
 </main>
       

@@ -162,7 +162,7 @@ const Prototype = (props: Props) => {
                   <button id="save" onClick={toggleRecord} className='border bg-slate-400'>Stop Save Exit</button> */}
               </div>
             {prototypeInsert(prototypeId)}
-              <div className="flex justify-center h-10 abosolute bottom-8">
+              <div className="flex justify-center h-10 abosolute bottom-8 mb-12">
                   <Link href={"/dashboard"}>
                       <button onClick={() => handleSave() } className="mr-4 rounded-md bg-[#1848C8] px-5 py-2 text-sm text-white hover:bg-[#AFC3FF]">
                           BACK TO DASHBOARD

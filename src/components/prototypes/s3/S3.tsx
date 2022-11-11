@@ -1,9 +1,8 @@
-import { Button } from "@mui/material";
-import Head from "next/head";
-import Link from "next/link";
 import NonLinearStepper from "./NonLinearStepper";
 import NonLinearStepper2 from "./NonLinearStepper2";
 import QuestionaireButton from "../../questionnaire/QuestionaireButton";
+import SoftwareDeveloperModal1 from "./SoftwareDeveloperModal1";
+import SoftwareDeveloperModal2 from "./SoftwareDeveloperModal2";
 
 const prototypeS3 = () => {
   return (
@@ -12,35 +11,36 @@ const prototypeS3 = () => {
 
         <div className="flex flex-col max-w-7xl ">
 
-        <div className="my-12 flex justify-center">
+        <div className="my-12 flex justify-center flex-col text-center">
           <h2 className="text-2xl font-semibold">
-            Listed below are 2 different pathways. Choose your preferred
-            path to reach your goal.
+            Listed below are 2 different pathways to become a Software Developer. 
           </h2>
+          <p>Choose your preferred path to reach your goal and tick off each step along the way, once completed.</p>
         </div>
 
-        <div className="my-8 flex m-3 flex-col justify-center rounded-lg bg-[#e3e6ee] p-4">
+        <div className="my-4 flex  m-3  flex-col justify-center rounded-lg bg-[#f4f4f4] p-4">
           <div className="mb-4 text-lg font-bold text-[#2a479d]">
-            <h1>Career path 1</h1>
-          </div>
-          <NonLinearStepper />
-        </div>
-
-        <div className="my-8 flex  m-3  flex-col justify-center rounded-lg bg-[#f4f4f4] p-4">
-          <div className="mb-4 text-lg font-bold text-[#2a479d]">
-            <h1>Career path 2</h1>
+            <h1>Study at University - 4 years (incl. 1 year Master)</h1>
           </div>
           <NonLinearStepper2 />
         </div>
 
-        <div className="my-8 flex justify-center">
-          <Link href={"/dashboard"}>
-            <button className="mr-4 rounded-md bg-[#1848C8] px-5 py-2 text-sm text-white hover:bg-[#AFC3FF]">
-              BACK TO DASHBOARD
-            </button>
-          </Link>
-          <QuestionaireButton />
+        <div className="mb-12 ml-4">
+          <SoftwareDeveloperModal2/>
         </div>
+        
+      
+
+        <div className="my-4 flex m-3 flex-col justify-center rounded-lg bg-[#e3e6ee] p-4">
+          <div className="mb-4 text-lg font-bold text-[#2a479d]">
+            <h1>Study with Mission Ready - 6-8 months</h1>
+          </div>
+          <NonLinearStepper />
+        </div>
+
+        <div className="mb-12 ml-4">
+          <SoftwareDeveloperModal1/>
+        </div> 
 
         </div>
       </main>
