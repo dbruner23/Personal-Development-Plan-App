@@ -163,14 +163,14 @@ const Prototype = (props: Props) => {
               </div>
             {prototypeInsert(prototypeId)}
               <div className="flex justify-center h-10 abosolute bottom-8 mb-12">
-                  <Link href={"/dashboard"}>
+                  {/* <Link href={"/dashboard"}>
                       <button onClick={() => handleSave() } className="mr-4 rounded-md bg-[#1848C8] px-5 py-2 text-sm text-white hover:bg-[#AFC3FF]">
                           BACK TO DASHBOARD
                       </button>
-                  </Link>
+                  </Link> */}
                   <Link href="/feedback">
                       <Button onClick={() => handleSave() } variant="contained" className="bg-[#81bd75]">
-                          Answer Questionnaire
+                          Give Feedback
                       </Button>
                   </Link>
               </div>

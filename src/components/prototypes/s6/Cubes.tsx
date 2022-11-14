@@ -68,7 +68,7 @@ const Cubes = () => {
         </>
         <div className="p-6 text-white">
       <label htmlFor="speedFactor">
-        Rotation speed (just for fun)  
+        Rotation speed 
         <input
           name="speedFactor"
           id="speedFactor"

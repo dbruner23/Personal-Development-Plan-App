@@ -5,9 +5,9 @@ const QuestionaireButton = () => {
 
   return (
     <>
-    <Link href="/feedback">
+    <Link href="/OverallFeedback">
     <Button variant="contained" className="bg-[#81bd75]">
-       Answer Questionaire
+       Feedback form
       </Button>
       </Link>
     </>
