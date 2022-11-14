@@ -206,7 +206,6 @@ const CollapsibleForce = () => {
                         const totaltime = parents.reduce((acc: any, curr: { data: { time: any; }; }) => {
                             return acc + curr.data.time
                         }, 0);
-                        console.log(totaltime)
                         if (totaltime < minTime) {
                             minTime = totaltime;
                             recommend2 = recommend1;
@@ -289,7 +288,6 @@ const CollapsibleForce = () => {
                 node.attr("fill", (d: any) => color(d))
                     .attr("r", (d: any) => ((Math.sqrt(d.data.size) / 12) || 5.5 ))
                     .on("click", (event: any, d: any, i: any) => {
-                        console.log(d)
                         if (d.children) {
                             d._children = d.children;
                             d.children = null;
@@ -330,7 +328,6 @@ const CollapsibleForce = () => {
                 // .filter((event: any) => { return !event.mousedowned })
                 .on("zoom", e => {
                 const zoomState: any = d3.zoomTransform(svg.node())
-                console.log(zoomState)
                 setCurrentZoomState(zoomState)
                 node.attr("transform", (transform = e.transform));
                 link.attr("transform", (transform = e.transform));
