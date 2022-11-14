@@ -13,7 +13,7 @@ const InputStep1 = (props: Props) => {
     const { setInputStep } = props
     
   return (
-      <div className="flex flex-col justify-center items-center mb-14 mx-auto gap-4">
+      <div className="flex flex-col justify-center items-center mx-auto gap-4">
           <div className="text-xl">Welcome to Dacreed New Horizons!</div>
           <div className="text-xs">
               It&#39;s a wide world of career growth possibilities out there. This tool is designed to <strong>help you navigate</strong> the endless options
@@ -21,7 +21,7 @@ const InputStep1 = (props: Props) => {
               skills, experiences, goals, and preferences. 
           </div>
           <div className="text-xs">
-              To get started, just click the button below.We&#39;ll walk you through a short set of questions about your education and work up to this point, and 
+              To get started, just click the button below. We&#39;ll walk you through a short set of questions about your education and work up to this point, and 
               any ideas you have about where you want to go from here. The information you provide can be general or specific and can be changed at any time. 
           </div>
           <div className="text-xs">

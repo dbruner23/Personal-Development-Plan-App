@@ -41,7 +41,7 @@ const InputStep2 = (props: Props) => {
     ]
   
     return (
-      <div className="flex flex-col justify-center mb-14 mx-auto gap-2">
+      <div className="flex flex-col justify-center mx-auto gap-2">
             <div className="mb-2">First, please share a bit about your experience.</div>
             <div className="text-xs mb-4"> <em>You&#39;ve worked hard to get to where you are. This hard work has sown the seeds for exciting future growth potenial.</em></div>
             <label className="flex w-full text-sm">1) What is your highest level of education?</label>
