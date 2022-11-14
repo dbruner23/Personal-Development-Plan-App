@@ -18,7 +18,7 @@ import PrototypeS6image from '../components/prototypes/s2/img/PrototypeS6.png'
 import QuestionaireButton from '../components/questionnaire/QuestionaireButton';
 
 
-const dashboard = () => {
+const Dashboard = () => {
 
     // const { Track, trackEvent } = useTracking({ page: "dashboard" })
     // const { data: session, status } = useSession()
@@ -136,5 +136,5 @@ const dashboard = () => {
     )
 }
 
-export default dashboard
+export default Dashboard
 

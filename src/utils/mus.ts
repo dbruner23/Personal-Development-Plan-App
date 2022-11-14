@@ -91,31 +91,30 @@ Mus.prototype = {
 
     record: function (onFrame: () => void) {
         if (this.recording) return;
-
-        const self = this;
-        if (self.startedAt == 0) self.startedAt = new Date().getTime() / 1000;
+        
+        if (this.startedAt == 0) this.startedAt = new Date().getTime() / 1000;
 
         // Sets initial scroll position of the window
-        if (self.timePoint) {
-            if (document.scrollingElement) self.frames.push(['s', document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop, 0]);
+        if (this.timePoint) {
+            if (document.scrollingElement) this.frames.push(['s', document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop, 0]);
         } else {
-            if (document.scrollingElement) self.frames.push(['s', document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop]);
+            if (document.scrollingElement) this.frames.push(['s', document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop]);
         }
 
-        window.onmousemove = this.moveListener(function (pos: any[]) {
-            self.frames.push(self.timePoint ? pos.concat(new Date().getTime() - (self.startedAt * 1000)) : pos);
+        window.onmousemove = this.moveListener((pos: any[]) => {
+            this.frames.push(this.timePoint ? pos.concat(new Date().getTime() - (this.startedAt * 1000)) : pos);
             if (onFrame instanceof Function) onFrame();
         });
-        window.onmousedown = this.clickListener(function (click: any[]) {
-            self.frames.push(self.timePoint ? click.concat(new Date().getTime() - (self.startedAt * 1000)) : click);
+        window.onmousedown = this.clickListener((click: any[]) => {
+            this.frames.push(this.timePoint ? click.concat(new Date().getTime() - (this.startedAt * 1000)) : click);
             if (onFrame instanceof Function) onFrame();
         });
-        window.onscroll = this.scrollListener(function (scroll: any[]) {
-            self.frames.push(self.timePoint ? scroll.concat(new Date().getTime() - (self.startedAt * 1000)) : scroll);
+        window.onscroll = this.scrollListener((scroll: any[]) => {
+            this.frames.push(this.timePoint ? scroll.concat(new Date().getTime() - (this.startedAt * 1000)) : scroll);
             if (onFrame instanceof Function) onFrame();
         });
 
-        self.recording = true;
+        this.recording = true;
     },
 
     stop: function () {
