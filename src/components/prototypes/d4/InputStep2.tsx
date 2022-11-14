@@ -43,7 +43,7 @@ const InputStep2 = (props: Props) => {
     return (
       <div className="flex flex-col justify-center mb-14 mx-auto gap-2">
             <div className="mb-2">First, please share a bit about your experience.</div>
-            <div className="text-xs mb-4"> <em>You've worked hard to get to where you are. This hard work has sown the seeds for exciting future growth potenial.</em></div>
+            <div className="text-xs mb-4"> <em>You&#39;ve worked hard to get to where you are. This hard work has sown the seeds for exciting future growth potenial.</em></div>
             <label className="flex w-full text-sm">1) What is your highest level of education?</label>
             <div className="mb-4">
                 <TextField
@@ -89,7 +89,7 @@ const InputStep2 = (props: Props) => {
                     ))}
                 </Select>
             </div>
-          <label className="flex w-ful text-sm">3) What's the highest level of professional role you've held?</label>
+            <label className="flex w-ful text-sm">3) What&#39; s the highest level professional role you&#39;ve held?</label>
           <div className="mb-4">
               <TextField
                   id="outlined-select-currency"

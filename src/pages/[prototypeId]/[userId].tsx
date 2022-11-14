@@ -22,10 +22,7 @@ interface IRecordWindow {
         height: number;
 }
 
-
-type Props = {}
-
-const Prototype = (props: Props) => {
+const Prototype = () => {
     const router = useRouter()
     const prototypeId = router.query.prototypeId
     const [mus, setMus] = useState<any>('')
@@ -66,28 +63,15 @@ const Prototype = (props: Props) => {
         const windowdims = { width: window?.innerWidth, height: window?.outerHeight }
         setRecordWindow(windowdims)
     }, [])
-
-    const setConsoleData = function () {
-        var textarea = document.getElementById("console");
-        if (textarea) {
-            textarea.innerHTML = JSON.stringify(mus.getData());
-            textarea.scrollTop = textarea.scrollHeight;
-        }
-    };
-
     
     const getMousemoveCoordinates = function () {
-        let mousemovecoords: any[] = []
+        const mousemovecoords: any[] = []
         for (let i = 0; i < mus.frames.length - 1; i++) {
             if (mus.frames[i][0] === "m") {
                 mousemovecoords.push([mus.frames[i][1], mus.frames[i][2]])
             }            
         }
         return mousemovecoords
-        // var textarea = document.getElementById("console");
-        // if (textarea) {
-        //     textarea.innerHTML = JSON.stringify(mousemovecoords);
-        //     textarea.scrollTop = textarea.scrollHeight;
     }
 
     const getClickCoordinates = function () {
@@ -111,7 +95,7 @@ const Prototype = (props: Props) => {
     }
 
     const timeSlice = function () {
-        let time = (new Date().getTime() / 1000 - (mus.startedAt))
+        const time = (new Date().getTime() / 1000 - (mus.startedAt))
         return time
     }
 

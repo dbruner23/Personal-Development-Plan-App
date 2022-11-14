@@ -2,9 +2,7 @@ import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useSta
 import { select, xml, Delaunay, randomBates} from 'd3'
 import * as d3 from 'd3'
 
-type Props = {}
-
-const NodeMap = (props: Props) => {
+const NodeMap = () => {
   const random = d3.randomNormal(0, 1)
   let randomdata = Array.from({ length: 100 }, () => [random(), random()])
   const [data, setData] = useState(randomdata)

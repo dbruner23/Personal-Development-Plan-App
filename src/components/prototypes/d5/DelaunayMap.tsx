@@ -3,9 +3,7 @@ import airports from '../../../data/airports.json'
 import * as d3 from 'd3'
 
 
-type Props = {}
-
-const DelaunayMap = (props: Props) => {
+const DelaunayMap = () => {
     const [data, setData] = useState<any[]>(airports)
     const latLngArr = Array.from(data, (airport) => [+airport.longitude, +airport.latitude])
     const svgRef = useRef<SVGSVGElement>(null)
@@ -20,7 +18,7 @@ const DelaunayMap = (props: Props) => {
         const projection = d3.geoNaturalEarth1()
         const outline : any = { type: "Sphere" }
         const width = window.innerWidth
-        let projectlatlng:any[] = []
+        const projectlatlng:any[] = []
         const height = () => {
             const [[x0, y0], [x1, y1]] = d3.geoPath(projection.fitWidth(width, outline)).bounds(outline);
             const dy = Math.ceil(y1 - y0), l = Math.min(Math.ceil(x1 - x0), dy);

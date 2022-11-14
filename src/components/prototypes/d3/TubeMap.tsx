@@ -2,9 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { select } from 'd3'
 import * as d3 from 'd3'
 
-type Props = {}
-
-const TubeMap = (props: Props) => {
+const TubeMap = () => {
     const svgRef = useRef<SVGSVGElement>(null)
     const data = {
         nodes: [
@@ -54,7 +52,7 @@ const TubeMap = (props: Props) => {
         const width = window.innerWidth;
         const height = window.innerHeight;
 
-        let positions: number[] | null = []
+        const positions: number[] | null = []
 
         svg
             .attr("viewBox", [0, 0, width, height])
