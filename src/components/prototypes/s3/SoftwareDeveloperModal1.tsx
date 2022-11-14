@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 const style = {
-  position: 'absolute' as 'absolute',
+  position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -39,11 +39,11 @@ export default function SoftwareDeveloperModal1() {
           </Typography>
 
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Are you interested in solving real world business and community problems with the power of mobile and web? You'll learn how to create responsive mobile-first web applications and be confident problem solver using code. If you are a hands-on creator and enjoy making, testing and seeing your creations come to life, then a career in full-stack and software development is for you.
+          Are you interested in solving real world business and community problems with the power of mobile and web? You will learn how to create responsive mobile-first web applications and be confident problem solver using code. If you are a hands-on creator and enjoy making, testing and seeing your creations come to life, then a career in full-stack and software development is for you.
           </Typography>
 
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-           In our 10-week industry experience, you'll gain real work experience and learn on the job what it takes to become a professional with work experience, relevant skills, industry network, employer reference and a job interview.
+           In our 10-week industry experience, you will gain real work experience and learn on the job what it takes to become a professional with work experience, relevant skills, industry network, employer reference and a job interview.
           </Typography>
           
         </Box>

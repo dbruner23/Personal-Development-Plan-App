@@ -1,7 +1,4 @@
-import Head from "next/head";
-import Link from "next/link";
 import OurTree from "../../innerCircleGraph/OurTree";
-import QuestionaireButton from "../../questionnaire/QuestionaireButton";
 
 
 const prototypeS1 = () => {

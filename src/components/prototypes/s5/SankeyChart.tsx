@@ -2,7 +2,6 @@ import { ResponsiveContainer, Sankey, Tooltip } from "recharts";
 import Node from "./Node";
 import Link from "./Link";
 import sankeyData from "./sankeyData";
-import CustomTooltip from "./CustomTooltip";
 
 
 

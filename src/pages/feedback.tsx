@@ -1,58 +1,13 @@
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import Head from "next/head";
-import MenuItem from '@mui/material/MenuItem';
 import ThankYouModal from "../components/questionnaire/ThankYouModal";
-import Image from "next/future/image";
-import RatingsButtonsGroup from "../components/questionnaire/RatingsButtonsGroup";
-import Button from '@mui/material/Button';
 import { trpc } from "../utils/trpc";
 
 
-const prototypes = [
-  {
-    value: '1',
-    label: 'Prototype 1',
-    src: '/PrototypeD1.jpg',
-  },
-  {
-    value: '2',
-    label: 'Prototype 2',
-    src: '/prototypeS1.png',
-  },
-  {
-    value: '3',
-    label: 'Prototype 3',
-    src: '/graphS2.png',
-  },
-  {
-    value: '4',
-    label: 'Prototype 4',
-    src: '/PrototypeS3.png',
-  },
-  {
-    value: '5',
-    label: 'Prototype 5',
-    src: '/PrototypeD2.png',
-  },
-  {
-    value: '6',
-    label: 'Prototype 6',
-    src: '/PrototypeS4.png',
-  },
-  {
-    value: '7',
-    label: 'Prototype 7',
-    src: '/PrototypeS5.png',
-  },
-  {
-    value: '8',
-    label: 'Prototype 8',
-    src: '/PrototypeS6.png',
-  },
-];
 
-const feedback = () => {
+
+const Feedback = () => {
   const [feedback, setFeedback] = useState({ favourite: '' });
   const savePttrials = trpc.useraction.savePttrials.useMutation();
   
@@ -108,7 +63,7 @@ const feedback = () => {
             />
           </div>
 
-          <label className="text-sm mb-2">Let us know one thing you didn't like about this Prototype</label>
+          <label className="text-sm mb-2">Let us know one thing you did not like about this Prototype</label>
           <div className="mb-14">
             <TextField
               id="outlined-multiline-flexible"
@@ -141,4 +96,4 @@ const feedback = () => {
   );
 };
 
-export default feedback;
+export default Feedback;

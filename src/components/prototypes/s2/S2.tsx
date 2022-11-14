@@ -2,7 +2,7 @@ import Pathway1Popover from "./Pathway1Popover";
 import Pathway2Popover from "./Pathway2Popover";
 import Pathway3Popover from "./Pathway3Popover";
 import SimpleLineChart from "./SimpleLineChart";
-import QuestionaireButton from "../../questionnaire/QuestionaireButton";
+
 
 const prototypeS2 = () => {
   return (
