@@ -15,7 +15,7 @@ type DataType = {
 };
 
 type ChartType = d3.Selection<SVGSVGElement, any, null, undefined>;
-const useChart = <T extends {}>(
+const useChart = <T extends any>(
   width: number,
   height: number,
   draw: (chart: ChartType, data: T) => void,
@@ -40,7 +40,7 @@ type Chart = ReturnType<typeof useChart>;
 type HierarchyType<T> = T & {
   children?: HierarchyType<T>[];
 };
-const circlePack = <T extends {}>(
+const circlePack = <T extends any>(
   data: T[],
   keySelector: (t: T) => number,
   chart: Chart
@@ -130,7 +130,7 @@ const Circles = () => {
             <p key={index}>Your goal is to become: <span className="font-bold text-[#90377b]">{result.name}</span>?</p>
           </div>
 
-          <div>
+          <div key={index}>
            <p key={index}>It might take you around <span className="font-bold">{result.size} months </span> to achieve this goal.</p>
           </div>
 

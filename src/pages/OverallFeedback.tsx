@@ -97,7 +97,7 @@ const OverallFeedback = () => {
 
 
           {prototypes.map((option) => ( 
-        <div className="mb-12">
+        <div key={option.value} className="mb-12">
             <div className="flex-row" key={option.value}>
               <Image 
                 src={option.src}
