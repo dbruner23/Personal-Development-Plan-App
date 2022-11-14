@@ -47,7 +47,12 @@ const dashboard = (props: Props) => {
     // if (status === 'authenticated') {
     return (
         <main className="container mx-auto flex min-h-screen flex-col gap-5 items-center justify-center p-4">
-            <div>Hello {userdetails?.username}! Please select one of our prototypes to demo:</div>
+            <div className='text-center'>
+                <h1 className='font-bold mb-4'>Hello {userdetails?.username}! Please find a variety of PDP prototypes listed below.</h1>
+                <p>Select each Prototype to demo and fill out the Prototype feedback form.</p>
+                <p>Once you reviewed all of the prototypes, please also fill out the feedback form at the bottom of this page.</p>
+                <p>Thank you for helping us with this project.</p>
+                </div>
 
             <div className="flex flex-row justify-between gap-5 flex-wrap">
 

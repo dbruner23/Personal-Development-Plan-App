@@ -18,19 +18,25 @@ const Cubes = () => {
     <div className="flex flex-col items-center box-border w-full h-screen ">
 
       <>
-      <div className="absolute bottom-2/4 left-1/3 z-20">
+      <div className="relative">
+      <div className="absolute top-24 pb-24 right-14 z-20">
       <CubesModal1 />
       </div>
+      </div>
 
-      <div className="absolute bottom-1/3 left-2/3 z-20">
+      <div className="relative">
+      <div className="absolute top-24 pt-24 pl-20 left-24 z-20">
       <CubesModal2/>
       </div>
-
-      <div className="absolute bottom-10 left-1/3 z-20">
-      <CubesModal3 />
       </div>
 
-      <div className="absolute bottom-4 right-1/4 z-20">
+      <div className="relative">
+      <div className="absolute top-64 pt-64 right-14 z-20">
+      <CubesModal3 />
+      </div>
+      </div>
+
+      <div className="absolute bottom-24 pb-44 right-1/4 z-20">
       <SphereModal1 />
       </div>
 
@@ -62,7 +68,7 @@ const Cubes = () => {
         </>
         <div className="p-6 text-white">
       <label htmlFor="speedFactor">
-        Make the cubes rotate faster  
+        Rotation speed 
         <input
           name="speedFactor"
           id="speedFactor"

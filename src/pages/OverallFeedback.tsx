@@ -52,7 +52,7 @@ const prototypes = [
   },
 ];
 
-const feedback = () => {
+const OverallFeedback = () => {
   const [feedback, setFeedback] = useState({ favourite: '' });
   const savePttrials = trpc.useraction.savePttrials.useMutation();
   
@@ -83,11 +83,11 @@ const feedback = () => {
         <div className="my-12 flex flex-col">
         
         <div className="flex justify-center mb-5 ">
-           <h2 className="text-3xl font-bold">Thank you for checking out this Prototype</h2>
+           <h2 className="text-3xl font-bold">Thank you for checking out our Prototypes</h2>
         </div>
 
         <div className="flex justify-center mb-12">
-           <p>Please answer a few short questions before moving on the test the next Prototype</p>
+           <p>We really appreciate you taking the time to complete this short Prototype feedback form</p>
         </div>
 
         <div>
@@ -96,49 +96,55 @@ const feedback = () => {
 
     <div className="flex justify-center mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl">
 
-         
-          <label className="text-sm mb-2">Let us know one thing you really like about this Prototype</label>
-          <div className="mb-14 ">
-            <TextField
-              id="outlined-multiline-flexible"
-              label="your answer here..."
-              multiline
-              maxRows={10}
-              sx={{ width: '45vw', backgroundColor: '#f3f6fa' }}
-            />
-          </div>
 
-          <label className="text-sm mb-2">Let us know one thing you didn't like about this Prototype</label>
-          <div className="mb-14">
-            <TextField
-              id="outlined-multiline-flexible"
-              label="your answer here..."
-              multiline
-              maxRows={10}
-              sx={{ width: '45vw', backgroundColor: '#f3f6fa'  }}
-            ></TextField>
-          </div>
+          {prototypes.map((option) => ( 
+        <div className="mb-12">
+            <div className="flex-row">
+              <Image 
+                src={option.src}
+                alt={option.label}
+                width="90"
+                height="90"/>
+                <h3 className="font-bold">{option.label}</h3>
+            </div>
+          <RatingsButtonsGroup/>
+        </div>
+         ))}
+        
 
-          <label className="text-sm mb-2">Tell us one thing that could be done to improve it?</label>
-          <div className="mb-14">
-            <TextField
-              id="outlined-multiline-flexible"
-              label="your answer here..."
-              multiline
-              maxRows={10}
-              sx={{ width: '45vw', backgroundColor: '#f3f6fa'  }}
-            ></TextField>
+        <div className="mb-14 mx-auto">
+          <TextField
+          id="outlined-select-currency"
+          select
+          label="Select"
+          name="favourite"
+          value={feedback.favourite}
+          onChange={handleChange}
+          helperText="Please select your favourite Prototype"
+        >
+          {prototypes.map((option) => (    
+            <MenuItem key={option.value} value={option.value}>
+              {option.label} 
+              <Image 
+                src={option.src}
+                alt={option.label}
+                width="90"
+                height="90"/>
+            </MenuItem>
+          ))}
+        </TextField>
           </div>
-
 
           <div className="flex justify-center">
               <ThankYouModal handleSubmit={handleSubmit} />
           </div>
+          
+          </div>
         </div>
-        </div>
+        
       </main>
     </>
   );
 };
 
-export default feedback;
+export default OverallFeedback;
