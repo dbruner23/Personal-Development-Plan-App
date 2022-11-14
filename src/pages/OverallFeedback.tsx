@@ -5,7 +5,6 @@ import MenuItem from '@mui/material/MenuItem';
 import ThankYouModal from "../components/questionnaire/ThankYouModal";
 import Image from "next/future/image";
 import RatingsButtonsGroup from "../components/questionnaire/RatingsButtonsGroup";
-import Button from '@mui/material/Button';
 import { trpc } from "../utils/trpc";
 
 
@@ -99,7 +98,7 @@ const OverallFeedback = () => {
 
           {prototypes.map((option) => ( 
         <div className="mb-12">
-            <div className="flex-row">
+            <div className="flex-row" key={option.value}>
               <Image 
                 src={option.src}
                 alt={option.label}
@@ -138,7 +137,7 @@ const OverallFeedback = () => {
           <div className="flex justify-center">
               <ThankYouModal handleSubmit={handleSubmit} />
           </div>
-          
+
           </div>
         </div>
         

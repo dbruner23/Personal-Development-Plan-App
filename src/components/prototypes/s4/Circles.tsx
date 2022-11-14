@@ -15,7 +15,7 @@ type DataType = {
 };
 
 type ChartType = d3.Selection<SVGSVGElement, any, null, undefined>;
-const useChart = <T extends unknown>(
+const useChart = <T extends {}>(
   width: number,
   height: number,
   draw: (chart: ChartType, data: T) => void,
@@ -40,7 +40,7 @@ type Chart = ReturnType<typeof useChart>;
 type HierarchyType<T> = T & {
   children?: HierarchyType<T>[];
 };
-const circlePack = <T extends unknown>(
+const circlePack = <T extends {}>(
   data: T[],
   keySelector: (t: T) => number,
   chart: Chart
@@ -115,8 +115,6 @@ const Circles = () => {
         .style("cursor", "pointer")
         .on("mouseover", function() { d3.select(this).style('fill', 'white'); })
         .on("mouseout", function() { d3.select(this).style('fill', '#000'); });
-;
-
     },
     data
   );
@@ -128,7 +126,7 @@ const Circles = () => {
         {data.map((result, index) =>(
         <div>
 
-          <div>
+          <div key={index}>
             <p key={index}>Your goal is to become: <span className="font-bold text-[#90377b]">{result.name}</span>?</p>
           </div>
 

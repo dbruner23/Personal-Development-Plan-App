@@ -7,7 +7,7 @@ type SphereProps = {
   } & MeshProps;
 
 
-const Circle = ({ color = '#9f75a4', shereSpeed = 0.01, ...meshProps }: SphereProps) => {
+const Circle = ({ color = '#9f75a4', ...meshProps }: SphereProps) => {
     const sphereRef = useRef<MeshProps | null>(null);
     const [isHovered, setIsHovered] = useState(false);
     const [isSelected, setIsSelected] = useState(false);
