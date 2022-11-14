@@ -18,24 +18,18 @@ import PrototypeS6image from '../components/prototypes/s2/img/PrototypeS6.png'
 import QuestionaireButton from '../components/questionnaire/QuestionaireButton';
 
 
-type Props = {
-}
-
-const dashboard = (props: Props) => {
+const Dashboard = () => {
 
     // const { Track, trackEvent } = useTracking({ page: "dashboard" })
-    const { data: session, status } = useSession()
+    // const { data: session, status } = useSession()
     const router = useRouter()
-    interface IUser {
-        id: string
-        username: string
-    }
-    const [userdetails, setUserdetails] = useState<IUser>()
+    
+    const [userName, setUserName] = useState('')
     
     useEffect(() => {
         const user = (window.localStorage.getItem('user') || null);
         if (typeof user === "string") {
-            setUserdetails(JSON.parse(user))         
+            setUserName(JSON.parse(user))         
         }
     }, [])
 
@@ -47,11 +41,15 @@ const dashboard = (props: Props) => {
     // if (status === 'authenticated') {
     return (
         <main className="container mx-auto flex min-h-screen flex-col gap-5 items-center justify-center p-4">
-            <div>Hello {userdetails?.username}! Please select one of our prototypes to demo:</div>
-
+            <div className='text-center'>
+                <h1 className='font-bold mb-4'>Hello {userName}! Please find a variety of PDP prototypes listed below.</h1>
+                <p>Select each Prototype to demo and fill out the Prototype feedback form.</p>
+                <p>Once you reviewed all of the prototypes, please also fill out the feedback form at the bottom of this page.</p>
+                <p>Thank you for helping us with this project.</p>
+                </div>
             <div className="flex flex-row justify-between gap-5 flex-wrap">
 
-            <Link href={`/d2/${userdetails?.id}`}>
+            <Link href={`/d2/${userName}`}>
             <Image 
                 src={PrototypeD1image} 
                 alt="image of prototype 1D"
@@ -59,7 +57,7 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
-            <Link href={`s1/${userdetails?.id}`}>
+            <Link href={`s1/${userName}`}>
                 <Image 
                 src={PrototypeS1image} 
                 alt="image of prototype 1S"
@@ -67,7 +65,7 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
-                <Link href={`s2/${userdetails?.id}`}>
+                <Link href={`s2/${userName}`}>
                 <Image 
                 src={PrototypeS2image} 
                 alt="image of prototype 2S"
@@ -75,7 +73,7 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
-            <Link href={`s3/${userdetails?.id}`}>
+            <Link href={`s3/${userName}`}>
                 <Image 
                 src={PrototypeS3image} 
                 alt="image of prototype 3S"
@@ -83,7 +81,7 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
-            <Link href={`/d4/${userdetails?.id}`}>
+            <Link href={`/d4/${userName}`}>
             <Image 
                 src={PrototypeD2image} 
                 alt="image of prototype D2"
@@ -92,7 +90,7 @@ const dashboard = (props: Props) => {
             </Link>
 
 
-            <Link href={`s4/${userdetails?.id}`}>
+            <Link href={`s4/${userName}`}>
                 <Image 
                 src={PrototypeS4image} 
                 alt="image of prototype 4S"
@@ -100,7 +98,7 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
-            <Link href={`s5/${userdetails?.id}`}>
+            <Link href={`s5/${userName}`}>
                 <Image 
                 src={PrototypeS5image} 
                 alt="image of prototype 5S"
@@ -108,7 +106,7 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
-            <Link href={`s6/${userdetails?.id}`}>
+            <Link href={`s6/${userName}`}>
                 <Image 
                 src={PrototypeS6image} 
                 alt="image of prototype 6S"
@@ -116,7 +114,7 @@ const dashboard = (props: Props) => {
                 </Image>
             </Link>
 
-            <Link href={`/d1/${userdetails?.id}`}>
+            <Link href={`/d1/${userName}`}>
                 <div className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                      Prototype 1
                 </div>
@@ -138,5 +136,5 @@ const dashboard = (props: Props) => {
     )
 }
 
-export default dashboard
+export default Dashboard
 

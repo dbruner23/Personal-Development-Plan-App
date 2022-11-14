@@ -1,6 +1,3 @@
-
-import Link from "next/link";
-import QuestionaireButton from "../../questionnaire/QuestionaireButton";
 import Circles from "./Circles";
 
 
@@ -13,7 +10,7 @@ const prototypeS4 = () => {
 
         <div className="my-12 flex justify-center">
           <h2 className="text-2xl font-semibold">
-            Listed below are suggested career pathways and how long it would take you to achieve them.
+            Listed below are suggested accounting career pathways and how long it might take to achieve them.
           </h2>
         </div>
 
@@ -21,14 +18,6 @@ const prototypeS4 = () => {
             <Circles/>
           </div>
 
-        <div className="my-8 flex justify-center">
-          <Link href={"/dashboard"}>
-            <button className="mr-4 rounded-md bg-[#1848C8] px-5 py-2 text-sm text-white hover:bg-[#AFC3FF]">
-              BACK TO DASHBOARD
-            </button>
-          </Link>
-          <QuestionaireButton />
-        </div>
 
         </div>
       </main>

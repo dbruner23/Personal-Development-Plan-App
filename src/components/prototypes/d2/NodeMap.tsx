@@ -2,9 +2,7 @@ import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useSta
 import { select, xml, Delaunay, randomBates} from 'd3'
 import * as d3 from 'd3'
 
-type Props = {}
-
-const NodeMap = (props: Props) => {
+const NodeMap = () => {
   const random = d3.randomNormal(0, 1)
   let randomdata = Array.from({ length: 100 }, () => [random(), random()])
   const [data, setData] = useState(randomdata)
@@ -31,7 +29,7 @@ const NodeMap = (props: Props) => {
     svg
       .append("defs")
       .append("style")
-      .text(`circle.highlighted { stroke: orangred; fill: orangered; }`);
+      .text(`circle.highlighted { stroke: orangered; fill: orangered; }`);
 
     const delaunay = d3.Delaunay.from<any>(data, d => x(d[0]), d => y(d[1]));
     
@@ -93,8 +91,8 @@ const NodeMap = (props: Props) => {
 
   return (
     <div>
-      <svg className="h-5/6 w-screen" ref={svgRef}></svg>
-      <button onClick={() => { randomdata = Array.from({ length: 100 }, () => [random(), random()]); setData(randomdata)}}>Update Data</button>
+      <svg className="h-90vh w-screen" ref={svgRef}></svg>
+      <button className="h-10vh"onClick={() => { randomdata = Array.from({ length: 100 }, () => [random(), random()]); setData(randomdata)}}>Update Data</button>
     </div>
   )
 }

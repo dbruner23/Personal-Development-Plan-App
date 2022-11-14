@@ -1,6 +1,3 @@
-
-import Link from "next/link";
-import QuestionaireButton from "../../questionnaire/QuestionaireButton";
 import SankeyChart from "./SankeyChart";
 
 
@@ -26,14 +23,6 @@ const prototypeS5 = () => {
             <SankeyChart/>
           </div>
 
-        <div className="my-8 flex justify-center">
-          <Link href={"/dashboard"}>
-            <button className="mr-4 rounded-md bg-[#1848C8] px-5 py-2 text-sm text-white hover:bg-[#AFC3FF]">
-              BACK TO DASHBOARD
-            </button>
-          </Link>
-          <QuestionaireButton />
-        </div>
 
         </div>
       </main>

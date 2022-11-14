@@ -1,59 +1,31 @@
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import Head from "next/head";
-import MenuItem from '@mui/material/MenuItem';
 import ThankYouModal from "../components/questionnaire/ThankYouModal";
-import Image from "next/future/image";
+import { trpc } from "../utils/trpc";
 
-const prototypes = [
-  {
-    value: '1',
-    label: 'Prototype 1',
-    src: '/PrototypeD1.jpg',
-  },
-  {
-    value: '2',
-    label: 'Prototype 2',
-    src: '/prototypeS1.png',
-  },
-  {
-    value: '3',
-    label: 'Prototype 3',
-    src: '/graphS2.png',
-  },
-  {
-    value: '4',
-    label: 'Prototype 4',
-    src: '/PrototypeS3.png',
-  },
-  {
-    value: '5',
-    label: 'Prototype 5',
-    src: '/PrototypeD2.png',
-  },
-  {
-    value: '6',
-    label: 'Prototype 6',
-    src: '/PrototypeS4.png',
-  },
-  {
-    value: '7',
-    label: 'Prototype 7',
-    src: '/PrototypeS5.png',
-  },
-  {
-    value: '8',
-    label: 'Prototype 8',
-    src: '/PrototypeS6.png',
-  },
-];
 
-const feedback = () => {
-  const [favPrototype, setFavPrototype] = useState('1');
+
+
+const Feedback = () => {
+  const [feedback, setFeedback] = useState({ favourite: '' });
+  const savePttrials = trpc.useraction.savePttrials.useMutation();
+  
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFavPrototype(event.target.value);
+    setFeedback({...feedback, [event.target.name]: event.target.value});
   };
+
+  const handleSubmit = async () => {
+    const pttrials = (window.localStorage.getItem("pttrials"));
+    const username = (window.localStorage.getItem("user"));
+    const feedbackData = JSON.stringify(feedback);
+    if (pttrials !== null && username !== null ) {
+        await savePttrials.mutateAsync({ pttrials, username, feedbackData })  
+      } 
+       
+  }
+
   return (
     <>
       <Head>
@@ -66,11 +38,11 @@ const feedback = () => {
         <div className="my-12 flex flex-col">
         
         <div className="flex justify-center mb-5 ">
-           <h2 className="text-3xl font-bold">Thank you for checking out our Prototypes</h2>
+           <h2 className="text-3xl font-bold">Thank you for checking out this Prototype</h2>
         </div>
 
         <div className="flex justify-center mb-12">
-           <p>We really appreciate you taking the time to complete this short Prototype feedback form</p>
+           <p>Please answer a few short questions before moving on the test the next Prototype</p>
         </div>
 
         <div>
@@ -79,28 +51,7 @@ const feedback = () => {
 
     <div className="flex justify-center mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl">
 
-          <div className="mb-14 mx-auto">
-          <TextField
-          id="outlined-select-currency"
-          select
-          label="Select"
-          value={favPrototype}
-          onChange={handleChange}
-          helperText="Please select your favourite Prototype"
-        >
-          {prototypes.map((option) => (    
-            <MenuItem key={option.value} value={option.value}>
-              {option.label} 
-              <Image 
-                src={option.src}
-                alt={option.label}
-                width="90"
-                height="90"/>
-            </MenuItem>
-          ))}
-        </TextField>
-          </div>
-
+         
           <label className="text-sm mb-2">Let us know one thing you really like about this Prototype</label>
           <div className="mb-14 ">
             <TextField
@@ -112,7 +63,7 @@ const feedback = () => {
             />
           </div>
 
-          <label className="text-sm mb-2">Let us know one thing you didn't like about this Prototype</label>
+          <label className="text-sm mb-2">Let us know one thing you did not like about this Prototype</label>
           <div className="mb-14">
             <TextField
               id="outlined-multiline-flexible"
@@ -134,13 +85,10 @@ const feedback = () => {
             ></TextField>
           </div>
 
-          <div className="flex justify-center">
-          <ThankYouModal/>
-          </div>
 
-          {/* <Button variant="contained" className="bg-[#1848C8]">
-       Submit Feedback
-      </Button> */}
+          <div className="flex justify-center">
+              <ThankYouModal handleSubmit={handleSubmit} />
+          </div>
         </div>
         </div>
       </main>
@@ -148,4 +96,4 @@ const feedback = () => {
   );
 };
 
-export default feedback;
+export default Feedback;

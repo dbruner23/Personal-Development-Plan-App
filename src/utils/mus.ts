@@ -1,4 +1,4 @@
-export var cursorIcon = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCSB2aWV3Qm94PSIwIDAgMjggMjgiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI4IDI4IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZGRkZGIiBwb2ludHM9IjguMiwyMC45IDguMiw0LjkgMTkuOCwxNi41IDEzLDE2LjUgMTIuNiwxNi42ICIvPjxwb2x5Z29uIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iMTcuMywyMS42IDEzLjcsMjMuMSA5LDEyIDEyLjcsMTAuNSAiLz48cmVjdCB4PSIxMi41IiB5PSIxMy42IiB0cmFuc2Zvcm09Im1hdHJpeCgwLjkyMjEgLTAuMzg3MSAwLjM4NzEgMC45MjIxIC01Ljc2MDUgNi41OTA5KSIgd2lkdGg9IjIiIGhlaWdodD0iOCIvPjxwb2x5Z29uIHBvaW50cz0iOS4yLDcuMyA5LjIsMTguNSAxMi4yLDE1LjYgMTIuNiwxNS41IDE3LjQsMTUuNSAiLz48L3N2Zz4=';
+export const cursorIcon = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCSB2aWV3Qm94PSIwIDAgMjggMjgiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI4IDI4IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZGRkZGIiBwb2ludHM9IjguMiwyMC45IDguMiw0LjkgMTkuOCwxNi41IDEzLDE2LjUgMTIuNiwxNi42ICIvPjxwb2x5Z29uIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iMTcuMywyMS42IDEzLjcsMjMuMSA5LDEyIDEyLjcsMTAuNSAiLz48cmVjdCB4PSIxMi41IiB5PSIxMy42IiB0cmFuc2Zvcm09Im1hdHJpeCgwLjkyMjEgLTAuMzg3MSAwLjM4NzEgMC45MjIxIC01Ljc2MDUgNi41OTA5KSIgd2lkdGg9IjIiIGhlaWdodD0iOCIvPjxwb2x5Z29uIHBvaW50cz0iOS4yLDcuMyA5LjIsMTguNSAxMi4yLDE1LjYgMTIuNiwxNS41IDE3LjQsMTUuNSAiLz48L3N2Zz4=';
 
 /**
      * Mus constructor that defines initial variables and
@@ -44,7 +44,7 @@ export function Mus(this: any) {
             });
         }; 
     }
-};
+}
 
 Mus.prototype = {
 
@@ -91,31 +91,30 @@ Mus.prototype = {
 
     record: function (onFrame: () => void) {
         if (this.recording) return;
-
-        let self = this;
-        if (self.startedAt == 0) self.startedAt = new Date().getTime() / 1000;
+        
+        if (this.startedAt == 0) this.startedAt = new Date().getTime() / 1000;
 
         // Sets initial scroll position of the window
-        if (self.timePoint) {
-            if (document.scrollingElement) self.frames.push(['s', document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop, 0]);
+        if (this.timePoint) {
+            if (document.scrollingElement) this.frames.push(['s', document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop, 0]);
         } else {
-            if (document.scrollingElement) self.frames.push(['s', document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop]);
+            if (document.scrollingElement) this.frames.push(['s', document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop]);
         }
 
-        window.onmousemove = this.moveListener(function (pos: any[]) {
-            self.frames.push(self.timePoint ? pos.concat(new Date().getTime() - (self.startedAt * 1000)) : pos);
+        window.onmousemove = this.moveListener((pos: any[]) => {
+            this.frames.push(this.timePoint ? pos.concat(new Date().getTime() - (this.startedAt * 1000)) : pos);
             if (onFrame instanceof Function) onFrame();
         });
-        window.onmousedown = this.clickListener(function (click: any[]) {
-            self.frames.push(self.timePoint ? click.concat(new Date().getTime() - (self.startedAt * 1000)) : click);
+        window.onmousedown = this.clickListener((click: any[]) => {
+            this.frames.push(this.timePoint ? click.concat(new Date().getTime() - (this.startedAt * 1000)) : click);
             if (onFrame instanceof Function) onFrame();
         });
-        window.onscroll = this.scrollListener(function (scroll: any[]) {
-            self.frames.push(self.timePoint ? scroll.concat(new Date().getTime() - (self.startedAt * 1000)) : scroll);
+        window.onscroll = this.scrollListener((scroll: any[]) => {
+            this.frames.push(this.timePoint ? scroll.concat(new Date().getTime() - (this.startedAt * 1000)) : scroll);
             if (onFrame instanceof Function) onFrame();
         });
 
-        self.recording = true;
+        this.recording = true;
     },
 
     stop: function () {
@@ -209,6 +208,53 @@ Mus.prototype = {
     isRecording: function () {
         return this.recording;
     },
+
+    getMousemoveCoordinates: function (frames: any) {
+        const mousemovecoords: any[] = []
+        for (let i = 0; i < frames.length - 1; i++) {
+            if (frames[i][0] === "m") {
+                mousemovecoords.push([frames[i][1], frames[i][2]])
+            }
+        }
+        return mousemovecoords
+    },
+
+    getClickCoordinates: function (frames:any) {
+        const clickcoords: any = []
+        for (let i = 0; i < frames.length - 1; i++) {
+            if (frames[i][0] === "c") {
+                clickcoords.push([frames[i][1], frames[i][2]])
+            }
+        }
+        return clickcoords
+    },
+
+    getScrollCoordinates: function (frames:any) {
+        const scrollcoords: any = []
+        for (let i = 0; i < frames.length - 1; i++) {
+            if (frames[i][0] === "s") {
+                scrollcoords.push([frames[i][1], frames[i][2]])
+            }
+        }
+        return scrollcoords
+    },
+
+    timeSlice: function (startedAt : any) {
+        const time = (new Date().getTime() / 1000 - (startedAt))
+        return time
+    },
+
+    // toggleRecord: function (isRecording:any, record: any, stop:any, getMousemoveCoordinates:any, timeSlice:any, getClickCoordinates:any ) {
+    //     if (!isRecording()) {
+    //         record(getMousemoveCoordinates);
+    //     } else {
+    //         stop();
+    //         const time = timeSlice()
+    //         const mousemove = getMousemoveCoordinates();
+    //         const clicks = getClickCoordinates();
+    //         console.log("time: " + time + " mousemove: " + mousemove + "clicks: " + clicks)
+    //     }
+    // },
 
 
 }
