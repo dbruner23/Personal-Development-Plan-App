@@ -42,9 +42,9 @@ const InputStep2 = (props: Props) => {
     ]
 
     return (
-        <div className="flex flex-col justify-center mb-14 mx-auto gap-2">
+        <div className="flex flex-col justify-center mx-auto gap-2">
             <div className="text-center">Now let&#39;s talk about the future.</div>
-            <div className="text-xs mb-4"> <em>Whether you have speciic goals or general ideas, we want to help you visualise and explore the possibilities.</em></div>
+            <div className="text-xs mb-4"> <em>Whether you have specific goals or general ideas, we want to help you visualise and explore the possibilities.</em></div>
             <label className="flex w-ful text-sm">1) Which of the following best describes your current professional development interest?</label>
             <div className="mb-4">
                 <TextField

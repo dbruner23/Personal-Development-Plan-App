@@ -87,7 +87,7 @@ const CollapsibleForce = () => {
     const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings;
     const [infoDisplay, setInfoDisplay] = useState(false)
     const [infoData, setInfoData] = useState<IInfoData>({ name: '', photo: '', summary: '', time: 0, parttime: false, link: '', linkedIn: '' })
-    const [currentZoomState, setCurrentZoomState] = useState<IZoomState>()
+    const [currentZoomState, setCurrentZoomState] = useState<IZoomState>({k: 1, x: 0, y: 0})
     
 
     const handleLifestyleChange = (event: any) => {
@@ -328,7 +328,8 @@ const CollapsibleForce = () => {
                 // .filter((event: any) => { return !event.mousedowned })
                 .on("zoom", e => {
                 const zoomState: any = d3.zoomTransform(svg.node())
-                setCurrentZoomState(zoomState)
+                    setCurrentZoomState(zoomState)
+                    console.log(currentZoomState)
                 node.attr("transform", (transform = e.transform));
                 link.attr("transform", (transform = e.transform));
                 text.attr("transform", (transform = e.transform));
