@@ -28,7 +28,6 @@ type Props = {}
 const Prototype = (props: Props) => {
     const router = useRouter()
     const prototypeId = router.query.prototypeId
-    const userId = router.query.userId
     const [mus, setMus] = useState<any>('')
     const [recordWindow, setRecordWindow] = useState<IRecordWindow>()
 

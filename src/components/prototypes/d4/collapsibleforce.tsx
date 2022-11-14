@@ -21,6 +21,10 @@ import { comment } from 'postcss';
 import Link from 'next/link';
 import { each, update } from 'lodash';
 import nodeTest from 'node:test';
+import InputStep1 from './InputStep1';
+import InputStep2 from './InputStep2';
+import InputStep3 from './InputStep3';
+import InputStep4 from './InputStep4';
 
 interface IData {
     name: string,
@@ -35,11 +39,17 @@ interface IInfoData {
     name: string, photo?: string, summary?: string, time?: any, parttime?: any, link?: string, linkedIn?: string
 }
 
+interface IZoomState {
+    k: number, x: number, y: number
+}
+
 type Props = {}
 
 const CollapsibleForce = (props: Props) => {
     const [data, setData] = useState<IData>(careerData)
+    const svgRef = useRef<SVGSVGElement>(null)
     const [started, setStarted] = useState(false)
+    const [inputStep, setInputStep] = useState(1)
     const [userInput, setUserInput] = useState<IUserInput>({
         goal: '', seekscope: 'specific', interestfields: ['finance'], worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
     }) 
@@ -54,19 +64,6 @@ const CollapsibleForce = (props: Props) => {
         'legal compliance', 'nz tax law', 'other' 
     ]
 
-    // const [recommend1, setRecommend1] = useState<any>(null)
-    // const [recommend2, setRecommend2] = useState<any>(null)
-    //To be converted to string. "false" in the data will mean "a person can't do this if they aren't willing/able to ________"
-    const [lifestyleInput, setLifestyleInput] = useState({ extrahours: true, fulltimeEd: true, relocation: true, remotework: true })
-    const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
-    const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings;
-    const [infoDisplay, setInfoDisplay] = useState(false)
-    const [infoData, setInfoData] = useState<IInfoData>({ name: '', photo: '', summary: '', time: 0, parttime: false, link: '', linkedIn: '' })
-
-    const svgRef = useRef<SVGSVGElement>(null)
-    
-
-
     const handleChange = (event: any) => {
         setUserInput({ ...userInput, [event.target.name]: event.target.value });
     }
@@ -77,17 +74,37 @@ const CollapsibleForce = (props: Props) => {
             setData(financeCareerData);
         }
 
-
         if (userInput.goal === 'vis') {
-            let dataArr : any[] = Object.entries(data);
+            let dataArr: any[] = Object.entries(data);
             let newArr = dataArr[1][1].filter((element: { name: string; }) => {
                 return element.name !== 'vis'
             })
             const newData = { ...data, children: newArr }
             setData(newData)
-        }      
+        }
         setStarted(true)
     }
+
+    const stepSwitch = (inputStep: number) => {
+        switch (inputStep) {
+            case 1:
+                return <InputStep1 setInputStep={setInputStep}  />
+            case 2:
+                return <InputStep2 userInput={userInput} setInputStep={setInputStep} handleChange={handleChange} />
+            case 3:
+                return <InputStep3 userInput={userInput} setInputStep={setInputStep} handleChange={handleChange} handleSubmit={handleSubmit}/>
+        }
+    }
+
+
+    //To be converted to string. "false" in the data will mean "a person can't do this if they aren't willing/able to ________" 
+    const [lifestyleInput, setLifestyleInput] = useState({ extrahours: true, fulltimeEd: true, relocation: true, remotework: true })
+    const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
+    const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings;
+    const [infoDisplay, setInfoDisplay] = useState(false)
+    const [infoData, setInfoData] = useState<IInfoData>({ name: '', photo: '', summary: '', time: 0, parttime: false, link: '', linkedIn: '' })
+    const [currentZoomState, setCurrentZoomState] = useState<IZoomState>()
+    
 
     const handleLifestyleChange = (event: any) => {
         setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
@@ -144,7 +161,7 @@ const CollapsibleForce = (props: Props) => {
 
         
 
-        function update(source: any) {
+        function update() {
             d3.selectAll("svg > *").remove();
             const links: any = root.links();
             const nodes: any = root.descendants();
@@ -154,6 +171,22 @@ const CollapsibleForce = (props: Props) => {
             let nolifestylefitnodes: any[] = []
             let rec1path: any[] = []
             let rec2path: any[] = []
+            let tx = 0
+            let ty = 0
+            let k = 1
+            if (currentZoomState) {
+                tx = currentZoomState.x
+                ty = currentZoomState.y
+                k = currentZoomState.k
+            }
+
+            if (!started) { 
+                rec1path = nodes[200].ancestors()
+                rec1path.pop()
+                rec2path = nodes[210].ancestors()
+                rec2path.pop()
+
+            }
 
 
             if (started) {
@@ -273,15 +306,14 @@ const CollapsibleForce = (props: Props) => {
             simulation.on("tick", () => {
                 link.attr("stroke", (d: any) => rec1path.includes(d.target) ? "#77DD76" : rec2path.includes(d.target) ? "#D2FDBB": "#999")
                     .attr("x1", (d: any) => d.source.x)
-                    .attr("y1", (d: any) => d.source.y)
-                    .attr("x2", (d: any) => d.target.x)
-                    .attr("y2", (d: any) => d.target.y);
+                    .attr("y1", (d: any) => d.source.y )
+                    .attr("x2", (d: any) => d.target.x )
+                    .attr("y2", (d: any) => d.target.y );
 
                 node.attr("fill", (d: any) => color(d))
-                    .attr("r", (d: any) => (Math.sqrt(d.data.size) / 12 || 5.5))
+                    .attr("r", (d: any) => ((Math.sqrt(d.data.size) / 12) || 5.5 ))
                     .on("click", (event: any, d: any, i: any) => {
-                        d3.select("text")
-                        // d3.select(d).select("text").style('font-size', 20)
+                        console.log(d)
                         if (d.children) {
                             d._children = d.children;
                             d.children = null;
@@ -294,7 +326,7 @@ const CollapsibleForce = (props: Props) => {
                             parttime: `${d.data.parttime}`, link: `${d.data.link}`, linkedIn: `${d.data.linkedIn}`
                         })
                         setInfoDisplay(true);
-                        update(d)
+                        update()
                     })
                     .on("mouseenter", function (e: any, d: any) {
                         d3.select(text._groups[0][d.index])
@@ -307,7 +339,7 @@ const CollapsibleForce = (props: Props) => {
                             .attr("font-size", 3)
                     })
                     .call(drag(simulation))
-                    .attr("cx", (d: any) => { return d.x })
+                    .attr("cx", (d: any) => d.x)
                     .attr("cy", (d: any) => d.y);
 
                 text.attr("x", (node: any) => { return node.x + 7 })
@@ -318,9 +350,12 @@ const CollapsibleForce = (props: Props) => {
             let transform: { k: number; invert: (arg0: [number, number]) => any };
 
             const zoom : any = d3.zoom()
-                .scaleExtent([0.25, 2.25])
+                .scaleExtent([0.25, 2.5])
                 // .filter((event: any) => { return !event.mousedowned })
                 .on("zoom", e => {
+                const zoomState: any = d3.zoomTransform(svg.node())
+                console.log(zoomState)
+                setCurrentZoomState(zoomState)
                 node.attr("transform", (transform = e.transform));
                 link.attr("transform", (transform = e.transform));
                 text.attr("transform", (transform = e.transform));
@@ -339,7 +374,7 @@ const CollapsibleForce = (props: Props) => {
 
         }
 
-        update(root);
+        update();
         return svg.node();
 
     }
@@ -348,7 +383,8 @@ const CollapsibleForce = (props: Props) => {
     return (
         <div className="flex justify-center items-center w-screen h-90vh">
             <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-5/6 w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
-                <div className="flex flex-col justify-center mb-14 mx-auto">
+                <div>{stepSwitch(inputStep)}</div>
+                {/* <div className="flex flex-col justify-center mb-14 mx-auto">
                     <label className="flex w-ful text-sm mb-2">Which of the following best describes your current professional development interest?</label>
                     <div className="mb-10 mx-auto">
                         <TextField
@@ -517,13 +553,13 @@ const CollapsibleForce = (props: Props) => {
                     <Button variant="contained" className="bg-[#1848C8]" onClick={() => handleSubmit()}>
                         Submit
                     </Button>
-                </div>
+                </div> */}
             </div>
             {started && (
-                <div className="flex h-screen w-1/3 left-10 top-10 fixed justify-start mx-auto flex-col p-0">
-                <div className="flex h-1/2 w-1/4 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-7 rounded-xl">
-                    <div className="flex flex-col justify-center items-center mb-14 mx-auto gap-2">
-                        <div className="text-lg">Lifestyle Factors</div>
+                <div className="flex h-5/6 w-1/4 left-10 top-10 fixed justify-between items-center mx-auto flex-col p-0">
+                    <div className="flex h-1/2 w-full overflow-scroll left-10 top-10 justify-start mx-auto flex-col bg-[#eff1f4] p-7 rounded-xl">
+                        <div className="flex flex-col justify-center items-center mb-14 mx-auto gap-2">
+                            <div className="text-lg">Lifestyle Factors</div>
                             <label>
                                 <input 
                                     className="mr-2 cursor-pointer"
@@ -570,7 +606,7 @@ const CollapsibleForce = (props: Props) => {
                             </label>
                         </div>
                     </div>
-                    <Button variant="contained" className="bg-[#1848C8] w-1/2 left-12 top-96" onClick={() => setStarted(false)}>
+                    <Button variant="contained" className="bg-[#1848C8] w-1/2 " onClick={() => setStarted(false)}>
                         Change Inputs
                     </Button>
                 </div>
@@ -578,18 +614,24 @@ const CollapsibleForce = (props: Props) => {
             <div id="infoDisplay" className={`${infoDisplay ? 'w-1/4 p-12 opacity-100' : 'w-0 p-0 opacity-0'} overflow-scroll transition-width h-screen top-0 right-0 fixed flex justify-start items-center gap-4 mx-auto flex-col bg-[#eff1f4]`}>
                 <button className="self-start " onClick={() => setInfoDisplay(false)}>X</button>
                 <div className="flex justify-center text-lg">{infoData.name}</div>
-                <div className="flex justify-center items-center object-scale-down" >
-                    <img src={infoData.photo}/>
-                </div>
-                <div className="flex justify-center items-center" >
-                    {infoData.summary}
-                </div>
-                <div className="flex justify-center items-center" >
-                    <Button variant="contained" className="bg-[#1848C8]">
-                        <Link className="text-blue-600" href={infoData.link ? infoData.link : ''}>Learn More</Link>
-                    </Button>
-                </div>
-                { infoData.linkedIn  && (
+                {infoData.photo !== 'undefined' && (
+                    <div className="flex justify-center items-center object-scale-down" >
+                        <img src={infoData.photo} />
+                    </div>
+                )}
+                {infoData.summary !== 'undefined' && (
+                    <div className="flex justify-center items-center" >
+                        {infoData.summary}
+                    </div>
+                )}
+                {infoData.summary !== 'undefined' && (
+                    <div className="flex justify-center items-center" >
+                        <Button variant="contained" className="bg-[#1848C8]">
+                            <Link className="text-blue-600" href={infoData.link ? infoData.link : ''}>Learn More</Link>
+                        </Button>
+                    </div>
+                )}
+                { infoData.linkedIn !== 'undefined' && (
                     <div className="flex flex-col gap-4 justify-center items-center">
                         <div>
                             See LinkedIn contacts who have listed this on their profile:
