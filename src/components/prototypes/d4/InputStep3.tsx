@@ -43,7 +43,7 @@ const InputStep2 = (props: Props) => {
 
     return (
         <div className="flex flex-col justify-center mb-14 mx-auto gap-2">
-            <div className="text-center">Now let's talk about the future.</div>
+            <div className="text-center">Now let&#39;s talk about the future.</div>
             <div className="text-xs mb-4"> <em>Whether you have speciic goals or general ideas, we want to help you visualise and explore the possibilities.</em></div>
             <label className="flex w-ful text-sm">1) Which of the following best describes your current professional development interest?</label>
             <div className="mb-4">
@@ -101,23 +101,6 @@ const InputStep2 = (props: Props) => {
                     sx={{ width: '100%', }}
                     helperText="You can leave this blank if you're unsure."
                 />
-            </div>
-            <label className="flex w-ful text-sm ">What's the highest level of professional role you've held?</label>
-            <div className="mb-8">
-                <TextField
-                    id="outlined-select-currency"
-                    select
-                    label="Select"
-                    value={userInput.worklevel}
-                    onChange={handleChange}
-                    sx={{ width: '100%' }}
-                >
-                    <MenuItem value={"intern"}>Intern</MenuItem>
-                    <MenuItem value={"junior"}>Junior</MenuItem>
-                    <MenuItem value={"middle"}>Mid-level</MenuItem>
-                    <MenuItem value={"senior"}>Senior</MenuItem>
-                    <MenuItem value={"executive"}>Executive</MenuItem>
-                </TextField>
             </div>
             <div className="flex w-full justify-between">
                 <Button variant="contained" className="bg-[#1848C8]" onClick={() => setInputStep(2)}>

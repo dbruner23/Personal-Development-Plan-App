@@ -1,8 +1,6 @@
 import React from 'react'
 
-type Props = {}
-
-const UserHeatmap = (props: Props) => {
+const UserHeatmap = () => {
   return (
     <div>UserHeatmap</div>
   )

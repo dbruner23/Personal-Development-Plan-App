@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Examplesite from '../../../components/prototypes/d1/Examplesite'
 
 
-type Props = {}
-
-const AllUserHeatmap = (props: Props) => {
+const AllUserHeatmap = () => {
   const recordWindow = {
     width: 1221,
     height: 400
@@ -33,9 +31,9 @@ const AllUserHeatmap = (props: Props) => {
       return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
     }, {});
 
-    let occurrencesArrays: any = [];
+    const occurrencesArrays: any = [];
     for (const coordinate in occurrences) {
-      let coordarr: string[] = coordinate.split(',');
+      const coordarr: string[] = coordinate.split(',');
       occurrencesArrays.push([coordarr, occurrences[coordinate]])
     } 
   

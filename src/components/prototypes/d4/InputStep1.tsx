@@ -16,12 +16,12 @@ const InputStep1 = (props: Props) => {
       <div className="flex flex-col justify-center items-center mb-14 mx-auto gap-4">
           <div className="text-xl">Welcome to Dacreed New Horizons!</div>
           <div className="text-xs">
-              It's a wide world of career growth possibilities out there. This tool is designed to <strong>help you navigate</strong> the endless options
+              It&#39;s a wide world of career growth possibilities out there. This tool is designed to <strong>help you navigate</strong> the endless options
               by <strong>informing you accurately</strong> as to what each path would look like, and by <strong>giving you personlaised recommendations</strong> based on your unique set of
               skills, experiences, goals, and preferences. 
           </div>
           <div className="text-xs">
-              To get started, just click the button below. We'll walk you through a short set of questions about your education and work up to this point, and 
+              To get started, just click the button below.We&#39;ll walk you through a short set of questions about your education and work up to this point, and 
               any ideas you have about where you want to go from here. The information you provide can be general or specific and can be changed at any time. 
           </div>
           <div className="text-xs">
@@ -33,7 +33,7 @@ const InputStep1 = (props: Props) => {
               We hope you find this exploration of your career potential insightful and enjoyable!
           </div>
           <Button variant="contained" className="bg-[#1848C8]" onClick={() => setInputStep(2)}>
-              Let's Go!
+              Let&#39;s Go!
           </Button>
       </div>
   )

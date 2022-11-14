@@ -18,13 +18,10 @@ import PrototypeS6image from '../components/prototypes/s2/img/PrototypeS6.png'
 import QuestionaireButton from '../components/questionnaire/QuestionaireButton';
 
 
-type Props = {
-}
-
-const dashboard = (props: Props) => {
+const dashboard = () => {
 
     // const { Track, trackEvent } = useTracking({ page: "dashboard" })
-    const { data: session, status } = useSession()
+    // const { data: session, status } = useSession()
     const router = useRouter()
     
     const [userName, setUserName] = useState('')

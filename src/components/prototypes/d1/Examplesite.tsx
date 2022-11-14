@@ -1,9 +1,8 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import { select } from 'd3'
 
-type Props = {}
 
-const Examplesite = (props: Props) => {
+const Examplesite = () => {
 
   return (
     <div className="flex flex-col">
