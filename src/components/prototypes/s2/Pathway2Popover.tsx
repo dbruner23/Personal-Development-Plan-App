@@ -20,7 +20,7 @@ export default function Pathway2Popover() {
   return (
     <div>
       <Button aria-describedby={id} variant="contained" className="bg-[#4d8964]" onClick={handleClick}>
-       Pathway 2
+       Objective 2
       </Button>
       <Popover
         id={id}
@@ -32,7 +32,10 @@ export default function Pathway2Popover() {
           horizontal: 'left',
         }}
       >
-        <Typography sx={{ p: 2 }}>Pathway 2 -  some information about the pathway here. Some more information about the pathway here</Typography>
+        <Typography sx={{ p: 2 }}>Take up leadership responsibilities</Typography>
+        <Typography sx={{ p: 2 }}>Lead two team meetings this quarter</Typography>
+        <Typography sx={{ p: 2 }}>Plan and lead a team initiative to collectively learn a new tool or skill</Typography>
+        <Typography sx={{ p: 2 }}>Plan the next team offsite or activity</Typography>
       </Popover>
     </div>
   );

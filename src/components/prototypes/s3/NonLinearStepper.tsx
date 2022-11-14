@@ -6,7 +6,7 @@ import StepButton from '@mui/material/StepButton';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const steps = ['Certificate 1A', 'Certificate 1B', 'Certificate  2','Certificate  3'];
+const steps = ['Full Stack Developer Certificate', 'Cloud and Devops Developer Certificate', 'Mentored Industry Learning Experience'];
 
 export default function NonLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -85,7 +85,7 @@ export default function NonLinearStepper() {
         ) : (
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
-              course {activeStep + 1}
+              Step {activeStep + 1}
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Button
@@ -109,7 +109,7 @@ export default function NonLinearStepper() {
                   <Button onClick={handleComplete}>
                     {completedSteps() === totalSteps() - 1
                       ? 'Finish'
-                      : `Complete Course ${activeStep + 1}`}
+                      : `Complete Step ${activeStep + 1}`}
                   </Button>
                 ))}
             </Box>
