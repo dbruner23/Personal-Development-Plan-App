@@ -6,6 +6,11 @@ import ThankYouModal from "../components/questionnaire/ThankYouModal";
 import Image from "next/future/image";
 import RatingsButtonsGroup from "../components/questionnaire/RatingsButtonsGroup";
 import { trpc } from "../utils/trpc";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 
 const prototypes = [
@@ -106,7 +111,9 @@ const OverallFeedback = () => {
                 height="90"/>
                 <h3 className="font-bold">{option.label}</h3>
             </div>
-          <RatingsButtonsGroup/>
+          <div onChange={handleChange}>
+            <RatingsButtonsGroup key={option.value}/>
+          </div>
         </div>
          ))}
         
