@@ -151,7 +151,7 @@ const Prototype = () => {
                           BACK TO DASHBOARD
                       </button>
                   </Link> */}
-                  <Link href="/feedback">
+                  <Link href={`/${prototypeId}/feedback`}>
                       <Button onClick={() => handleSave() } variant="contained" className="bg-[#81bd75]">
                           Give Feedback
                       </Button>

@@ -1,17 +1,24 @@
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
-import ThankYouModal from "../components/questionnaire/ThankYouModal";
-import { trpc } from "../utils/trpc";
+import ThankYouModal from "../../components/questionnaire/ThankYouModal";
+import { trpc } from "../../utils/trpc";
+import { useRouter } from "next/router";
+
 
 
 
 
 const Feedback = () => {
-  const [feedback, setFeedback] = useState({ favourite: '', like:'', dislike:'', improve:'' });
+  const [feedback, setFeedback] = useState({ prototype: '', favourite: '', like:'', dislike:'', improve:'' });
   const savePttrials = trpc.useraction.savePttrials.useMutation();
+  const router = useRouter()
+  const prototypeId = router.query.prototypeId
   
-
+  useEffect(() => {
+    if (typeof prototypeId === "string") setFeedback({ ...feedback, prototype: prototypeId });
+  }, [])
+  
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFeedback({...feedback, [event.target.name]: event.target.value});
   };

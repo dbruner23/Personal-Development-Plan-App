@@ -15,62 +15,62 @@ import FormLabel from '@mui/material/FormLabel';
 
 const prototypes = [
   {
-    value: '1',
+    id: 'rate1',
     label: 'Prototype 1',
     src: '/PrototypeD1.jpg',
   },
   {
-    value: '2',
+    id: 'rate2',
     label: 'Prototype 2',
     src: '/prototypeS1.png',
   },
   {
-    value: '3',
+    id: 'rate3',
     label: 'Prototype 3',
     src: '/graphS2.png',
   },
   {
-    value: '4',
+    id: 'rate4',
     label: 'Prototype 4',
     src: '/PrototypeS3.png',
   },
   {
-    value: '5',
+    id: 'rate5',
     label: 'Prototype 5',
     src: '/PrototypeD2.png',
   },
   {
-    value: '6',
+    id: 'rate6',
     label: 'Prototype 6',
     src: '/PrototypeS4.png',
   },
   {
-    value: '7',
+    id: 'rate7',
     label: 'Prototype 7',
     src: '/PrototypeS5.png',
   },
   {
-    value: '8',
+    id: 'rate8',
     label: 'Prototype 8',
     src: '/PrototypeS6.png',
   },
 ];
 
 const OverallFeedback = () => {
-  const [feedback, setFeedback] = useState({ favourite: '' });
+  const [overallFeedback, setOverallFeedback] = useState<any>({ rate1: '', rate2: '', rate3: '', rate4: '', rate5: '', rate6: '', rate7: '', rate8: '', favourite: '' });
   const savePttrials = trpc.useraction.savePttrials.useMutation();
-  
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFeedback({...feedback, [event.target.name]: event.target.value});
+    setOverallFeedback({...overallFeedback, [event.target.name]: event.target.value});
   };
 
-  const handleSubmit = async () => {
-    const pttrials = (window.localStorage.getItem("pttrials"));
+  const handleSubmit = async () => {    
     const username = (window.localStorage.getItem("user"));
-    const feedbackData = JSON.stringify(feedback);
-    if (pttrials !== null && username !== null ) {
-        await savePttrials.mutateAsync({ pttrials, username, feedbackData })  
+    const pttrials = (window.localStorage.getItem("pttrials"));
+    const prototypeFeedback = (window.localStorage.getItem("feedback"));
+    const finalOverallFeedback = JSON.stringify(overallFeedback);
+    if (pttrials !== null && username !== null && prototypeFeedback !== null) {
+        await savePttrials.mutateAsync({ username, pttrials, prototypeFeedback, finalOverallFeedback })  
       } 
        
   }
@@ -101,9 +101,9 @@ const OverallFeedback = () => {
     <div className="flex justify-center mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl">
 
 
-          {prototypes.map((option) => ( 
-        <div key={option.value} className="mb-12">
-            <div className="flex-row" key={option.value}>
+            {prototypes.map((option) => ( 
+        <div key={option.label} className="mb-12">
+            <div className="flex-row">
               <Image 
                 src={option.src}
                 alt={option.label}
@@ -111,8 +111,28 @@ const OverallFeedback = () => {
                 height="90"/>
                 <h3 className="font-bold">{option.label}</h3>
             </div>
-          <div onChange={handleChange}>
-            <RatingsButtonsGroup key={option.value}/>
+          <div>
+                <FormControl>
+                  <FormLabel id="demo-controlled-radio-buttons-group">Please rate this Prototype on a scale of 1 - 10</FormLabel>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-controlled-radio-buttons-group"
+                    name={option.id}
+                    value={overallFeedback[option.id]}
+                    onChange={handleChange}
+                  >
+                    <FormControlLabel value="1" control={<Radio />} label="1" />
+                    <FormControlLabel value="2" control={<Radio />} label="2" />
+                    <FormControlLabel value="3" control={<Radio />} label="3" />
+                    <FormControlLabel value="4" control={<Radio />} label="4" />
+                    <FormControlLabel value="5" control={<Radio />} label="5" />
+                    <FormControlLabel value="6" control={<Radio />} label="6" />
+                    <FormControlLabel value="7" control={<Radio />} label="7" />
+                    <FormControlLabel value="8" control={<Radio />} label="8" />
+                    <FormControlLabel value="9" control={<Radio />} label="9" />
+                    <FormControlLabel value="10" control={<Radio />} label="10" />
+                  </RadioGroup>
+                </FormControl>
           </div>
         </div>
          ))}
@@ -124,12 +144,12 @@ const OverallFeedback = () => {
           select
           label="Select"
           name="favourite"
-          value={feedback.favourite}
+          value={overallFeedback.favourite}
           onChange={handleChange}
           helperText="Please select your favourite Prototype"
         >
           {prototypes.map((option) => (    
-            <MenuItem key={option.value} value={option.value}>
+            <MenuItem key={option.label} value={option.label}>
               {option.label} 
               <Image 
                 src={option.src}
