@@ -8,7 +8,7 @@ import { trpc } from "../utils/trpc";
 
 
 const Feedback = () => {
-  const [feedback, setFeedback] = useState({ favourite: '' });
+  const [feedback, setFeedback] = useState({ favourite: '', like:'', dislike:'', improve:'' });
   const savePttrials = trpc.useraction.savePttrials.useMutation();
   
 
@@ -59,6 +59,9 @@ const Feedback = () => {
               label="your answer here..."
               multiline
               maxRows={10}
+              name="like"
+              value={feedback.like}
+              onChange={handleChange}
               sx={{ width: '45vw', backgroundColor: '#f3f6fa' }}
             />
           </div>
@@ -70,6 +73,9 @@ const Feedback = () => {
               label="your answer here..."
               multiline
               maxRows={10}
+              name="dislike"
+              value={feedback.dislike}
+              onChange={handleChange}
               sx={{ width: '45vw', backgroundColor: '#f3f6fa'  }}
             ></TextField>
           </div>
@@ -81,6 +87,9 @@ const Feedback = () => {
               label="your answer here..."
               multiline
               maxRows={10}
+              name="improve"
+              value={feedback.improve}
+              onChange={handleChange}
               sx={{ width: '45vw', backgroundColor: '#f3f6fa'  }}
             ></TextField>
           </div>
