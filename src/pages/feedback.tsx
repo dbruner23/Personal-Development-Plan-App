@@ -17,13 +17,10 @@ const Feedback = () => {
   };
 
   const handleSubmit = async () => {
-    const pttrials = (window.localStorage.getItem("pttrials"));
-    const username = (window.localStorage.getItem("user"));
-    const feedbackData = JSON.stringify(feedback);
-    if (pttrials !== null && username !== null ) {
-        await savePttrials.mutateAsync({ pttrials, username, feedbackData })  
-      } 
-       
+    const getfeedbackData = window.localStorage.getItem("feedback")
+    const feedbackData = getfeedbackData == null ? [] : JSON.parse(getfeedbackData)
+    feedbackData.push(feedback)
+    window.localStorage.setItem('feedback', JSON.stringify(feedbackData));
   }
 
   return (

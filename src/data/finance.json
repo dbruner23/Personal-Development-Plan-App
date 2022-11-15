@@ -1,6 +1,6 @@
 {
-    "name": "Start",
-    "children": [
+    "name": "Finance",
+    "children": [        
         {
             "name": "University Degree in Finance",
             "photo": "https://upload.wikimedia.org/wikipedia/commons/c/cd/University-of-Alabama-EngineeringResearchCenter-01.jpg",
@@ -10,65 +10,118 @@
             "link": "https://www.topuniversities.com/university-rankings/university-subject-rankings/2022/accounting-finance",
             "children": [
                 {
-                    "name": "Internship",
+                    "name": "I.Banking Internship",
                     "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
                     "summary": "The most direct path into Investment Banking directly from an undergraduate degreee is to do an internship with an investment banking firm",
                     "time": 0.5,
-                    "parttime": false,
+                    "extrahours": "false",
                     "link": "",
                     "children": [
                         {
                             "name": "Junior Investment Banker",
                             "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
-                            "summary": "This is a common first role in the field of investment banking. You will ",
+                            "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
                             "time" : 2,
-                            "salary": 70000,
+                            "listings": 22,
+                            "salary": 80000,
+                            "extrahours": "false",
                             "link": "https://www.seek.co.nz/junior-investment-banking-jobs",
                             "linkedIn": "https://www.linkedin.com/search/results/people/?heroEntityKey=urn%3Ali%3Aautocomplete%3A860019258&keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&position=0&searchId=94140b38-3a7e-486a-9311-12316a7ba04b&sid=p89",
                             "children": [
                                 {
+                                    "name": "Private Equity Associate",
+                                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                    "summary": "An Associate’s job is to lead deal processes from start to finish - raising capital, acquiring companies, improving companies, and selling companies.",
+                                    "salary": 90000,
+                                    "listings": 10,
+                                    "time": 3,
+                                    "link": "https://www.seek.co.nz/private-equity-jobs",
+                                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=private%20equity&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=H%3Ae",
+                                    "children": [
+                                        {
+                                            "name": "Principal",
+                                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                            "summary": "Principals spend most of their time on deal sourcing, intervening in critical negotiations, and winning buy-in from the Partners.",
+                                            "salary": 140000,
+                                            "listings": 7,
+                                            "time": 5,
+                                            "link": "https://www.seek.co.nz/private-equity-jobs",
+                                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=private%20equity&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=H%3Ae",
+                                            "children": [
+                                                { 
+                                                    "name": "Partner",
+                                                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                                    "summary": "Rainmaker, Fundraiser, and Chief Representative.",
+                                                    "salary": 1000000,
+                                                    "listings": 4,
+                                                    "time": 10,
+                                                    "link": "https://www.seek.co.nz/private-equity-jobs",
+                                                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=private%20equity&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=H%3Ae"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
                                     "name": "Investment Banking Analyst",
                                     "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
                                     "summary": "Investment banking analysts raise capital for businesses and individuals by issuing debt and selling equity. They oversee mergers, conduct research, and assist in preparing legal and financial documents related to their transactions. Investment banking analysts conduct research and review financial information as well as market trends. They create and implement financial models to review deals and determine profitability. They oversee merger-and-acquisition, and supervise IPOs and private-equity settlements.",
-                                    "salary": 81872,
+                                    "salary": 92872,
+                                    "listings": 15,
                                     "time": 5,
                                     "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6180%2C6175",
                                     "linkedIn": "https://www.linkedin.com/search/results/PEOPLE/?keywords=financial%20analyst&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=mPE",
                                     "children": [
                                         {
                                             "name": "Senior I. Banking Analyst",
-                                            "photo": "",
-                                            "summary": "",
-                                            "link": "",
-                                            "linkedIn": ""
+                                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                            "summary": "As an Analyst, your job is to do whatever it takes to support senior bankers in winning and closing deals, even if that means doing ridiculous tasks that have nothing to do with accounting or finance.",
+                                            "salary": 105000,
+                                            "listings": 3,
+                                            "time": 5,
+                                            "link": "https://www.seek.co.nz/jobs-in-banking-financial-services/banking-corporate-institutional",
+                                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                                         },
                                         {
                                             "name": "Investment Banking Associate",
-                                            "photo": "",
-                                            "summary": "",
-                                            "link": "",
-                                            "linkedIn": "",
+                                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                            "summary": "An investment banking associate is in charge of performing support tasks for clients, ensuring efficiency and client satisfaction. They are primarily responsible for identifying and meeting clients' needs, assisting them in reaching their financial goals.",
+                                            "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                                            "salary": 101000,
+                                            "listings": 5,
+                                            "time": 5,
+                                            "extrahours": "false",
+                                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7",
                                             "children": [
                                                 {
                                                     "name": "Senior Finanical Advisor",
-                                                    "photo": "",
-                                                    "summary": "",
-                                                    "link": "",
-                                                    "linkedIn": ""
+                                                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                                    "summary": "Senior financial advisors are responsible for providing clients with investment advice and guidance. They may work directly with individuals or small groups, but they also commonly provide services to large institutional clients such as pension funds or insurance companies.",
+                                                    "salary": 110000,
+                                                    "listings": 3,
+                                                    "time": 10,
+                                                    "link": "https://www.seek.co.nz/financial-advisor-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                                                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                                                 },
                                                 {
                                                     "name": "Managing Director",
-                                                    "photo": "",
-                                                    "summary": "",
-                                                    "link": "",
-                                                    "linkedIn": ""
+                                                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                                    "salary": 100000,
+                                                    "listings": 2,
+                                                    "time": 7,
+                                                    "summary": "Managing Directors have one goal: to make it rain. They spend their time winning deals and clients, meeting companies, and developing relationships, and they’re frequently on the road doing that. They are responsible for most of the deals a bank executes",
+                                                    "link": "https://www.seek.co.nz/managing-director-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                                                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                                                 },
                                                 {
                                                     "name": "Senior Vice President",
-                                                    "photo": "",
-                                                    "summary": "",
-                                                    "link": "",
-                                                    "linkedIn": ""
+                                                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                                    "salary": 100000,
+                                                    "listings": 4,
+                                                    "time": 5,
+                                                    "summary": "The life of an investment bank vice president centers on two responsibilities: completing pitch books and managing client relationships.",
+                                                    "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                                                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                                                 }
                                             ]
                                         }
@@ -76,33 +129,45 @@
                                 },
                                 {
                                     "name": "Investment Banking Associate",
-                                    "photo": "",
-                                    "summary": "",
-                                    "link": "",
-                                    "linkedIn": "",
+                                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                    "summary": "An investment banking associate is in charge of performing support tasks for clients, ensuring efficiency and client satisfaction. They are primarily responsible for identifying and meeting clients' needs, assisting them in reaching their financial goals.",
+                                    "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                                    "salary": 101000,
+                                    "listings": 5,
+                                    "time": 5,
+                                    "extrahours": "false",
+                                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7",
                                     "children": [
                                         {
                                             "name": "Senior Finanical Advisor",
-                                            "photo": "",
-                                            "summary": "",
-                                            "link": "",
-                                            "linkedIn": ""
+                                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                            "summary": "Senior financial advisors are responsible for providing clients with investment advice and guidance. They may work directly with individuals or small groups, but they also commonly provide services to large institutional clients such as pension funds or insurance companies.",
+                                            "salary": 110000,
+                                            "listings": 3,
+                                            "time": 10,
+                                            "link": "https://www.seek.co.nz/financial-advisor-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                                         },
                                         {
                                             "name": "Managing Director",
-                                            "photo": "",
-                                            "summary": "",
-                                            "link": "",
-                                            "linkedIn": ""
+                                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                            "salary": 100000,
+                                            "listings": 2,
+                                            "time": 7,
+                                            "summary": "Managing Directors have one goal: to make it rain. They spend their time winning deals and clients, meeting companies, and developing relationships, and they’re frequently on the road doing that. They are responsible for most of the deals a bank executes",
+                                            "link": "https://www.seek.co.nz/managing-director-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                                         },
                                         {
                                             "name": "Senior Vice President",
-                                            "photo": "",
-                                            "summary": "",
-                                            "link": "",
-                                            "linkedIn": ""
+                                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                            "salary": 100000,
+                                            "listings": 4,
+                                            "time": 5,
+                                            "summary": "The life of an investment bank vice president centers on two responsibilities: completing pitch books and managing client relationships.",
+                                            "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                                         }
-                                        
                                     ]
                                 }
                             ]
@@ -115,7 +180,98 @@
                     "summary": "Whether you already have an undergraduate degree in finance, or have a degree and/or previous work experience in another field, and MBA is a great option to advance your finance career. The link below provides information searchable by different criteria on global universities offering MBA programmes.",
                     "link": "https://www.topuniversities.com/university-rankings/mba-rankings/global/2022",
                     "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=mba&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=KoX",
-                    "children": []
+                    "children": [
+                        {
+                        "name": "Investment Banking Analyst",
+                        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                        "summary": "Investment banking analysts raise capital for businesses and individuals by issuing debt and selling equity. They oversee mergers, conduct research, and assist in preparing legal and financial documents related to their transactions. Investment banking analysts conduct research and review financial information as well as market trends. They create and implement financial models to review deals and determine profitability. They oversee merger-and-acquisition, and supervise IPOs and private-equity settlements.",
+                        "salary": 81872,
+                        "time": 5,
+                        "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6180%2C6175",
+                        "linkedIn": "https://www.linkedin.com/search/results/PEOPLE/?keywords=financial%20analyst&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=mPE",
+                        "children": [
+                            {
+                                "name": "Senior Finanical Advisor",
+                                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                "summary": "Senior financial advisors are responsible for providing clients with investment advice and guidance. They may work directly with individuals or small groups, but they also commonly provide services to large institutional clients such as pension funds or insurance companies.",
+                                "salary": 110000,
+                                "listings": 3,
+                                "time": 10,
+                                "link": "https://www.seek.co.nz/financial-advisor-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                                "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
+                            },
+                            {
+                                "name": "Managing Director",
+                                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                "salary": 100000,
+                                "listings": 2,
+                                "time": 7,
+                                "summary": "Managing Directors have one goal: to make it rain. They spend their time winning deals and clients, meeting companies, and developing relationships, and they’re frequently on the road doing that. They are responsible for most of the deals a bank executes",
+                                "link": "https://www.seek.co.nz/managing-director-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                                "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
+                            },
+                            {
+                                "name": "Senior Vice President",
+                                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                                "salary": 100000,
+                                "listings": 4,
+                                "time": 5,
+                                "summary": "The life of an investment bank vice president centers on two responsibilities: completing pitch books and managing client relationships.",
+                                "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                                "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
+                            }]
+                        },
+                        {
+                            "name": "Accounting manager",
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "salary": 76365,
+                            "listings": 6,
+                            "time": 4,
+                            "summary": "Manages the accounting staff who are responsible for financial reporting, billing, collections, payroll, and budget preparation. ",
+                            "link": "https://www.seek.co.nz/jobs-in-accounting/financial-managers-controllers",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=accounting%20manager&network=%5B%22F%22%5D&origin=GLOBAL_SEARCH_HEADER&sid=(3P"
+                        },
+                        {
+                            "name": "Finance manager",
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "salary": 115000,
+                            "listings": 100,
+                            "time": 8,
+                            "summary": "A Finance Manager distributes the financial resources of a company, is responsible for the budget planning, and supports the executive management team",
+                            "link": "https://www.seek.co.nz/finance-manager-jobs",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=finance%20manager&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=Hf!"
+                        },
+                        {
+                            "name": "Data Analyst",
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "salary": 82000,
+                            "listings": 57,
+                            "time": 7,
+                            "summary": "Analyses data for a business so as to advise decision making",
+                            "link": "https://www.seek.co.nz/data-analyst-jobs",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=data%20analyst&network=%5B%22F%22%5D&origin=GLOBAL_SEARCH_HEADER&sid=zzL"
+                        },
+                        {
+                            "name": "Marketing manager",
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "salary": 100000,
+                            "listings": 115,
+                            "time": 9,
+                            "summary": "Marketing Managers are responsible for developing, implementing and executing strategic marketing plans for an entire organization",
+                            "link": "https://www.seek.co.nz/marketing-manager-jobs",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=marketing%20manager&network=%5B%22F%22%5D&origin=GLOBAL_SEARCH_HEADER&sid=u58"
+                        },
+                        {
+                            "name": "Risk manager",
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "salary": 122000,
+                            "listings": 69,
+                            "time": 6,
+                            "summary": "Reviews and assesses risk management policies and protocols; makes recommendations and implements modifications and improvements.",
+                            "link": "https://www.seek.co.nz/risk-manager-jobs",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=risk%20manager&network=%5B%22F%22%5D&origin=GLOBAL_SEARCH_HEADER&sid=Eqn"
+                        }
+                    ]
                 }
             ]
         },
@@ -139,61 +295,85 @@
                     "children": [
                         {
                             "name": "Senior Finanical Advisor",
-                            "photo": "",
-                            "summary": "",
-                            "link": "",
-                            "linkedIn": ""
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "summary": "Senior financial advisors are responsible for providing clients with investment advice and guidance. They may work directly with individuals or small groups, but they also commonly provide services to large institutional clients such as pension funds or insurance companies.",
+                            "salary": 110000,
+                            "listings": 3,
+                            "time": 10,
+                            "link": "https://www.seek.co.nz/financial-advisor-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                         },
                         {
                             "name": "Managing Director",
-                            "photo": "",
-                            "summary": "",
-                            "link": "",
-                            "linkedIn": ""
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "salary": 100000,
+                            "listings": 2,
+                            "time": 7,
+                            "summary": "Managing Directors have one goal: to make it rain. They spend their time winning deals and clients, meeting companies, and developing relationships, and they’re frequently on the road doing that. They are responsible for most of the deals a bank executes",
+                            "link": "https://www.seek.co.nz/managing-director-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                         },
                         {
                             "name": "Senior Vice President",
-                            "photo": "",
-                            "summary": "",
-                            "link": "",
-                            "linkedIn": ""
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "salary": 100000,
+                            "listings": 4,
+                            "time": 5,
+                            "summary": "The life of an investment bank vice president centers on two responsibilities: completing pitch books and managing client relationships.",
+                            "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                         }
                     ]
                 },
                 {
                     "name": "Accounting manager",
-                    "photo": "",
-                    "summary": "",
-                    "link": "",
-                    "linkedIn": ""
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "salary": 76365,
+                    "listings": 6, 
+                    "time": 4,
+                    "summary": "Manages the accounting staff who are responsible for financial reporting, billing, collections, payroll, and budget preparation. ",
+                    "link": "https://www.seek.co.nz/jobs-in-accounting/financial-managers-controllers",
+                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=accounting%20manager&network=%5B%22F%22%5D&origin=GLOBAL_SEARCH_HEADER&sid=(3P"
                 },
                 {
                     "name": "Finance manager",
-                    "photo": "",
-                    "summary": "",
-                    "link": "",
-                    "linkedIn": ""
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "salary": 115000,
+                    "listings": 100,
+                    "time": 8,
+                    "summary": "A Finance Manager distributes the financial resources of a company, is responsible for the budget planning, and supports the executive management team",
+                    "link": "https://www.seek.co.nz/finance-manager-jobs",
+                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=finance%20manager&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=Hf!"
                 },
                 {
                     "name": "Data Analyst",
-                    "photo": "",
-                    "summary": "",
-                    "link": "",
-                    "linkedIn": ""
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "salary": 82000,
+                    "listings": 57,
+                    "time": 7,
+                    "summary": "Analyses data for a business so as to advise decision making",
+                    "link": "https://www.seek.co.nz/data-analyst-jobs",
+                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=data%20analyst&network=%5B%22F%22%5D&origin=GLOBAL_SEARCH_HEADER&sid=zzL"
                 },
                 {
                     "name": "Marketing manager",
-                    "photo": "",
-                    "summary": "",
-                    "link": "",
-                    "linkedIn": ""
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "salary": 100000,
+                    "listings": 115,
+                    "time": 9,
+                    "summary": "Marketing Managers are responsible for developing, implementing and executing strategic marketing plans for an entire organization",
+                    "link": "https://www.seek.co.nz/marketing-manager-jobs",
+                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=marketing%20manager&network=%5B%22F%22%5D&origin=GLOBAL_SEARCH_HEADER&sid=u58"
                 },
                 {
                     "name": "Risk manager",
-                    "photo": "",
-                    "summary": "",
-                    "link": "",
-                    "linkedIn": ""
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "salary": 122000,
+                    "listings": 69,
+                    "time": 6,
+                    "summary": "Reviews and assesses risk management policies and protocols; makes recommendations and implements modifications and improvements.",
+                    "link": "https://www.seek.co.nz/risk-manager-jobs",
+                    "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=risk%20manager&network=%5B%22F%22%5D&origin=GLOBAL_SEARCH_HEADER&sid=Eqn"
                 }
                 
             ]
@@ -206,6 +386,47 @@
             "parttime": false,
             "link": "https://www.goldmansachs.com/careers/students/programs/americas/new-analyst-program.html",
             "children": [
+                {
+                    "name": "Investment Banking Analyst",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "Investment banking analysts raise capital for businesses and individuals by issuing debt and selling equity. They oversee mergers, conduct research, and assist in preparing legal and financial documents related to their transactions. Investment banking analysts conduct research and review financial information as well as market trends. They create and implement financial models to review deals and determine profitability. They oversee merger-and-acquisition, and supervise IPOs and private-equity settlements.",
+                    "salary": 81872,
+                    "time": 5,
+                    "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6180%2C6175",
+                    "linkedIn": "https://www.linkedin.com/search/results/PEOPLE/?keywords=financial%20analyst&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=mPE",
+                    "children": [
+                        {
+                            "name": "Senior Finanical Advisor",
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "summary": "Senior financial advisors are responsible for providing clients with investment advice and guidance. They may work directly with individuals or small groups, but they also commonly provide services to large institutional clients such as pension funds or insurance companies.",
+                            "salary": 110000,
+                            "listings": 3,
+                            "time": 10,
+                            "link": "https://www.seek.co.nz/financial-advisor-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
+                        },
+                        {
+                            "name": "Managing Director",
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "salary": 100000,
+                            "listings": 2,
+                            "time": 7,
+                            "summary": "Managing Directors have one goal: to make it rain. They spend their time winning deals and clients, meeting companies, and developing relationships, and they’re frequently on the road doing that. They are responsible for most of the deals a bank executes",
+                            "link": "https://www.seek.co.nz/managing-director-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
+                        },
+                        {
+                            "name": "Senior Vice President",
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "salary": 100000,
+                            "listings": 4,
+                            "time": 5,
+                            "summary": "The life of an investment bank vice president centers on two responsibilities: completing pitch books and managing client relationships.",
+                            "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
+                        }
+                    ]
+                }
 
             ]
         },
@@ -229,37 +450,37 @@
                     "children": [
                         {
                             "name": "Senior Finanical Advisor",
-                            "photo": "",
-                            "summary": "",
-                            "link": "",
-                            "linkedIn": ""
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "summary": "Senior financial advisors are responsible for providing clients with investment advice and guidance. They may work directly with individuals or small groups, but they also commonly provide services to large institutional clients such as pension funds or insurance companies.",
+                            "salary": 110000,
+                            "listings": 3,
+                            "time": 10,
+                            "link": "https://www.seek.co.nz/financial-advisor-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                         },
                         {
                             "name": "Managing Director",
-                            "photo": "",
-                            "summary": "",
-                            "link": "",
-                            "linkedIn": ""
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "salary": 100000,
+                            "listings": 2,
+                            "time": 7,
+                            "summary": "Managing Directors have one goal: to make it rain. They spend their time winning deals and clients, meeting companies, and developing relationships, and they’re frequently on the road doing that. They are responsible for most of the deals a bank executes",
+                            "link": "https://www.seek.co.nz/managing-director-jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                         },
                         {
                             "name": "Senior Vice President",
-                            "photo": "",
-                            "summary": "",
-                            "link": "",
-                            "linkedIn": ""
+                            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                            "salary": 100000,
+                            "listings": 4,
+                            "time": 5,
+                            "summary": "The life of an investment bank vice president centers on two responsibilities: completing pitch books and managing client relationships.",
+                            "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                            "linkedIn": "https://www.linkedin.com/search/results/people/?keywords=investment%20banking&network=%5B%22F%22%5D&origin=FACETED_SEARCH&sid=3_7"
                         }
                     ]
                 }
             ]
-        },
-        {
-            "name": "",
-            "photo": "",
-            "summary": "",
-            "link": "",
-            "linkedIn": ""
-
         }
-
     ]
 }
