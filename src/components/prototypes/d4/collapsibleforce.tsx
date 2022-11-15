@@ -22,7 +22,7 @@ interface IUserInput {
 }
 
 interface IInfoData {
-    name: string, photo?: string, summary?: string, time?: any, parttime?: any, link?: string, linkedIn?: string
+    name: string, photo?: string, summary?: string, time?: any, listings?: any, link?: string, linkedIn?: string, salary?: any
 }
 
 interface IZoomState {
@@ -33,6 +33,7 @@ const CollapsibleForce = () => {
     const [data, setData] = useState<IData>(careerData)
     const svgRef = useRef<SVGSVGElement>(null)
     const [started, setStarted] = useState(false)
+    const [leftCollapsed, setLeftCollapsed] = useState(false)
     const [inputStep, setInputStep] = useState(1)
     const [userInput, setUserInput] = useState<IUserInput>({
         goal: '', seekscope: 'specific', interestfields: ['finance'], worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
@@ -86,7 +87,7 @@ const CollapsibleForce = () => {
     const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
     const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings;
     const [infoDisplay, setInfoDisplay] = useState(false)
-    const [infoData, setInfoData] = useState<IInfoData>({ name: '', photo: '', summary: '', time: 0, parttime: false, link: '', linkedIn: '' })
+    const [infoData, setInfoData] = useState<IInfoData>({ name: '', photo: '', summary: '', salary: '', time: 0, listings: 5, link: '', linkedIn: '' })
     const [currentZoomState, setCurrentZoomState] = useState<IZoomState>({k: 1, x: 0, y: 0})
     
 
@@ -149,6 +150,7 @@ const CollapsibleForce = () => {
             d3.selectAll("svg > *").remove();
             const links: any = root.links();
             const nodes: any = root.descendants();
+            let currentposition: any = root;
             let recommend1: any = null
             let recommend2: any = null;
             const lifestylefitnodes : any[] = []
@@ -165,15 +167,17 @@ const CollapsibleForce = () => {
             }
 
             if (!started) { 
-                rec1path = nodes[200].ancestors()
-                rec1path.pop()
-                rec2path = nodes[210].ancestors()
-                rec2path.pop()
+                // rec1path = nodes[200].ancestors()
+                // rec1path.pop()
+                // rec2path = nodes[210].ancestors()
+                // rec2path.pop()
 
             }
 
 
             if (started) {
+                
+                
                 for (let i = 0; i < nodes.length; i++) {    
                     if ((nodes[i].data.extrahours === extrahours) || (nodes[i].data.fulltimeEd === fulltimeEd) || (nodes[i].data.relocation === relocation) || (nodes[i].data.remotework === remotework)) {
                         nolifestylefitnodes.push(nodes[i])
@@ -230,6 +234,8 @@ const CollapsibleForce = () => {
             function color(d: any) {            
                 if (nolifestylefitnodes.includes(d)) {
                     return d._children ? "#626262" : "#999";
+                } else if (d === currentposition) {
+                    return "#62BD19"
                 } else if (rec1path.includes(d)) {
                     return "#77DD76";
                 } else if (rec2path.includes(d)) {
@@ -286,8 +292,9 @@ const CollapsibleForce = () => {
                     .attr("y2", (d: any) => d.target.y );
 
                 node.attr("fill", (d: any) => color(d))
-                    .attr("r", (d: any) => ((Math.sqrt(d.data.size) / 12) || 5.5 ))
+                    .attr("r", (d: any) => ((Math.sqrt(d.data.listings)) || (Math.sqrt(d.data.size) / 12) || 5.5 ))
                     .on("click", (event: any, d: any, i: any) => {
+                        console.log(d)
                         if (d.children) {
                             d._children = d.children;
                             d.children = null;
@@ -296,8 +303,8 @@ const CollapsibleForce = () => {
                             d._children = null
                         }
                         setInfoData({
-                            name: `${d.data.name}`, photo: `${d.data.photo}`, summary: `${d.data.summary}`, time: `${d.data.time}`,
-                            parttime: `${d.data.parttime}`, link: `${d.data.link}`, linkedIn: `${d.data.linkedIn}`
+                            name: `${d.data.name}`, photo: `${d.data.photo}`, summary: `${d.data.summary}`, salary: `${d.data.salary}`,time: `${d.data.time}`,
+                            listings: `${d.data.listings}`, link: `${d.data.link}`, linkedIn: `${d.data.linkedIn}`
                         })
                         setInfoDisplay(true);
                         update()
@@ -338,7 +345,7 @@ const CollapsibleForce = () => {
 
             if (nodes.length < 50) {
                 d3.select('svg')
-                    .call(zoom.scaleBy, 2.25)
+                    .call(zoom.scaleBy, 2)
                     .on(".zoom", null)
             }
 
@@ -356,14 +363,16 @@ const CollapsibleForce = () => {
 
     return (
         <div className="flex justify-center items-center w-screen h-90vh">
-            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-5/6 w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
+            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-90vh w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
                 <div>{stepSwitch(inputStep)}</div>
             </div>
             {started && (
                 <div className="flex h-5/6 w-1/4 left-10 top-10 fixed justify-between items-center mx-auto flex-col p-0">
                     <div className="flex h-1/2 w-full overflow-scroll left-10 top-10 justify-start mx-auto flex-col bg-[#eff1f4] p-7 rounded-xl">
-                        <div className="flex flex-col justify-center items-center mb-14 mx-auto gap-2">
-                            <div className="text-lg">Lifestyle Factors</div>
+                        <div className="flex flex-col justify-center items-center mx-auto gap-2">
+                            <div className="flex w-full justify-center">
+                                <div className="text-lg">Lifestyle Factors</div>
+                            </div>
                             <label>
                                 <input 
                                     className="mr-2 cursor-pointer"
@@ -410,35 +419,86 @@ const CollapsibleForce = () => {
                             </label>
                         </div>
                     </div>
+                    <div className="flex  h-1/3 w-full left-10 top-10 justify-start items-center mx-auto flex-col bg-transparent rounded-xl gap-2">
+                        Key
+                        <div className="flex flex-col justify-start items-start gap-2">
+                            <div className="flex gap-2">
+                                <div className="bg-[#62bd19] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- Current position</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#77DD76] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- 1st recommended path</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#D2FDBB] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- 2nd recommended path</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#C6DBEF] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- Click to collapse branches</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#3182BD] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- Click to extend branches</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#999999] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- Lifestyle incompatible path</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#FD8D3C] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- Size represents number of jobs</div>
+                            </div>
+                        </div>
+                    </div>
                     <Button variant="contained" className="bg-[#1848C8] w-1/2 " onClick={() => setStarted(false)}>
                         Change Inputs
                     </Button>
                 </div>
             )}
-            <div id="infoDisplay" className={`${infoDisplay ? 'w-1/4 p-12 opacity-100' : 'w-0 p-0 opacity-0'} overflow-scroll transition-width h-screen top-0 right-0 fixed flex justify-start items-center gap-4 mx-auto flex-col bg-[#eff1f4]`}>
-                <button className="self-start " onClick={() => setInfoDisplay(false)}>X</button>
+            <div id="infoDisplay" className={`${infoDisplay ? 'w-1/4 p-12 opacity-100' : 'w-0 p-0 opacity-0'} overflow-scroll transition-width h-screen top-0 right-0 fixed flex justify-start items-center gap-2 mx-auto flex-col bg-[#eff1f4]`}>
+                <button className="absolute left-2 top-2" onClick={() => setInfoDisplay(false)}>X</button>
                 <div className="flex justify-center text-lg">{infoData.name}</div>
                 {infoData.photo !== 'undefined' && (
-                    <div className="flex justify-center items-center object-scale-down" >
-                        <img src={infoData.photo} />
+                    <div className="flex justify-center items-center h-1/4 object-cover" >
+                        <img className="h-full w-full"src={infoData.photo} />
                     </div>
                 )}
+                {infoData.salary !== 'undefined' && (
+                    <>
+                        <div className="flex w-full text-xs gap-2">
+                            <div><strong>Avg base salary: </strong></div> <div>${infoData.salary}</div>
+                        </div>
+                        <hr className="w-full border-gray-600 "></hr>
+                    </>
+                )}
+                {infoData.time !== 'undefined' && (
+                    <>
+                        <div className="flex w-full text-xs gap-2">
+                            <div><strong>Avg time in role: </strong></div> <div>{infoData.time ? ` ${infoData.time} years` : ' N/A'}</div>
+                        </div>
+                        <hr className="w-full border-gray-600 "></hr>
+                    </>
+                )}
+                
                 {infoData.summary !== 'undefined' && (
-                    <div className="flex justify-center items-center" >
+                    <div className="flex justify-center items-center text-xs" >
                         {infoData.summary}
                     </div>
                 )}
                 {infoData.summary !== 'undefined' && (
-                    <div className="flex justify-center items-center" >
+                    <div className="flex justify-center items-center flex-col" >
                         <Button variant="contained" className="bg-[#1848C8]">
                             <Link className="text-blue-600" href={infoData.link ? infoData.link : ''}>Learn More</Link>
                         </Button>
                     </div>
                 )}
+                <hr className="w-full border-gray-600 "></hr>
                 { infoData.linkedIn !== 'undefined' && (
                     <div className="flex flex-col gap-4 justify-center items-center">
-                        <div>
-                            See LinkedIn contacts who have listed this on their profile:
+                        <div className="text-xs">
+                            See your LinkedIn contacts who have listed this on their profile:
                         </div>
                         <div className="flex justify-center items-center" >
                             <Button variant="contained" className="bg-[#1848C8]">

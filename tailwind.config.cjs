@@ -10,6 +10,9 @@ module.exports = {
         '90vh': '90vh',
         '10vh': '10vh',
       },
+      left: {
+        '-10px': '-10px'
+      },
       transitionProperty: {
         'width': 'width'
       },
