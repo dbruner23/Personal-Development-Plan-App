@@ -15,13 +15,9 @@ import InputLabel from '@mui/material/InputLabel';
 import { Button } from "@mui/material";
 import { formControlUnstyledClasses } from '@mui/base';
 
-interface IUserInput {
-    goal: string, seekscope: string, interestfields: any[], worklevel: string, backgroundfield: string, edlevel: string, educationfields: any[], certifications: any[]
-}
-
 type Props = {
     userInput: {
-        goal: string, seekscope: string, interestfields: any[], worklevel: string, backgroundfield: string, edlevel: string, educationfields: any[], certifications: any[]
+        goal: string, seekscope: string, interestfields: any[], currentjob: string, worklevel: string, backgroundfield: string, edlevel: string, educationfields: any[], certifications: any[]
     },
     setInputStep: React.Dispatch<React.SetStateAction<number>>,
     handleChange: (event: any) => void
@@ -34,10 +30,10 @@ const InputStep2 = (props: Props) => {
         'engineering', 'management', 'medical', 'finance', 'other'
     ]
     const edfields = [
-        'computer science', 'philosophy', 'visual arts', 'history', 'other'
+        'finance', 'computer science', 'philosophy', 'visual arts', 'history', 'other'
     ]
     const certs = [
-        'legal compliance', 'nz tax law', 'other'
+        'bachelors in finance', 'Dacreed CFA','legal compliance', 'nz tax law', 'other'
     ]
   
     return (
@@ -50,6 +46,7 @@ const InputStep2 = (props: Props) => {
                     id="outlined-select-currency"
                     select
                     label="Select"
+                    name="edlevel"
                     value={userInput.edlevel}
                     onChange={handleChange}
                     sx={{ width: '100%' }}
@@ -69,7 +66,7 @@ const InputStep2 = (props: Props) => {
                     labelId="demo-multiple-checkbox-label"
                     id="demo-multiple-checkbox"
                     multiple
-                    name="interestfields"
+                    name="educationfields"
                     value={userInput.educationfields}
                     onChange={handleChange}
                     sx={{ width: '100%' }}
@@ -89,7 +86,20 @@ const InputStep2 = (props: Props) => {
                     ))}
                 </Select>
             </div>
-            <label className="flex w-ful text-sm">3) What&#39; s the highest level professional role you&#39;ve held?</label>
+            <label className="flex w-full text-sm">3) What's your current job title (if applicable)?</label>
+            <div className="mb-4 ">
+                <TextField
+                    id="outlined-multiline-flexible"
+                    label="your answer here..."
+                    name="currentjob"
+                    value={userInput.currentjob}
+                    onChange={handleChange}
+                    multiline
+                    maxRows={10}
+                    sx={{ width: '100%', }}
+                />
+            </div>
+            <label className="flex w-ful text-sm">4) What&#39;s the highest level professional role you&#39;ve held?</label>
           <div className="mb-4">
               <TextField
                   id="outlined-select-currency"
@@ -106,7 +116,7 @@ const InputStep2 = (props: Props) => {
                   <MenuItem value={"executive"}>Executive</MenuItem>
               </TextField>
           </div>
-          <label className="flex w-ful text-sm">4) What field is/was this in?</label>
+          <label className="flex w-ful text-sm">5) What field is/was this in?</label>
           <div className="mb-4 ">
               <TextField
                   id="outlined-select-currency"
@@ -125,7 +135,7 @@ const InputStep2 = (props: Props) => {
               </TextField>
           </div>
           
-          <label className="flex w-full text-sm">5) Do you have any other degrees, diplomas, certifications, or Dacreed qualifications?</label>
+          <label className="flex w-full text-sm">6) Do you have any other degrees, diplomas, certifications, or Dacreed qualifications?</label>
           <div className="mb-8">
               <InputLabel id="demo-multiple-checkbox-label">(Choose all that apply)</InputLabel>
               <Select
