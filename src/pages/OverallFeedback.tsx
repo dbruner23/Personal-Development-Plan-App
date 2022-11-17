@@ -4,7 +4,6 @@ import Head from "next/head";
 import MenuItem from '@mui/material/MenuItem';
 import ThankYouModal from "../components/questionnaire/ThankYouModal";
 import Image from "next/future/image";
-import RatingsButtonsGroup from "../components/questionnaire/RatingsButtonsGroup";
 import { trpc } from "../utils/trpc";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -53,6 +52,11 @@ const prototypes = [
     id: 'rate8',
     label: 'Prototype 8',
     src: '/PrototypeS6.png',
+  },
+  {
+    id: 'rate9',
+    label: 'Prototype 9',
+    src: '/PrototypeS7.png',
   },
 ];
 

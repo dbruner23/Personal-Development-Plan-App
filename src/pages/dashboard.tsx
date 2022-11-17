@@ -15,6 +15,7 @@ import PrototypeD2image from '../components/prototypes/s2/img/PrototypeD2.png'
 import PrototypeS4image from '../components/prototypes/s2/img/PrototypeS4.png'
 import PrototypeS5image from '../components/prototypes/s2/img/PrototypeS5.png'
 import PrototypeS6image from '../components/prototypes/s2/img/PrototypeS6.png'
+import PrototypeS7image from '../components/prototypes/s2/img/PrototypeS7.png'
 import QuestionaireButton from '../components/questionnaire/QuestionaireButton';
 
 
@@ -110,6 +111,14 @@ const Dashboard = () => {
                 <Image 
                 src={PrototypeS6image} 
                 alt="image of prototype 6S"
+                className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
+                </Image>
+            </Link>
+
+            <Link href={`s7/${userName}`}>
+                <Image 
+                src={PrototypeS7image} 
+                alt="image of prototype 7S"
                 className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                 </Image>
             </Link>

@@ -14,7 +14,7 @@ import S4 from '../../components/prototypes/s4/S4'
 import S5 from '../../components/prototypes/s5/S5'
 import DelaunayMap from '../../components/prototypes/d5/DelaunayMap'
 import S6 from '../../components/prototypes/s6/S6'
-import QuestionaireButton from '../../components/questionnaire/QuestionaireButton'
+import S7 from '../../components/prototypes/s7/S7'
 import Button from '@mui/material/Button';
 
 interface IRecordWindow {
@@ -50,8 +50,10 @@ const Prototype = () => {
                 return <S4 />
             case 's5':
                 return <S5 />
-                case 's6':
+            case 's6':
                 return <S6 />
+            case 's7':
+                return <S7 />
             default:
                 return <Loading />
         }
