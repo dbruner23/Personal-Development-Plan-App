@@ -24,7 +24,7 @@ const S7 = () => {
 <div className="flex flex-row flex-wrap justify-center mb-5">
 {data.map((result, index) =>(
 
-<div className="bg-[#dddfe6] p-2 m-2 rounded-lg">
+<div key={index} className="bg-[#dddfe6] p-2 m-2 rounded-lg">
        
         <div key={index}>
 
