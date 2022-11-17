@@ -6,11 +6,14 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import { Button } from "@mui/material";
+import Image from 'next/image';
 import Link from 'next/link';
 import InputStep1 from './InputStep1';
 import InputStep2 from './InputStep2';
 import InputStep3 from './InputStep3';
 import InputStep4 from './InputStep4';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 interface IData {
     name: string,
@@ -18,11 +21,11 @@ interface IData {
 }
 
 interface IUserInput {
-    goal: string, seekscope: string, interestfields: any[], worklevel: string, backgroundfield: string, edlevel: string, educationfields: any[], certifications: any[]
+    goal: string, seekscope: string, interestfields: any[], currentjob: string, worklevel: string, backgroundfield: string, edlevel: string, educationfields: any[], certifications: any[]
 }
 
 interface IInfoData {
-    name: string, photo?: string, summary?: string, time?: any, parttime?: any, link?: string, linkedIn?: string
+    name: string, photo?: string, summary?: string, time?: any, listings?: any, link?: string, linkedIn?: string, salary?: any
 }
 
 interface IZoomState {
@@ -33,20 +36,16 @@ const CollapsibleForce = () => {
     const [data, setData] = useState<IData>(careerData)
     const svgRef = useRef<SVGSVGElement>(null)
     const [started, setStarted] = useState(false)
+    const [leftCollapsed, setLeftCollapsed] = useState(false)
     const [inputStep, setInputStep] = useState(1)
     const [userInput, setUserInput] = useState<IUserInput>({
-        goal: '', seekscope: 'specific', interestfields: ['finance'], worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
-    }) 
+        goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
+    })
+    const [submitInput, setSubmitInput] = useState<IUserInput>({
+        goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
+    })
 
-    const careerfields = [
-        'engineering', 'management', 'medical', 'finance', 'other'
-    ]
-    const edfields = [
-        'computer science', 'philosophy', 'visual arts', 'history', 'other'
-    ]
-    const certs = [
-        'legal compliance', 'nz tax law', 'other' 
-    ]
+    
 
     const handleChange = (event: any) => {
         setUserInput({ ...userInput, [event.target.name]: event.target.value });
@@ -54,19 +53,20 @@ const CollapsibleForce = () => {
 
     const handleSubmit = () => {
         // filter displayed data based on user input
-        if (userInput.seekscope === 'specific' && userInput.interestfields.includes('finance')) {
+        if ( userInput.interestfields.includes('finance')) {
             setData(financeCareerData);
         }
 
-        if (userInput.goal === 'vis') {
-            const dataArr: any[] = Object.entries(data);
-            const newArr = dataArr[1][1].filter((element: { name: string; }) => {
-                return element.name !== 'vis'
-            })
-            const newData = { ...data, children: newArr }
-            setData(newData)
-        }
-        setStarted(true)
+        // if (userInput.goal === 'vis') {
+        //     const dataArr: any[] = Object.entries(data);
+        //     const newArr = dataArr[1][1].filter((element: { name: string; }) => {
+        //         return element.name !== 'vis'
+        //     })
+        //     const newData = { ...data, children: newArr }
+        //     setData(newData)
+        // }
+        setSubmitInput(userInput);
+        setStarted(true);
     }
 
     const stepSwitch = (inputStep: number) => {
@@ -86,7 +86,7 @@ const CollapsibleForce = () => {
     const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
     const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings;
     const [infoDisplay, setInfoDisplay] = useState(false)
-    const [infoData, setInfoData] = useState<IInfoData>({ name: '', photo: '', summary: '', time: 0, parttime: false, link: '', linkedIn: '' })
+    const [infoData, setInfoData] = useState<IInfoData>({ name: '', photo: '', summary: '', salary: '', time: 0, listings: 5, link: '', linkedIn: '' })
     const [currentZoomState, setCurrentZoomState] = useState<IZoomState>({k: 1, x: 0, y: 0})
     
 
@@ -99,7 +99,7 @@ const CollapsibleForce = () => {
     //Run d3 visualisation  
     useEffect(() => {
         if (data !== null) { buildGraph(data) }
-    }, [data, lifestyleInputStrings]);
+    }, [data, lifestyleInputStrings, submitInput]);
 
     const buildGraph = (data: any) => {
         const svg: any = d3.select(svgRef.current)
@@ -143,12 +143,31 @@ const CollapsibleForce = () => {
                 .on("end", dragended)
         }
 
+        const randnum = (max: number) => {
+            return Math.floor(Math.random() * max)
+        }
+
+        const getTitleCase = (str : string) => {
+            const titleCase = str
+                .toLowerCase()
+                .split(' ')
+                .map((word: string) => {
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                })
+                .join(' ');
+
+            return titleCase;
+        }
+
         
 
         function update() {
             d3.selectAll("svg > *").remove();
             const links: any = root.links();
             const nodes: any = root.descendants();
+            const upperCurrentJob = getTitleCase(submitInput.currentjob)
+            const upperGoal = getTitleCase(submitInput.goal)
+            let currentposition: any = root;
             let recommend1: any = null
             let recommend2: any = null;
             const lifestylefitnodes : any[] = []
@@ -158,51 +177,68 @@ const CollapsibleForce = () => {
             let tx = 0
             let ty = 0
             let k = 1
+            //hacky solution to discerning current position based on input. 
+            let edtrack = (submitInput.educationfields.includes("finance") && submitInput.edlevel === 'bachelors') ? "INTERN" :
+                (submitInput.certifications.includes('bachelors in finance') && submitInput.edlevel === "masters") ? "MBAFIN" :
+                    (!submitInput.certifications.includes("bachelors in finance") && submitInput.edlevel === "masters") ? "MBANOFIN" :
+                        (submitInput.certifications.includes("Dacreed CFA")) ? "DCFAQ" : null;
+
             if (currentZoomState) {
                 tx = currentZoomState.x
                 ty = currentZoomState.y
                 k = currentZoomState.k
             }
 
-            if (!started) { 
-                rec1path = nodes[200].ancestors()
+            if (!started && nodes.length > 200) { 
+                rec1path = nodes[randnum(nodes.length)].ancestors()
                 rec1path.pop()
-                rec2path = nodes[210].ancestors()
+                rec2path = nodes[randnum(nodes.length)].ancestors()
                 rec2path.pop()
-
             }
 
 
             if (started) {
-                for (let i = 0; i < nodes.length; i++) {    
-                    if ((nodes[i].data.extrahours === extrahours) || (nodes[i].data.fulltimeEd === fulltimeEd) || (nodes[i].data.relocation === relocation) || (nodes[i].data.remotework === remotework)) {
-                        nolifestylefitnodes.push(nodes[i])
+                rec1path = []
+                rec2path = []
+                //set current position and array of non lifestyle fit nodes based on user ticks or unticks
+                for (let i = 0; i < nodes.length; i++) {
+                    if ((nodes[i].data.name === upperCurrentJob) && (nodes[i].ancestors().filter((node: any) => node.data.id === edtrack).length !== 0)) {
+                        currentposition = nodes[i]
+                    }
+                }
+                console.log(currentposition.ancestors())
+                //checks if node is ancestor of current position before pushing to no lifestyle fit.
+                for (let i = 0; i < nodes.length; i++) {            
+                    if (((nodes[i].data.extrahours === extrahours) || (nodes[i].data.fulltimeEd === fulltimeEd) || (nodes[i].data.relocation === relocation) || (nodes[i].data.remotework === remotework)) && (currentposition.ancestors().filter((node: any) => node.data.id === nodes[i].data.id).length === 0)) {
+                        nolifestylefitnodes.push(nodes[i])       
                     }
                 }
 
+                //pushes all children of non-lifestyle fit nodes into array as well since they are downstream
                 for (let i = 0; i < nolifestylefitnodes.length; i++) {
                     if ((nolifestylefitnodes[i].children !== null) && (nolifestylefitnodes[i].children !== undefined)) { nolifestylefitnodes[i].children.forEach((element: any) => nolifestylefitnodes.push(element)) }
                 }
 
-                //push all remaining nodes into lifestylefitnodes
+                //push all remaining nodes into lifestylefit node array
                 for (let i = 0; i < nodes.length; i++) {
                     if (!nolifestylefitnodes.includes(nodes[i])) {lifestylefitnodes.push(nodes[i])}
                 }
 
+                //search for set of possible goal nodes from lifestyle fit array based on closest matches to user input
                 const rec1candidates: any[] = []
                 for (let i = 0; i < lifestylefitnodes.length; i++) {
-                    if (lifestylefitnodes[i].data.name === userInput.goal) {
+                    if ((lifestylefitnodes[i].data.name === upperGoal) && (lifestylefitnodes[i].ancestors().includes(currentposition))) {
                         rec1candidates.push(lifestylefitnodes[i])
                     }
                 }
                 
+                //searches for shortest cummulative time paths from goal candidates. Sets shortest as 1st and 2nd shortest as 2nd
                 if (rec1candidates.length > 0) {
                     let minTime = 100;
                     // let minTime2 = 100;
                     for (let i = 0; i < rec1candidates.length; i++) {
-                        const parents = rec1candidates[i].ancestors()
-                        parents.shift();
-                        parents.pop();
+                        const currentposindex = rec1candidates[i].ancestors().indexOf(currentposition)
+                        const parents = rec1candidates[i].ancestors().slice(1, currentposindex);
                         const totaltime = parents.reduce((acc: any, curr: { data: { time: any; }; }) => {
                             return acc + curr.data.time
                         }, 0);
@@ -214,15 +250,16 @@ const CollapsibleForce = () => {
                             recommend2 = rec1candidates[i]
                         }
                     }
-            
+                    
+                    //creates path arrays from ancestor nodes of reccommendations 1 and 2
                     if (recommend1 !== null) { 
-                        rec1path = recommend1.ancestors();
-                        rec1path.pop();
+                        const currentposindex = recommend1.ancestors().indexOf(currentposition)
+                        rec1path = recommend1.ancestors().slice(0, currentposindex);
                     } 
                     
                     if (recommend2 !== null) {
-                        rec2path = recommend2.ancestors();
-                        rec2path.pop();
+                        const currentposindex = recommend2.ancestors().indexOf(currentposition)
+                        rec2path = recommend2.ancestors().slice(0, currentposindex);
                     }
                 }
             }
@@ -230,10 +267,12 @@ const CollapsibleForce = () => {
             function color(d: any) {            
                 if (nolifestylefitnodes.includes(d)) {
                     return d._children ? "#626262" : "#999";
+                } else if (d === currentposition) {
+                    return "#11823b"
                 } else if (rec1path.includes(d)) {
-                    return "#77DD76";
+                    return "#48bf53"
                 } else if (rec2path.includes(d)) {
-                    return "#D2FDBB";
+                    return "#91f086";
                 } else {
                     return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
                 }
@@ -241,7 +280,7 @@ const CollapsibleForce = () => {
 
             const simulation: any = d3.forceSimulation(nodes)
                 .force("link", d3.forceLink(links).id((d: any) => d.id).strength(1))
-                .force("charge", d3.forceManyBody().strength(-50))
+                .force("charge", d3.forceManyBody().strength(-70))
                 .force("x", d3.forceX())
                 .force("y", d3.forceY());
 
@@ -279,15 +318,16 @@ const CollapsibleForce = () => {
 
 
             simulation.on("tick", () => {
-                link.attr("stroke", (d: any) => rec1path.includes(d.target) ? "#77DD76" : rec2path.includes(d.target) ? "#D2FDBB": "#999")
+                link.attr("stroke", (d: any) => rec1path.includes(d.target) ? "#48bf53" : rec2path.includes(d.target) ? "#91f086": "#999")
                     .attr("x1", (d: any) => d.source.x)
                     .attr("y1", (d: any) => d.source.y )
                     .attr("x2", (d: any) => d.target.x )
                     .attr("y2", (d: any) => d.target.y );
 
                 node.attr("fill", (d: any) => color(d))
-                    .attr("r", (d: any) => ((Math.sqrt(d.data.size) / 12) || 5.5 ))
+                    .attr("r", (d: any) => ((Math.sqrt(d.data.listings)) || (Math.sqrt(d.data.size) / 12) || 5.5 ))
                     .on("click", (event: any, d: any, i: any) => {
+                        console.log(d)
                         if (d.children) {
                             d._children = d.children;
                             d.children = null;
@@ -296,8 +336,8 @@ const CollapsibleForce = () => {
                             d._children = null
                         }
                         setInfoData({
-                            name: `${d.data.name}`, photo: `${d.data.photo}`, summary: `${d.data.summary}`, time: `${d.data.time}`,
-                            parttime: `${d.data.parttime}`, link: `${d.data.link}`, linkedIn: `${d.data.linkedIn}`
+                            name: `${d.data.name}`, photo: `${d.data.photo}`, summary: `${d.data.summary}`, salary: `${d.data.salary}`,time: `${d.data.time}`,
+                            listings: `${d.data.listings}`, link: `${d.data.link}`, linkedIn: `${d.data.linkedIn}`
                         })
                         setInfoDisplay(true);
                         update()
@@ -324,12 +364,11 @@ const CollapsibleForce = () => {
             let transform: { k: number; invert: (arg0: [number, number]) => any };
 
             const zoom : any = d3.zoom()
-                .scaleExtent([0.25, 2.5])
+                .scaleExtent([0.25, 2.1])
                 // .filter((event: any) => { return !event.mousedowned })
                 .on("zoom", e => {
                 const zoomState: any = d3.zoomTransform(svg.node())
                     setCurrentZoomState(zoomState)
-                    console.log(currentZoomState)
                 node.attr("transform", (transform = e.transform));
                 link.attr("transform", (transform = e.transform));
                 text.attr("transform", (transform = e.transform));
@@ -338,7 +377,7 @@ const CollapsibleForce = () => {
 
             if (nodes.length < 50) {
                 d3.select('svg')
-                    .call(zoom.scaleBy, 2.25)
+                    .call(zoom.scaleBy, 1.75)
                     .on(".zoom", null)
             }
 
@@ -356,14 +395,17 @@ const CollapsibleForce = () => {
 
     return (
         <div className="flex justify-center items-center w-screen h-90vh">
-            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-5/6 w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
+            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-90vh w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
                 <div>{stepSwitch(inputStep)}</div>
             </div>
             {started && (
-                <div className="flex h-5/6 w-1/4 left-10 top-10 fixed justify-between items-center mx-auto flex-col p-0">
+                <div className={`${leftCollapsed ?  'h-10 w-6 overflow-hidden  bg-[#eff1f4] rounded-xl' : 'h-5/6 w-1/4' } flex left-10 top-10 fixed justify-between items-center mx-auto flex-col p-0`}>
                     <div className="flex h-1/2 w-full overflow-scroll left-10 top-10 justify-start mx-auto flex-col bg-[#eff1f4] p-7 rounded-xl">
-                        <div className="flex flex-col justify-center items-center mb-14 mx-auto gap-2">
-                            <div className="text-lg">Lifestyle Factors</div>
+                        <div className="flex flex-col justify-center items-center mx-auto gap-2">
+                            <div className="flex w-full justify-center">
+                                <button className="absolute right-2 top-2" onClick={() => setLeftCollapsed((prev) => {return !prev})}>{leftCollapsed ? <div>&gt;</div> : <div>&lt;</div>}</button>
+                                <div className="text-lg">Lifestyle Factors</div>
+                            </div>
                             <label>
                                 <input 
                                     className="mr-2 cursor-pointer"
@@ -410,35 +452,86 @@ const CollapsibleForce = () => {
                             </label>
                         </div>
                     </div>
-                    <Button variant="contained" className="bg-[#1848C8] w-1/2 " onClick={() => setStarted(false)}>
+                    <div className="flex  h-1/3 w-full left-10 top-10 justify-start items-center mx-auto flex-col bg-transparent rounded-xl gap-2">
+                        Key
+                        <div className="flex flex-col justify-start items-start gap-2">
+                            <div className="flex gap-2">
+                                <div className="bg-[#11823b] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- Current position</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#48bf53] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- 1st recommended path</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#91f086] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- 2nd recommended path</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#C6DBEF] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- Click to collapse branches</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#3182BD] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- Click to extend branches</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#999999] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- Lifestyle incompatible path</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="bg-[#FD8D3C] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                                <div className="text-xs">- Size represents number of jobs</div>
+                            </div>
+                        </div>
+                    </div>
+                    <Button variant="contained" className="bg-[#1848C8] w-1/2 " onClick={() => { setStarted(false); setInputStep(2); }}>
                         Change Inputs
                     </Button>
                 </div>
             )}
-            <div id="infoDisplay" className={`${infoDisplay ? 'w-1/4 p-12 opacity-100' : 'w-0 p-0 opacity-0'} overflow-scroll transition-width h-screen top-0 right-0 fixed flex justify-start items-center gap-4 mx-auto flex-col bg-[#eff1f4]`}>
-                <button className="self-start " onClick={() => setInfoDisplay(false)}>X</button>
+            <div id="infoDisplay" className={`${infoDisplay ? 'w-1/4 p-12 opacity-100' : 'w-0 p-0 opacity-0'} overflow-scroll transition-width h-screen top-0 right-0 fixed flex justify-start items-center gap-2 mx-auto flex-col bg-[#eff1f4]`}>
+                <button className="absolute left-2 top-2" onClick={() => setInfoDisplay(false)}>X</button>
                 <div className="flex justify-center text-lg">{infoData.name}</div>
                 {infoData.photo !== 'undefined' && (
-                    <div className="flex justify-center items-center object-scale-down" >
-                        <img src={infoData.photo} />
+                    <div className="flex justify-center items-center h-1/4 object-cover" >
+                        <img className="h-full w-full"src={infoData.photo} />
                     </div>
                 )}
+                {infoData.salary !== 'undefined' && (
+                    <>
+                        <div className="flex w-full text-xs gap-2">
+                            <div><strong>Avg base salary: </strong></div> <div>${infoData.salary}</div>
+                        </div>
+                        <hr className="w-full border-gray-600 "></hr>
+                    </>
+                )}
+                {infoData.time !== 'undefined' && (
+                    <>
+                        <div className="flex w-full text-xs gap-2">
+                            <div><strong>Avg time in role: </strong></div> <div>{infoData.time ? ` ${infoData.time} years` : ' N/A'}</div>
+                        </div>
+                        <hr className="w-full border-gray-600 "></hr>
+                    </>
+                )}
+                
                 {infoData.summary !== 'undefined' && (
-                    <div className="flex justify-center items-center" >
+                    <div className="flex justify-center items-center text-xs" >
                         {infoData.summary}
                     </div>
                 )}
                 {infoData.summary !== 'undefined' && (
-                    <div className="flex justify-center items-center" >
+                    <div className="flex justify-center items-center flex-col" >
                         <Button variant="contained" className="bg-[#1848C8]">
                             <Link className="text-blue-600" href={infoData.link ? infoData.link : ''}>Learn More</Link>
                         </Button>
                     </div>
                 )}
+                <hr className="w-full border-gray-600 "></hr>
                 { infoData.linkedIn !== 'undefined' && (
                     <div className="flex flex-col gap-4 justify-center items-center">
-                        <div>
-                            See LinkedIn contacts who have listed this on their profile:
+                        <div className="text-xs">
+                            See your LinkedIn contacts who have listed this on their profile:
                         </div>
                         <div className="flex justify-center items-center" >
                             <Button variant="contained" className="bg-[#1848C8]">

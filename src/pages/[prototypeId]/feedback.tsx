@@ -1,29 +1,33 @@
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
-import ThankYouModal from "../components/questionnaire/ThankYouModal";
-import { trpc } from "../utils/trpc";
+import ThankYouModal from "../../components/questionnaire/ThankYouModal";
+import { trpc } from "../../utils/trpc";
+import { useRouter } from "next/router";
+
 
 
 
 
 const Feedback = () => {
-  const [feedback, setFeedback] = useState({ favourite: '' });
+  const [feedback, setFeedback] = useState({ prototype: '', favourite: '', like:'', dislike:'', improve:'' });
   const savePttrials = trpc.useraction.savePttrials.useMutation();
+  const router = useRouter()
+  const prototypeId = router.query.prototypeId
   
-
+  useEffect(() => {
+    if (typeof prototypeId === "string") setFeedback({ ...feedback, prototype: prototypeId });
+  }, [])
+  
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFeedback({...feedback, [event.target.name]: event.target.value});
   };
 
   const handleSubmit = async () => {
-    const pttrials = (window.localStorage.getItem("pttrials"));
-    const username = (window.localStorage.getItem("user"));
-    const feedbackData = JSON.stringify(feedback);
-    if (pttrials !== null && username !== null ) {
-        await savePttrials.mutateAsync({ pttrials, username, feedbackData })  
-      } 
-       
+    const getfeedbackData = window.localStorage.getItem("feedback")
+    const feedbackData = getfeedbackData == null ? [] : JSON.parse(getfeedbackData)
+    feedbackData.push(feedback)
+    window.localStorage.setItem('feedback', JSON.stringify(feedbackData));
   }
 
   return (
@@ -59,6 +63,9 @@ const Feedback = () => {
               label="your answer here..."
               multiline
               maxRows={10}
+              name="like"
+              value={feedback.like}
+              onChange={handleChange}
               sx={{ width: '45vw', backgroundColor: '#f3f6fa' }}
             />
           </div>
@@ -70,6 +77,9 @@ const Feedback = () => {
               label="your answer here..."
               multiline
               maxRows={10}
+              name="dislike"
+              value={feedback.dislike}
+              onChange={handleChange}
               sx={{ width: '45vw', backgroundColor: '#f3f6fa'  }}
             ></TextField>
           </div>
@@ -81,6 +91,9 @@ const Feedback = () => {
               label="your answer here..."
               multiline
               maxRows={10}
+              name="improve"
+              value={feedback.improve}
+              onChange={handleChange}
               sx={{ width: '45vw', backgroundColor: '#f3f6fa'  }}
             ></TextField>
           </div>

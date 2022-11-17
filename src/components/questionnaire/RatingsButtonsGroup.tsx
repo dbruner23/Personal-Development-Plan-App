@@ -5,12 +5,14 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
+
 export default function RatingsButtonsGroup() {
-  const [value, setValue] = React.useState('5');
+  const [value, setValue] = React.useState({rating:''});
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
+    setValue({...value, [event.target.name]: event.target.value});
   };
+
 
   return (
     <FormControl>
@@ -18,8 +20,8 @@ export default function RatingsButtonsGroup() {
       <RadioGroup
         row
         aria-labelledby="demo-controlled-radio-buttons-group"
-        name="controlled-radio-buttons-group"
-        value={value}
+        name="rating"
+        value={value.rating}
         onChange={handleChange}
       >
         <FormControlLabel value="1" control={<Radio />} label="1" />
