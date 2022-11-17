@@ -178,7 +178,7 @@ const CollapsibleForce = () => {
             let ty = 0
             let k = 1
             //hacky solution to discerning current position based on input. 
-            let edtrack = (submitInput.educationfields.includes("finance") && submitInput.edlevel === 'bachelors') ? "INTERN" :
+            const edtrack = (submitInput.educationfields.includes("finance") && submitInput.edlevel === 'bachelors') ? "INTERN" :
                 (submitInput.certifications.includes('bachelors in finance') && submitInput.edlevel === "masters") ? "MBAFIN" :
                     (!submitInput.certifications.includes("bachelors in finance") && submitInput.edlevel === "masters") ? "MBANOFIN" :
                         (submitInput.certifications.includes("Dacreed CFA")) ? "DCFAQ" : null;

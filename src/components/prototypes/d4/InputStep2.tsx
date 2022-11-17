@@ -86,7 +86,7 @@ const InputStep2 = (props: Props) => {
                     ))}
                 </Select>
             </div>
-            <label className="flex w-full text-sm">3) What's your current job title (if applicable)?</label>
+            <label className="flex w-full text-sm">3) What&#39;s your current job title (if applicable)?</label>
             <div className="mb-4 ">
                 <TextField
                     id="outlined-multiline-flexible"
