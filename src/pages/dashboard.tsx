@@ -49,13 +49,13 @@ const Dashboard = () => {
                 </div>
             <div className="flex flex-row justify-between gap-5 flex-wrap">
 
-            <Link href={`/d2/${userName}`}>
+            {/* <Link href={`/d2/${userName}`}>
             <Image 
                 src={PrototypeD1image} 
                 alt="image of prototype 1D"
                 className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                 </Image>
-            </Link>
+            </Link> */}
 
             <Link href={`s1/${userName}`}>
                 <Image 
