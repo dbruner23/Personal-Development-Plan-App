@@ -22,5 +22,16 @@ export const useractionRouter = router({
             })
             return pttrialslog;
         }),
+    getPttrials: publicProcedure
+        .query(async ({ ctx, input }) => {
+            const pttrialsData = await ctx.prisma.userActions.findMany({
+                select: {
+                    pttrials: true
+                }
+            })
+            return pttrialsData
+        })
+        
+        
     
 })

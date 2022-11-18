@@ -27,13 +27,13 @@ const InputStep2 = (props: Props) => {
     const { userInput, setInputStep, handleChange } = props
 
     const careerfields = [
-        'engineering', 'management', 'medical', 'finance', 'other'
+        'finance', 'engineering', 'management', 'medical', 'construction', 'architecture', 'graphic design', 'other'
     ]
     const edfields = [
-        'finance', 'computer science', 'philosophy', 'visual arts', 'history', 'other'
+        'finance', 'journalism', 'computer science', 'economics', 'philosophy', 'visual arts', 'history', 'political science', 'other'
     ]
     const certs = [
-        'bachelors in finance', 'Dacreed CFA','legal compliance', 'nz tax law', 'other'
+        'bachelors in finance', 'Dacreed CFA', 'Dacreed FMVA', 'Dacreed CMSA', 'legal compliance', 'nz tax law', 'other'
     ]
   
     return (
@@ -105,6 +105,7 @@ const InputStep2 = (props: Props) => {
                   id="outlined-select-currency"
                   select
                   label="Select"
+                  name="worklevel"
                   value={userInput.worklevel}
                   onChange={handleChange}
                   sx={{ width: '100%' }}

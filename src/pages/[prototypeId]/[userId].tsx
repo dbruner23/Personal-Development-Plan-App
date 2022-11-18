@@ -137,15 +137,15 @@ const Prototype = () => {
   return (
     <>
       <div className='flex flex-col justify-start items-center relative'>
-              <div className='flex flex-col justify-center fixed'>
-                  {/* <h2>Data console</h2>
+              {/* <div className='flex flex-col justify-center fixed'>
+                  <h2>Data console</h2>
                   <textarea id="console" className='w-60 h-48 border'></textarea>
                   <button id="mousecoords" onClick={getMousemoveCoordinates} className='border bg-slate-400'>Get Move Coords</button>
                   <button id="clickcoords" onClick={getClickCoordinates} className='border bg-slate-400'>Get Click Coords</button>
                   <button id="scrollcoords" onClick={getScrollCoordinates} className='border bg-slate-400'>Get Scroll Coords</button>
                   <button id="timeelapseed" onClick={timeSlice} className='border bg-slate-400'>Get Time Elapsed</button>
-                  <button id="save" onClick={toggleRecord} className='border bg-slate-400'>Stop Save Exit</button> */}
-              </div>
+                  <button id="save" onClick={toggleRecord} className='border bg-slate-400'>Stop Save Exit</button>
+              </div> */}
             {prototypeInsert(prototypeId)}
               <div className="flex justify-center h-10 abosolute bottom-8 mb-12">
                   {/* <Link href={"/dashboard"}>
