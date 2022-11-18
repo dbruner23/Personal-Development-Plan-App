@@ -22,7 +22,7 @@ type Props = {
 }
 
 
-export default function ThankYouModal(props: Props) {
+export default function ThankYouModal2(props: Props) {
   const [open, setOpen] = React.useState(false);
   const router = useRouter()
   const handleOpen = () => setOpen(true);
@@ -47,10 +47,7 @@ export default function ThankYouModal(props: Props) {
           Thank you for your feedback. 
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          If you haven not tested all of our prototypes, please check out the next one.
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          If this is the last prototype please fill out our final feedback form on the dashboard.
+         Have a great day!
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           Click anywhere on this page to go back to the dashboard.
