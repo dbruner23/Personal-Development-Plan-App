@@ -4,6 +4,7 @@ import Head from "next/head";
 import ThankYouModal from "../../components/questionnaire/ThankYouModal";
 import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
+import ThankYouDialog from "../../components/questionnaire/ThankYouDialog";
 
 
 
@@ -29,6 +30,8 @@ const Feedback = () => {
     feedbackData.push(feedback)
     window.localStorage.setItem('feedback', JSON.stringify(feedbackData));
   }
+
+
 
   return (
     <>
@@ -99,8 +102,9 @@ const Feedback = () => {
           </div>
 
 
-          <div className="flex justify-center">
-              <ThankYouModal handleSubmit={handleSubmit} />
+          <div className="flex justify-center" >
+              <ThankYouModal  handleSubmit={handleSubmit} />
+              {/* <ThankYouDialog /> */}
           </div>
         </div>
         </div>
