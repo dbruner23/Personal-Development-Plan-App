@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useRouter } from 'next/router';
+import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
   position: 'absolute',
@@ -19,6 +20,7 @@ const style = {
 type Props = {
   handleSubmit: () => void
 }
+
 
 export default function ThankYouModal(props: Props) {
   const [open, setOpen] = React.useState(false);
@@ -45,10 +47,17 @@ export default function ThankYouModal(props: Props) {
           Thank you for your feedback. 
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Have a great day!
+          If you haven not tested all of our prototypes, please check out the next one.
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          If this is the last prototype please fill out our final feedback form on the dashboard.
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          Click anywhere on this page to go back to the dashboard.
           </Typography>
         </Box>
       </Modal>
+     
     </div>
   );
 }

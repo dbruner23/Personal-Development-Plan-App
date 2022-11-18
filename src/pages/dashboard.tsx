@@ -82,7 +82,7 @@ const Dashboard = () => {
                 </Image>
             </Link>
 
-            <Link href={`/d4/${userName}`}>
+            <Link href={`/d4primer`}>
             <Image 
                 src={PrototypeD2image} 
                 alt="image of prototype D2"
@@ -123,11 +123,11 @@ const Dashboard = () => {
                 </Image>
             </Link>
 
-            <Link href={`/d1/${userName}`}>
+            {/* <Link href={`/d1/${userName}`}>
                 <div className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
                      Prototype 1
                 </div>
-            </Link>
+            </Link> */}
 
             </div>
 
