@@ -15,7 +15,7 @@ const DelaunayMap = () => {
     const Map = (data:any) => {
         d3.selectAll("svg > *").remove();
         const svg: any = d3.select(svgRef.current)
-        const projection = d3.geoNaturalEarth1()
+        const projection = d3.geoOrthographic()
         const outline : any = { type: "Sphere" }
         const width = window.innerWidth
         const projectlatlng:any[] = []

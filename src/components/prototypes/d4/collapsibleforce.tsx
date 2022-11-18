@@ -66,6 +66,7 @@ const CollapsibleForce = () => {
         //     setData(newData)
         // }
         setSubmitInput(userInput);
+        setInfoDisplay(false);
         setStarted(true);
     }
 
@@ -377,7 +378,7 @@ const CollapsibleForce = () => {
 
             if (nodes.length < 50) {
                 d3.select('svg')
-                    .call(zoom.scaleBy, 1.75)
+                    .call(zoom.scaleBy, 2)
                     .on(".zoom", null)
             }
 
