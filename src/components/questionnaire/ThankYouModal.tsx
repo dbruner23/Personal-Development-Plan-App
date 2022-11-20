@@ -4,7 +4,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useRouter } from 'next/router';
-import CloseIcon from '@mui/icons-material/Close';
+// import CloseIcon from '@mui/icons-material/Close';
+// import Stack from '@mui/material/Stack';
+
 
 const style = {
   position: 'absolute',
@@ -56,8 +58,9 @@ export default function ThankYouModal(props: Props) {
           Click anywhere on this page to go back to the dashboard.
           </Typography>
         </Box>
+        
       </Modal>
-     
+
     </div>
   );
 }
