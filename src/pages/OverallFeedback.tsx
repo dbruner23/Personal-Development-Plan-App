@@ -63,7 +63,7 @@ const prototypes = [
 
 const OverallFeedback = () => {
   const [overallFeedback, setOverallFeedback] = useState<any>({ rate1: '', rate2: '', rate3: '', rate4: '', rate5: '', rate6: '', rate7: '', rate8: '', favourite: '' });
-  const savePttrials = trpc.useraction.savePttrials.useMutation();
+  const saveOverallFeedback = trpc.overallfeedback.saveOverallFeedback.useMutation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setOverallFeedback({...overallFeedback, [event.target.name]: event.target.value});
@@ -71,11 +71,9 @@ const OverallFeedback = () => {
 
   const handleSubmit = async () => {    
     const username = (window.localStorage.getItem("user"));
-    const pttrials = (window.localStorage.getItem("pttrials"));
-    const prototypeFeedback = (window.localStorage.getItem("feedback"));
     const finalOverallFeedback = JSON.stringify(overallFeedback);
-    if (pttrials !== null && username !== null && prototypeFeedback !== null) {
-        await savePttrials.mutateAsync({ username, pttrials, prototypeFeedback, finalOverallFeedback })  
+    if (username !== null && finalOverallFeedback !== null) {
+        await saveOverallFeedback.mutateAsync({ username, finalOverallFeedback })  
       } 
        
   }

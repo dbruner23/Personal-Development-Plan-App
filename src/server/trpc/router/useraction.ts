@@ -6,18 +6,18 @@ export const useractionRouter = router({
         .input(
             z.object({
                 username: z.string(),
+                prototypeId: z.string(),
                 pttrials: z.string(),
                 prototypeFeedback: z.string(),
-                finalOverallFeedback: z.string()
             })
         )
         .mutation(async ({ ctx, input }) => {
             const pttrialslog = await ctx.prisma.userActions.create({
                 data: {
                     username: input.username,
+                    prototype: input.prototypeId,
                     pttrials: input.pttrials,
-                    ptfeedback: input.prototypeFeedback,
-                    overallfeedback: input.finalOverallFeedback
+                    ptfeedback: input.prototypeFeedback            
                 }
             })
             return pttrialslog;

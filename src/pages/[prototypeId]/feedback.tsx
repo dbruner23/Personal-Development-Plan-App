@@ -11,27 +11,23 @@ import ThankYouDialog from "../../components/questionnaire/ThankYouDialog";
 
 
 const Feedback = () => {
-  const [feedback, setFeedback] = useState({ prototype: '', favourite: '', like:'', dislike:'', improve:'' });
+  const [feedback, setFeedback] = useState({ favourite: '', like:'', dislike:'', improve:'' });
   const savePttrials = trpc.useraction.savePttrials.useMutation();
   const router = useRouter()
   const prototypeId = router.query.prototypeId
-  
-  useEffect(() => {
-    if (typeof prototypeId === "string") setFeedback({ ...feedback, prototype: prototypeId });
-  }, [])
   
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFeedback({...feedback, [event.target.name]: event.target.value});
   };
 
   const handleSubmit = async () => {
-    const getfeedbackData = window.localStorage.getItem("feedback")
-    const feedbackData = getfeedbackData == null ? [] : JSON.parse(getfeedbackData)
-    feedbackData.push(feedback)
-    window.localStorage.setItem('feedback', JSON.stringify(feedbackData));
+    const username = (window.localStorage.getItem("user"));
+    const pttrials = (window.localStorage.getItem("pttrials"));
+    const prototypeFeedback = JSON.stringify(feedback)
+    if (username !== null && typeof prototypeId === "string" && pttrials !== null && prototypeFeedback !== null) {
+      await savePttrials.mutateAsync({ username, prototypeId, pttrials, prototypeFeedback })
+    }
   }
-
-
 
   return (
     <>
