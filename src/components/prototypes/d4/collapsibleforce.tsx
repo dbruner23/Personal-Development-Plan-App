@@ -415,7 +415,7 @@ const CollapsibleForce = () => {
                                 <div><strong>Name:</strong> James</div>
                                 <div><strong>Education:</strong> Bachelors in Journalism</div>
                                 <div><strong>Job:</strong> Journalist</div>
-                                <div><strong>Gaol:</strong> Investment Banking Analyst</div>
+                                <div><strong>Goal:</strong> Investment Banking Analyst</div>
                             </div>
                             <Button className="bg-[#1848C8] w-1/2 text-white hover:bg-[#1565C0]"
                                 onClick={() => { setUserInput({ goal: 'Investment Banking Analyst', seekscope: 'general', interestfields: ['finance'], currentjob: 'Journalist', worklevel: 'middle', backgroundfield: 'journalism', edlevel: 'bachelors', educationfields: ["journalism"], certifications: [] })}}
@@ -435,7 +435,7 @@ const CollapsibleForce = () => {
                                 <div><strong>Name:</strong> Jean</div>
                                 <div><strong>Education:</strong> Bachelors in Finance</div>
                                 <div><strong>Job:</strong> Junior Investment Banker</div>
-                                <div><strong>Gaol:</strong> Managing Director</div>
+                                <div><strong>Goal:</strong> Managing Director</div>
                             </div>
                             <Button className="bg-[#1848C8] w-1/2 text-white hover:bg-[#1565C0]"
                                 onClick={() => { setUserInput({ goal: 'Managing Director', seekscope: 'specific', interestfields: ['finance'], currentjob: 'Junior Investment Banker', worklevel: 'junior', backgroundfield: 'finance', edlevel: 'bachelors', educationfields: ["finance"], certifications: ["Dacreed FMVA"] }) }}
