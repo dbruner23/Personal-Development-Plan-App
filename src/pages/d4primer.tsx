@@ -27,8 +27,7 @@ const D4primer = () => {
                       src={James}
                   />
               </div>
-              <div>Persona 1 - James, a journalist in his early 30s who has been covering financial markets for years and has
-                  decided he wants to pivot his career into finance with the aim of climbing the ladder to reach at least the
+              <div>Persona 1 - James, a journalist in his early 30s has decided he wants to pivot his career into finance with the aim of at least reaching the
                   level of Investment Banking Analyst. He has a Uni degree in journalism but no formal training in finance and is exploring options
                   for entry into the field.
               </div>
@@ -39,13 +38,12 @@ const D4primer = () => {
                       src={Jean}
                   />
               </div>
-              <div>Persona 2 - Jean, a successful Junior Investment Banker in her late 20s has a Uni degree in finance and loves what she does. She is
-                  considering her options for the future, as she aims to reach the top as a Managing Director, but is unsure whether she
-                  wants to continue with the Investment Banking path or move toward Private Equity.
+              <div>Persona 2 - Jean is a successful Junior Investment Banker in her late 20s. She has a Uni degree in finance and loves what she does.
+                  As she looks to the future, she wants to reach the top as a Managing Director, but is unsure whether she wants to be in Investment Banking path or Private Equity.
               </div>
           </div>
           <div>
-              While the current data set is limited in scope to chart only a few career paths in finance, do feel free to experiment with other inputs as well! 
+              FYI - The current data set is limited in scope to a few career paths in finance, but do feel free to experiment with other inputs as well! 
           </div>
           <Link href={`/d4/${userName}`}>
               <Button variant="contained" className="px-5 py-2 mr-6 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">

@@ -27,7 +27,7 @@ const InputStep2 = (props: Props) => {
     const { userInput, setInputStep, handleChange } = props
 
     const careerfields = [
-        'finance', 'engineering', 'management', 'medical', 'construction', 'architecture', 'graphic design', 'other'
+        'finance', 'journalism','engineering', 'management', 'medical', 'construction', 'architecture', 'graphic design', 'other'
     ]
     const edfields = [
         'finance', 'journalism', 'computer science', 'economics', 'philosophy', 'visual arts', 'history', 'political science', 'other'
