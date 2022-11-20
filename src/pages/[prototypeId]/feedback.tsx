@@ -4,7 +4,7 @@ import Head from "next/head";
 import ThankYouModal from "../../components/questionnaire/ThankYouModal";
 import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
-import ThankYouDialog from "../../components/questionnaire/ThankYouDialog";
+// import ThankYouDialog from "../../components/questionnaire/ThankYouDialog";
 
 
 
@@ -101,6 +101,7 @@ const Feedback = () => {
           <div className="flex justify-center" >
               <ThankYouModal  handleSubmit={handleSubmit} />
               {/* <ThankYouDialog /> */}
+              
           </div>
         </div>
         </div>
