@@ -6,7 +6,7 @@ import James from '../../public/images/James.jpg'
 import { Button } from "@mui/material";
 
 
-const d4primer = () => {
+const D4primer = () => {
 
     const [userName, setUserName] = useState('')
 
@@ -18,7 +18,7 @@ const d4primer = () => {
     }, [])
   return (
       <div className="flex flex-col w-screen h-screen justify-start items-center p-16 bg-gradient-to-b from-[#1848C8] to-[#AFC3FF]  text-white gap-6">
-          <div className="text-2xl">Thanks for trialing "Opportunity Tree"!</div>
+          <div className="text-2xl">Thanks for trialing Opportunity Tree!</div>
           <div >Before diving in...</div>
           <div>This prototype will be most fruitfully experienced and reviewed in the mindset of a couple personas.</div>
           <div className="flex justify-start gap-10 h-1/4 w-3/5">
@@ -49,11 +49,11 @@ const d4primer = () => {
           </div>
           <Link href={`/d4/${userName}`}>
               <Button variant="contained" className="px-5 py-2 mr-6 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">
-                  Let's do this!
+                  Let&#39;s do this!
               </Button>
           </Link>
       </div>
   )
 }
 
-export default d4primer
+export default D4primer
