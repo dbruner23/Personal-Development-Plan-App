@@ -31,7 +31,11 @@ const AllUserHeatmap = () => {
   if (pttrialsData.data !== undefined) {
     parsedtrialsData = pttrialsData.data.map((dataset: any) => JSON.parse(dataset.pttrials) );
   }
-
+  console.log(parsedtrialsData)
+  const currentptdata = parsedtrialsData.map((dataset: any) => {
+    dataset.filter((trial:any) => { trial.prototype === prototypeId })
+  })
+  
   
   
   // const parsedtrialsData = pttrialsDataArr !== undefined ? pttrialsDataArr.map((dataset: any) => { JSON.parse(dataset) }) : '';

@@ -16,6 +16,10 @@ const Home: NextPage = () => {
 
   const handleSubmit = async () => {
     // const newUser = await saveUser.mutateAsync({ username: username })
+    if (username === "") {
+      alert("Please enter a username.")
+      return
+    } 
     window.localStorage.setItem("user", JSON.stringify(username));
     router.push(`/dashboard`);
   };

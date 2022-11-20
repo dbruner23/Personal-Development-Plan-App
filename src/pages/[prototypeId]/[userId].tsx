@@ -62,7 +62,7 @@ const Prototype = () => {
     useEffect(() => {
         const newMus = new (Mus as any)()
         setMus(newMus);
-        const windowdims = { width: window?.innerWidth, height: window?.outerHeight }
+        const windowdims = { width: window?.innerWidth, height: window?.innerHeight }
         setRecordWindow(windowdims)
     }, [])
     
@@ -106,7 +106,8 @@ const Prototype = () => {
         const time = timeSlice()
         const mousemove = getMousemoveCoordinates();
         const clicks = getClickCoordinates();
-        const pttrial = { prototype: prototypeId, time: time, recordWindow: recordWindow, mousemove: mousemove, clicks: clicks }
+        const scroll = getScrollCoordinates();
+        const pttrial = { prototype: prototypeId, time: time, recordWindow: recordWindow, mousemove: mousemove, clicks: clicks, scroll: scroll }
         const getpttrials = window.localStorage.getItem("pttrials")
         const pttrials = getpttrials == null ? [] : JSON.parse(getpttrials)
         pttrials.push(pttrial)

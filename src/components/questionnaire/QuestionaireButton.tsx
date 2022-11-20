@@ -7,7 +7,7 @@ const QuestionaireButton = () => {
     <>
     <Link href="/OverallFeedback">
     <Button variant="contained" className="bg-[#81bd75]">
-       Feedback form
+       Overall Feedback
       </Button>
       </Link>
     </>
