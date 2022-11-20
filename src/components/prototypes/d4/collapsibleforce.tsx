@@ -12,6 +12,8 @@ import InputStep1 from './InputStep1';
 import InputStep2 from './InputStep2';
 import InputStep3 from './InputStep3';
 import InputStep4 from './InputStep4';
+import James from '../../../../public/images/James.jpg'
+import Jean from '../../../../public/images/Jean.jpg'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
@@ -395,12 +397,57 @@ const CollapsibleForce = () => {
 
 
     return (
-        <div className="flex justify-center items-center w-screen h-90vh">
+        <div className="flex justify-center items-center w-screen h-90vh relative">
             <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-90vh w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
                 <div>{stepSwitch(inputStep)}</div>
             </div>
+            {!started && inputStep > 1 && (
+                <div className="flex flex-col items-center absolute bg-[#eff1f4] p-5 rounded-xl top-10 right-10 w-1/4 h-1/2 gap-2">
+                    <div><strong>Example Personas:</strong></div>
+                    <div className="flex h-32 gap-2">
+                        <div className="w-1/4">
+                            <Image
+                                src={James}
+                            />
+                        </div>
+                        <div className="flex flex-col items-center gap-2 w-full">
+                            <div className="flex flex-col text-xs">
+                                <div><strong>Name:</strong> James</div>
+                                <div><strong>Education:</strong> Bachelors in Journalism</div>
+                                <div><strong>Job:</strong> Journalist</div>
+                                <div><strong>Goal:</strong> Investment Banking Analyst</div>
+                            </div>
+                            <Button className="bg-[#1848C8] w-1/2 text-white hover:bg-[#1565C0]"
+                                onClick={() => { setUserInput({ goal: 'Investment Banking Analyst', seekscope: 'general', interestfields: ['finance'], currentjob: 'Journalist', worklevel: 'middle', backgroundfield: 'journalism', edlevel: 'bachelors', educationfields: ["journalism"], certifications: [] })}}
+                            >
+                                Fill Form
+                            </Button>
+                        </div>
+                    </div>
+                    <div className="flex h-20 gap-2">
+                        <div className="w-1/4">
+                            <Image
+                                src={Jean}
+                            />
+                        </div>
+                        <div className="flex flex-col items-center gap-2 w-full">
+                            <div className="flex flex-col text-xs">
+                                <div><strong>Name:</strong> Jean</div>
+                                <div><strong>Education:</strong> Bachelors in Finance</div>
+                                <div><strong>Job:</strong> Junior Investment Banker</div>
+                                <div><strong>Goal:</strong> Managing Director</div>
+                            </div>
+                            <Button className="bg-[#1848C8] w-1/2 text-white hover:bg-[#1565C0]"
+                                onClick={() => { setUserInput({ goal: 'Managing Director', seekscope: 'specific', interestfields: ['finance'], currentjob: 'Junior Investment Banker', worklevel: 'junior', backgroundfield: 'finance', edlevel: 'bachelors', educationfields: ["finance"], certifications: ["Dacreed FMVA"] }) }}
+                            >
+                                Fill Form
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            )}
             {started && (
-                <div className={`${leftCollapsed ?  'h-10 w-6 overflow-hidden  bg-[#eff1f4] rounded-xl' : 'h-5/6 w-1/4' } flex left-10 top-10 fixed justify-between items-center mx-auto flex-col p-0`}>
+                <div className={`${leftCollapsed ?  'h-10 w-6 overflow-hidden  bg-[#eff1f4] rounded-xl' : 'h-90vh w-1/4' } flex left-10 top-10 fixed justify-between items-center mx-auto flex-col p-0`}>
                     <div className="flex h-1/2 w-full overflow-scroll left-10 top-10 justify-start mx-auto flex-col bg-[#eff1f4] p-7 rounded-xl">
                         <div className="flex flex-col justify-center items-center mx-auto gap-2">
                             <div className="flex w-full justify-center">
@@ -524,7 +571,7 @@ const CollapsibleForce = () => {
                 {infoData.summary !== 'undefined' && (
                     <div className="flex justify-center items-center flex-col" >
                         <Button variant="contained" className="bg-[#1848C8]">
-                            <Link className="text-blue-600" href={infoData.link ? infoData.link : ''}>Learn More</Link>
+                            <Link className="text-blue-600" href={infoData.link ? infoData.link : ''}><a target="_blank">Next Steps</a></Link>
                         </Button>
                     </div>
                 )}
@@ -536,7 +583,7 @@ const CollapsibleForce = () => {
                         </div>
                         <div className="flex justify-center items-center" >
                             <Button variant="contained" className="bg-[#1848C8]">
-                                <Link className="text-blue-600" href={infoData.linkedIn ? infoData.linkedIn : ''}>Network</Link>
+                                <Link className="text-blue-600" href={infoData.linkedIn ? infoData.linkedIn : ''}><a target="_blank">My Network</a></Link>
                             </Button>
                         </div>
                     </div>
