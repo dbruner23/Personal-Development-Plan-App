@@ -4,8 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useRouter } from 'next/router';
-// import CloseIcon from '@mui/icons-material/Close';
-// import Stack from '@mui/material/Stack';
+import Link from "next/link";
 
 
 const style = {
@@ -54,9 +53,12 @@ export default function ThankYouModal(props: Props) {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           If this is the last prototype please fill out our final feedback form on the dashboard.
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Click anywhere on this page to go back to the dashboard.
-          </Typography>
+          <br/>
+          <Link href="/dashboard">
+           <Button variant="contained" className="bg-[#81bd75]">
+            Back to dashboard
+           </Button>
+          </Link>
         </Box>
         
       </Modal>
