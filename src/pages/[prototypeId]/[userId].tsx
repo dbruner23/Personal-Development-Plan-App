@@ -15,7 +15,9 @@ import S5 from '../../components/prototypes/s5/S5'
 import DelaunayMap from '../../components/prototypes/d5/DelaunayMap'
 import S6 from '../../components/prototypes/s6/S6'
 import S7 from '../../components/prototypes/s7/S7'
-import Button from '@mui/material/Button';
+import Button from '@mui/material/Button'
+import NycMap from '../../components/prototypes/d6/Nycmap'
+
 
 interface IRecordWindow {
         width: number;
@@ -40,6 +42,8 @@ const Prototype = () => {
                 return <CollapsibleForce />
             case 'd5':
                 return <DelaunayMap />
+            case 'd6':
+                return <NycMap />
             case 's1':
                 return <S1 />
             case 's2':
