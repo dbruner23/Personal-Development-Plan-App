@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  useSession,
-  signOut,
-  getSession,
-  GetSessionParams,
-} from "next-auth/react";
+// import {
+//   useSession,
+//   signOut,
+//   getSession,
+//   GetSessionParams,
+// } from "next-auth/react";
 import Link from "next/link";
-import { unstable_getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]";
-import { GetServerSideProps } from "next";
+// import { unstable_getServerSession } from "next-auth";
+// import { authOptions } from "./api/auth/[...nextauth]";
+// import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { string } from "zod";
+// import { string } from "zod";
 import Image from "next/future/image";
 import PrototypeS1image from "../components/innerCircleGraph/img/prototypeS1.png";
 import PrototypeS2image from "../components/prototypes/s2/img/graphS2.png";
-import PrototypeD1image from "../components/prototypes/s2/img/PrototypeD1.jpg";
+// import PrototypeD1image from "../components/prototypes/s2/img/PrototypeD1.jpg";
 import PrototypeS3image from "../components/prototypes/s2/img/PrototypeS3.png";
 import PrototypeD2image from "../components/prototypes/s2/img/PrototypeD2.png";
 import PrototypeS4image from "../components/prototypes/s2/img/PrototypeS4.png";
