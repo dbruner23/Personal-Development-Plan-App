@@ -8,7 +8,7 @@ import * as d3 from 'd3'
 const NycMap = () => {
     const [data, setData] = useState<any>(nycintersections)
     const nycstreetsarr = nycstreets as Array<any>
-    console.log(nycstreetsarr)
+    console.log(nycstreetsarr[0])
     const latLngArr = Array.from(data, (point: any) => [+point.geometry.coordinates[0], +point.geometry.coordinates[1]])
     const svgRef = useRef<SVGSVGElement>(null)
 
