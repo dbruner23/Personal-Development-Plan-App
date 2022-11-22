@@ -38,3 +38,8 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+src/data/DCM_StreetCenterLine.json
+src/data/DCM_StreetNameChanges_Points.json
+src/data/foods.csv
+src/data/manhattanbrooklynpoints.json
