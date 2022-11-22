@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react'
-import nycpoints from '../../../data/manhattanbrooklynpoints.json'
 import nycstreets from '../../../data/streetsManhattanBrooklyn.json'
 import nycintersections from '../../../data/intersectionsnyc.json'
 import * as d3 from 'd3'
