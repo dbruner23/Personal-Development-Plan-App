@@ -9,7 +9,7 @@ const S7 = () => {
       
 <main className='mx-auto max-w-full'>
   
-<div className="bg-[#4b5b66] p-6 m-6 rounded-lg text-[#dbe6e8]">
+<div className="bg-[#6a889c] p-6 m-6 rounded-lg text-[#dbe6e8]">
 
     <div className="flex justify-center my-4 ">
       <h2 className="text-2xl font-semibold text-center ">This Prototype shows your past career progression and 2 pathways that can help you reach 100% of your career goal by 2025 </h2>
