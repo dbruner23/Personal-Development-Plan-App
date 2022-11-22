@@ -22,9 +22,11 @@ const D4primer = () => {
           <div >Before diving in...</div>
           <div>This prototype will be most fruitfully experienced and reviewed in the mindset of a couple personas.</div>
           <div className="flex justify-start gap-10 h-1/4 w-3/5">
-              <div className="w-1/2">
+              <div className="flex justify-center w-1/2 ">
                   <Image
                       src={James}
+                      width={95}  
+                      objectFit='scale-down'
                   />
               </div>
               <div>Persona 1 - James, a journalist in his early 30s has decided he wants to pivot his career into finance with the aim of at least reaching the
@@ -33,9 +35,13 @@ const D4primer = () => {
               </div>
           </div>
           <div className="flex justify-start gap-10 h-1/4 w-3/5">
-              <div className="w-1/2">
+              <div className="flex justify-center w-1/2 ">
                   <Image
                       src={Jean}
+                      width={100}
+                      objectFit='scale-down'
+                      
+                      
                   />
               </div>
               <div>Persona 2 - Jean is a successful Junior Investment Banker in her late 20s. She has a Uni degree in finance and loves what she does.
