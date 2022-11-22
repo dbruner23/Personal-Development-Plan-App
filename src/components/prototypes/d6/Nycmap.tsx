@@ -25,10 +25,10 @@ const NycMap = () => {
             40.63]).translate([width / 2, height])
         const nycgeoPath = d3.geoPath()
             .projection(projection)
-        let streetStart = [];
+        // let streetStart = [];
         
         function handleMouseover(this: any, e:any, d:any) {
-            let measure = nycgeoPath.measure(d);
+            const measure = nycgeoPath.measure(d);
             d3.select(this).attr('stroke', 'orangered')
         }
         
