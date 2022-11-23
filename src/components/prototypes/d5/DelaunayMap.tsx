@@ -15,18 +15,21 @@ const DelaunayMap = () => {
     const Map = (data:any) => {
         d3.selectAll("svg > *").remove();
         const svg: any = d3.select(svgRef.current)
-        const projection = d3.geoOrthographic()
         const outline : any = { type: "Sphere" }
         const width = window.innerWidth
-        const projectlatlng:any[] = []
-        const height = () => {
-            const [[x0, y0], [x1, y1]] = d3.geoPath(projection.fitWidth(width, outline)).bounds(outline);
-            const dy = Math.ceil(y1 - y0), l = Math.min(Math.ceil(x1 - x0), dy);
-            projection.scale(projection.scale() * (l - 1) / l).precision(0.2);
-            return dy;
-        }
+        const height = window.innerHeight
+        const projection = d3.geoMercator().scale(1000).center([159.87124736814, -37.83332894278]).translate([width / 2, height / 2 ])
+        const projectlatlng: any[] = []
+        const geoPathGenerator = d3.geoPath()
+            .projection(projection)
+        // const height = () => {
+        //     const [[x0, y0], [x1, y1]] = d3.geoPath(projection.fitWidth(width, outline)).bounds(outline);
+        //     const dy = Math.ceil(y1 - y0), l = Math.min(Math.ceil(x1 - x0), dy);
+        //     projection.scale(projection.scale() * (l - 1) / l).precision(0.2);
+        //     return dy;
+        // }
         
-        svg.attr("viewBox", [0, 0, width, height()])
+        svg.attr("viewBox", [0, 0, width, height])
             .attr("cursor", "crosshair")
         for (let i = 0; i < data.length; i++) {
             projectlatlng.push(projection([data[i].longitude, data[i].latitude]))
@@ -41,7 +44,7 @@ const DelaunayMap = () => {
         const mesh = svg.append("path")
             .attr("fill", "none")
             .attr("stroke", "#ccc")
-            .attr("stroke-width", 1)
+            .attr("stroke-width", .5)
             .attr("d", delaunay.render());
 
         const g = svg.append("g");
@@ -51,7 +54,10 @@ const DelaunayMap = () => {
             .data(data)
             .join("circle")
             .attr("transform", (d: any) => `translate(${projection([d.longitude, d.latitude])})`)
-            .attr("r", 1);
+            .attr("r", 1)
+            .on("click", (e: any, d: any) => {
+                console.log(d)
+            });
                 
         // const text = g
         //     .append("title")
@@ -72,10 +78,12 @@ const DelaunayMap = () => {
                 
         return svg
             //path set
-            .on("click", (event: any) => {
+            .on("click", (event: any, d:any) => {
                 start = delaunay.find(...d3.pointer(event));
-                console.log(start)
-                console.log(nodes)
+                // console.log(start)
+                // if (projection !== undefined) { console.log(projection.invert(d3.pointer(event))) }
+                
+                
                 path = [];
             })
             .call(zoom)
