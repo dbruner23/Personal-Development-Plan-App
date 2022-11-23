@@ -2,6 +2,7 @@ import { ResponsiveContainer, Sankey, Tooltip } from "recharts";
 import Node from "./Node";
 import Link from "./Link";
 import sankeyData from "./sankeyData";
+import sankeyData2 from "./sankeyData2";
 
 
 
@@ -11,15 +12,15 @@ const SankeyChart = () => {
 
   return (
     <>
-    <ResponsiveContainer width={"98%"} height={750} min-width={400}>
+    <ResponsiveContainer width={"98%"} height={650} min-width={400}>
       <Sankey
-      data={sankeyData}
+      data={sankeyData2}
       nodeWidth={10}
       nodePadding={50}
       linkCurvature={0.71}
       iterations={36}
       link={<Link />}
-      node={<Node containerWidth={960} />}
+      node={<Node containerWidth={"100%"} />}
     >
       <defs>
         <linearGradient id={"linkGradient"}>
