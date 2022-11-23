@@ -17,6 +17,7 @@ import S6 from '../../components/prototypes/s6/S6'
 import S7 from '../../components/prototypes/s7/S7'
 import Button from '@mui/material/Button'
 import NycMap from '../../components/prototypes/d6/Nycmap'
+import S5New from '../../components/prototypes/s5/S5New'
 
 
 interface IRecordWindow {
@@ -58,6 +59,8 @@ const Prototype = () => {
                 return <S6 />
             case 's7':
                 return <S7 />
+            case 's5New':
+                return <S5New />
             default:
                 return <Loading />
         }

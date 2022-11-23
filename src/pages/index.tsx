@@ -35,7 +35,7 @@ const Home: NextPage = () => {
         <div className="flex flex-col items-center">
           <div className="z-10 flex flex-col items-center justify-center bg-white opacity-80 p-5">
             <h1 className="text-2xl font-semibold mb-2">
-              Welcome to Dacreed Huapae (Horizons)
+              Welcome to PDP Horizons by Dacreed
             </h1>
             <p>your intelligent career journey mapping tool</p>
             <p>Create a username to begin</p>
