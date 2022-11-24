@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
+import landlines from '../../../data/landlines.json'
 import airports from '../../../data/airports.json'
 import * as d3 from 'd3'
+import { render } from 'react-dom'
 
 
 const DelaunayMap = () => {
@@ -9,25 +11,30 @@ const DelaunayMap = () => {
     const svgRef = useRef<SVGSVGElement>(null)
 
     useEffect(() => {
-        if (data !== undefined) { Map(data) }
+        if ((data !== undefined) && (landlines !== null)) { Map(landlines, data)}   
     }, [data])
 
-    const Map = (data:any) => {
+    const Map = (geojson: any, data:any) => {
         d3.selectAll("svg > *").remove();
         const svg: any = d3.select(svgRef.current)
-        const outline : any = { type: "Sphere" }
         const width = window.innerWidth
         const height = window.innerHeight
-        const projection = d3.geoMercator().scale(1000).center([159.87124736814, -37.83332894278]).translate([width / 2, height / 2 ])
+        const projection = d3.geoOrthographic().scale(700).rotate([-156, 33]).translate([width / 2, height / 2])
+            // .center([159.87124736814, -37.83332894278]).translate([width / 2, height / 2])
         const projectlatlng: any[] = []
         const geoPathGenerator = d3.geoPath()
             .projection(projection)
+        const sphere: any = ({ type: "Sphere" })
+        const graticule = d3.geoGraticule10()
+        const sensitivity = 75;
+        // console.log(graticule)
         // const height = () => {
         //     const [[x0, y0], [x1, y1]] = d3.geoPath(projection.fitWidth(width, outline)).bounds(outline);
         //     const dy = Math.ceil(y1 - y0), l = Math.min(Math.ceil(x1 - x0), dy);
         //     projection.scale(projection.scale() * (l - 1) / l).precision(0.2);
         //     return dy;
         // }
+        
         
         svg.attr("viewBox", [0, 0, width, height])
             .attr("cursor", "crosshair")
@@ -37,17 +44,47 @@ const DelaunayMap = () => {
         const delaunay = d3.Delaunay.from<any>(projectlatlng, d => d[0], d => d[1]);
         console.log(delaunay)
 
+
+        function getVisibility(d:any) {
+            const visible = geoPathGenerator(
+                { type: 'Point', coordinates: [d.longitude, d.latitude] });
+
+            return visible ? 'visible' : 'hidden';
+        }
+
         svg.append("defs")
             .append("style")
             .text("circle.highlighted { stroke: orangered; fill: orangered; }");
 
-        const mesh = svg.append("path")
-            .attr("fill", "none")
-            .attr("stroke", "#ccc")
-            .attr("stroke-width", .5)
-            .attr("d", delaunay.render());
+        // const mesh = svg.append("path")
+        //     .attr("fill", "none")
+        //     .attr("stroke", "#ccc")
+        //     .attr("stroke-width", .5)
+        //     .attr("d", delaunay.render());
 
         const g = svg.append("g");
+
+        const land = g
+            .append('path')
+            .attr('d', geoPathGenerator(geojson))
+            .attr('fill', '#ccc')
+        
+        const geoGraticule = g
+            .append("path")
+            .attr("d", geoPathGenerator(graticule))
+            .attr("stroke", "#ddd")
+            .attr("stroke-width", 1)
+            .attr("fill", "none")
+
+        const outline = g
+            .append("path")
+            .attr("id", "outline")
+            .attr("d", geoPathGenerator(sphere))
+            .attr("stroke", "#ccc")
+            .attr("fill", "none")
+        
+        const links = g
+            .append("path")
 
         const nodes = g
             .selectAll("circle")
@@ -55,6 +92,7 @@ const DelaunayMap = () => {
             .join("circle")
             .attr("transform", (d: any) => `translate(${projection([d.longitude, d.latitude])})`)
             .attr("r", 1)
+            .attr("visibility", getVisibility)
             .on("click", (e: any, d: any) => {
                 console.log(d)
             });
@@ -68,38 +106,58 @@ const DelaunayMap = () => {
 
         const zoom = d3.zoom().on("zoom", e => {
             g.attr("transform", (transform = e.transform));
-            mesh.attr("transform", (transform = e.transform));
+            // mesh.attr("transform", (transform = e.transform));
             g.style("stroke-width", 3 / Math.sqrt(transform.k));
             nodes.attr("r", 1.5 / Math.sqrt(transform.k));
         });
 
-        let start = 0;
-        let path: number[] = [];
+        let start = nodes._groups[0][2788];
+        let destination = 
+        // let path: number[] = [];
+        console.log(nodes._groups[0].findIndex((node: any) => {
+            return node.__data__.position === "Senior Digital Marketing Director"
+        }))
+            
+            
+
                 
         return svg
             //path set
+            .call(d3.drag().on('drag', (event, d) => {
+                
+                const rotate = projection.rotate()
+                const k = sensitivity / projection.scale()
+                projection.rotate([
+                    rotate[0] + event.dx * k,
+                    rotate[1] - event.dy * k
+                ])
+
+                land.attr('d', geoPathGenerator(geojson))
+                geoGraticule.attr('d', geoPathGenerator(graticule))
+                nodes.attr("transform", (d: any) => `translate(${projection([d.longitude, d.latitude])})`).attr("visibility", getVisibility)
+            }))
             .on("click", (event: any, d:any) => {
-                start = delaunay.find(...d3.pointer(event));
+                // start = delaunay.find(...d3.pointer(event));
                 // console.log(start)
                 // if (projection !== undefined) { console.log(projection.invert(d3.pointer(event))) }
                 
                 
-                path = [];
+                // path = [];
             })
             .call(zoom)
             .call(zoom.transform, d3.zoomIdentity)
             //recalc on zoom 
-            .on("pointermove", (event: any) => {
-                path = findPath(d3.pointer(event), start, delaunay);
-                // pathMesh.attr("d", renderPath(path, delaunay.points));
-                const p: [number, number] = transform.invert(d3.pointer(event));
-                const i = delaunay.find(...p);
+            // .on("pointermove", (event: any) => {
+            //     path = findPath(d3.pointer(event), start, delaunay);
+            //     // pathMesh.attr("d", renderPath(path, delaunay.points));
+            //     const p: [number, number] = transform.invert(d3.pointer(event));
+            //     const i = delaunay.find(...p);
                 
-                // nodes.attr("fill", (d: any, j: number) => { i === j ? '#fc2500' : '#000000'})
-                nodes.classed("highlighted", (_: any, j: number) => (i === j) || (path.includes(j)));
-                // d3.select(nodes.nodes()[i]).raise();
-                // mesh.attr("d", delaunay.render())
-            })
+            //     // nodes.attr("fill", (d: any, j: number) => { i === j ? '#fc2500' : '#000000'})
+            //     nodes.classed("highlighted", (_: any, j: number) => (i === j) || (path.includes(j)));
+            //     // d3.select(nodes.nodes()[i]).raise();
+            //     // mesh.attr("d", delaunay.render())
+            // })
             .node()
     }
 
@@ -107,7 +165,7 @@ const DelaunayMap = () => {
     
 
     return (
-        <div className="flex justify-center items-center w-screen h-screen p-10">
+        <div className="flex justify-center items-center w-screen h-screen">
             <svg ref={svgRef}></svg>
         </div>
   )
@@ -128,7 +186,7 @@ function findPath(pointer: [number, number], start: number, delaunay: any) {
 function renderPath(path: number[], points: any) {
 
     if (path.length > 1) {
-        const p = d3.path();
+        const p:any = d3.path();
         p.moveTo(...getPoint(0, points));
 
         path.slice(1).forEach((nodeIndex) => {
@@ -145,3 +203,56 @@ function renderPath(path: number[], points: any) {
 function getPoint(index: number, points: number[]): [number, number] {
     return [points[2 * index]!, points[2 * index + 1]!]
 }
+
+// function drag(projection :any) {
+//     let v0:any, q0:any, r0:any, a0 :any, l:any;
+
+//     function pointer(event:any, that:any) {
+//         const t :any = d3.pointers(event, that);
+
+//         if (t.length !== l) {
+//             l = t.length;
+//             if (l > 1) a0 = Math.atan2(t[1][1] - t[0][1], t[1][0] - t[0][0]);
+//             dragstarted.apply(that, [event, that]);
+//         }
+
+//         // For multitouch, average positions and compute rotation.
+//         if (l > 1) {
+//             const x = d3.mean(t, p => p[0]);
+//             const y = d3.mean(t, p => p[1]);
+//             const a = Math.atan2(t[1][1] - t[0][1], t[1][0] - t[0][0]);
+//             return [x, y, a];
+//         }
+
+//         return t[0];
+//     }
+
+//     function dragstarted(event :any) {
+//         v0 = versor.cartesian(projection.invert(pointer(event, this)));
+//         q0 = versor(r0 = projection.rotate());
+//     }
+
+//     function dragged(event :any) {
+//         const p = pointer(event, this);
+//         const v1 = versor.cartesian(projection.rotate(r0).invert(p));
+//         const delta = versor.delta(v0, v1);
+//         let q1 = versor.multiply(q0, delta);
+
+//         // For multitouch, compose with a rotation around the axis.
+//         if (p[2]) {
+//             const d = (p[2] - a0) / 2;
+//             const s = -Math.sin(d);
+//             const c = Math.sign(Math.cos(d));
+//             q1 = versor.multiply([Math.sqrt(1 - s * s), 0, 0, c * s], q1);
+//         }
+
+//         projection.rotate(versor.rotation(q1));
+
+//         // In vicinity of the antipode (unstable) of q0, restart.
+//         if (delta[0] < 0.7) dragstarted.apply(this, [event, this]);
+//     }
+
+//     return d3.drag()
+//         .on("start", dragstarted)
+//         .on("drag", dragged);
+// }

@@ -861,6 +861,9 @@
  },
  {
    "name": "Sydney / J.A. Douglas McCurdy Airport",
+   "position": "Masters in Comp Sci",
+   "time": 1,
+   "cost": 10000,
    "longitude": "-60.0477981567",
    "latitude": "46.1613998413"
  },
@@ -8406,6 +8409,9 @@
  },
  {
    "name": "Auckland International Airport",
+   "position": "Software Team Manager",
+   "time": 7,
+   "salary": 200000,
    "longitude": "174.792007446",
    "latitude": "-37.0080986023"
  },
@@ -8416,6 +8422,9 @@
  },
  {
    "name": "Christchurch International Airport",
+   "position": "Junior Data Scientist",
+   "time": 1.5,
+   "salary": 50000,
    "longitude": "172.531997680664",
    "latitude": "-43.4893989562988"
  },
@@ -8436,36 +8445,57 @@
  },
  {
    "name": "Hokitika Airfield",
+   "position": "Junior Frontend Developer",
+   "time": 1.5,
+   "salary": 65000,
    "longitude": "170.985000610352",
    "latitude": "-42.7136001586914"
  },
  {
    "name": "Hamilton International Airport",
+   "position": "Technical Lead",
+   "time": 4,
+   "salary": 131897,
    "longitude": "175.332000732",
    "latitude": "-37.8666992188"
  },
  {
    "name": "Kerikeri Airport",
+   "position": "A.I. Research Professor",
+   "time": 19,
+   "salary": 130000,
    "longitude": "173.912002563477",
    "latitude": "-35.2627983093262"
  },
  {
    "name": "Kaitaia Airport",
+   "position": "Comp Sci Research Professor",
+   "time": 20,
+   "salary": 130000,
    "longitude": "173.285003662109",
    "latitude": "-35.0699996948242"
  },
  {
    "name": "New Plymouth Airport",
+   "position": "Senior Software Engineer",
+   "time": 5,
+   "salary": 120000,
    "longitude": "174.179000854492",
    "latitude": "-39.0085983276367"
  },
  {
    "name": "Napier Airport",
+   "position": "Senior Machine Learning Engineer",
+   "salary": 110000,
+   "time": 5,
    "longitude": "176.869995117188",
    "latitude": "-39.4658012390137"
  },
  {
    "name": "Nelson Airport",
+   "position": "Intermediate Software Engineer",
+   "time": 2,
+   "salary": 92000,
    "longitude": "173.220993041992",
    "latitude": "-41.2983016967773"
  },
@@ -8491,11 +8521,17 @@
  },
  {
    "name": "Rotorua Regional Airport",
+   "position": "A.I. Architect",
+   "time": 6,
+   "salaray": 150000,
    "longitude": "176.317001342773",
    "latitude": "-38.1091995239258"
  },
  {
    "name": "Tauranga Airport",
+   "position": "Software Architect",
+   "time": 12,
+   "salary": 200000,
    "longitude": "176.195999145508",
    "latitude": "-37.6719017028809"
  },
@@ -8516,21 +8552,33 @@
  },
  {
    "name": "Whakatane Airport",
+   "position": "Lead A.I. Inovation Researcher",
+   "time": 10,
+   "salary": 200000,
    "longitude": "176.914001464844",
    "latitude": "-37.9206008911133"
  },
  {
    "name": "Wellington International Airport",
+   "position": "Machine Learning Engineer",
+   "time": 2.5,
+   "salary": 85000,
    "longitude": "174.804992676",
    "latitude": "-41.3272018433"
  },
  {
    "name": "Whangarei Airport",
+   "position": "Chief Technical Officer",
+   "time": 10,
+   "salary": 250000,
    "longitude": "174.365005493164",
    "latitude": "-35.7682991027832"
  },
  {
    "name": "Westport Airport",
+   "position": "Junior Fullstack Developer",
+   "time": 1.5,
+   "salary": 70000,
    "longitude": "171.580993652344",
    "latitude": "-41.7380981445312"
  },
@@ -13941,6 +13989,8 @@
  },
  {
    "name": "Cooma Snowy Mountains Airport",
+   "position": "Senior Digital Marketing Director",
+   "time": 8,
    "longitude": "148.973999023",
    "latitude": "-36.3005981445"
  },
@@ -14061,6 +14111,9 @@
  },
  {
    "name": "Merimbula Airport",
+   "position": "Mission Ready HQ",
+   "time": ".9",
+   "cost": 5000,
    "longitude": "149.901000977",
    "latitude": "-36.9085998535"
  },
@@ -14111,6 +14164,9 @@
  },
  {
    "name": "Moruya Airport",
+   "position": "Masters in Data Science",
+   "time": 1,
+   "cost": 10000,
    "longitude": "150.143997192",
    "latitude": "-35.8978004456"
  },
@@ -14201,6 +14257,9 @@
  },
  {
    "name": "Port Macquarie Airport",
+   "position": "Phd in A.I.",
+   "time": 4,
+   "salary": 50000,
    "longitude": "152.863006592",
    "latitude": "-31.4358005524"
  },
@@ -14286,6 +14345,9 @@
  },
  {
    "name": "Taree Airport",
+   "position": "Phd in Computer Science",
+   "time": 4,
+   "salary": 50000,
    "longitude": "152.514007568",
    "latitude": "-31.8885993958"
  },
@@ -14311,6 +14373,9 @@
  },
  {
    "name": "Wollongong Airport",
+   "postion": "Uni Degree Comp Sci",
+   "time": 3,
+   "cost": 20000,
    "longitude": "150.789001464844",
    "latitude": "-34.5611000061035"
  },
