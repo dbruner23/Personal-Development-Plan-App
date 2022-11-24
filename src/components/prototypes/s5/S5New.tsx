@@ -4,6 +4,8 @@ import LeftPanel from "./LeftPanel";
 
 
 const S5New = () => {
+
+
   return (
     <>
      
@@ -14,9 +16,9 @@ const S5New = () => {
         <LeftPanel/>
          </div>
 
-          <div className="w-2/4 absolute top-10 ">
+         {/* <div className="w-2/4 absolute top-5 ">
             <SankeyChart/>
-          </div>
+          </div>  */}
 
 
         </div>

@@ -5,11 +5,11 @@ import financeCareerData from '../../../data/finance.json'
 import { Button } from "@mui/material";
 import Image from 'next/image';
 import Link from 'next/link';
-import InputStep1 from '../d4/InputStep1';
+import InputStep1 from './InputStep1A';
 import InputStep2 from '../d4/InputStep2';
 import InputStep3 from '../d4/InputStep3';
 import InputStep4 from '../d4/InputStep4';
-import James from '../../../../public/images/James.jpg'
+// import James from '../../../../public/images/James.jpg'
 import Jean from '../../../../public/images/Jean.jpg'
 
 interface IData {
@@ -41,7 +41,8 @@ const LeftPanel = () => {
     const [submitInput, setSubmitInput] = useState<IUserInput>({
         goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
     })
-
+    const [showGraph, setShowGraph] = useState(false)
+    
     
 
     const handleChange = (event: any) => {
@@ -56,7 +57,9 @@ const LeftPanel = () => {
         setSubmitInput(userInput);
         setInfoDisplay(false);
         setStarted(true);
+        setShowGraph(true);
     }
+
 
     const stepSwitch = (inputStep: number) => {
         switch (inputStep) {
@@ -74,28 +77,46 @@ const LeftPanel = () => {
     const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings;
     const [infoDisplay, setInfoDisplay] = useState(false)
     const [infoData, setInfoData] = useState<IInfoData>({ name: '', photo: '', summary: '', salary: '', time: 0, listings: 5, link: '', linkedIn: '' })
-    const [currentZoomState, setCurrentZoomState] = useState<IZoomState>({k: 1, x: 0, y: 0})
-    
+
+    // if (financeCareerData !== undefined) {
+    // {setInfoData({
+    // name:`${financeCareerData.children[0].name}`, 
+    // photo:`${financeCareerData.children[0].photo}`, 
+    // summary:`${financeCareerData.children[0].summary}`, 
+    // time:`${financeCareerData.children[0].time}`, 
+    // link:`${financeCareerData.children[0].link}`, 
+    // linkedIn:`${financeCareerData.children[0].linkedIn}`
+    // })}}
 
     const handleLifestyleChange = (event: any) => {
         setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
         setLifestyleInputStrings({ ...lifestyleInputStrings, [event.target.name]: (event.target.checked).toString() });
     }
 
+
+    // const handleInfoData = () => {
+    // setInfoData 
+
+    // }
+    // useEffect(() => {
+    //     if (data !== null) { buildGraph(data) }
+    // }, [data, lifestyleInputStrings, submitInput]);
+
+
   return (
     <>
-      <main className="">
+      <main className=" ">
 
        
       <div className="">
-            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-90vh w-1/5 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
+            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-90vh w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
                 <div>{stepSwitch(inputStep)}</div>
             </div>
             {!started && inputStep > 1 && (
-                <div className="flex flex-col items-center absolute bg-[#eff1f4] p-5 rounded-xl top-10 right-10 w-1/5 h-1/2 gap-2">
-                    <div><strong>Example Personas:</strong></div>
-                    <div className="flex h-32 gap-2">
-                        <div className="w-1/4">
+                <div className="flex flex-col items-center absolute bg-[#eff1f4] p-5 rounded-xl top-10 right-10 w-1/5 h-1/4 gap-2">
+                    <div><strong>Example Persona:</strong></div>
+                    <div className="flex h-22 gap-2">
+                        {/* <div className="w-1/4">
                             <Image
                                 src={James}
                             />
@@ -112,7 +133,7 @@ const LeftPanel = () => {
                             >
                                 Fill Form
                             </Button>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="flex h-20 gap-2">
                         <div className="w-1/4">
@@ -137,93 +158,53 @@ const LeftPanel = () => {
                 </div>
             )}
             {started && (
-                <div className={`${leftCollapsed ?  'h-10 w-6 overflow-hidden  bg-[#eff1f4] rounded-xl' : 'h-90vh w-1/4' } flex left-10 top-10 fixed justify-between items-center mx-auto flex-col p-0`}>
-                    <div className="flex h-1/2 w-full overflow-scroll left-10 top-10 justify-start mx-auto flex-col bg-[#eff1f4] p-7 rounded-xl">
-                        <div className="flex flex-col justify-center items-center mx-auto gap-2">
+                <div className={`${leftCollapsed ?  'h-10 w-6 overflow-hidden  bg-[#eff1f4] rounded-xl' : 'h-90vh w-1/5' } flex left-10 top-10 fixed justify-between items-center mx-auto flex-col p-0`}>
+                    <div className="flex h-1/3 w-full overflow-scroll left-10 top-10 justify-start mx-auto flex-col bg-[#eff1f4] p-7 rounded-xl">
+                        <div className="flex flex-col justify-start items-start mx-auto gap-2">
                             <div className="flex w-full justify-center">
                                 <button className="absolute right-2 top-2" onClick={() => setLeftCollapsed((prev) => {return !prev})}>{leftCollapsed ? <div>&gt;</div> : <div>&lt;</div>}</button>
-                                <div className="text-lg">Lifestyle Factors</div>
+                                <div className="text-lg">About me</div>
                             </div>
-                            <label>
-                                <input 
-                                    className="mr-2 cursor-pointer"
-                                    type="checkbox"
-                                    defaultChecked={true}
-                                    checked={lifestyleInput.extrahours}
-                                    name="extrahours"
-                                    onChange={handleLifestyleChange}
-                                />
-                                I&#39;m able to work outside of standard 9-5 Monday-Friday hours
-                            </label>
-                            <label>
-                                <input 
-                                    className="mr-2 cursor-pointer"
-                                    type="checkbox"
-                                    defaultChecked={true}
-                                    checked={lifestyleInput.fulltimeEd}
-                                    name="fulltimeEd"
-                                    onChange={handleLifestyleChange}
-                                />
-                                I&#39;m able to take time out to pursue further education full-time
-                            </label>
-                            <label>
-                                <input
-                                    className="mr-2 cursor-pointer"
-                                    type="checkbox"
-                                    defaultChecked={true}
-                                    checked={lifestyleInput.relocation}
-                                    name="relocation"
-                                    onChange={handleLifestyleChange}
-                                />
-                                I&#39;m willing to consider relocating for the right work opportunity
-                            </label>
-                            <label>
-                                <input
-                                    className="mr-2 cursor-pointer"
-                                    type="checkbox"
-                                    defaultChecked={true}
-                                    checked={lifestyleInput.remotework}
-                                    name="remotework"
-                                    onChange={handleLifestyleChange}
-                                />
-                                I&#39;m willing to consider remote working options
-                            </label>
+                            <div><strong>Name:</strong> Jean</div>
+                                <div><strong>Education:</strong> Bachelors in Finance</div>
+                                <div><strong>Job:</strong> Junior Investment Banker</div>
+                                <div><strong>Goal:</strong> Managing Director</div>
                         </div>
                     </div>
-                    <div className="flex  h-1/3 w-full left-10 top-10 justify-start items-center mx-auto flex-col bg-transparent rounded-xl gap-2">
-                        Key
+                    <div className="flex  h-2/5 w-full left-10 top-10 justify-start items-center mx-auto flex-col bg-[#eff1f4] rounded-xl gap-2 p-4">
+                        Career Summary
                         <div className="flex flex-col justify-start items-start gap-2">
                             <div className="flex gap-2">
                                 <div className="bg-[#11823b] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
-                                <div className="text-xs">- Current position</div>
+                                <div className="text-xs">Current position: Junior Investment Banker</div>
                             </div>
                             <div className="flex gap-2">
                                 <div className="bg-[#48bf53] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
-                                <div className="text-xs">- 1st recommended path</div>
+                                <div className="text-xs">Degree: Bachelors in Finance</div>
                             </div>
                             <div className="flex gap-2">
                                 <div className="bg-[#91f086] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
-                                <div className="text-xs">- 2nd recommended path</div>
+                                <div className="text-xs">Certificate: Advanced Certificate in Xero </div>
                             </div>
                             <div className="flex gap-2">
                                 <div className="bg-[#C6DBEF] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
-                                <div className="text-xs">- Click to collapse branches</div>
+                                <div className="text-xs">Dacreed FMVA Qualification</div>
                             </div>
                             <div className="flex gap-2">
                                 <div className="bg-[#3182BD] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
-                                <div className="text-xs">- Click to extend branches</div>
+                                <div className="text-xs">Tme in curent role: 2 years</div>
                             </div>
                             <div className="flex gap-2">
                                 <div className="bg-[#999999] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
-                                <div className="text-xs">- Lifestyle incompatible path</div>
+                                <div className="text-xs">Previous role: Student </div>
                             </div>
                             <div className="flex gap-2">
                                 <div className="bg-[#FD8D3C] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
-                                <div className="text-xs">- Size represents number of jobs</div>
+                                <div className="text-xs">Skills: Team Leader</div>
                             </div>
                         </div>
                     </div>
-                    <Button variant="contained" className="bg-[#1848C8] w-1/2 " onClick={() => { setStarted(false); setInputStep(2); }}>
+                    <Button variant="contained" className="bg-[#1848C8] w-1/2 " onClick={() => { setStarted(false); setInputStep(2); setShowGraph(false) }}>
                         Change Inputs
                     </Button>
                 </div>
@@ -280,9 +261,12 @@ const LeftPanel = () => {
                 )}
                 
             </div>
-            <svg ref={svgRef} className="h-screen w-screen overflow-visible" ></svg>
         </div>
-  
+
+        <div className={`${showGraph ? 'w-2/4 absolute top-5 justify-center left-1/4': 'w-0 p-0 opacity-0'}`} onClick={() => setInfoDisplay(true)}>
+            <SankeyChart/>
+        </div> 
+
       </main>
     </>
   );

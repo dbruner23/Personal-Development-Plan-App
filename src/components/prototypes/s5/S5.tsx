@@ -19,9 +19,9 @@ const prototypeS5 = () => {
            <p>Hover over each path to see approximately how many months it would take you to achieve the path.</p>
          </div>
 
-          <div className="my-6 flex justify-center">
+          {/* <div className="my-6 flex justify-center">
             <SankeyChart/>
-          </div>
+          </div> */}
 
 
         </div>
