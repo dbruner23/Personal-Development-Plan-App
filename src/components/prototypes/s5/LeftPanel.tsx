@@ -30,7 +30,7 @@ interface IZoomState {
 }
 
 const LeftPanel = () => {
-    const [data, setData] = useState<IData>(careerData)
+    const [data, setData] = useState<IData>(financeCareerData)
     const svgRef = useRef<SVGSVGElement>(null)
     const [started, setStarted] = useState(false)
     const [leftCollapsed, setLeftCollapsed] = useState(false)
@@ -78,15 +78,8 @@ const LeftPanel = () => {
     const [infoDisplay, setInfoDisplay] = useState(false)
     const [infoData, setInfoData] = useState<IInfoData>({ name: '', photo: '', summary: '', salary: '', time: 0, listings: 5, link: '', linkedIn: '' })
 
-    // if (financeCareerData !== undefined) {
-    // {setInfoData({
-    // name:`${financeCareerData.children[0].name}`, 
-    // photo:`${financeCareerData.children[0].photo}`, 
-    // summary:`${financeCareerData.children[0].summary}`, 
-    // time:`${financeCareerData.children[0].time}`, 
-    // link:`${financeCareerData.children[0].link}`, 
-    // linkedIn:`${financeCareerData.children[0].linkedIn}`
-    // })}}
+    const juniorIB = (data.children[0].children[0].children[1])            
+
 
     const handleLifestyleChange = (event: any) => {
         setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
@@ -98,9 +91,15 @@ const LeftPanel = () => {
     // setInfoData 
 
     // }
-    // useEffect(() => {
-    //     if (data !== null) { buildGraph(data) }
-    // }, [data, lifestyleInputStrings, submitInput]);
+    useEffect(() => {
+        if (financeCareerData !== undefined) {
+            setInfoData({
+                ...infoData, name: `${juniorIB.name}`, photo: `${juniorIB.photo}`, summary: `${juniorIB.summary}`,
+                salary: `${juniorIB.salary}`, time: `${juniorIB.time}`, listings: `${juniorIB.listings}`, link: `${juniorIB.link}`,
+                linkedIn: `${juniorIB.linkedIn}`
+            })
+        }
+    }, []);
 
 
   return (
