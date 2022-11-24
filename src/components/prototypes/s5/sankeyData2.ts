@@ -1,7 +1,7 @@
 const sankeyData2 = {
     nodes: [
-      { name: "Investment Banking Analyst" },
-      { name: "Junior Analyst" },
+      { name: "Investment Banking Analyst"},
+      { name: "Junior Investment Banker" },
       { name: "Senior Finanical Advisor" },
       { name: "Data Analyst" },
       { name: "Marketing Manager" },
