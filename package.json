@@ -40,6 +40,7 @@
     "recharts": "^2.1.15",
     "superjson": "1.9.1",
     "three": "^0.146.0",
+    "versor": "^0.2.0",
     "zod": "^3.18.0"
   },
   "devDependencies": {
