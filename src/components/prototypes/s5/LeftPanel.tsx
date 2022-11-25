@@ -1,6 +1,5 @@
 import SankeyChart from "./SankeyChart";
 import React, { useEffect, useRef, useState } from 'react'
-import careerData from '../../../data/readme.json'
 import financeCareerData from '../../../data/finance.json'
 import { Button } from "@mui/material";
 import Image from 'next/image';
@@ -8,7 +7,6 @@ import Link from 'next/link';
 import InputStep1 from './InputStep1A';
 import InputStep2 from '../d4/InputStep2';
 import InputStep3 from '../d4/InputStep3';
-import InputStep4 from '../d4/InputStep4';
 // import James from '../../../../public/images/James.jpg'
 import Jean from '../../../../public/images/Jean.jpg'
 
@@ -55,9 +53,10 @@ const LeftPanel = () => {
             setData(financeCareerData);
         }
         setSubmitInput(userInput);
-        setInfoDisplay(false);
+        setInfoDisplay(true);
         setStarted(true);
         setShowGraph(true);
+        handleClick();
     }
 
 
@@ -78,28 +77,34 @@ const LeftPanel = () => {
     const [infoDisplay, setInfoDisplay] = useState(false)
     const [infoData, setInfoData] = useState<IInfoData>({ name: '', photo: '', summary: '', salary: '', time: 0, listings: 5, link: '', linkedIn: '' })
 
-    const juniorIB = (data.children[0].children[0].children[1])            
 
-
-    const handleLifestyleChange = (event: any) => {
-        setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
-        setLifestyleInputStrings({ ...lifestyleInputStrings, [event.target.name]: (event.target.checked).toString() });
-    }
-
-
-    // const handleInfoData = () => {
-    // setInfoData 
-
+    // const handleLifestyleChange = (event: any) => {
+    //     setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
+    //     setLifestyleInputStrings({ ...lifestyleInputStrings, [event.target.name]: (event.target.checked).toString() });
     // }
-    useEffect(() => {
-        if (financeCareerData !== undefined) {
-            setInfoData({
-                ...infoData, name: `${juniorIB.name}`, photo: `${juniorIB.photo}`, summary: `${juniorIB.summary}`,
-                salary: `${juniorIB.salary}`, time: `${juniorIB.time}`, listings: `${juniorIB.listings}`, link: `${juniorIB.link}`,
-                linkedIn: `${juniorIB.linkedIn}`
-            })
-        }
-    }, []);
+
+const handleClick = () => {
+
+    const juniorIB = (data.children[0].children[0].children[1])   
+    const investmentAnalyst = (data.children[0].children[1].children[0])   
+    const dataAnalyst = (data.children[0].children[1].children[3])            
+    const accountingManager = (data.children[0].children[1].children[1]) 
+    const financeManager = (data.children[0].children[1].children[2])
+    const marketingManager = (data.children[0].children[1].children[4]) 
+
+    const careerResults = [juniorIB, investmentAnalyst, dataAnalyst, accountingManager, financeManager, marketingManager]
+
+    const randomResult = careerResults[Math.floor(Math.random() * careerResults.length)];
+
+    if (financeCareerData !== undefined) {
+        setInfoData({
+            ...infoData, name: `${randomResult.name}`, photo: `${randomResult.photo}`, summary: `${randomResult.summary}`,
+            salary: `${randomResult.salary}`, time: `${randomResult.time}`, listings: `${randomResult.listings}`, link: `${randomResult.link}`,
+            linkedIn: `${randomResult.linkedIn}`
+        })
+    }
+};
+
 
 
   return (
@@ -112,7 +117,7 @@ const LeftPanel = () => {
                 <div>{stepSwitch(inputStep)}</div>
             </div>
             {!started && inputStep > 1 && (
-                <div className="flex flex-col items-center absolute bg-[#eff1f4] p-5 rounded-xl top-10 right-10 w-1/5 h-1/4 gap-2">
+                <div className="flex flex-col items-center absolute bg-[#eff1f4] p-5 rounded-xl top-10 right-10 w-1/5 h-2/5 gap-2">
                     <div><strong>Example Persona:</strong></div>
                     <div className="flex h-22 gap-2">
                         {/* <div className="w-1/4">
@@ -147,7 +152,7 @@ const LeftPanel = () => {
                                 <div><strong>Job:</strong> Junior Investment Banker</div>
                                 <div><strong>Goal:</strong> Managing Director</div>
                             </div>
-                            <Button className="bg-[#1848C8] w-1/2 text-white hover:bg-[#1565C0]"
+                            <Button className="bg-[#1848C8] w-1/2 text-white hover:bg-[#1565C0] mt-4"
                                 onClick={() => { setUserInput({ goal: 'Managing Director', seekscope: 'specific', interestfields: ['finance'], currentjob: 'Junior Investment Banker', worklevel: 'junior', backgroundfield: 'finance', edlevel: 'bachelors', educationfields: ["finance"], certifications: ["Dacreed FMVA"] }) }}
                             >
                                 Fill Form
@@ -203,7 +208,7 @@ const LeftPanel = () => {
                             </div>
                         </div>
                     </div>
-                    <Button variant="contained" className="bg-[#1848C8] w-1/2 " onClick={() => { setStarted(false); setInputStep(2); setShowGraph(false) }}>
+                    <Button variant="contained" className="bg-[#1848C8] w-1/2 " onClick={() => { setStarted(false); setInputStep(2); setShowGraph(false); setInfoDisplay(false); setUserInput({ goal: '', seekscope: '', interestfields: [''], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [""], certifications: [""]})}} >
                         Change Inputs
                     </Button>
                 </div>
@@ -262,7 +267,7 @@ const LeftPanel = () => {
             </div>
         </div>
 
-        <div className={`${showGraph ? 'w-2/4 absolute top-5 justify-center left-1/4': 'w-0 p-0 opacity-0'}`} onClick={() => setInfoDisplay(true)}>
+        <div className={`${showGraph ? 'w-2/4 absolute top-5 justify-center left-1/4': 'w-0 p-0 opacity-0'}`} onClick={() => handleClick()}>
             <SankeyChart/>
         </div> 
 

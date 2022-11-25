@@ -21,7 +21,7 @@ const Home: NextPage = () => {
       return
     } 
     window.localStorage.setItem("user", JSON.stringify(username));
-    router.push(`/dashboard`);
+    router.push(`/choosePersona`);
   };
 
   return (
