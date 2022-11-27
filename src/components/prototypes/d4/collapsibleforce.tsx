@@ -204,14 +204,15 @@ const CollapsibleForce = () => {
             if (started) {
                 rec1path = []
                 rec2path = []
-                //set current position and array of non lifestyle fit nodes based on user ticks or unticks
+                //set current position
                 for (let i = 0; i < nodes.length; i++) {
                     if ((nodes[i].data.name === upperCurrentJob) && (nodes[i].ancestors().filter((node: any) => node.data.id === edtrack).length !== 0)) {
                         currentposition = nodes[i]
                     }
                 }
-                console.log(currentposition.ancestors())
+                
                 //checks if node is ancestor of current position before pushing to no lifestyle fit.
+                // else pushes to array of non lifestyle fit nodes based on user ticks or unticks
                 for (let i = 0; i < nodes.length; i++) {            
                     if (((nodes[i].data.extrahours === extrahours) || (nodes[i].data.fulltimeEd === fulltimeEd) || (nodes[i].data.relocation === relocation) || (nodes[i].data.remotework === remotework)) && (currentposition.ancestors().filter((node: any) => node.data.id === nodes[i].data.id).length === 0)) {
                         nolifestylefitnodes.push(nodes[i])       
