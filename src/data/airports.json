@@ -14112,7 +14112,7 @@
  {
    "name": "Merimbula Airport",
    "position": "Mission Ready HQ",
-   "time": ".9",
+   "time": 0.9,
    "cost": 5000,
    "longitude": "149.901000977",
    "latitude": "-36.9085998535"

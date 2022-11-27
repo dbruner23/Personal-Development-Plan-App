@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
 import landlines from '../../../data/landlines.json'
 import airports from '../../../data/airports.json'
+import flights from '../../../data/flights.json'
 import * as d3 from 'd3'
 import { render } from 'react-dom'
+import { FeaturedPlayList, LocalConvenienceStoreOutlined } from '@mui/icons-material'
+import { GeoPermissibleObjects } from 'd3'
 
 
 const DelaunayMap = () => {
@@ -10,11 +13,16 @@ const DelaunayMap = () => {
     const latLngArr = Array.from(data, (airport) => [+airport.longitude, +airport.latitude])
     const svgRef = useRef<SVGSVGElement>(null)
 
+    //To be converted to string. "false" in the data will mean "a person can't do this if they aren't willing/able to ________" 
+    const [lifestyleInput, setLifestyleInput] = useState({ extrahours: true, fulltimeEd: true, relocation: true, remotework: true })
+    const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
+    const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings;
+
     useEffect(() => {
-        if ((data !== undefined) && (landlines !== null)) { Map(landlines, data)}   
+        if ((data !== undefined) && (landlines !== null) && (flights !== null)) { Map(landlines, data, flights)}   
     }, [data])
 
-    const Map = (geojson: any, data:any) => {
+    const Map = (geojson: any, data:any, connections:any) => {
         d3.selectAll("svg > *").remove();
         const svg: any = d3.select(svgRef.current)
         const width = window.innerWidth
@@ -25,6 +33,13 @@ const DelaunayMap = () => {
         const geoPathGenerator = d3.geoPath()
             .projection(projection)
         const sphere: any = ({ type: "Sphere" })
+        const testflight: any = ({
+            type: 'Feature',
+            geometry: {
+                type: 'LineString',
+                coordinates: [[150.789001464844, -34.5611000061035], [170.985000610352, -42.7136001586914]]
+            }
+        })
         const graticule = d3.geoGraticule10()
         const sensitivity = 75;
         // console.log(graticule)
@@ -42,15 +57,31 @@ const DelaunayMap = () => {
             projectlatlng.push(projection([data[i].longitude, data[i].latitude]))
         }
         const delaunay = d3.Delaunay.from<any>(projectlatlng, d => d[0], d => d[1]);
-        console.log(delaunay)
-
 
         function getVisibility(d:any) {
             const visible = geoPathGenerator(
                 { type: 'Point', coordinates: [d.longitude, d.latitude] });
-
             return visible ? 'visible' : 'hidden';
         }
+
+        const createConnectionPath = (patharr: any[]) => {
+            const connectionArr = patharr.map((connection: any) => {
+                return (
+                    {
+                        type: "Feature",
+                        geometry: {
+                            type: 'LineString',
+                            coordinates: [[connection.source.data.longitude, connection.source.data.latitude],
+                            [connection.target.data.longitude, connection.target.data.latitude]]
+                        }
+                    }
+                )
+            })
+            return connectionArr
+        }
+
+        const connectionFeatures : any = createConnectionPath(connections);
+         
 
         svg.append("defs")
             .append("style")
@@ -83,8 +114,24 @@ const DelaunayMap = () => {
             .attr("stroke", "#ccc")
             .attr("fill", "none")
         
-        const links = g
-            .append("path")
+        // const link = g
+        //     .append("path")
+        //     .attr("id", "outline")
+        //     .attr("d", geoPathGenerator(testflight))
+        //     .attr("stroke", "#ccc")
+        //     .attr("fill", "none")
+
+        
+        // const links = g
+        //     .selectAll(".connections")
+        //     .data(connectionFeatures)
+        //     .join("path")
+        //     .classed("connections", true)
+        //     .attr("d", geoPathGenerator)
+        //     .attr("stroke", "#ccc")
+        //     .attr("stroke-width", 1)
+        //     .attr("fill", "none")
+            
 
         const nodes = g
             .selectAll("circle")
@@ -111,12 +158,154 @@ const DelaunayMap = () => {
             nodes.attr("r", 1.5 / Math.sqrt(transform.k));
         });
 
-        let start = nodes._groups[0][2788];
-        let destination = 
+        const startData = nodes._groups[0][2788].__data__;
+        const destinationData = nodes._groups[0][1691].__data__;
+        const careerNodes = data.filter((node:any) => {
+            return node.position != undefined
+        }) 
+
+        function nodeColor(d: any) {
+            if ( d === startData ) {
+                return "#11823b"
+            } else if (d === destinationData) {
+                return "#fd8d3c";
+            }
+        }
+        
+        //recursive function to get all paths between any two nodes linked by "flights"
+        function getAllPaths(start: any, destination: any) {
+            const result: any[][] = []
+            const path: any[] = []
+            const visited: any[] = []
+            
+            const initialsources = (connections.filter(function (connection: any) {
+                return connection.target.data.position === destination.position
+            }))
+
+            initialsources.forEach((source: any) => {
+                tracePaths(source)
+            })
+
+            function tracePaths(link: any) {
+                path.push(link);
+                visited.push(link);
+
+                if (link.source.data.position == start.position) {
+                    result.push([...path])
+                }
+
+                const adjacentsources = (connections.filter(function (connection: any) {
+                    return connection.target.data.position === link.source.data.position
+                }))
+                for (let i = 0; i < adjacentsources.length; i++) {
+                    if (visited.includes(adjacentsources[i])) {
+                        continue
+                    } else {
+                        tracePaths(adjacentsources[i]);
+                    }
+                }
+                path.pop()
+            }
+            if (result.length === 0 ) { alert("We're sorry, there are no defined paths between these post")}
+            return(result)
+        }
+        
+        
+        const pathsStoD: any = getAllPaths(startData, destinationData)     
+        
+
+        //utility to disable or enable paths based on user lifestyle preference input
+        const lifestylefitpaths: any[] = []
+        const nolifestylefitpaths: any[] = []
+        
+        for (let i = 0; i < pathsStoD.length; i++) {
+            if (
+                (pathsStoD[i].some((link: any) => {
+                    (link.target.data.extrahours === extrahours) || (link.target.data.fulltimeEd === fulltimeEd) || (link.target.data.relocation === relocation) || (link.target.data.remotework === remotework)
+                }))
+            ) {
+                nolifestylefitpaths.push(pathsStoD[i])
+            } else {
+                lifestylefitpaths.push(pathsStoD[i])
+            }
+        }
+        
+
+        //utility to find recommended paths 1-3 out of lifestyle fit paths based on minimum time
+        let rec1path: any[] = []
+        let rec2path: any[] = []
+        let rec3path: any[] = []
+
+        if (lifestylefitpaths.length > 0) {
+            let minTime = 100;
+            let minTime2 = 100;
+            let minTime3 = 100;
+            for (let i = 0; i < lifestylefitpaths.length; i++) {
+                const progresspath = lifestylefitpaths[i].slice(1)
+                const totaltime = progresspath.reduce((acc: any, curr: { target: { data: { time: any } } }) => {
+                    return acc + curr.target.data.time
+                }, 0);
+                console.log(totaltime)
+                if (totaltime < minTime) {
+                    minTime = totaltime;
+                    rec3path = rec2path;
+                    rec2path = rec1path;
+                    rec1path = lifestylefitpaths[i];
+                } else if (totaltime < minTime2) {
+                    minTime2 = totaltime;
+                    rec3path = rec2path;
+                    rec2path = lifestylefitpaths[i]
+                } else if (totaltime < minTime3) {
+                    minTime3 = totaltime;
+                    rec3path = lifestylefitpaths[i]
+                }
+            }
+        }
+
+        function flightColor(d: any) {
+            if (rec1path.includes(d)) {
+                return "#11823b"
+            } else if (rec2path.includes(d)) {
+                return "#fd8d3c";
+            } else if (rec3path.includes(d)) {
+                return "#ff0000"
+            } else if (nolifestylefitpaths.includes(d)) {
+                return "#cccc"
+            }
+        }
+
+        function addFlightPath(connection:any) {      
+            const flightdata: any = ({
+                type: "Feature",
+                geometry: {
+                    type: 'LineString',
+                    coordinates: [[connection.source.data.longitude, connection.source.data.latitude],
+                    [connection.target.data.longitude, connection.target.data.latitude]]
+                }
+            })        
+            g.append("path")
+            .classed("flightpath", true)
+            .attr("d", geoPathGenerator(flightdata))
+            .attr("stroke", flightColor(connection))
+            .attr("fill", "none")
+        }
+
+        function addMultiFlightPath(multiconnectionarr: any[]) {
+            for (let i = 0; i < multiconnectionarr.length; i++) {
+                addFlightPath(multiconnectionarr[i])
+            }
+        } 
+        
+        addMultiFlightPath(rec1path)
+        addMultiFlightPath(rec2path)
+        addMultiFlightPath(rec3path)
+        
+        nodes.attr("fill", (d:any) => nodeColor(d))
+
         // let path: number[] = [];
-        console.log(nodes._groups[0].findIndex((node: any) => {
-            return node.__data__.position === "Senior Digital Marketing Director"
-        }))
+        // console.log(nodes._groups[0].findIndex((node: any) => {
+        //     return node.__data__.position === "Senior Software Engineer"
+        // }))
             
             
 
@@ -131,12 +320,14 @@ const DelaunayMap = () => {
                     rotate[0] + event.dx * k,
                     rotate[1] - event.dy * k
                 ])
-
+                g.selectAll(".flightpath").remove()
+                
                 land.attr('d', geoPathGenerator(geojson))
                 geoGraticule.attr('d', geoPathGenerator(graticule))
+                // links.attr('d', geoPathGenerator(connectionFeatures))
                 nodes.attr("transform", (d: any) => `translate(${projection([d.longitude, d.latitude])})`).attr("visibility", getVisibility)
             }))
-            .on("click", (event: any, d:any) => {
+            .on("click", (event: any, d: any) => {
                 // start = delaunay.find(...d3.pointer(event));
                 // console.log(start)
                 // if (projection !== undefined) { console.log(projection.invert(d3.pointer(event))) }
@@ -158,7 +349,8 @@ const DelaunayMap = () => {
             //     // d3.select(nodes.nodes()[i]).raise();
             //     // mesh.attr("d", delaunay.render())
             // })
-            .node()
+            .node();
+            
     }
 
     
@@ -191,7 +383,6 @@ function renderPath(path: number[], points: any) {
 
         path.slice(1).forEach((nodeIndex) => {
             p.lineTo(...getPoint(nodeIndex, points));
-            console.log()
             p.moveTo(...getPoint(nodeIndex, points));
         });
 
