@@ -3900,6 +3900,11 @@
   "resolved" "https://registry.npmjs.org/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz"
   "version" "2.3.0"
 
+"versor@^0.2.0":
+  "integrity" "sha512-2UJ32VNh+lMUP9RlLoneEdrnupW3eIM9TGdTuaa+HSUqKACt9Vvw+xoGFGdd0YsUnGidTNyuxdhQRhJVpDAvqw=="
+  "resolved" "https://registry.npmjs.org/versor/-/versor-0.2.0.tgz"
+  "version" "0.2.0"
+
 "warning@^3.0.0":
   "integrity" "sha512-jMBt6pUrKn5I+OGgtQ4YZLdhIeJmObddh6CsibPxyQ5yPZm1XExSyzC1LCNX7BzhxWgiHmizBWJTHJIjMjTQYQ=="
   "resolved" "https://registry.npmjs.org/warning/-/warning-3.0.0.tgz"

@@ -167,6 +167,7 @@ const CollapsibleForce = () => {
         function update() {
             d3.selectAll("svg > *").remove();
             const links: any = root.links();
+            console.log(links);
             const nodes: any = root.descendants();
             const upperCurrentJob = getTitleCase(submitInput.currentjob)
             const upperGoal = getTitleCase(submitInput.goal)
