@@ -861,9 +861,6 @@
  },
  {
    "name": "Sydney / J.A. Douglas McCurdy Airport",
-   "position": "Masters in Comp Sci",
-   "time": 1,
-   "cost": 10000,
    "longitude": "-60.0477981567",
    "latitude": "46.1613998413"
  },
@@ -14315,6 +14312,9 @@
  },
  {
    "name": "Sydney Kingsford Smith International Airport",
+   "position": "Masters in Comp Sci",
+   "time": 1,
+   "cost": 10000,
    "longitude": "151.177001953125",
    "latitude": "-33.9460983276367"
  },
@@ -14373,7 +14373,7 @@
  },
  {
    "name": "Wollongong Airport",
-   "postion": "Uni Degree Comp Sci",
+   "position": "Uni Degree Comp Sci",
    "time": 3,
    "cost": 20000,
    "longitude": "150.789001464844",

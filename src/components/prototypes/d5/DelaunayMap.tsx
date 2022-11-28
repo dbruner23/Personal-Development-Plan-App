@@ -7,11 +7,30 @@ import { render } from 'react-dom'
 import { FeaturedPlayList, LocalConvenienceStoreOutlined } from '@mui/icons-material'
 import { GeoPermissibleObjects } from 'd3'
 
+interface IUserInput {
+    goal: string, seekscope: string, interestfields: any[], currentjob: string, worklevel: string, backgroundfield: string, edlevel: string, educationfields: any[], certifications: any[]
+}
 
 const DelaunayMap = () => {
-    const [data, setData] = useState<any[]>(airports)
+    const careerNodes = airports.filter((node: any) => {
+        return node.position != undefined
+    })
+    const [data, setData] = useState<any[]>(careerNodes)
     const latLngArr = Array.from(data, (airport) => [+airport.longitude, +airport.latitude])
     const svgRef = useRef<SVGSVGElement>(null)
+    //gather and set user input to determine start and destination
+    const [userInput, setUserInput] = useState<IUserInput>({
+        goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
+    })
+    const [submitInput, setSubmitInput] = useState<IUserInput>({
+        goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
+    })
+
+
+
+    const handleChange = (event: any) => {
+        setUserInput({ ...userInput, [event.target.name]: event.target.value });
+    }
 
     //To be converted to string. "false" in the data will mean "a person can't do this if they aren't willing/able to ________" 
     const [lifestyleInput, setLifestyleInput] = useState({ extrahours: true, fulltimeEd: true, relocation: true, remotework: true })
@@ -27,7 +46,7 @@ const DelaunayMap = () => {
         const svg: any = d3.select(svgRef.current)
         const width = window.innerWidth
         const height = window.innerHeight
-        const projection = d3.geoOrthographic().scale(700).rotate([-156, 33]).translate([width / 2, height / 2])
+        const projection = d3.geoOrthographic().scale(1700).rotate([-160, 38]).translate([width / 2, height / 2])
             // .center([159.87124736814, -37.83332894278]).translate([width / 2, height / 2])
         const projectlatlng: any[] = []
         const geoPathGenerator = d3.geoPath()
@@ -52,7 +71,6 @@ const DelaunayMap = () => {
         
         
         svg.attr("viewBox", [0, 0, width, height])
-            .attr("cursor", "crosshair")
         for (let i = 0; i < data.length; i++) {
             projectlatlng.push(projection([data[i].longitude, data[i].latitude]))
         }
@@ -98,7 +116,7 @@ const DelaunayMap = () => {
         const land = g
             .append('path')
             .attr('d', geoPathGenerator(geojson))
-            .attr('fill', '#ccc')
+            .attr('fill', '#AFC3FF')
         
         const geoGraticule = g
             .append("path")
@@ -112,42 +130,38 @@ const DelaunayMap = () => {
             .attr("id", "outline")
             .attr("d", geoPathGenerator(sphere))
             .attr("stroke", "#ccc")
-            .attr("fill", "none")
-        
-        // const link = g
-        //     .append("path")
-        //     .attr("id", "outline")
-        //     .attr("d", geoPathGenerator(testflight))
-        //     .attr("stroke", "#ccc")
-        //     .attr("fill", "none")
-
-        
-        // const links = g
-        //     .selectAll(".connections")
-        //     .data(connectionFeatures)
-        //     .join("path")
-        //     .classed("connections", true)
-        //     .attr("d", geoPathGenerator)
-        //     .attr("stroke", "#ccc")
-        //     .attr("stroke-width", 1)
-        //     .attr("fill", "none")
-            
+            .attr("fill", "none")    
 
         const nodes = g
             .selectAll("circle")
             .data(data)
             .join("circle")
+            .attr("stroke", "#4B7DEB")
+            .attr("stroke-width", 1.5)
             .attr("transform", (d: any) => `translate(${projection([d.longitude, d.latitude])})`)
-            .attr("r", 1)
+            .attr("r", 8)
             .attr("visibility", getVisibility)
+            .attr("cursor", "pointer")
             .on("click", (e: any, d: any) => {
                 console.log(d)
             });
                 
-        // const text = g
-        //     .append("title")
-        //     .data(data)
-        //     .text((d: any) => d.name);
+        const text = g
+            .selectAll(".label")
+            .data(data)
+            .join("text")
+            .attr("class", "label")
+            .text((d: any) => {
+                return d.position
+            })
+            .attr("transform", (d: any) => {
+                // const adjustlong = parseFloat(d.longitude) + .2;
+                // const newlong = adjustlong.toString(); 
+                return `translate(${projection([d.longitude , d.latitude])})`
+            })
+            .attr("font-size", 4);    
+        
+        console.log(text)
                 
         let transform: { k: number; invert: (arg0: [number, number]) => any };
 
@@ -155,19 +169,18 @@ const DelaunayMap = () => {
             g.attr("transform", (transform = e.transform));
             // mesh.attr("transform", (transform = e.transform));
             g.style("stroke-width", 3 / Math.sqrt(transform.k));
-            nodes.attr("r", 1.5 / Math.sqrt(transform.k));
+            nodes.attr("r", 5 / Math.sqrt(transform.k));
         });
 
-        const startData = nodes._groups[0][2788].__data__;
-        const destinationData = nodes._groups[0][1691].__data__;
-        const careerNodes = data.filter((node:any) => {
-            return node.position != undefined
-        }) 
+        const startData = nodes._groups[0][17].__data__;
+        const destinationData = nodes._groups[0][0].__data__; 
 
         function nodeColor(d: any) {
             if ( d === startData ) {
-                return "#11823b"
+                return "#11823b";
             } else if (d === destinationData) {
+                return "#39B681";
+            } else {
                 return "#fd8d3c";
             }
         }
@@ -264,7 +277,7 @@ const DelaunayMap = () => {
 
         function flightColor(d: any) {
             if (rec1path.includes(d)) {
-                return "#11823b"
+                return "#39B681"
             } else if (rec2path.includes(d)) {
                 return "#fd8d3c";
             } else if (rec3path.includes(d)) {
@@ -283,11 +296,22 @@ const DelaunayMap = () => {
                     [connection.target.data.longitude, connection.target.data.latitude]]
                 }
             })        
-            g.append("path")
-            .classed("flightpath", true)
-            .attr("d", geoPathGenerator(flightdata))
-            .attr("stroke", flightColor(connection))
-            .attr("fill", "none")
+            const link = g
+                .append("path")
+                .classed("flightpath", true)
+                .attr("d", geoPathGenerator(flightdata))
+                .attr("stroke", flightColor(connection))
+                .attr("fill", "none")
+                .attr("cursor", "pointer")
+                .on("mouseenter", function (d: any) {
+                    d3.select(this)
+                    .attr("stroke-width", 5) 
+                })
+                .on("mouseleave", function (d: any) {
+                    d3.select(this)
+                        .attr("stroke-width", 3)
+                })
+                ; 
         }
 
         function addMultiFlightPath(multiconnectionarr: any[]) {
@@ -325,6 +349,7 @@ const DelaunayMap = () => {
                 land.attr('d', geoPathGenerator(geojson))
                 geoGraticule.attr('d', geoPathGenerator(graticule))
                 // links.attr('d', geoPathGenerator(connectionFeatures))
+                text.attr("transform", (d: any) => `translate(${projection([(d.longitude), d.latitude])})`)
                 nodes.attr("transform", (d: any) => `translate(${projection([d.longitude, d.latitude])})`).attr("visibility", getVisibility)
             }))
             .on("click", (event: any, d: any) => {
