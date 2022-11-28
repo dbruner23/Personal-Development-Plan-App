@@ -5,10 +5,13 @@ import { useRouter } from "next/router";
 import { Button } from "@mui/material";
 import LeftSideBar from "./leftPanel/LeftSideBar";
 
-const Dashboard = () => {
+type Props = {
+  setPrototypeId: React.Dispatch<React.SetStateAction<string>>,
+}
 
+const Usertoolkit = (props: Props) => {
+  const { setPrototypeId } = props
   const router = useRouter();
-
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
@@ -34,39 +37,21 @@ const Dashboard = () => {
 <div className="w-1/2">
       <div className="flex flex-row flex-wrap justify-between gap-5 mt-5 ">
 
-        <Button variant="outlined">
-            <Link href={`s1/${userName}`}>Prototype 1</Link>
+        <Button variant="outlined" onClick={() => {setPrototypeId('s5New')}}>
+            Prototype 1
         </Button>
 
-        <Button variant="outlined">
-            <Link href={`s2/${userName}`}>Prototype 2</Link>
+        <Button variant="outlined" onClick={() => { setPrototypeId('s6') }}>
+            Prototype 2
         </Button>
 
-        <Button variant="outlined">
-            <Link href={`s3/${userName}`}>Prototype 3</Link>
-        </Button>
-
-        <Button variant="outlined">
-            <Link href={`/d4primer`}>Prototype 4</Link>
+        <Button variant="outlined" onClick={() => {setPrototypeId('d4')}}>
+            Prototype 3
         </Button>
         
-        <Button variant="outlined">
-            <Link href={`s4/${userName}`}>Prototype 5</Link>
+        <Button variant="outlined" onClick={() => {setPrototypeId('d5')}}>
+            Prototype 4
         </Button>
-  
-        <Button variant="outlined">
-            <Link href={`s5New/${userName}`}>Prototype 6</Link>
-        </Button>
-
-        <Button variant="outlined">
-            <Link href={`s6/${userName}`}>Prototype 7</Link>
-        </Button>
-
-        <Button variant="outlined">
-            <Link href={`s7/${userName}`}>Prototype 8</Link>
-        </Button>
-      
-        
       </div>
 
       {/* <div className="text-center">
@@ -91,4 +76,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Usertoolkit;

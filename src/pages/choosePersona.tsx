@@ -26,9 +26,9 @@ const ChoosePersona = () => {
             },
           }}
         >
-          <Link href={`dashboard2/`}>
+          <Link href={'/dashboard'}>
             <Paper elevation={3} sx={{ overflow: "hidden" }}>
-              <div className="flex flex-row justify-between align-center">
+              <div className="flex flex-row justify-between align-center cursor-pointer">
                 <div className="flex flex-col justify-center ml-10">
                   <div><strong>James,</strong> early 30s</div>
                   <p>A journalist looking for</p>
@@ -57,9 +57,9 @@ const ChoosePersona = () => {
             },
           }}
         >
-          <Link href={`dashboard2/`}>
+          <Link href={'/dashboard'}>
             <Paper elevation={3} sx={{ overflow: "hidden" }}>
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-row justify-between cursor-pointer">
                 <div className="flex flex-col justify-center ml-8 w-1/2 mb-10">
                   <div><strong>Jean,</strong> late 20s.</div>
                   <p>A a Junior Investment Banker looking to further</p>
