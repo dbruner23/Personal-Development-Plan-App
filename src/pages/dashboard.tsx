@@ -1,281 +1,171 @@
-import React, { useEffect, useRef, useState } from "react";
-// import {
-//   useSession,
-//   signOut,
-//   getSession,
-//   GetSessionParams,
-// } from "next-auth/react";
-import Link from "next/link";
-// import { unstable_getServerSession } from "next-auth";
-// import { authOptions } from "./api/auth/[...nextauth]";
-// import { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
-// import { string } from "zod";
-import Image from "next/future/image";
-import PrototypeS1image from "../components/innerCircleGraph/img/prototypeS1.png";
-import PrototypeS2image from "../components/prototypes/s2/img/graphS2.png";
-// import PrototypeD1image from "../components/prototypes/s2/img/PrototypeD1.jpg";
-import PrototypeS3image from "../components/prototypes/s2/img/PrototypeS3.png";
-import PrototypeD2image from "../components/prototypes/s2/img/PrototypeD2.png";
-import PrototypeS4image from "../components/prototypes/s2/img/PrototypeS4.png";
-import PrototypeS5image from "../components/prototypes/s2/img/PrototypeS5.png";
-import PrototypeS6image from "../components/prototypes/s2/img/PrototypeS6.png";
-import PrototypeS7image from "../components/prototypes/s2/img/PrototypeS7.png";
-import QuestionaireButton from "../components/questionnaire/QuestionaireButton";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
+import React, { useEffect, useLayoutEffect, useState } from 'react'
+import Link from 'next/link'
+import { Mus } from '../utils/mus'
+import { useRouter } from 'next/router'
+import Examplesite from '../components/prototypes/d1/Examplesite'
+import NodeMap from '../components/prototypes/d2/NodeMap'
+import Loading from '../components/Loading'
+import TubeMap from '../components/prototypes/d3/TubeMap'
+import S1 from '../components/prototypes/s1/prototypeS1'
+import S2 from '../components/prototypes/s2/S2'
+import S3 from '../components/prototypes/s3/S3'
+import CollapsibleForce from '../components/prototypes/d4/collapsibleforce'
+import S4 from '../components/prototypes/s4/S4'
+import S5 from '../components/prototypes/s5/S5'
+import DelaunayMap from '../components/prototypes/d5/DelaunayMap'
+import S6 from '../components/prototypes/s6/S6'
+import S7 from '../components/prototypes/s7/S7'
+import Button from '@mui/material/Button'
+import NycMap from '../components/prototypes/d6/Nycmap'
+import S5New from '../components/prototypes/s5/S5New'
+import Usertoolkit from '../components/Usertoolkit'
+
+
+interface IRecordWindow {
+        width: number;
+        height: number;
+}
 
 const Dashboard = () => {
-  // const { Track, trackEvent } = useTracking({ page: "dashboard" })
-  // const { data: session, status } = useSession()
-  const router = useRouter();
+    const router = useRouter()
+    const [prototypeId, setPrototypeId] = useState('s5')
+    const [mus, setMus] = useState<any>('')
+    const [recordWindow, setRecordWindow] = useState<IRecordWindow>()
 
-  const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    const user = window.localStorage.getItem("user") || null;
-    if (typeof user === "string") {
-      setUserName(JSON.parse(user));
+    const prototypeInsert = (prototype : string | string[] | undefined) => {
+        switch (prototype) {
+            case 'd1':
+                return <Examplesite />
+            case 'd2':
+                return <NodeMap />
+            case 'd3':
+                return <TubeMap />
+            case 'd4':
+                return <CollapsibleForce />
+            case 'd5':
+                return <DelaunayMap />
+            case 'd6':
+                return <NycMap />
+            case 's1':
+                return <S1 />
+            case 's2':
+                return <S2 />
+            case 's3':
+                return <S3 />
+            case 's4':
+                return <S4 />
+            case 's5':
+                return <S5 />
+            case 's6':
+                return <S6 />
+            case 's7':
+                return <S7 />
+            case 's5New':
+                return <S5New />
+            default:
+                return <Loading />
+        }
     }
-  }, []);
 
-  const logOut = () => {
-    window.localStorage.clear();
-    router.push("/");
-  };
+    useEffect(() => {
+        const newMus = new (Mus as any)()
+        setMus(newMus);
+        const windowdims = { width: window?.innerWidth, height: window?.innerHeight }
+        setRecordWindow(windowdims)
+    }, [])
+    
+    const getMousemoveCoordinates = function () {
+        const mousemovecoords: any[] = []
+        for (let i = 0; i < mus.frames.length - 1; i++) {
+            if (mus.frames[i][0] === "m") {
+                mousemovecoords.push([mus.frames[i][1], mus.frames[i][2]])
+            }            
+        }
+        return mousemovecoords
+    }
 
-  // if (status === 'authenticated') {
+    const getClickCoordinates = function () {
+        const clickcoords: any = []
+        for (let i = 0; i < mus.frames.length - 1; i++) {
+            if (mus.frames[i][0] === "c") {
+                clickcoords.push([mus.frames[i][1], mus.frames[i][2]])
+            }
+        }
+        return clickcoords
+    }
+
+    const getScrollCoordinates = function () {
+        const scrollcoords: any = []
+        for (let i = 0; i < mus.frames.length - 1; i++) {
+            if (mus.frames[i][0] === "s") {
+                scrollcoords.push([mus.frames[i][1], mus.frames[i][2]])
+            }
+        }
+        return scrollcoords
+    }
+
+    const timeSlice = function () {
+        const time = (new Date().getTime() / 1000 - (mus.startedAt))
+        return time
+    }
+
+    const handleSave = () => {
+        mus.stop()
+        const time = timeSlice()
+        const mousemove = getMousemoveCoordinates();
+        const clicks = getClickCoordinates();
+        const scroll = getScrollCoordinates();
+        const pttrial = { prototype: prototypeId, time: time, recordWindow: recordWindow, mousemove: mousemove, clicks: clicks, scroll: scroll }
+        const getpttrials = window.localStorage.getItem("pttrials")
+        const pttrials = getpttrials == null ? [] : JSON.parse(getpttrials)
+        pttrials.push(pttrial)
+        window.localStorage.setItem('pttrials', JSON.stringify(pttrials));
+    }
+
+    const toggleRecord = function () {
+        if (!mus.isRecording()) {
+            mus.record(getMousemoveCoordinates);
+        } else {
+            mus.stop();
+            const time = timeSlice()
+            const mousemove = getMousemoveCoordinates();
+            const clicks = getClickCoordinates();
+            const actions = JSON.stringify({ "time": time, "mousemove": mousemove, "clicks": clicks })
+            console.log(actions)
+            
+        }
+    };
+
+    useEffect(() => {
+        if (mus !== '') {
+            toggleRecord();
+        }   
+
+    }, [mus])
+  
   return (
-    <main className="container mx-auto flex min-h-screen flex-col items-center justify-center gap-4 p-4">
-      <div className="text-center">
-        <h1 className="mb-4 font-bold">
-          Hello {userName}! Please find a variety of PDP prototypes listed
-          below.
-        </h1>
-        <p>
-          Select each Prototype to demo and fill out the Prototype feedback
-          form.
-        </p>
-        <p>
-          Once you reviewed all of the prototypes, please also fill out the <span className="font-bold">
-          feedback form at the bottom of this page.</span>
-        </p>
-        <p>Thank you for helping us with this project.</p>
+    <>
+      <div className='flex flex-col justify-start items-center relative'>
+              <Usertoolkit setPrototypeId={setPrototypeId}/>
+            {prototypeInsert(prototypeId)}
+              <div className="flex justify-center h-10 abosolute bottom-8 mb-12">
+                  {/* <Link href={"/dashboard"}>
+                      <button onClick={() => handleSave() } className="mr-4 rounded-md bg-[#1848C8] px-5 py-2 text-sm text-white hover:bg-[#AFC3FF]">
+                          BACK TO DASHBOARD
+                      </button>
+                  </Link> */}
+                  <Link href={`/${prototypeId}/feedback`}>
+                      <Button onClick={() => handleSave() } variant="contained" className="bg-[#81bd75]">
+                          Give Feedback
+                      </Button>
+                  </Link>
+              </div>
+              
       </div>
-      <div className="flex flex-row flex-wrap justify-between gap-5">
-        {/* <Link href={`/d2/${userName}`}>
-            <Image 
-                src={PrototypeD1image} 
-                alt="image of prototype 1D"
-                className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
-                </Image>
-            </Link> */}
-
-        <Box
-          sx={{
-            display: "flex align-center",
-            justifyContent: 'center',
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 250,
-              height: 200,
-            },
-          }}
-        >
-          <Paper elevation={3}>
-            <Link href={`s1/${userName}`}>
-              <Image
-                src={PrototypeS1image}
-                alt="image of prototype 1S"
-                className="h-48 w-60 cursor-pointer"
-              ></Image>
-            </Link>
-          </Paper>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 250,
-              height: 200,
-            },
-          }}
-        >
-          <Paper elevation={3}>
-            <Link href={`s2/${userName}`}>
-             <Image
-             src={PrototypeS2image}
-             alt="image of prototype 2S"
-             className="h-48 w-60 cursor-pointer"
-             ></Image>
-            </Link>
-          </Paper>
-        </Box>
-
+      
         
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 250,
-              height: 200,
-            },
-          }}
-        >
-          <Paper elevation={3}>
-          <Link href={`s3/${userName}`}>
-          <Image
-            src={PrototypeS3image}
-            alt="image of prototype 3S"
-            className="h-48 w-60 cursor-pointer"
-          ></Image>
-        </Link>
-          </Paper>
-        </Box>
+    </>
+  )
+}
 
-
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 250,
-              height: 200,
-            },
-          }}
-        >
-          <Paper elevation={3}>
-          <Link href={`/d4primer`}>
-          <Image
-            src={PrototypeD2image}
-            alt="image of prototype D2"
-            className="h-48 w-60 cursor-pointer"
-          ></Image>
-        </Link>
-          </Paper>
-        </Box>   
-
-
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 250,
-              height: 200,
-            },
-          }}
-        >
-          <Paper elevation={3}>
-          <Link href={`s4/${userName}`}>
-          <Image
-            src={PrototypeS4image}
-            alt="image of prototype 4S"
-            className="h-48 w-60 cursor-pointer"
-          ></Image>
-        </Link>
-          </Paper>
-        </Box>        
-
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 250,
-              height: 200,
-            },
-          }}
-        >
-          <Paper elevation={3}>
-          <Link href={`s5/${userName}`}>
-          <Image
-            src={PrototypeS5image}
-            alt="image of prototype 5S"
-            className="h-48 w-60 cursor-pointer"
-          ></Image>
-        </Link>
-          </Paper>
-        </Box> 
-
-
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 250,
-              height: 200,
-            },
-          }}
-        >
-          <Paper elevation={3}>
-          <Link href={`s6/${userName}`}>
-          <Image
-            src={PrototypeS6image}
-            alt="image of prototype 6S"
-            className="h-48 w-65 cursor-pointer rounded border"
-          ></Image>
-        </Link>
-          </Paper>
-        </Box>
-
-
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
-              width: 250,
-              height: 200,
-            },
-          }}
-        >
-          <Paper elevation={3}>
-          <Link href={`s7/${userName}`}>
-          <Image
-            src={PrototypeS7image}
-            alt="image of prototype 7S"
-            className="h-48 w-60 cursor-pointer"
-          ></Image>
-        </Link>
-          </Paper>
-        </Box>
-
-
-        {/* <Link href={`/d1/${userName}`}>
-                <div className="w-60 h-48 bg-slate-400 border rounded cursor-pointer">
-                     Prototype 1
-                </div>
-            </Link> */}
-      </div>
-
-      <div className="my-10">
-        <button
-          onClick={() => logOut()}
-          className="mr-6 rounded-lg bg-[#38476e] px-5 py-1.5 text-white hover:bg-[#AFC3FF]"
-        >
-          Sign Out
-        </button>
-
-        <QuestionaireButton />
-      </div>
-      {/* <button onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })} className="px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">
-                Sign Out
-            </button> */}
-    </main>
-  );
-};
-
-export default Dashboard;
+export default Dashboard

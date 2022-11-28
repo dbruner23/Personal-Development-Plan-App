@@ -6,10 +6,6 @@ import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
 // import ThankYouDialog from "../../components/questionnaire/ThankYouDialog";
 
-
-
-
-
 const Feedback = () => {
   const [feedback, setFeedback] = useState({ favourite: '', like:'', dislike:'', improve:'' });
   const savePttrials = trpc.useraction.savePttrials.useMutation();
