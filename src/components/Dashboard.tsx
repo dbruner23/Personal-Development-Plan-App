@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 // import QuestionaireButton from "../components/questionnaire/QuestionaireButton";
 import { Button } from "@mui/material";
-import LeftSideBar from "../components/leftPanel/LeftSideBar";
+import LeftSideBar from "./leftPanel/LeftSideBar";
 
-const Dashboard2 = () => {
+const Dashboard = () => {
 
   const router = useRouter();
 
@@ -25,7 +25,7 @@ const Dashboard2 = () => {
 
 
   return (
-    <main className="container flex min-h-screen justify-between ">
+    <main className="container flex min-h-screen justify-between fixed">
 
     
       <LeftSideBar/>
@@ -91,4 +91,4 @@ const Dashboard2 = () => {
   );
 };
 
-export default Dashboard2;
+export default Dashboard;

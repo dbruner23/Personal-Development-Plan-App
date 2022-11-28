@@ -18,6 +18,7 @@ import S7 from '../../components/prototypes/s7/S7'
 import Button from '@mui/material/Button'
 import NycMap from '../../components/prototypes/d6/Nycmap'
 import S5New from '../../components/prototypes/s5/S5New'
+import Dashboard from '../../components/Dashboard'
 
 
 interface IRecordWindow {
@@ -145,6 +146,7 @@ const Prototype = () => {
   return (
     <>
       <div className='flex flex-col justify-start items-center relative'>
+        <Dashboard/>
               {/* <div className='flex flex-col justify-center fixed'>
                   <h2>Data console</h2>
                   <textarea id="console" className='w-60 h-48 border'></textarea>
