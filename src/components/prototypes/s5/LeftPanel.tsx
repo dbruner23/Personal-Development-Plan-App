@@ -113,11 +113,11 @@ const handleClick = () => {
 
        
       <div className="">
-            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-90vh w-2/3 overflow-scroll justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
+            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-90vh w-3/5 overflow-scroll justify-start flex-col bg-[#eff1f4] p-12 rounded-xl`}>
                 <div>{stepSwitch(inputStep)}</div>
             </div>
             {!started && inputStep > 1 && (
-                <div className="flex flex-col items-center absolute bg-[#eff1f4] p-5 rounded-xl top-20 right-10 w-1/5 h-2/5 gap-2">
+                <div className="flex flex-col items-center absolute bg-[#eff1f4] p-5 rounded-xl top-28 right-72 w-1/5 h-1/4 gap-2">
                     <div><strong>Example Persona:</strong></div>
                     <div className="flex h-22 gap-2">
                         {/* <div className="w-1/4">
@@ -152,7 +152,7 @@ const handleClick = () => {
                                 <div><strong>Job:</strong> Junior Investment Banker</div>
                                 <div><strong>Goal:</strong> Managing Director</div>
                             </div>
-                            <Button className="bg-[#1848C8] w-1/2 text-white hover:bg-[#1565C0] mt-4"
+                            <Button  variant="contained" 
                                 onClick={() => { setUserInput({ goal: 'Managing Director', seekscope: 'specific', interestfields: ['finance'], currentjob: 'Junior Investment Banker', worklevel: 'junior', backgroundfield: 'finance', edlevel: 'bachelors', educationfields: ["finance"], certifications: ["Dacreed FMVA"] }) }}
                             >
                                 Fill Form
@@ -162,7 +162,7 @@ const handleClick = () => {
                 </div>
             )}
             {started && (
-                <div className={`${leftCollapsed ?  'h-10 w-6 overflow-hidden  bg-[#eff1f4] rounded-xl' : 'h-90vh w-1/5' } flex left-10 top-10 fixed justify-between items-center mx-auto flex-col p-0`}>
+                <div className={`${leftCollapsed ?  'h-10 w-6 overflow-hidden  bg-[#eff1f4] rounded-xl' : 'h-90vh w-1/5' } z-20 flex left-10 top-10 fixed justify-between items-center mx-auto flex-col p-0`}>
                     <div className="flex h-1/3 w-full overflow-scroll left-10 top-10 justify-start mx-auto flex-col bg-[#eff1f4] p-7 rounded-xl">
                         <div className="flex flex-col justify-start items-start mx-auto gap-2">
                             <div className="flex w-full justify-center">
@@ -175,7 +175,7 @@ const handleClick = () => {
                                 <div><strong>Goal:</strong> Managing Director</div>
                         </div>
                     </div>
-                    <div className="flex  h-2/5 w-full left-10 top-10 justify-start items-center mx-auto flex-col bg-[#eff1f4] rounded-xl gap-2 p-4">
+                    <div className="flex z-20 h-2/5 w-full left-10 top-15 justify-start items-center mx-auto flex-col bg-[#eff1f4] rounded-xl gap-2 p-4">
                         Career Summary
                         <div className="flex flex-col justify-start items-start gap-2">
                             <div className="flex gap-2">
@@ -213,7 +213,7 @@ const handleClick = () => {
                     </Button>
                 </div>
             )}
-            <div id="infoDisplay" className={`${infoDisplay ? 'w-1/4 p-12 opacity-100' : 'w-0 p-0 opacity-0'} overflow-scroll transition-width h-screen top-0 right-0 fixed flex justify-start items-center gap-2 mx-auto flex-col bg-[#eff1f4]`}>
+            <div id="infoDisplay" className={`${infoDisplay ? 'w-1/4 p-12 opacity-100' : 'w-0 p-0 opacity-0'} z-20 overflow-scroll transition-width h-screen top-0 right-0 fixed flex justify-start items-center gap-2 mx-auto flex-col bg-[#eff1f4]`}>
                 <button className="absolute left-2 top-2" onClick={() => setInfoDisplay(false)}>X</button>
                 <div className="flex justify-center text-lg">{infoData.name}</div>
                 {infoData.photo !== 'undefined' && (

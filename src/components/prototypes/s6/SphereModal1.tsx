@@ -21,7 +21,7 @@ export default function SphereModal1() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <div className=' pt-24'>
       <Button className='text-white'  onClick={handleOpen}>Professional Scrum Master™</Button>
       <Modal
         open={open}

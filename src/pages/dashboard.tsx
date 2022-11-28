@@ -149,30 +149,31 @@ const Dashboard = () => {
     <>
     <div className='flex justify-between'>
 
-    <div className='w-1/5 z-20 mr-4'>
+    <div className='w-1/5 z-10 mr-4'>
     <LeftSideBar/>
     </div>
 
       <div className='flex flex-col items-center w-2/3'>
         <div>
            <Usertoolkit setPrototypeId={setPrototypeId}/>
-        </div>
-
-        <div>
-            {prototypeInsert(prototypeId)}
-        </div>  
-
-        <div className="flex justify-center h-10 mb-12">
+           <div className="flex justify-center h-10 mt-4">
                   <Link href={`/${prototypeId}/feedback`}>
                       <Button onClick={() => handleSave() } variant="contained" className="bg-[#81bd75]">
                           Give Feedback
                       </Button>
                   </Link>
-            </div>  
+        </div>
+        </div>
+
+        <div className='mt-8'>
+            {prototypeInsert(prototypeId)}
+        </div>  
+
+          
       </div>
 
 
-     <div className='w-1/5 z-20 ml-4'>
+     <div className='w-1/5 z-10 ml-4'>
       <RightSideBar/>
      </div>
 

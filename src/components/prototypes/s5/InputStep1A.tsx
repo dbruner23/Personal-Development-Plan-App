@@ -13,7 +13,7 @@ const InputStep1A = (props: Props) => {
     const { setInputStep } = props
     
   return (
-      <div className="flex flex-col justify-center items-center mx-auto gap-4">
+      <div className="flex flex-col justify-center items-center gap-4">
           <div className="text-xl">Welcome to the Sankey Prototype!</div>
           <div className="text-xs">
               This tool is designed to <strong>help you navigate</strong> the options
