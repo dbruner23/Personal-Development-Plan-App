@@ -22,7 +22,7 @@ export default function CubesModal2() {
 
   return (
     <div>
-      <Button className='text-white'  onClick={handleOpen}>Software Developer</Button>
+      <Button className='text-white' onClick={handleOpen}>Software Developer</Button>
       <Modal
         open={open}
         onClose={handleClose}

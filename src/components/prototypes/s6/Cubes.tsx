@@ -25,7 +25,7 @@ const Cubes = () => {
       </div>
 
       <div className="relative">
-      <div className="absolute top-24 pt-24 pl-20 left-24 z-20">
+      <div className="absolute top-24 pt-24 pl-24 left-24 z-30">
       <CubesModal2/>
       </div>
       </div>
@@ -36,7 +36,7 @@ const Cubes = () => {
       </div>
       </div>
 
-      <div className="absolute bottom-24 pb-44 right-1/4 z-20">
+      <div className="absolute pt-96 right-1/4 z-20">
       <SphereModal1 />
       </div>
 

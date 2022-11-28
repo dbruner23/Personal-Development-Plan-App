@@ -404,7 +404,7 @@ const CollapsibleForce = () => {
                 <div>{stepSwitch(inputStep)}</div>
             </div>
             {!started && inputStep > 1 && (
-                <div className="flex flex-col items-center absolute bg-[#eff1f4] p-5 rounded-xl top-10 right-10 w-1/4 h-1/2 gap-2">
+                <div className="z-20 flex flex-col items-center absolute bg-[#eff1f4] p-5 rounded-xl top-10 right-10 w-1/4 h-1/2 gap-2">
                     <div><strong>Example Personas:</strong></div>
                     <div className="flex h-32 gap-2">
                         <div className="w-1/4">
