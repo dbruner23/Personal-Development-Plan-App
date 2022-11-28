@@ -55,11 +55,12 @@ const DelaunayMap = () => {
         const testflight: any = ({
             type: 'Feature',
             geometry: {
-                type: 'LineString',
-                coordinates: [[150.789001464844, -34.5611000061035], [170.985000610352, -42.7136001586914]]
+                type: 'MultiLineString',
+                coordinates: [[[150.789001464844, -34.5611000061035], [170.985000610352, -42.7136001586914], [174.792007446, -37.0080986023]]]
             }
         })
         const graticule = d3.geoGraticule10()
+        console.log(graticule)
         const sensitivity = 75;
         // console.log(graticule)
         // const height = () => {
@@ -81,24 +82,6 @@ const DelaunayMap = () => {
                 { type: 'Point', coordinates: [d.longitude, d.latitude] });
             return visible ? 'visible' : 'hidden';
         }
-
-        const createConnectionPath = (patharr: any[]) => {
-            const connectionArr = patharr.map((connection: any) => {
-                return (
-                    {
-                        type: "Feature",
-                        geometry: {
-                            type: 'LineString',
-                            coordinates: [[connection.source.data.longitude, connection.source.data.latitude],
-                            [connection.target.data.longitude, connection.target.data.latitude]]
-                        }
-                    }
-                )
-            })
-            return connectionArr
-        }
-
-        const connectionFeatures : any = createConnectionPath(connections);
          
 
         svg.append("defs")
@@ -159,9 +142,9 @@ const DelaunayMap = () => {
                 // const newlong = adjustlong.toString(); 
                 return `translate(${projection([d.longitude , d.latitude])})`
             })
-            .attr("font-size", 4);    
+            .attr("font-size", 4);   
         
-        console.log(text)
+        
                 
         let transform: { k: number; invert: (arg0: [number, number]) => any };
 
@@ -177,7 +160,7 @@ const DelaunayMap = () => {
 
         function nodeColor(d: any) {
             if ( d === startData ) {
-                return "#11823b";
+                return "#00B0FF";
             } else if (d === destinationData) {
                 return "#39B681";
             } else {
@@ -258,7 +241,6 @@ const DelaunayMap = () => {
                 const totaltime = progresspath.reduce((acc: any, curr: { target: { data: { time: any } } }) => {
                     return acc + curr.target.data.time
                 }, 0);
-                console.log(totaltime)
                 if (totaltime < minTime) {
                     minTime = totaltime;
                     rec3path = rec2path;
@@ -277,6 +259,7 @@ const DelaunayMap = () => {
 
         function flightColor(d: any) {
             if (rec1path.includes(d)) {
+                
                 return "#39B681"
             } else if (rec2path.includes(d)) {
                 return "#fd8d3c";
@@ -284,7 +267,7 @@ const DelaunayMap = () => {
                 return "#ff0000"
             } else if (nolifestylefitpaths.includes(d)) {
                 return "#cccc"
-            }
+            } else { return "#cccc" }
         }
 
         function addFlightPath(connection:any) {      
@@ -295,15 +278,15 @@ const DelaunayMap = () => {
                     coordinates: [[connection.source.data.longitude, connection.source.data.latitude],
                     [connection.target.data.longitude, connection.target.data.latitude]]
                 }
-            })        
+            }) 
+            console.log(flightdata)
             const link = g
                 .append("path")
-                .classed("flightpath", true)
                 .attr("d", geoPathGenerator(flightdata))
                 .attr("stroke", flightColor(connection))
                 .attr("fill", "none")
                 .attr("cursor", "pointer")
-                .on("mouseenter", function (d: any) {
+                .on("mouseenter", function (e: any, d: any) {
                     d3.select(this)
                     .attr("stroke-width", 5) 
                 })
@@ -311,19 +294,56 @@ const DelaunayMap = () => {
                     d3.select(this)
                         .attr("stroke-width", 3)
                 })
-                ; 
+                
+            return(link)
+                 
         }
 
+        
         function addMultiFlightPath(multiconnectionarr: any[]) {
+            let flightdata: any = ({
+                type: 'Feature',
+                geometry: {
+                    type: 'MultiLineString',
+                    coordinates: []
+                }
+            })
             for (let i = 0; i < multiconnectionarr.length; i++) {
-                addFlightPath(multiconnectionarr[i])
+                flightdata.geometry.coordinates.push([[multiconnectionarr[i].source.data.longitude, multiconnectionarr[i].source.data.latitude],
+                    [multiconnectionarr[i].target.data.longitude, multiconnectionarr[i].target.data.latitude]]) 
             }
+            console.log(flightdata)
+            const links = g
+                .append("path")
+                .classed("flightpaths", true)
+                .attr("d", geoPathGenerator(flightdata))
+                .attr("stroke", "#ddd")
+                .attr("stroke-width", 3)
+                .attr("fill", "none")
+                .attr("stroke", flightColor(multiconnectionarr[0]))
+                .attr("cursor", "pointer")
+                .on("mouseenter", function (e: any, d: any) {
+                    d3.select(this)
+                        .attr("stroke-width", 5)
+                })
+                .on("mouseleave", function (d: any) {
+                    d3.select(this)
+                        .attr("stroke-width", 3)
+                })
+                .on("click", (d: any) => {
+                    console.log(multiconnectionarr)
+                })
+
         } 
-        
+        // addFlightPath(rec1path[0])
         addMultiFlightPath(rec1path)
-        addMultiFlightPath(rec2path)
-        addMultiFlightPath(rec3path)
+        // for (let i = 0; i < rec1path.length; i++) {
+        //     addFlightPath(rec1path[i])
+        // }
+        // addMultiFlightPath(rec2path)
+        // addMultiFlightPath(rec3path)
         
+
         nodes.attr("fill", (d:any) => nodeColor(d))
 
         // let path: number[] = [];
@@ -345,9 +365,11 @@ const DelaunayMap = () => {
                     rotate[1] - event.dy * k
                 ])
                 g.selectAll(".flightpath").remove()
+                g.selectAll(".flightpaths").remove()
                 
                 land.attr('d', geoPathGenerator(geojson))
                 geoGraticule.attr('d', geoPathGenerator(graticule))
+                addMultiFlightPath(rec1path)
                 // links.attr('d', geoPathGenerator(connectionFeatures))
                 text.attr("transform", (d: any) => `translate(${projection([(d.longitude), d.latitude])})`)
                 nodes.attr("transform", (d: any) => `translate(${projection([d.longitude, d.latitude])})`).attr("visibility", getVisibility)
@@ -382,9 +404,9 @@ const DelaunayMap = () => {
     
 
     return (
-        <div className="flex justify-center items-center w-screen h-screen">
-            <svg ref={svgRef}></svg>
-        </div>
+        <main className="flex justify-center items-center w-screen h-screen z-10">
+                <svg ref={svgRef}></svg>
+        </main>
   )
 }
 

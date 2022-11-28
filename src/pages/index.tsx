@@ -33,12 +33,12 @@ const Home: NextPage = () => {
       </Head>
       <main className="container mx-auto flex min-h-screen items-center justify-center bg-[#f67980] w-full">
         <div className="flex flex-col items-center">
-          <div className="z-10 flex flex-col items-center justify-center bg-white opacity-80 p-5">
+          <div className="z-10 flex flex-col items-center justify-center bg-white opacity-80 p-5 rounded-md">
             <h1 className="text-2xl font-semibold mb-2">
               Welcome to PDP Horizons by Dacreed
             </h1>
-            <p>your intelligent career journey mapping tool</p>
-            <p>Create a username to begin</p>
+            <p className="mb-5 text-sm">...your intelligent career discovery app</p>
+            <p className="">Create a username to begin!</p>
             <div className=" flex flex-col mt-4">
             <input
               className="border p-2"

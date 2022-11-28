@@ -30,7 +30,7 @@ interface IRecordWindow {
 
 const Dashboard = () => {
     const router = useRouter()
-    const [prototypeId, setPrototypeId] = useState('s5')
+    const [prototypeId, setPrototypeId] = useState('d5')
     const [mus, setMus] = useState<any>('')
     const [recordWindow, setRecordWindow] = useState<IRecordWindow>()
 
@@ -133,8 +133,6 @@ const Dashboard = () => {
             const mousemove = getMousemoveCoordinates();
             const clicks = getClickCoordinates();
             const actions = JSON.stringify({ "time": time, "mousemove": mousemove, "clicks": clicks })
-            console.log(actions)
-            
         }
     };
 
