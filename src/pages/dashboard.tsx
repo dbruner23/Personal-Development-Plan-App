@@ -28,7 +28,7 @@ interface IRecordWindow {
 
 const Dashboard = () => {
     const router = useRouter()
-    const [prototypeId, setPrototypeId] = useState('s5')
+    const [prototypeId, setPrototypeId] = useState('d5')
     const [mus, setMus] = useState<any>('')
     const [recordWindow, setRecordWindow] = useState<IRecordWindow>()
 
@@ -131,8 +131,6 @@ const Dashboard = () => {
             const mousemove = getMousemoveCoordinates();
             const clicks = getClickCoordinates();
             const actions = JSON.stringify({ "time": time, "mousemove": mousemove, "clicks": clicks })
-            console.log(actions)
-            
         }
     };
 
@@ -146,8 +144,8 @@ const Dashboard = () => {
   return (
     <>
       <div className='flex flex-col justify-start items-center relative'>
-              <Usertoolkit setPrototypeId={setPrototypeId}/>
-            {prototypeInsert(prototypeId)}
+              {prototypeInsert(prototypeId)}
+              <Usertoolkit setPrototypeId={setPrototypeId} />
               <div className="flex justify-center h-10 abosolute bottom-8 mb-12">
                   {/* <Link href={"/dashboard"}>
                       <button onClick={() => handleSave() } className="mr-4 rounded-md bg-[#1848C8] px-5 py-2 text-sm text-white hover:bg-[#AFC3FF]">
