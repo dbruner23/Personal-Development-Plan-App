@@ -19,6 +19,8 @@ import Button from '@mui/material/Button'
 import NycMap from '../components/prototypes/d6/Nycmap'
 import S5New from '../components/prototypes/s5/S5New'
 import Usertoolkit from '../components/Usertoolkit'
+import LeftSideBar from '../components/leftPanel/LeftSideBar'
+import RightSideBar from '../components/rightPanel/RightSideBar'
 
 
 interface IRecordWindow {
@@ -145,25 +147,37 @@ const Dashboard = () => {
   
   return (
     <>
-      <div className='flex flex-col justify-start items-center relative'>
-              <Usertoolkit setPrototypeId={setPrototypeId}/>
-            {prototypeInsert(prototypeId)}
-              <div className="flex justify-center h-10 abosolute bottom-8 mb-12">
-                  {/* <Link href={"/dashboard"}>
-                      <button onClick={() => handleSave() } className="mr-4 rounded-md bg-[#1848C8] px-5 py-2 text-sm text-white hover:bg-[#AFC3FF]">
-                          BACK TO DASHBOARD
-                      </button>
-                  </Link> */}
+    <div className='flex justify-between'>
+
+    <div className='w-1/5 z-10 mr-4'>
+    <LeftSideBar/>
+    </div>
+
+      <div className='flex flex-col items-center w-2/3'>
+        <div>
+           <Usertoolkit setPrototypeId={setPrototypeId}/>
+           <div className="flex justify-center h-10 mt-4">
                   <Link href={`/${prototypeId}/feedback`}>
                       <Button onClick={() => handleSave() } variant="contained" className="bg-[#81bd75]">
                           Give Feedback
                       </Button>
                   </Link>
-              </div>
-              
+        </div>
+        </div>
+
+        <div className='mt-8'>
+            {prototypeInsert(prototypeId)}
+        </div>  
+
+          
       </div>
-      
-        
+
+
+     <div className='w-1/5 z-10 ml-4'>
+      <RightSideBar/>
+     </div>
+
+    </div>
     </>
   )
 }
