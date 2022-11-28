@@ -113,11 +113,11 @@ const handleClick = () => {
 
        
       <div className="">
-            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-90vh w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
+            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-90vh w-2/3 overflow-scroll justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
                 <div>{stepSwitch(inputStep)}</div>
             </div>
             {!started && inputStep > 1 && (
-                <div className="flex flex-col items-center absolute bg-[#eff1f4] p-5 rounded-xl top-10 right-10 w-1/5 h-2/5 gap-2">
+                <div className="flex flex-col items-center absolute bg-[#eff1f4] p-5 rounded-xl top-20 right-10 w-1/5 h-2/5 gap-2">
                     <div><strong>Example Persona:</strong></div>
                     <div className="flex h-22 gap-2">
                         {/* <div className="w-1/4">
@@ -267,7 +267,7 @@ const handleClick = () => {
             </div>
         </div>
 
-        <div className={`${showGraph ? 'w-2/4 absolute top-5 justify-center left-1/4': 'w-0 p-0 opacity-0'}`} onClick={() => handleClick()}>
+        <div className={`${showGraph ? 'w-2/4 absolute top-20 left-1/4': 'w-0 p-0 opacity-0'}`} onClick={() => handleClick()}>
             <SankeyChart/>
         </div> 
 

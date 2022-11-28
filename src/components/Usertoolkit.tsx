@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
-// import QuestionaireButton from "../components/questionnaire/QuestionaireButton";
 import { Button } from "@mui/material";
-import LeftSideBar from "./leftPanel/LeftSideBar";
+
 
 type Props = {
   setPrototypeId: React.Dispatch<React.SetStateAction<string>>,
@@ -21,21 +19,11 @@ const Usertoolkit = (props: Props) => {
     }
   }, []);
 
-  // const logOut = () => {
-  //   window.localStorage.clear();
-  //   router.push("/");
-  // };
-
 
   return (
-    <main className="container flex min-h-screen justify-between fixed">
-
-    
-      <LeftSideBar/>
-   
-
-<div className="w-1/2">
-      <div className="flex flex-row flex-wrap justify-between gap-5 mt-5 ">
+    <>
+  
+      <div className="flex flex-row flex-wrap gap-4 mt-10 ">
 
         <Button variant="outlined" onClick={() => {setPrototypeId('s5New')}}>
             Prototype 1
@@ -54,25 +42,7 @@ const Usertoolkit = (props: Props) => {
         </Button>
       </div>
 
-      {/* <div className="text-center">
-        <h1 className="mb-4 mt-5 font-bold">
-          Hello {userName}! Please choose a PDP prototypes by clicking on one of the buttons above.
-        </h1>
-      </div> */}
-
-      </div>
-
-      {/* <div className="my-10">
-        <button
-          onClick={() => logOut()}
-          className="mr-6 rounded-lg bg-[#38476e] px-5 py-1.5 text-white hover:bg-[#AFC3FF]"
-        >
-          Sign Out
-        </button>
-
-        <QuestionaireButton />
-      </div> */}
-    </main>
+    </>
   );
 };
 
