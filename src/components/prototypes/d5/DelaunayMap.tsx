@@ -405,7 +405,7 @@ const DelaunayMap = () => {
 
     return (
         <main className="flex justify-center items-center w-screen h-screen z-10">
-                <svg ref={svgRef}></svg>
+                <svg className="w-full h-full" ref={svgRef}></svg>
         </main>
   )
 }

@@ -34,18 +34,23 @@ interface IZoomState {
     k: number, x: number, y: number
 }
 
-const CollapsibleForce = () => {
-    const [data, setData] = useState<IData>(careerData)
-    const svgRef = useRef<SVGSVGElement>(null)
-    const [started, setStarted] = useState(false)
-    const [leftCollapsed, setLeftCollapsed] = useState(false)
-    const [inputStep, setInputStep] = useState(1)
+type Props = {
+    lIsCollapsed : boolean
+}
+
+const CollapsibleForce = ( props : Props ) => {
+    const [data, setData] = useState<IData>(financeCareerData)
+    const svgRef = useRef<SVGSVGElement>(null);
+    const [started, setStarted] = useState(true);
+    const { lIsCollapsed } = props;
+    const [leftCollapsed, setLeftCollapsed] = useState(false);
+    const [inputStep, setInputStep] = useState(1);
     const [userInput, setUserInput] = useState<IUserInput>({
         goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
-    })
+    });
     const [submitInput, setSubmitInput] = useState<IUserInput>({
         goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
-    })
+    });
 
     
 
@@ -399,8 +404,8 @@ const CollapsibleForce = () => {
 
 
     return (
-        <div className="flex justify-center items-center w-screen h-90vh relative">
-            <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-90vh w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
+        <div className="flex justify-center items-center w-screen h-screen">
+            {/* <div id="input-form" className={`${started ? 'hidden' : 'flex'} h-90vh w-1/3 overflow-scroll left-10 top-10 fixed justify-start mx-auto flex-col bg-[#eff1f4] p-12 rounded-xl`}>
                 <div>{stepSwitch(inputStep)}</div>
             </div>
             {!started && inputStep > 1 && (
@@ -447,8 +452,8 @@ const CollapsibleForce = () => {
                         </div>
                     </div>
                 </div>
-            )}
-            {started && (
+            )} */}
+            {/* {started && (
                 <div className={`${leftCollapsed ?  'h-10 w-6 overflow-hidden  bg-[#eff1f4] rounded-xl' : 'h-90vh w-1/4' } flex left-10 top-10 fixed justify-between items-center mx-auto flex-col p-0`}>
                     <div className="flex h-1/2 w-full overflow-scroll left-10 top-10 justify-start mx-auto flex-col bg-[#eff1f4] p-7 rounded-xl">
                         <div className="flex flex-col justify-center items-center mx-auto gap-2">
@@ -539,8 +544,41 @@ const CollapsibleForce = () => {
                         Change Inputs
                     </Button>
                 </div>
-            )}
-            <div id="infoDisplay" className={`${infoDisplay ? 'w-1/4 p-12 opacity-100' : 'w-0 p-0 opacity-0'} overflow-scroll transition-width h-screen top-0 right-0 fixed flex justify-start items-center gap-2 mx-auto flex-col bg-[#eff1f4]`}>
+            )} */}
+            <div className={`flex h-1/3 bottom-0 justify-start items-start mx-auto flex-col bg-transparent rounded-xl gap-2 fixed ${lIsCollapsed ? 'left-10' : 'left-72' }`}>
+                <div className="">Key:</div>
+                <div className="flex flex-col justify-start items-start gap-2">
+                    <div className="flex gap-2">
+                        <div className="bg-[#11823b] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                        <div className="text-xs">- Current position</div>
+                    </div>
+                    <div className="flex gap-2">
+                        <div className="bg-[#48bf53] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                        <div className="text-xs">- 1st recommended path</div>
+                    </div>
+                    <div className="flex gap-2">
+                        <div className="bg-[#91f086] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                        <div className="text-xs">- 2nd recommended path</div>
+                    </div>
+                    <div className="flex gap-2">
+                        <div className="bg-[#C6DBEF] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                        <div className="text-xs">- Click to collapse branches</div>
+                    </div>
+                    <div className="flex gap-2">
+                        <div className="bg-[#3182BD] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                        <div className="text-xs">- Click to extend branches</div>
+                    </div>
+                    <div className="flex gap-2">
+                        <div className="bg-[#999999] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                        <div className="text-xs">- Lifestyle incompatible path</div>
+                    </div>
+                    <div className="flex gap-2">
+                        <div className="bg-[#FD8D3C] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
+                        <div className="text-xs">- Size represents number of jobs</div>
+                    </div>
+                </div>
+            </div>
+            <div id="infoDisplay" className={`${infoDisplay ? 'w-1/5 p-12 opacity-100' : 'w-0 p-0 opacity-0'} overflow-scroll transition-width h-screen top-0 right-0 fixed flex justify-start items-center gap-2 mx-auto flex-col bg-[#eff1f4]`}>
                 <button className="absolute left-2 top-2" onClick={() => setInfoDisplay(false)}>X</button>
                 <div className="flex justify-center text-lg">{infoData.name}</div>
                 {infoData.photo !== 'undefined' && (
@@ -592,7 +630,7 @@ const CollapsibleForce = () => {
                 )}
                 
             </div>
-            <svg ref={svgRef} className="h-screen w-screen overflow-visible" ></svg>
+            <svg ref={svgRef} className="h-full w-full overflow-visible" ></svg>
         </div>
     )
 }

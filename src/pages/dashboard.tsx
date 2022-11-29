@@ -18,9 +18,10 @@ import S7 from '../components/prototypes/s7/S7'
 import Button from '@mui/material/Button'
 import NycMap from '../components/prototypes/d6/Nycmap'
 import S5New from '../components/prototypes/s5/S5New'
-import Usertoolkit from '../components/Usertoolkit'
+import Usertoolkit from '../components/PrototypeButtons'
 import LeftSideBar from '../components/leftPanel/LeftSideBar'
 import RightSideBar from '../components/rightPanel/RightSideBar'
+import PrototypeButtons from '../components/PrototypeButtons'
 
 
 interface IRecordWindow {
@@ -30,10 +31,11 @@ interface IRecordWindow {
 
 const Dashboard = () => {
     const router = useRouter()
-    const [prototypeId, setPrototypeId] = useState('d5')
+    const [prototypeId, setPrototypeId] = useState('s5New')
     const [mus, setMus] = useState<any>('')
     const [recordWindow, setRecordWindow] = useState<IRecordWindow>()
-
+    const [lIsCollapsed, setLIsCollapsed] = useState(false)
+ 
     const prototypeInsert = (prototype : string | string[] | undefined) => {
         switch (prototype) {
             case 'd1':
@@ -43,7 +45,7 @@ const Dashboard = () => {
             case 'd3':
                 return <TubeMap />
             case 'd4':
-                return <CollapsibleForce />
+                return <CollapsibleForce lIsCollapsed={lIsCollapsed} />
             case 'd5':
                 return <DelaunayMap />
             case 'd6':
@@ -144,40 +146,22 @@ const Dashboard = () => {
     }, [mus])
   
   return (
-    <>
-    <div className='flex justify-between'>
-
-    <div className='w-1/5 z-10 mr-4'>
-    <LeftSideBar/>
-    </div>
-
-      <div className='flex flex-col items-center w-2/3'>
-        <div>
+    <div>
+        <LeftSideBar setLIsCollapsed={setLIsCollapsed} />    
+          <div className="flex justify-center h-0">
             <h1 className='mt-4'>Please choose a Prototype</h1>
-           <Usertoolkit setPrototypeId={setPrototypeId}/>
-           <div className="flex justify-center h-10 mt-4">
-                  <Link href={`/${prototypeId}/feedback`}>
-                      <Button onClick={() => handleSave() } variant="contained" className="bg-[#81bd75]">
-                          Give Feedback
-                      </Button>
-                  </Link>
+            <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId}/>     
+            <Link href={`/${prototypeId}/feedback`}>
+            <Button onClick={() => handleSave()} variant="contained" 
+                className={`bg-[#81bd75] fixed top-16 ${prototypeId == 's5New' ? "-translate-x-56" : prototypeId == 's6' ? "-translate-x-18" : prototypeId == 'd4' ? "translate-x-20" : "translate-x-56"}`}
+            >
+                Give Feedback
+            </Button>
+            </Link>
         </div>
-        </div>
-
-        <div className='mt-8'>
-            {prototypeInsert(prototypeId)}
-        </div>  
-
-          
-      </div>
-
-
-     <div className='w-1/5 z-10 ml-4'>
-      <RightSideBar/>
-     </div>
-
+        {prototypeInsert(prototypeId)}    
+        <RightSideBar />
     </div>
-    </>
   )
 }
 

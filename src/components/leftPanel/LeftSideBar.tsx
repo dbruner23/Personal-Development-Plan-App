@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import Jean from "../../../public/images/Jean.jpg";
 import ProgressBar from "../../../public/images/1lineS.png";
 import ProgressBarVector from "../../../public/images/Vector1.png";
@@ -9,7 +9,12 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 
-const LeftSideBar = () => {
+type Props = {
+  setLIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const LeftSideBar = (props: Props) => {
+  const { setLIsCollapsed } = props;
   const [leftCollapsed, setLeftCollapsed] = useState(false);
 
   return (
@@ -23,11 +28,10 @@ const LeftSideBar = () => {
       >
         <button
           className="absolute right-2 top-2"
-          onClick={() =>
-            setLeftCollapsed((prev) => {
-              return !prev;
-            })
-          }
+          onClick={() => {
+            setLIsCollapsed((prev) => { return !prev })
+            setLeftCollapsed((prev) => {return !prev;})
+          }}
         >
           {leftCollapsed ? <div>&gt;</div> : <div>&lt;</div>}
         </button>
