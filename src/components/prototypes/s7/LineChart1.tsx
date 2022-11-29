@@ -13,6 +13,7 @@ import {
 
 
 
+
 const LineChart1 = () => {
   return (
 <>
@@ -28,7 +29,7 @@ const LineChart1 = () => {
       <Label value="Percentage of your goal reached" angle={-90} position="left" dx={7} dy={-140} />
       </YAxis>
 
-      <Tooltip />
+    <Tooltip/>
       <Legend />
       <Line
         type="monotone"

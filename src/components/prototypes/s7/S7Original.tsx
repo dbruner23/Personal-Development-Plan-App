@@ -3,20 +3,34 @@ import data from "./data2";
 import Box from '@mui/material/Box';
 
 
-const S7 = () => {
+const S7Original = () => {
   return (
     <>
       
-<main className='mx-auto w-3/4 mt-20 '>
+<main className='mx-auto max-w-full'>
   
-<div className="flex flex-col justify-between p-6">
+<div className="bg-[#6a889c] p-6 m-6 rounded-lg text-[#dbe6e8]">
 
-<div className="flex justify-center my-4 max-h-full " >
+    <div className="flex justify-center my-4 ">
+      <h2 className="text-2xl font-semibold text-center ">This Prototype shows your past career progression and 2 pathways that can help you reach 100% of your career goal by 2025 </h2>
+    </div>
+
+    <div className=" flex justify-center text-center flex-col">
+      <p>The graphs below shows your career timeline in relation to reaching your career goal. </p>
+      <p>The idea is to give you a better understanding of the amount of time required in reaching your goal and show you how much of your goal you have already achieved today. </p>
+  </div>
+
+</div>
+
+
+<div className="flex flex-row justify-between p-6">
+
+<div className="flex justify-center my-4 w-3/4 max-h-full " >
 <LineChart1 />
 </div>
 
 
-<Box className="mb-5 w-2/5 ml-32" 
+<Box className="mb-5 mr-5 " 
 sx={{
   mb: 2,
   display: "flex",
@@ -57,4 +71,4 @@ sx={{
   )
 }
 
-export default S7
+export default S7Original
