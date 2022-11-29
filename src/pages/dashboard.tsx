@@ -153,6 +153,7 @@ const Dashboard = () => {
 
       <div className='flex flex-col items-center w-2/3'>
         <div>
+            <h1 className='mt-4'>Please choose a Prototype</h1>
            <Usertoolkit setPrototypeId={setPrototypeId}/>
            <div className="flex justify-center h-10 mt-4">
                   <Link href={`/${prototypeId}/feedback`}>

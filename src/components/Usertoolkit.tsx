@@ -23,7 +23,7 @@ const Usertoolkit = (props: Props) => {
   return (
     <>
   
-      <div className="flex flex-row flex-wrap gap-4 mt-10 ">
+      <div className="flex flex-row flex-wrap gap-4 mt-2 ">
 
         <Button variant="outlined" onClick={() => {setPrototypeId('s5New')}}>
             Prototype 1
