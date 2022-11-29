@@ -152,7 +152,7 @@ const handleClick = () => {
                                 <div><strong>Job:</strong> Junior Investment Banker</div>
                                 <div><strong>Goal:</strong> Managing Director</div>
                             </div>
-                            <Button  variant="contained" 
+                            <Button  variant="contained" className="bg-[#1848C8]"
                                 onClick={() => { setUserInput({ goal: 'Managing Director', seekscope: 'specific', interestfields: ['finance'], currentjob: 'Junior Investment Banker', worklevel: 'junior', backgroundfield: 'finance', edlevel: 'bachelors', educationfields: ["finance"], certifications: ["Dacreed FMVA"] }) }}
                             >
                                 Fill Form
