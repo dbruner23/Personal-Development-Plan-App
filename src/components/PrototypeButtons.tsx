@@ -28,11 +28,15 @@ const PrototypeButtons = (props: Props) => {
       <div className="flex flex-wrap gap-4 mt-5 fixed">
 
         <Button variant="outlined" className="bg-white" onClick={() => {setPrototypeId('s5New')}}>
-            Prototype 1
+            Sankey Chart
         </Button>
 
-        <Button variant="outlined" className="bg-white" onClick={() => { setPrototypeId('s6') }}>
-            Prototype 2
+        {/* <Button variant="outlined" className="bg-white" onClick={() => { setPrototypeId('s6') }}>
+            3D Career Tool
+        </Button> */}
+
+        <Button variant="outlined" className="bg-white" onClick={() => {setPrototypeId('s7')}}>
+            Career Timeline
         </Button>
 
         <Button variant="outlined" className="bg-white" onClick={() => {setPrototypeId('d4')}}>

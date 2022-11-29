@@ -1,5 +1,5 @@
 import SankeyChart from "./SankeyChart";
-import LeftPanel from "./LeftPanel";
+
 
 
 
@@ -8,20 +8,10 @@ const S5New = () => {
 
   return (
     <>
-     
 
-        <div className="flex justify-evenly ">
-
-        <div className=" ">
-        <LeftPanel/>
-         </div>
-
-         {/* <div className="w-2/4 absolute top-5 ">
+         <div className="w-2/4 flex justify-center ml-80 mt-24">
             <SankeyChart/>
-          </div>  */}
-
-
-        </div>
+          </div> 
    
     </>
   );
