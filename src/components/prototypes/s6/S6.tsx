@@ -10,11 +10,11 @@ const prototypeS6 = () => {
 
         <div className="flex flex-col max-w-full ">
 
-        <div className="my-12 flex justify-center flex-col text-center">
+        {/* <div className="my-12 flex justify-center flex-col text-center">
           <h2 className="text-5xl font-semibold">
             Your Tech career pathways
           </h2>
-        </div>
+        </div> */}
         
          <div className=" text-center text-2xl">
            <p>This prototype looks at a slightly more fun way to present you with 4 different pathways ways to further progress your career in tech.</p>

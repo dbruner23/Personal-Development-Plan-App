@@ -148,9 +148,9 @@ const Dashboard = () => {
   return (
     <div>
         <LeftSideBar setLIsCollapsed={setLIsCollapsed} />    
-        <div className="flex justify-center h-0">
-            <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId}/>
-            
+          <div className="flex justify-center h-0">
+            <h1 className='mt-4'>Please choose a Prototype</h1>
+            <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId}/>     
             <Link href={`/${prototypeId}/feedback`}>
             <Button onClick={() => handleSave()} variant="contained" 
                 className={`bg-[#81bd75] fixed top-16 ${prototypeId == 's5New' ? "-translate-x-56" : prototypeId == 's6' ? "-translate-x-18" : prototypeId == 'd4' ? "translate-x-20" : "translate-x-56"}`}
