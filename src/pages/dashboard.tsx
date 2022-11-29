@@ -149,7 +149,6 @@ const Dashboard = () => {
     <div>
         <LeftSideBar setLIsCollapsed={setLIsCollapsed} />    
           <div className="flex justify-center h-0">
-            <h1 className='mt-4'>Please choose a Prototype</h1>
             <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId}/>     
             <Link href={`/${prototypeId}/feedback`}>
             <Button onClick={() => handleSave()} variant="contained" 
