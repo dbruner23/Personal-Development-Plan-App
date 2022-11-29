@@ -19,7 +19,6 @@ const prototypeS6 = () => {
          <div className=" text-center text-2xl">
            <p>This prototype looks at a slightly more fun way to present you with 4 different pathways ways to further progress your career in tech.</p>
            <p>Click on each one to find out more information about each pathway</p>
-          
          </div>
 
           <div className="my-12 flex justify-center max-w-full bg-[#103e41] rounded-lg hover:rounded-full">

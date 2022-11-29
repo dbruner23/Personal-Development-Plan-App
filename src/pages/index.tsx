@@ -31,7 +31,7 @@ const Home: NextPage = () => {
         <meta name="description" content="PDP Horizons by Dacreed" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="container mx-auto flex min-h-screen items-center justify-center bg-[#f67980] w-full">
+      <main className="z-10 container mx-auto flex min-h-screen items-center justify-center bg-[#f67980] w-full">
         <div className="flex flex-col items-center">
           <div className="z-10 flex flex-col items-center justify-center bg-white opacity-80 p-5 rounded-md">
             <h1 className="text-2xl font-semibold mb-2">
@@ -61,8 +61,8 @@ const Home: NextPage = () => {
           <button onClick={() => signIn(undefined, {callbackUrl: 'http://localhost:3000/dashboard' })} className="hidden px-5 py-2 bg-[#1848C8] hover:bg-[#AFC3FF] text-white rounded-full">
             Sign in
           </button> */}
-          <div className="z-0 bg-fixed fixed top-0 left-0 right-0 ">
-          <Image src={MainImage} alt="sticky notes"></Image>
+          <div className="z-0 bg-fixed fixed top-0 left-0 right-0 m-0">
+          <Image src={MainImage} className="z-0" alt="sticky notes"></Image>
           </div>
         </div>
       </main>

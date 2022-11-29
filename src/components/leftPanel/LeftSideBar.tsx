@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 
+type Props = {
+  setLIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-const LeftSideBar = () => {
-
-  const [leftCollapsed, setLeftCollapsed] = useState(false)
+const LeftSideBar = (props: Props) => {
+  const { setLIsCollapsed } = props;
+  const [leftCollapsed, setLeftCollapsed] = useState(false);
 
   return (
     <>
@@ -11,7 +14,7 @@ const LeftSideBar = () => {
     <div className="flex h-full w-full overflow-scroll justify-start mx-auto flex-col bg-[#eff1f4] p-7 ">
                         <div className="flex flex-col justify-start items-start mx-auto ">
                             <div className="flex w-full justify-center">
-                                <button className="absolute right-2 top-2" onClick={() => setLeftCollapsed((prev) => {return !prev})}>{leftCollapsed ? <div>&gt;</div> : <div>&lt;</div>}</button>
+              <button className="absolute right-2 top-2" onClick={() => { setLIsCollapsed((prev) => { return !prev }); setLeftCollapsed((prev) => { return !prev }) }}>{leftCollapsed ? <div>&gt;</div> : <div>&lt;</div>}</button>
                                 <div className="text-lg">About me</div>
                             </div>
                             
