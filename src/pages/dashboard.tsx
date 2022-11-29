@@ -31,6 +31,7 @@ interface IRecordWindow {
 
 const Dashboard = () => {
     const router = useRouter()
+    const [persona, setPersona] = useState('')
     const [prototypeId, setPrototypeId] = useState('s5New')
     const [mus, setMus] = useState<any>('')
     const [recordWindow, setRecordWindow] = useState<IRecordWindow>()
@@ -45,9 +46,9 @@ const Dashboard = () => {
             case 'd3':
                 return <TubeMap />
             case 'd4':
-                return <CollapsibleForce lIsCollapsed={lIsCollapsed} />
+                return <CollapsibleForce lIsCollapsed={lIsCollapsed} persona={persona} />
             case 'd5':
-                return <DelaunayMap />
+                return <DelaunayMap persona={persona} />
             case 'd6':
                 return <NycMap />
             case 's1':
@@ -72,6 +73,10 @@ const Dashboard = () => {
     }
 
     useEffect(() => {
+        const getPersona = window.localStorage.getItem("persona") || null;
+        if (typeof getPersona === "string") {
+            setPersona(getPersona);
+        }
         const newMus = new (Mus as any)()
         setMus(newMus);
         const windowdims = { width: window?.innerWidth, height: window?.innerHeight }
@@ -147,7 +152,7 @@ const Dashboard = () => {
   
   return (
     <div>
-        <LeftSideBar setLIsCollapsed={setLIsCollapsed} />    
+          <LeftSideBar setLIsCollapsed={setLIsCollapsed} persona={persona} prototypeId={prototypeId} />    
           <div className="flex justify-center h-0">
             <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId}/>     
             <Link href={`/${prototypeId}/feedback`}>

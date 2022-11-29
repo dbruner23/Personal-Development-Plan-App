@@ -11,10 +11,15 @@ interface IUserInput {
     goal: string, seekscope: string, interestfields: any[], currentjob: string, worklevel: string, backgroundfield: string, edlevel: string, educationfields: any[], certifications: any[]
 }
 
-const DelaunayMap = () => {
+type Props = {
+    persona : string
+}
+
+const DelaunayMap = ( props: Props ) => {
     const careerNodes = airports.filter((node: any) => {
         return node.position != undefined
     })
+    const { persona } = props;
     const [data, setData] = useState<any[]>(careerNodes)
     const latLngArr = Array.from(data, (airport) => [+airport.longitude, +airport.latitude])
     const svgRef = useRef<SVGSVGElement>(null)
