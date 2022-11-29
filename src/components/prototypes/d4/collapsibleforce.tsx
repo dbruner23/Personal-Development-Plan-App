@@ -35,14 +35,15 @@ interface IZoomState {
 }
 
 type Props = {
-    lIsCollapsed : boolean
+    lIsCollapsed: boolean,
+    persona: string
 }
 
 const CollapsibleForce = ( props : Props ) => {
     const [data, setData] = useState<IData>(financeCareerData)
     const svgRef = useRef<SVGSVGElement>(null);
     const [started, setStarted] = useState(true);
-    const { lIsCollapsed } = props;
+    const { lIsCollapsed, persona } = props;
     const [leftCollapsed, setLeftCollapsed] = useState(false);
     const [inputStep, setInputStep] = useState(1);
     const [userInput, setUserInput] = useState<IUserInput>({
