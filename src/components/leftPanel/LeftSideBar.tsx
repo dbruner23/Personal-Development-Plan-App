@@ -34,6 +34,10 @@ const LeftSideBar = (props: Props) => {
         setInput({ currentPosition: "Senior Digital Marketing Director", goal: "" })
   })
 
+  const handleChange = (event: any) => {
+    setInput({ ...input, [event.target.name]: event.target.value });
+  }
+
   const handleSubmit = () => {
 
   }
@@ -92,6 +96,9 @@ const LeftSideBar = (props: Props) => {
                     sx={{ width: '100%' }}
                     {...params}
                     label="Enter position"
+                    name="currentPosition"
+                    value={input.currentPosition}
+                    onChange={handleChange}
                     InputProps={{
                       ...params.InputProps,
                       type: 'search',
@@ -111,6 +118,9 @@ const LeftSideBar = (props: Props) => {
                     sx={{ width: '100%' }}
                     {...params}
                     label="Enter goal"
+                    name="goal"
+                    value={input.goal}
+                    onChange={handleChange}
                     InputProps={{
                       ...params.InputProps,
                       type: 'search',
@@ -123,6 +133,7 @@ const LeftSideBar = (props: Props) => {
             <div className="mt-2 flex flex-col justify-center w-48">
               <Button
                 variant="contained"
+                onClick={()=> handleSubmit}
                 sx={{ m: 0.5 }}
                 className="bg-[#1876D2] mb-4"
               >
