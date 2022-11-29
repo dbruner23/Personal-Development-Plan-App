@@ -23,7 +23,7 @@ const LeftSideBar = (props: Props) => {
         className={`${
           leftCollapsed
             ? "l-10 h-10 w-6 overflow-hidden rounded-xl bg-[#eff1f4]"
-            : "h-full w-1/5"
+            : "h-full w-64 "
         }  fixed mx-auto flex flex-col items-center justify-between p-0`}
       >
         <button

@@ -152,7 +152,7 @@ const Dashboard = () => {
             <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId}/>     
             <Link href={`/${prototypeId}/feedback`}>
             <Button onClick={() => handleSave()} variant="contained" 
-                className={`bg-[#81bd75] fixed top-16 ${prototypeId == 's5New' ? "-translate-x-56" : prototypeId == 's7' ? "-translate-x-18" : prototypeId == 'd4' ? "translate-x-20" : "translate-x-56"}`}
+                className={`bg-[#81bd75] h-8 fixed top-16 ${prototypeId == 's5New' ? "-translate-x-56" : prototypeId == 's7' ? "-translate-x-18" : prototypeId == 'd4' ? "translate-x-20" : "translate-x-56"}`}
             >
                 Give Feedback
             </Button>
