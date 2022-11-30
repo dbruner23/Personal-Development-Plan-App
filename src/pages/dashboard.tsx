@@ -22,12 +22,14 @@ import Usertoolkit from '../components/PrototypeButtons'
 import LeftSideBar from '../components/leftPanel/LeftSideBar'
 import RightSideBar from '../components/rightPanel/RightSideBar'
 import PrototypeButtons from '../components/PrototypeButtons'
+import FeedbackModal from '../components/questionnaire/FeedbackModal'
 
 
 interface IRecordWindow {
         width: number;
         height: number;
 }
+
 
 const Dashboard = () => {
     const router = useRouter()
@@ -60,7 +62,7 @@ const Dashboard = () => {
             case 's4':
                 return <S4 />
             case 's5':
-                return <S5 />
+                return <S5/>
             case 's6':
                 return <S6 />
             case 's7':
@@ -154,14 +156,18 @@ const Dashboard = () => {
     <div>
           <LeftSideBar setLIsCollapsed={setLIsCollapsed} persona={persona} prototypeId={prototypeId} />    
           <div className="flex justify-center h-0">
-            <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId}/>     
-            <Link href={`/${prototypeId}/feedback`}>
+            <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId} persona={persona}/>     
+            {/* <Link href={`/${prototypeId}/feedback`}>
             <Button onClick={() => handleSave()} variant="contained" 
-                className={`bg-[#81bd75] h-8 fixed top-16 ${prototypeId == 's5New' ? "-translate-x-56" : prototypeId == 's7' ? "-translate-x-18" : prototypeId == 'd4' ? "translate-x-20" : "translate-x-56"}`}
+                className={`bg-[#81bd75] h-8 fixed top-16 ${prototypeId == 's5New' ? "-translate-x-56" : prototypeId == 's6' ? "-translate-x-56" : prototypeId == 's7' ? "-translate-x-18" : prototypeId == 's1' ? "-translate-x-18" : prototypeId == 'd4' ? "translate-x-20" : "translate-x-56"}`}
             >
                 Give Feedback
             </Button>
-            </Link>
+
+            </Link> */}
+            <div className={`fixed top-16 ${prototypeId == 's5New' ? "-translate-x-56" : prototypeId == 's6' ? "-translate-x-56" : prototypeId == 's7' ? "-translate-x-18" : prototypeId == 's1' ? "-translate-x-18" : prototypeId == 'd4' ? "translate-x-20" : "translate-x-56"}`}>
+            <FeedbackModal handleSubmit={() => handleSave()}></FeedbackModal>
+            </div>
         </div>
         {prototypeInsert(prototypeId)}    
         <RightSideBar />

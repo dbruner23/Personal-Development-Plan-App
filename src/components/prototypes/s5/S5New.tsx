@@ -12,7 +12,6 @@ const S5New = () => {
          <div className="w-2/4 flex justify-center ml-80 mt-24">
             <SankeyChart/>
           </div> 
-   
     </>
   );
 };

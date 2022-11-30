@@ -28,19 +28,19 @@ const LeftSideBar = (props: Props) => {
   const [leftCollapsed, setLeftCollapsed] = useState(false);
   const [input, setInput] = useState({ currentPosition: "", goal: "" });
 
-  useEffect(() => {
-    ((persona === "Jean") && (prototypeId === "d5")) ? setInput({ currentPosition: "Junior Fullstack Developer", goal: "" }) :
-      persona === "Jean" ? setInput({ currentPosition: "Junior Investment Banker", goal: "" }) :
-        setInput({ currentPosition: "Senior Digital Marketing Director", goal: "" })
-  })
+  // useEffect(() => {
+  //   ((persona === "Jean") && (prototypeId === "d5")) ? setInput({ currentPosition: "Junior Fullstack Developer", goal: "" }) :
+  //     persona === "Jean" ? setInput({ currentPosition: "Junior Investment Banker", goal: "" }) :
+  //       setInput({ currentPosition: "Senior Digital Marketing Director", goal: "" })
+  // })
 
   const handleChange = (event: any) => {
     setInput({ ...input, [event.target.name]: event.target.value });
   }
 
-  const handleSubmit = () => {
+  // const handleSubmit = () => {
 
-  }
+  // }
 
   return (
     <>
@@ -133,7 +133,7 @@ const LeftSideBar = (props: Props) => {
             <div className="mt-2 flex flex-col justify-center w-48">
               <Button
                 variant="contained"
-                onClick={()=> handleSubmit}
+                // onClick={()=> handleSubmit}
                 sx={{ m: 0.5 }}
                 className="bg-[#1876D2] mb-4"
               >
