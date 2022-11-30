@@ -52,7 +52,7 @@ const Cubes = () => {
             ></Box>
 
           <Box
-            position={[1.9, 0.7, 3]}
+            position={[1.5, 1, 2.4]}
             rotation={[1, 1, 0]}
             size={[2, 1, 2]}
             color="#25a596"
