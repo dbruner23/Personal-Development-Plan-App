@@ -20,27 +20,55 @@ import goalsoftware from '../../data/goalsoftware.json'
 type Props = {
   setLIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>,
   persona: string,
-  prototypeId: string
+  prototypeId: string,
+  setInput: React.Dispatch<React.SetStateAction<{ currentPosition: string, goal: string }>>
 }
 
 const LeftSideBar = (props: Props) => {
-  const { setLIsCollapsed, persona, prototypeId } = props;
+  const { setLIsCollapsed, persona, prototypeId, setInput } = props;
   const [leftCollapsed, setLeftCollapsed] = useState(false);
-  const [input, setInput] = useState({ currentPosition: "", goal: "" });
 
-  // useEffect(() => {
-  //   ((persona === "Jean") && (prototypeId === "d5")) ? setInput({ currentPosition: "Junior Fullstack Developer", goal: "" }) :
-  //     persona === "Jean" ? setInput({ currentPosition: "Junior Investment Banker", goal: "" }) :
-  //       setInput({ currentPosition: "Senior Digital Marketing Director", goal: "" })
-  // })
+  const [currentPosData, setCurrentPosData] = useState<{ position: string }[]>([]);
+  const [currentGoalData, setCurrentGoalData] = useState<{ position: string }[]>([]);
+  const [inputForm, setInputForm] = useState({ currentPosition: "", goal: "" });
+  const [inputValue, setInputValue] = useState('');  
+  
+  useEffect(() => {
+    if (persona) {
+      if ((persona === "Jean") && (prototypeId === "d5")) {
+        setInputForm({ currentPosition: "Junior Fullstack Developer", goal: "" })
+      } else if ((persona === "Jean") && (prototypeId !== "d5")) {
+        setInputForm({ currentPosition: "Junior Investment Banker", goal: "" })
+      } else {
+        setInputForm({ currentPosition: "Senior Digital Marketing Director", goal: "" })
+      }
+    };
+
+    if (prototypeId) {
+      if (prototypeId === "d5") {
+        setCurrentPosData(currentpossoftware);
+        setCurrentGoalData(goalsoftware);
+      } else {
+        setCurrentPosData(currentposfinance);
+        setCurrentGoalData(goalfinance);
+      }
+    };
+  }, [persona, prototypeId])
+
 
   const handleChange = (event: any) => {
-    setInput({ ...input, [event.target.name]: event.target.value });
+    setInputForm({ ...inputForm, [event.target.name]: event.target.value });
   }
 
-  // const handleSubmit = () => {
 
-  // }
+  const handleGoalChange = (event: any) => {
+    setInputForm({ ...inputForm, goal: event.target.value})
+  }
+
+  const handleSubmit = () => {
+    setInput(inputForm)
+  }
+
 
   return (
     <>
@@ -61,7 +89,7 @@ const LeftSideBar = (props: Props) => {
           {leftCollapsed ? <div>&gt;</div> : <div>&lt;</div>}
         </button>
 
-        <div className="flex h-full w-full justify-center overflow-scroll bg-[#eff1f4] pt-7 ">
+        <div className="flex h-full w-full justify-center bg-[#eff1f4] pt-7 ">
           <div className="flex mt-4 flex-col items-center">
             <Image
               src={persona === "Jean" ? Jean : James}
@@ -86,54 +114,57 @@ const LeftSideBar = (props: Props) => {
 
             <div className="flex flex-col w-52">
               <label className="mb-2 mt-2 text-sm ">Current Position</label>
-              <Autocomplete
-                freeSolo
-                id="free-solo-2-demo"
-                disableClearable
-                options={prototypeId === 'd5' ? currentpossoftware.map((option) => option.position) : currentposfinance.map((option) => option.position)}
-                renderInput={(params) => (
-                  <TextField
-                    sx={{ width: '100%' }}
-                    {...params}
-                    label="Enter position"
-                    name="currentPosition"
-                    value={input.currentPosition}
-                    onChange={handleChange}
-                    InputProps={{
-                      ...params.InputProps,
-                      type: 'search',
-                    }}
-                  />
-                )}
-              />
+              <TextField
+                id="outlined-select-currency"
+                select
+                label="Select"
+                name="currentPosition"
+                value={inputForm.currentPosition}
+                onChange={handleChange}
+                sx={{ width: '100%' }}
+              >
+                {currentPosData.map((element) => (
+                  <MenuItem key={element.position} value={element.position}>
+                    {element.position}
+                  </MenuItem>
+                ))}
+              </TextField>
+            
 
               <label className="mb-2 mt-2 text-sm ">Goal</label>
-              <Autocomplete
-                freeSolo
-                id="free-solo-2-demo"
-                disableClearable
-                options={prototypeId === 'd5' ? goalsoftware.map((option) => option.position) : goalfinance.map((option) => option.position)}
-                renderInput={(params) => (
-                  <TextField
-                    sx={{ width: '100%' }}
-                    {...params}
-                    label="Enter goal"
-                    name="goal"
-                    value={input.goal}
-                    onChange={handleChange}
-                    InputProps={{
-                      ...params.InputProps,
-                      type: 'search',
-                    }}
-                  />
-                )}
-              />
+              <TextField
+                id="outlined-select-currency"
+                select
+                label="Select"
+                name="goal"
+                value={inputForm.goal}
+                onChange={handleChange}
+                sx={{ width: '100%' }}
+              >
+                {currentGoalData.map((element) => (
+                  <MenuItem key={element.position} value={element.position}>
+                    {element.position}
+                  </MenuItem>
+                ))}
+              </TextField>
             </div>
 
             <div className="mt-2 flex flex-col justify-center w-48">
               <Button
                 variant="contained"
-                // onClick={()=> handleSubmit}
+
+                onClick={() => {
+                  if ((inputForm.currentPosition === "") || (inputForm.goal === "")) {
+                    alert("Please make sure you have entered your Current Position and your Goal.")
+                  // }  else if (currentPosData.find((option) => { option.position === inputForm.currentPosition }) == undefined) {
+                  //   alert("We're sorry but this position does not exist in our current data set.")
+                  // } else if (currentGoalData.find((option) => { option.position === inputForm.goal }) == undefined) {
+                  //   alert("We're sorry but this goal does not exist in our current data set.")
+                  } else {
+                    handleSubmit()
+                  }
+                }}
+
                 sx={{ m: 0.5 }}
                 className="bg-[#1876D2] mb-4"
               >

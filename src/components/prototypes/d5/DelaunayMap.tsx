@@ -12,7 +12,9 @@ interface IUserInput {
 }
 
 type Props = {
-    persona : string
+    persona: string,
+    input: { currentPosition: string, goal: string },
+    setPath: React.Dispatch<React.SetStateAction<never[]>>
 }
 
 const DelaunayMap = ( props: Props ) => {

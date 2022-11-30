@@ -23,6 +23,8 @@ import LeftSideBar from '../components/leftPanel/LeftSideBar'
 import RightSideBar from '../components/rightPanel/RightSideBar'
 import PrototypeButtons from '../components/PrototypeButtons'
 import FeedbackModal from '../components/questionnaire/FeedbackModal'
+import Toolbar from '../components/toolbar/Toolbar'
+
 
 
 interface IRecordWindow {
@@ -38,7 +40,17 @@ const Dashboard = () => {
     const [mus, setMus] = useState<any>('')
     const [recordWindow, setRecordWindow] = useState<IRecordWindow>()
     const [lIsCollapsed, setLIsCollapsed] = useState(false)
- 
+    const [input, setInput] = useState({ currentPosition: '', goal: '' })
+    const [lifestyleInput, setLifestyleInput] = useState({ extrahours: true, fulltimeEd: true, relocation: true, remotework: true })
+    const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
+    const [path, setPath] = useState([])
+    
+    
+    const handleLifestyleChange = (event: any) => {
+        setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
+        setLifestyleInputStrings({ ...lifestyleInputStrings, [event.target.name]: (event.target.checked).toString() });
+    }
+
     const prototypeInsert = (prototype : string | string[] | undefined) => {
         switch (prototype) {
             case 'd1':
@@ -48,9 +60,9 @@ const Dashboard = () => {
             case 'd3':
                 return <TubeMap />
             case 'd4':
-                return <CollapsibleForce lIsCollapsed={lIsCollapsed} persona={persona} />
+                return <CollapsibleForce lIsCollapsed={lIsCollapsed} persona={persona} input={input} lifestyleInputStrings={lifestyleInputStrings} setPath={setPath} />
             case 'd5':
-                return <DelaunayMap persona={persona} />
+                return <DelaunayMap persona={persona} input={input} setPath={setPath} />
             case 'd6':
                 return <NycMap />
             case 's1':
@@ -73,6 +85,8 @@ const Dashboard = () => {
                 return <Loading />
         }
     }
+
+
 
     useEffect(() => {
         const getPersona = window.localStorage.getItem("persona") || null;
@@ -154,7 +168,7 @@ const Dashboard = () => {
   
   return (
     <div>
-          <LeftSideBar setLIsCollapsed={setLIsCollapsed} persona={persona} prototypeId={prototypeId} />    
+          <LeftSideBar setLIsCollapsed={setLIsCollapsed} persona={persona} prototypeId={prototypeId} setInput={setInput} />    
           <div className="flex justify-center h-0">
             <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId} persona={persona}/>     
             {/* <Link href={`/${prototypeId}/feedback`}>
@@ -169,8 +183,9 @@ const Dashboard = () => {
             <FeedbackModal handleSubmit={() => handleSave()}></FeedbackModal>
             </div>
         </div>
-        {prototypeInsert(prototypeId)}    
-        <RightSideBar />
+        {prototypeInsert(prototypeId)}
+          <Toolbar handleLifestyleChange={handleLifestyleChange} lifestyleInput={lifestyleInput} />  
+          <RightSideBar path={path} />
     </div>
   )
 }

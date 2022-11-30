@@ -14,10 +14,12 @@ module.exports = {
         '10vh': '10vh',
       },
       left: {
-        '-10px': '-10px'
+        '-10px': '-10px',
+        '17rem': '17rem'
       },
       transitionProperty: {
-        'width': 'width'
+        'width': 'width',
+        'height': 'height'
       },
       keyframes: {
         load: {
