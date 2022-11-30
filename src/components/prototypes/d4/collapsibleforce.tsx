@@ -36,79 +36,81 @@ interface IZoomState {
 
 type Props = {
     lIsCollapsed: boolean,
-    persona: string
+    persona: string,
+    input: { currentPosition: string, goal: string },
+    lifestyleInputStrings: { extrahours: string, fulltimeEd: string, relocation: string, remotework: string },
+    setPath: React.Dispatch<React.SetStateAction<never[]>>
 }
 
 const CollapsibleForce = ( props : Props ) => {
+    const { lIsCollapsed, persona, input, lifestyleInputStrings, setPath } = props;
+    const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings
     const [data, setData] = useState<IData>(financeCareerData)
     const svgRef = useRef<SVGSVGElement>(null);
-    const [started, setStarted] = useState(true);
-    const { lIsCollapsed, persona } = props;
-    const [leftCollapsed, setLeftCollapsed] = useState(false);
-    const [inputStep, setInputStep] = useState(1);
-    const [userInput, setUserInput] = useState<IUserInput>({
-        goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
-    });
-    const [submitInput, setSubmitInput] = useState<IUserInput>({
-        goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
-    });
+    // const [started, setStarted] = useState(true);
+    // const [leftCollapsed, setLeftCollapsed] = useState(false);
+    // const [inputStep, setInputStep] = useState(1);
+    // const [userInput, setUserInput] = useState<IUserInput>({
+    //     goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
+    // });
+    // const [submitInput, setSubmitInput] = useState<IUserInput>({
+    //     goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
+    // });   
 
-    
+    // const handleChange = (event: any) => {
+    //     setUserInput({ ...userInput, [event.target.name]: event.target.value });
+    // }
 
-    const handleChange = (event: any) => {
-        setUserInput({ ...userInput, [event.target.name]: event.target.value });
-    }
+    // const handleSubmit = () => {
+    //     // filter displayed data based on user input
+    //     if ( userInput.interestfields.includes('finance')) {
+    //         setData(financeCareerData);
+    //     }
 
-    const handleSubmit = () => {
-        // filter displayed data based on user input
-        if ( userInput.interestfields.includes('finance')) {
-            setData(financeCareerData);
-        }
+    //     if (userInput.goal === 'vis') {
+    //         const dataArr: any[] = Object.entries(data);
+    //         const newArr = dataArr[1][1].filter((element: { name: string; }) => {
+    //             return element.name !== 'vis'
+    //         })
+    //         const newData = { ...data, children: newArr }
+    //         setData(newData)
+    //     }
+    //     setSubmitInput(userInput);
+    //     setInfoDisplay(false);
+    //     setStarted(true);
+    // }
 
-        // if (userInput.goal === 'vis') {
-        //     const dataArr: any[] = Object.entries(data);
-        //     const newArr = dataArr[1][1].filter((element: { name: string; }) => {
-        //         return element.name !== 'vis'
-        //     })
-        //     const newData = { ...data, children: newArr }
-        //     setData(newData)
-        // }
-        setSubmitInput(userInput);
-        setInfoDisplay(false);
-        setStarted(true);
-    }
-
-    const stepSwitch = (inputStep: number) => {
-        switch (inputStep) {
-            case 1:
-                return <InputStep1 setInputStep={setInputStep}  />
-            case 2:
-                return <InputStep2 userInput={userInput} setInputStep={setInputStep} handleChange={handleChange} />
-            case 3:
-                return <InputStep3 userInput={userInput} setInputStep={setInputStep} handleChange={handleChange} handleSubmit={handleSubmit}/>
-        }
-    }
+    // const stepSwitch = (inputStep: number) => {
+    //     switch (inputStep) {
+    //         case 1:
+    //             return <InputStep1 setInputStep={setInputStep}  />
+    //         case 2:
+    //             return <InputStep2 userInput={userInput} setInputStep={setInputStep} handleChange={handleChange} />
+    //         case 3:
+    //             return <InputStep3 userInput={userInput} setInputStep={setInputStep} handleChange={handleChange} handleSubmit={handleSubmit}/>
+    //     }
+    // }
 
 
     //To be converted to string. "false" in the data will mean "a person can't do this if they aren't willing/able to ________" 
     const [lifestyleInput, setLifestyleInput] = useState({ extrahours: true, fulltimeEd: true, relocation: true, remotework: true })
-    const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
-    const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings;
+    // const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
+    // const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings;
     const [infoDisplay, setInfoDisplay] = useState(false)
     const [infoData, setInfoData] = useState<IInfoData>({ name: '', photo: '', summary: '', salary: '', time: 0, listings: 5, link: '', linkedIn: '' })
     const [currentZoomState, setCurrentZoomState] = useState<IZoomState>({k: 1, x: 0, y: 0})
     
 
-    const handleLifestyleChange = (event: any) => {
-        setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
-        setLifestyleInputStrings({ ...lifestyleInputStrings, [event.target.name]: (event.target.checked).toString() });
-    }
+    // const handleLifestyleChange = (event: any) => {
+    //     setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
+    //     setLifestyleInputStrings({ ...lifestyleInputStrings, [event.target.name]: (event.target.checked).toString() });
+    // }
     
 
     //Run d3 visualisation  
     useEffect(() => {
-        if (data !== null) { buildGraph(data) }
-    }, [data, lifestyleInputStrings, submitInput]);
+        if (data !== null && input !== undefined) { buildGraph(data) }
+    }, [data, lifestyleInputStrings, input]);
 
     const buildGraph = (data: any) => {
         const svg: any = d3.select(svgRef.current)
@@ -173,11 +175,24 @@ const CollapsibleForce = ( props : Props ) => {
         function update() {
             d3.selectAll("svg > *").remove();
             const links: any = root.links();
-            console.log(links);
             const nodes: any = root.descendants();
-            const upperCurrentJob = getTitleCase(submitInput.currentjob)
-            const upperGoal = getTitleCase(submitInput.goal)
+            // const upperCurrentJob = getTitleCase(input.currentPosition)
+            // const upperGoal = getTitleCase(input.goal)
             let currentposition: any = root;
+            let currentPosInput: string = ""
+            let education = '';
+            if (input.currentPosition.indexOf("via") !== -1 ) {
+                const index = input.currentPosition.indexOf("via") - 1
+                currentPosInput = input.currentPosition.slice(0, index) 
+            } else {
+                currentPosInput = input.currentPosition
+            }
+
+            if (input.currentPosition.indexOf("via") !== -1) {
+                const index = input.currentPosition.indexOf("via") + 4
+                education = input.currentPosition.slice(index)
+            }
+
             let recommend1: any = null
             let recommend2: any = null;
             const lifestylefitnodes : any[] = []
@@ -188,35 +203,34 @@ const CollapsibleForce = ( props : Props ) => {
             let ty = 0
             let k = 1
             //hacky solution to discerning current position based on input. 
-            const edtrack = (submitInput.educationfields.includes("finance") && submitInput.edlevel === 'bachelors') ? "INTERN" :
-                (submitInput.certifications.includes('bachelors in finance') && submitInput.edlevel === "masters") ? "MBAFIN" :
-                    (!submitInput.certifications.includes("bachelors in finance") && submitInput.edlevel === "masters") ? "MBANOFIN" :
-                        (submitInput.certifications.includes("Dacreed CFA")) ? "DCFAQ" : null;
+            // const edtrack = (submitInput.educationfields.includes("finance") && submitInput.edlevel === 'bachelors') ? "INTERN" :
+            //     (submitInput.certifications.includes('bachelors in finance') && submitInput.edlevel === "masters") ? "MBAFIN" :
+            //         (!submitInput.certifications.includes("bachelors in finance") && submitInput.edlevel === "masters") ? "MBANOFIN" :
+            //             (submitInput.certifications.includes("Dacreed CFA")) ? "DCFAQ" : null;
+            
+            const edtrack =
+                currentPosInput.includes("University") ? "UNI" :
+                ((education === "Internship") || (education === "Junior I. Banker") || (education === "Analyst") || (currentPosInput.includes("Private")) || (currentPosInput === "I. Banking Internship") || (currentPosInput === "Junior Investment Banker")) ? "INTERN" :
+                (education.includes('Uni')) ? "MBAFIN" :
+                ((education === "MBA") || (currentPosInput === "MBA")) ? "MBANOFIN" :
+                ((education === ("Dacreed CFA")) || currentPosInput === "Dacreed CFA") ? "DCFAQ" :
+                (education.includes("Junior Analyst") || currentPosInput === "Junior Analyst") ? "JUNAN" : null;
 
-            if (currentZoomState) {
-                tx = currentZoomState.x
-                ty = currentZoomState.y
-                k = currentZoomState.k
-            }
-
-            if (!started && nodes.length > 200) { 
-                rec1path = nodes[randnum(nodes.length)].ancestors()
-                rec1path.pop()
-                rec2path = nodes[randnum(nodes.length)].ancestors()
-                rec2path.pop()
-            }
+            // if (!started && nodes.length > 200) { 
+            //     rec1path = nodes[randnum(nodes.length)].ancestors()
+            //     rec1path.pop()
+            //     rec2path = nodes[randnum(nodes.length)].ancestors()
+            //     rec2path.pop()
+            // }
 
 
-            if (started) {
-                rec1path = []
-                rec2path = []
+            // if (started) {
                 //set current position
                 for (let i = 0; i < nodes.length; i++) {
-                    if ((nodes[i].data.name === upperCurrentJob) && (nodes[i].ancestors().filter((node: any) => node.data.id === edtrack).length !== 0)) {
+                    if ((nodes[i].data.name === currentPosInput) && (nodes[i].ancestors().filter((node: any) => node.data.id === edtrack).length !== 0)) {
                         currentposition = nodes[i]
                     }
                 }
-                
                 //checks if node is ancestor of current position before pushing to no lifestyle fit.
                 // else pushes to array of non lifestyle fit nodes based on user ticks or unticks
                 for (let i = 0; i < nodes.length; i++) {            
@@ -238,7 +252,7 @@ const CollapsibleForce = ( props : Props ) => {
                 //search for set of possible goal nodes from lifestyle fit array based on closest matches to user input
                 const rec1candidates: any[] = []
                 for (let i = 0; i < lifestylefitnodes.length; i++) {
-                    if ((lifestylefitnodes[i].data.name === upperGoal) && (lifestylefitnodes[i].ancestors().includes(currentposition))) {
+                    if ((lifestylefitnodes[i].data.name === input.goal) && (lifestylefitnodes[i].ancestors().includes(currentposition))) {
                         rec1candidates.push(lifestylefitnodes[i])
                     }
                 }
@@ -273,7 +287,10 @@ const CollapsibleForce = ( props : Props ) => {
                         rec2path = recommend2.ancestors().slice(0, currentposindex);
                     }
                 }
-            }
+            // }
+            
+            
+            
 
             function color(d: any) {            
                 if (nolifestylefitnodes.includes(d)) {
@@ -329,11 +346,46 @@ const CollapsibleForce = ( props : Props ) => {
 
 
             simulation.on("tick", () => {
-                link.attr("stroke", (d: any) => rec1path.includes(d.target) ? "#48bf53" : rec2path.includes(d.target) ? "#91f086": "#999")
+                link.attr("stroke", (d: any) => rec1path.includes(d.target) ? "#48bf53" : rec2path.includes(d.target) ? "#91f086" : "#999")
+                    .attr("class", (d: any) => {
+                        if (rec1path.includes(d.target)) {
+                            return "rec1path"
+                        } else if (rec2path.includes(d.target)) {
+                            return "rec2path"
+                        }
+                    })
                     .attr("x1", (d: any) => d.source.x)
                     .attr("y1", (d: any) => d.source.y )
                     .attr("x2", (d: any) => d.target.x )
-                    .attr("y2", (d: any) => d.target.y );
+                    .attr("y2", (d: any) => d.target.y)
+                    .on("mouseenter", function (e: any, d: any) {
+                        if (rec1path.includes(d.target)) {
+                            d3.selectAll(".rec1path")
+                                .attr("stroke-width", 3)
+                                .attr("cursor", "pointer")
+                        } else if (rec2path.includes(d.target)) {
+                            d3.selectAll(".rec2path")
+                                .attr("stroke-width", 3)
+                                .attr("cursor", "pointer")
+                        }
+                    })
+                    .on("mouseleave", function (e: any, d: any) {
+                        if (rec1path.includes(d.target)) {
+                            d3.selectAll(".rec1path")
+                                .attr("stroke-width", 1.5)
+                        } else if (rec2path.includes(d.target)) {
+                            d3.selectAll(".rec2path")
+                                .attr("stroke-width", 1.5)
+                        }
+                    })
+                    .on("click", (event: any, d: any) => {
+                        if (rec1path.includes(d.target)) {
+                            const currentposindex = recommend1.ancestors().indexOf(currentposition)
+                            setPath(recommend1.ancestors().slice(0, (currentposindex + 1)))
+                        } else if (rec2path.includes(d.target)) {
+                            const currentposindex = recommend2.ancestors().indexOf(currentposition)
+                        }
+                    });
 
                 node.attr("fill", (d: any) => color(d))
                     .attr("r", (d: any) => ((Math.sqrt(d.data.listings)) || (Math.sqrt(d.data.size) / 12) || 5.5 ))
@@ -579,7 +631,7 @@ const CollapsibleForce = ( props : Props ) => {
                     </div>
                 </div>
             </div>
-            <div id="infoDisplay" className={`${infoDisplay ? 'w-1/5 p-12 opacity-100' : 'w-0 p-0 opacity-0'} overflow-scroll transition-width h-screen top-0 right-0 fixed flex justify-start items-center gap-2 mx-auto flex-col bg-[#eff1f4]`}>
+            {/* <div id="infoDisplay" className={`${infoDisplay ? 'w-1/5 p-12 opacity-100' : 'w-0 p-0 opacity-0'} overflow-scroll transition-width h-screen top-0 right-0 fixed flex justify-start items-center gap-2 mx-auto flex-col bg-[#eff1f4]`}>
                 <button className="absolute left-2 top-2" onClick={() => setInfoDisplay(false)}>X</button>
                 <div className="flex justify-center text-lg">{infoData.name}</div>
                 {infoData.photo !== 'undefined' && (
@@ -630,7 +682,7 @@ const CollapsibleForce = ( props : Props ) => {
                     </div>
                 )}
                 
-            </div>
+            </div> */}
             <svg ref={svgRef} className="h-full w-full overflow-visible" ></svg>
         </div>
     )

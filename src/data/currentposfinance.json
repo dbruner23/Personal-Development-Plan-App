@@ -1,12 +1,15 @@
 [
     {
-        "position": "Uni Degree in Finance"
+        "position": "University Degree in Finance"
+    },
+    {
+        "position": "Dacreed CFA"
     },
     {
         "position": "MBA"
     },
     {
-        "position": "MBA + Uni"
+        "position": "MBA via Uni"
     },
     {
         "position":"I. Banking Internship"
@@ -15,25 +18,22 @@
         "position": "Junior Investment Banker"
     },
     {
-        "position": "I. Banking Analyst via Internship"
-    },
-    {
-        "position": "I. Banking Analyst via MBA"
-    },
-    {
-        "position": "I. Banking Analyst via Dacreed"
-    },
-    {
-        "position": "I. Banking Analyst via Uni + MBA"
-    },
-    {
-        "position": "I. Banking Analyst via Junior Analyst"
-    },
-    {
         "position": "Investment Banking Associate via Analyst"
     },
     {
-        "position": "Investment Banking Associate"
+        "position": "Investment Banking Analyst via Junior I. Banker"
+    },
+    {
+        "position": "Investment Banking Analyst via MBA"
+    },
+    {
+        "position": "Investment Banking Analyst via Dacreed CFA"
+    },
+    {
+        "position": "Investment Banking Analyst via Uni + MBA"
+    },
+    {
+        "position": "Investment Banking Analyst via Junior Analyst"
     },
     {
         "position": "Private Equity Associate"
@@ -52,9 +52,6 @@
     },
     {
         "position": "Food & Beverage Coordinator"
-    },
-    {
-        "position": "Front Office Supervisor"
     },
     {
         "position": "Hospitality Services Coordinator"
