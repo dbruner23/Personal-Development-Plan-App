@@ -22,8 +22,8 @@ import Usertoolkit from '../components/PrototypeButtons'
 import LeftSideBar from '../components/leftPanel/LeftSideBar'
 import RightSideBar from '../components/rightPanel/RightSideBar'
 import PrototypeButtons from '../components/PrototypeButtons'
-import FeedbackModal from '../components/questionnaire/FeedbackModal'
 import Toolbar from '../components/toolbar/Toolbar'
+import FeedbackModal from '../components/questionnaire/FeedbackModal'
 
 
 
@@ -171,16 +171,9 @@ const Dashboard = () => {
           <LeftSideBar setLIsCollapsed={setLIsCollapsed} persona={persona} prototypeId={prototypeId} setInput={setInput} />    
           <div className="flex justify-center h-0">
             <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId} persona={persona}/>     
-            {/* <Link href={`/${prototypeId}/feedback`}>
-            <Button onClick={() => handleSave()} variant="contained" 
-                className={`bg-[#81bd75] h-8 fixed top-16 ${prototypeId == 's5New' ? "-translate-x-56" : prototypeId == 's6' ? "-translate-x-56" : prototypeId == 's7' ? "-translate-x-18" : prototypeId == 's1' ? "-translate-x-18" : prototypeId == 'd4' ? "translate-x-20" : "translate-x-56"}`}
-            >
-                Give Feedback
-            </Button>
 
-            </Link> */}
             <div className={`fixed top-16 ${prototypeId == 's5New' ? "-translate-x-56" : prototypeId == 's6' ? "-translate-x-56" : prototypeId == 's7' ? "-translate-x-18" : prototypeId == 's1' ? "-translate-x-18" : prototypeId == 'd4' ? "translate-x-20" : "translate-x-56"}`}>
-            <FeedbackModal handleSubmit={() => handleSave()}></FeedbackModal>
+            <FeedbackModal prototypeId={prototypeId} handleSubmit={() => handleSave()}></FeedbackModal>
             </div>
         </div>
         {prototypeInsert(prototypeId)}

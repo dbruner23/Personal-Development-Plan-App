@@ -21,6 +21,7 @@ const style = {
 
 type Props = {
   handleSubmit: () => void;
+  prototypeId: string,
 };
 
 export default function FeedbackModal(props: Props) {
@@ -32,8 +33,8 @@ export default function FeedbackModal(props: Props) {
     improve: "",
   });
   const savePttrials = trpc.useraction.savePttrials.useMutation();
-  const router = useRouter();
-  const prototypeId = router.query.prototypeId;
+  // const router = useRouter();
+  const prototypeId = props.prototypeId;
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -65,7 +66,7 @@ export default function FeedbackModal(props: Props) {
       <Button
         onClick={() => {
           handleOpen();
-          props.handleSubmit();
+          // props.handleSubmit();
         }}
         variant="contained"
         className="bg-[#1848C8]"

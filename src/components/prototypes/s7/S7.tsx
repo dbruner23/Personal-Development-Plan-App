@@ -1,5 +1,5 @@
 import LineChart1 from "./LineChart1";
-import data from "./data2";
+// import data from "./data2";
 import Box from '@mui/material/Box';
 
 
@@ -7,7 +7,7 @@ const S7 = () => {
   return (
     <>
       
-<main className='mx-auto w-3/4 mt-20 '>
+<main className='mx-auto w-3/4 mt-24 '>
   
 <div className="flex flex-col justify-between p-6">
 
@@ -25,7 +25,7 @@ sx={{
   overflow: "hidden",
   overflowY: "scroll",
 }}>
-{data.map((result, index) =>(
+{/* {data.map((result, index) =>(
 
   <div key={index} className="bg-[#dddfe6] p-1 m-2 rounded-lg">
        
@@ -46,7 +46,7 @@ sx={{
         </div>
          
   </div>
-))}
+))} */}
 </Box>
 
 </div>

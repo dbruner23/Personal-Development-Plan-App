@@ -16,6 +16,7 @@ import currentposfinance from '../../data/currentposfinance.json'
 import currentpossoftware from '../../data/currentpossoft.json'
 import goalfinance from '../../data/goalfinance.json'
 import goalsoftware from '../../data/goalsoftware.json'
+import Link from 'next/link';
 
 type Props = {
   setLIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>,
@@ -191,9 +192,11 @@ const LeftSideBar = (props: Props) => {
               >
                 Achievements
               </Button>
+              <Link href="/choosePersona">
               <Button variant="outlined" sx={{ m: 0.5 }}>
                 Settings
               </Button>
+              </Link>
             </div>
           </div>
         </div>
