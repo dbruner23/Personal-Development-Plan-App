@@ -23,12 +23,15 @@ import LeftSideBar from '../components/leftPanel/LeftSideBar'
 import RightSideBar from '../components/rightPanel/RightSideBar'
 import PrototypeButtons from '../components/PrototypeButtons'
 import Toolbar from '../components/toolbar/Toolbar'
+import FeedbackModal from '../components/questionnaire/FeedbackModal'
+
 
 
 interface IRecordWindow {
         width: number;
         height: number;
 }
+
 
 const Dashboard = () => {
     const router = useRouter()
@@ -70,7 +73,7 @@ const Dashboard = () => {
             case 's4':
                 return <S4 />
             case 's5':
-                return <S5 />
+                return <S5/>
             case 's6':
                 return <S6 />
             case 's7':
@@ -166,14 +169,11 @@ const Dashboard = () => {
     <div>
           <LeftSideBar setLIsCollapsed={setLIsCollapsed} persona={persona} prototypeId={prototypeId} setInput={setInput} />    
           <div className="flex justify-center h-0">
-            <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId}/>     
-            <Link href={`/${prototypeId}/feedback`}>
-            <Button onClick={() => handleSave()} variant="contained" 
-                className={`bg-[#81bd75] h-9 fixed top-16 ${prototypeId == 's5New' ? "-translate-x-60" : prototypeId == 's7' ? "-translate-x-16" : prototypeId == 'd4' ? "translate-x-24" : "translate-x-56"}`}
-            >
-                Give Feedback
-            </Button>
-            </Link>
+            <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId} persona={persona}/>     
+
+            <div className={`fixed top-16 ${prototypeId == 's5New' ? "-translate-x-60" : prototypeId == 's6' ? "-translate-x-60" : prototypeId == 's7' ? "-translate-x-16" : prototypeId == 's1' ? "-translate-x-16" : prototypeId == 'd4' ? "translate-x-24" : "translate-x-56"}`}>
+            <FeedbackModal prototypeId={prototypeId} handleSubmit={() => handleSave()}></FeedbackModal>
+            </div>
         </div>
         {prototypeInsert(prototypeId)}
           <Toolbar handleLifestyleChange={handleLifestyleChange} lifestyleInput={lifestyleInput} />  

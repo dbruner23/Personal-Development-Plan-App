@@ -29,16 +29,6 @@ export default function Node({
       >
         {payload.name}
       </text>
-      {/* <text
-        textAnchor={isOut ? "end" : "start"}
-        x={isOut ? x - 6 : x + width + 6}
-        y={y + height / 2 + 13}
-        fontSize="12"
-        stroke="#333"
-        strokeOpacity="0.5"
-      >
-        {payload.value + ""}
-      </text> */}
     </Layer>
   );
 }

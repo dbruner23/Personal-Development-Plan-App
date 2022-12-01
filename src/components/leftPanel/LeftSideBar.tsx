@@ -18,6 +18,7 @@ import goalfinance from '../../data/goalfinance.json'
 import goalsoftware from '../../data/goalsoftware.json'
 import ChevronLeft from 'public/chevron-left.svg'
 import ChevronRight from 'public/chevron-right.svg'
+import Link from 'next/link';
 
 type Props = {
   setLIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>,
@@ -29,6 +30,7 @@ type Props = {
 const LeftSideBar = (props: Props) => {
   const { setLIsCollapsed, persona, prototypeId, setInput } = props;
   const [leftCollapsed, setLeftCollapsed] = useState(false);
+
   const [currentPosData, setCurrentPosData] = useState<{ position: string }[]>([]);
   const [currentGoalData, setCurrentGoalData] = useState<{ position: string }[]>([]);
   const [inputForm, setInputForm] = useState({ currentPosition: "", goal: "" });
@@ -56,9 +58,11 @@ const LeftSideBar = (props: Props) => {
     };
   }, [persona, prototypeId])
 
+
   const handleChange = (event: any) => {
     setInputForm({ ...inputForm, [event.target.name]: event.target.value });
   }
+
 
   const handleGoalChange = (event: any) => {
     setInputForm({ ...inputForm, goal: event.target.value})
@@ -67,6 +71,7 @@ const LeftSideBar = (props: Props) => {
   const handleSubmit = () => {
     setInput(inputForm)
   }
+
 
   return (
     <>
@@ -166,6 +171,7 @@ const LeftSideBar = (props: Props) => {
             <div className="mt-2 flex flex-col justify-center w-48">
               <Button
                 variant="contained"
+
                 onClick={() => {
                   if ((inputForm.currentPosition === "") || (inputForm.goal === "")) {
                     alert("Please make sure you have entered your Current Position and your Goal.")
@@ -177,6 +183,7 @@ const LeftSideBar = (props: Props) => {
                     handleSubmit()
                   }
                 }}
+
                 sx={{ m: 0.5 }}
                 className="bg-[#1876D2] mb-4"
               >
@@ -203,9 +210,11 @@ const LeftSideBar = (props: Props) => {
               >
                 Achievements
               </Button>
+              <Link href="/choosePersona">
               <Button variant="outlined" sx={{ m: 0.5 }}>
                 Settings
               </Button>
+              </Link>
             </div>
           </div>
         </div>
