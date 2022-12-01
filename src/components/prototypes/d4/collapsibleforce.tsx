@@ -288,9 +288,10 @@ const CollapsibleForce = ( props : Props ) => {
                     }
                 }
             // }
-            
-            
-            
+            if (recommend1) {
+                const currentposindex = recommend1.ancestors().indexOf(currentposition)
+                setPath(recommend1.ancestors().slice(0, (currentposindex + 1)))
+            }
 
             function color(d: any) {            
                 if (nolifestylefitnodes.includes(d)) {
@@ -384,6 +385,7 @@ const CollapsibleForce = ( props : Props ) => {
                             setPath(recommend1.ancestors().slice(0, (currentposindex + 1)))
                         } else if (rec2path.includes(d.target)) {
                             const currentposindex = recommend2.ancestors().indexOf(currentposition)
+                            setPath(recommend2.ancestors().slice(0, (currentposindex + 1)))
                         }
                     });
 

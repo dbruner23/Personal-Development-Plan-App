@@ -45,7 +45,6 @@ const Dashboard = () => {
     const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
     const [path, setPath] = useState([])
     
-    
     const handleLifestyleChange = (event: any) => {
         setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
         setLifestyleInputStrings({ ...lifestyleInputStrings, [event.target.name]: (event.target.checked).toString() });
@@ -62,7 +61,7 @@ const Dashboard = () => {
             case 'd4':
                 return <CollapsibleForce lIsCollapsed={lIsCollapsed} persona={persona} input={input} lifestyleInputStrings={lifestyleInputStrings} setPath={setPath} />
             case 'd5':
-                return <DelaunayMap persona={persona} input={input} setPath={setPath} />
+                return <DelaunayMap persona={persona} input={input} lifestyleInputStrings={lifestyleInputStrings} setPath={setPath} />
             case 'd6':
                 return <NycMap />
             case 's1':
@@ -172,7 +171,7 @@ const Dashboard = () => {
           <div className="flex justify-center h-0">
             <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId} persona={persona}/>     
 
-            <div className={`fixed top-16 ${prototypeId == 's5New' ? "-translate-x-56" : prototypeId == 's6' ? "-translate-x-56" : prototypeId == 's7' ? "-translate-x-18" : prototypeId == 's1' ? "-translate-x-18" : prototypeId == 'd4' ? "translate-x-20" : "translate-x-56"}`}>
+            <div className={`fixed top-16 ${prototypeId == 's5New' ? "-translate-x-60" : prototypeId == 's6' ? "-translate-x-60" : prototypeId == 's7' ? "-translate-x-16" : prototypeId == 's1' ? "-translate-x-16" : prototypeId == 'd4' ? "translate-x-24" : "translate-x-56"}`}>
             <FeedbackModal prototypeId={prototypeId} handleSubmit={() => handleSave()}></FeedbackModal>
             </div>
         </div>

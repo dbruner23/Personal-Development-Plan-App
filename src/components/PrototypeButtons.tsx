@@ -38,12 +38,11 @@ const PrototypeButtons = (props: Props) => {
         {(persona === 'Jean') ? 'Career Timeline' :'Career Path'} 
         </Button>
 
-
         <Button variant="outlined" className="bg-white" onClick={() => {setPrototypeId('d4')}}>
             Career Tree
         </Button>
         
-        <Button variant="outlined" className="bg-white" onClick={() => {setPrototypeId('d5')}}>
+        <Button variant="outlined" className="opacity-90 bg-white" onClick={() => {setPrototypeId('d5')}}>
             Take Flight
         </Button>
       </div>
