@@ -37,7 +37,7 @@ const data = [
     {
         name: "Aug 2020",
         past: 28,
-        pastInfo: "• Changed Company",
+        pastInfo: "• Changed Companies",
         path1Info: "",
         path2Info: "",
       },
