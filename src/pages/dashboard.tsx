@@ -42,7 +42,6 @@ const Dashboard = () => {
     const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
     const [path, setPath] = useState([])
     
-    
     const handleLifestyleChange = (event: any) => {
         setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
         setLifestyleInputStrings({ ...lifestyleInputStrings, [event.target.name]: (event.target.checked).toString() });
@@ -59,7 +58,7 @@ const Dashboard = () => {
             case 'd4':
                 return <CollapsibleForce lIsCollapsed={lIsCollapsed} persona={persona} input={input} lifestyleInputStrings={lifestyleInputStrings} setPath={setPath} />
             case 'd5':
-                return <DelaunayMap persona={persona} input={input} setPath={setPath} />
+                return <DelaunayMap persona={persona} input={input} lifestyleInputStrings={lifestyleInputStrings} setPath={setPath} />
             case 'd6':
                 return <NycMap />
             case 's1':
@@ -170,7 +169,7 @@ const Dashboard = () => {
             <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId}/>     
             <Link href={`/${prototypeId}/feedback`}>
             <Button onClick={() => handleSave()} variant="contained" 
-                className={`bg-[#81bd75] h-8 fixed top-16 ${prototypeId == 's5New' ? "-translate-x-56" : prototypeId == 's7' ? "-translate-x-18" : prototypeId == 'd4' ? "translate-x-20" : "translate-x-56"}`}
+                className={`bg-[#81bd75] h-9 fixed top-16 ${prototypeId == 's5New' ? "-translate-x-60" : prototypeId == 's7' ? "-translate-x-16" : prototypeId == 'd4' ? "translate-x-24" : "translate-x-56"}`}
             >
                 Give Feedback
             </Button>

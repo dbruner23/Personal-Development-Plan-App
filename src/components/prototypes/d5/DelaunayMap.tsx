@@ -14,47 +14,30 @@ interface IUserInput {
 type Props = {
     persona: string,
     input: { currentPosition: string, goal: string },
+    lifestyleInputStrings: { extrahours: string, fulltimeEd: string, relocation: string, remotework: string },
     setPath: React.Dispatch<React.SetStateAction<never[]>>
 }
 
 const DelaunayMap = ( props: Props ) => {
+    const { persona, input, lifestyleInputStrings, setPath } = props; 
+    const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings; 
     const careerNodes = airports.filter((node: any) => {
         return node.position != undefined
     })
-    const { persona } = props;
     const [data, setData] = useState<any[]>(careerNodes)
-    const latLngArr = Array.from(data, (airport) => [+airport.longitude, +airport.latitude])
+    // const latLngArr = Array.from(data, (airport) => [+airport.longitude, +airport.latitude])
     const svgRef = useRef<SVGSVGElement>(null)
-    //gather and set user input to determine start and destination
-    const [userInput, setUserInput] = useState<IUserInput>({
-        goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
-    })
-    const [submitInput, setSubmitInput] = useState<IUserInput>({
-        goal: '', seekscope: '', interestfields: ['finance'], currentjob: '', worklevel: '', backgroundfield: '', edlevel: '', educationfields: [], certifications: []
-    })
-
-
-
-    const handleChange = (event: any) => {
-        setUserInput({ ...userInput, [event.target.name]: event.target.value });
-    }
-
-    //To be converted to string. "false" in the data will mean "a person can't do this if they aren't willing/able to ________" 
-    const [lifestyleInput, setLifestyleInput] = useState({ extrahours: true, fulltimeEd: true, relocation: true, remotework: true })
-    const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
-    const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings;
 
     useEffect(() => {
         if ((data !== undefined) && (landlines !== null) && (flights !== null)) { Map(landlines, data, flights)}   
-    }, [data])
+    }, [data, input, lifestyleInputStrings])
 
     const Map = (geojson: any, data:any, connections:any) => {
         d3.selectAll("svg > *").remove();
         const svg: any = d3.select(svgRef.current)
         const width = window.innerWidth
         const height = window.innerHeight
-        const projection = d3.geoOrthographic().scale(1700).rotate([-160, 38]).translate([width / 2, height / 2])
-            // .center([159.87124736814, -37.83332894278]).translate([width / 2, height / 2])
+        const projection = d3.geoOrthographic().scale(1700).rotate([-162, 38]).translate([width / 2, height / 2])
         const projectlatlng: any[] = []
         const geoPathGenerator = d3.geoPath()
             .projection(projection)
@@ -67,7 +50,6 @@ const DelaunayMap = ( props: Props ) => {
             }
         })
         const graticule = d3.geoGraticule10()
-        console.log(graticule)
         const sensitivity = 75;
         // console.log(graticule)
         // const height = () => {
@@ -149,9 +131,7 @@ const DelaunayMap = ( props: Props ) => {
                 // const newlong = adjustlong.toString(); 
                 return `translate(${projection([d.longitude , d.latitude])})`
             })
-            .attr("font-size", 4);   
-        
-        
+            .attr("font-size", 4);      
                 
         let transform: { k: number; invert: (arg0: [number, number]) => any };
 
@@ -162,8 +142,18 @@ const DelaunayMap = ( props: Props ) => {
             nodes.attr("r", 5 / Math.sqrt(transform.k));
         });
 
-        const startData = nodes._groups[0][17].__data__;
-        const destinationData = nodes._groups[0][0].__data__; 
+        let startData = { position: ""};
+        let destinationData = { position: ''};
+        
+        if (input.goal !== "") {
+            const startDataArr = data.filter((node: any) => { return node.position == input.currentPosition })
+            startData = startDataArr[0];
+            const destinationDataArr = data.filter((node: any) => { return node.position == input.goal })
+            destinationData = destinationDataArr[0]
+        }
+        
+        // const startData = nodes._groups[0][17].__data__;
+        // const destinationData = nodes._groups[0][0].__data__; 
 
         function nodeColor(d: any) {
             if ( d === startData ) {
@@ -209,7 +199,8 @@ const DelaunayMap = ( props: Props ) => {
                 }
                 path.pop()
             }
-            if (result.length === 0 ) { alert("We're sorry, there are no defined paths between these post")}
+
+            if (result.length === 0 && (destinationData.position !== '')) { alert("We're sorry, there are no defined paths between these points")}
             return(result)
         }
         
@@ -263,10 +254,22 @@ const DelaunayMap = ( props: Props ) => {
                 }
             }
         }
+        
+        function computeAndSetPath(nodearray:any) {
+            const rec1positions = nodearray.map((node:any) => { return node.target.data.position })
+            let dataArray:any = []
+            for (let i = 0; i < rec1positions.length; i++) {
+                const nodetoadd = data.find((node: any) => node.position === rec1positions[i])
+                dataArray.push(nodetoadd)
+            } 
+            setPath(dataArray)
+        }
+
+        console.log(rec1path)
+        computeAndSetPath(rec1path)
 
         function flightColor(d: any) {
-            if (rec1path.includes(d)) {
-                
+            if (rec1path.includes(d)) {    
                 return "#39B681"
             } else if (rec2path.includes(d)) {
                 return "#fd8d3c";
@@ -286,7 +289,6 @@ const DelaunayMap = ( props: Props ) => {
                     [connection.target.data.longitude, connection.target.data.latitude]]
                 }
             }) 
-            console.log(flightdata)
             const link = g
                 .append("path")
                 .attr("d", geoPathGenerator(flightdata))
@@ -319,7 +321,8 @@ const DelaunayMap = ( props: Props ) => {
                 flightdata.geometry.coordinates.push([[multiconnectionarr[i].source.data.longitude, multiconnectionarr[i].source.data.latitude],
                     [multiconnectionarr[i].target.data.longitude, multiconnectionarr[i].target.data.latitude]]) 
             }
-            console.log(flightdata)
+            const revarr = multiconnectionarr.reverse()
+
             const links = g
                 .append("path")
                 .classed("flightpaths", true)
@@ -327,7 +330,7 @@ const DelaunayMap = ( props: Props ) => {
                 .attr("stroke", "#ddd")
                 .attr("stroke-width", 3)
                 .attr("fill", "none")
-                .attr("stroke", flightColor(multiconnectionarr[0]))
+                .attr("stroke", flightColor(revarr[0]))
                 .attr("cursor", "pointer")
                 .on("mouseenter", function (e: any, d: any) {
                     d3.select(this)
@@ -338,18 +341,20 @@ const DelaunayMap = ( props: Props ) => {
                         .attr("stroke-width", 3)
                 })
                 .on("click", (d: any) => {
-                    console.log(multiconnectionarr)
+                    computeAndSetPath(multiconnectionarr)
                 })
+        
 
         } 
         // addFlightPath(rec1path[0])
         addMultiFlightPath(rec1path)
+        addMultiFlightPath(rec2path)
+        addMultiFlightPath(rec3path)
         // for (let i = 0; i < rec1path.length; i++) {
         //     addFlightPath(rec1path[i])
         // }
         // addMultiFlightPath(rec2path)
         // addMultiFlightPath(rec3path)
-        
 
         nodes.attr("fill", (d:any) => nodeColor(d))
 

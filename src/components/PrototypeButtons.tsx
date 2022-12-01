@@ -27,7 +27,7 @@ const PrototypeButtons = (props: Props) => {
   
       <div className="flex flex-wrap gap-4 mt-5 fixed">
 
-        <Button variant="outlined" className="bg-white" onClick={() => {setPrototypeId('s5New')}}>
+        <Button variant="outlined" className="opacity-90 bg-white" onClick={() => {setPrototypeId('s5New')}}>
             Sankey Chart
         </Button>
 
@@ -35,15 +35,15 @@ const PrototypeButtons = (props: Props) => {
             3D Career Tool
         </Button> */}
 
-        <Button variant="outlined" className="bg-white" onClick={() => {setPrototypeId('s7')}}>
+        <Button variant="outlined" className="opacity-90 bg-white" onClick={() => {setPrototypeId('s7')}}>
             Career Timeline
         </Button>
 
-        <Button variant="outlined" className="bg-white" onClick={() => {setPrototypeId('d4')}}>
+        <Button variant="outlined" className="opacity-90 bg-white" onClick={() => {setPrototypeId('d4')}}>
             Career Tree
         </Button>
         
-        <Button variant="outlined" className="bg-white" onClick={() => {setPrototypeId('d5')}}>
+        <Button variant="outlined" className="opacity-90 bg-white" onClick={() => {setPrototypeId('d5')}}>
             Take Flight
         </Button>
       </div>

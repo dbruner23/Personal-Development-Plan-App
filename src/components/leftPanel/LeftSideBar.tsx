@@ -16,6 +16,8 @@ import currentposfinance from '../../data/currentposfinance.json'
 import currentpossoftware from '../../data/currentpossoft.json'
 import goalfinance from '../../data/goalfinance.json'
 import goalsoftware from '../../data/goalsoftware.json'
+import ChevronLeft from 'public/chevron-left.svg'
+import ChevronRight from 'public/chevron-right.svg'
 
 type Props = {
   setLIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>,
@@ -73,16 +75,32 @@ const LeftSideBar = (props: Props) => {
           leftCollapsed
             ? "l-10 h-10 w-6 overflow-hidden rounded-xl bg-[#eff1f4]"
             : "h-full w-64 "
-        }  fixed mx-auto flex flex-col items-center justify-between p-0`}
+        } transition-all fixed mx-auto flex flex-col items-center justify-between p-0`}
       >
         <button
-          className="absolute right-2 top-2"
+          className="absolute right-2 top-2 "
           onClick={() => {
             setLIsCollapsed((prev) => { return !prev })
             setLeftCollapsed((prev) => {return !prev;})
           }}
         >
-          {leftCollapsed ? <div>&gt;</div> : <div>&lt;</div>}
+          {leftCollapsed ?
+          <div className="flex justify-center items-center">
+            <Image
+              src={ChevronRight}
+              alt="Icon"
+              className=""
+              >
+            </Image>
+          </div> :
+            <div className="flex justify-center items-center">
+            <Image
+              src={ChevronLeft}
+              alt="Icon"
+              className=""
+            >
+            </Image>
+          </div>}
         </button>
 
         <div className="flex h-full w-full justify-center bg-[#eff1f4] pt-7 ">
