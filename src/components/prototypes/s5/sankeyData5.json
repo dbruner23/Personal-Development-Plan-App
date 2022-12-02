@@ -1,0 +1,36 @@
+[
+    [
+        {
+            "data": {
+                "name": "Junior Investment Banker",
+                "id": "JIBIU",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
+                "time": 2,
+                "listings": 22,
+                "salary": 80000
+            } 
+        },
+        {
+            "data": {
+                "name": "Data Analyst",
+                "id": "IBAIU",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "Investment banking analysts raise capital for businesses and individuals by issuing debt and selling equity. They oversee mergers, conduct research, and assist in preparing legal and financial documents related to their transactions. Investment banking analysts conduct research and review financial information as well as market trends. They create and implement financial models to review deals and determine profitability. They oversee merger-and-acquisition, and supervise IPOs and private-equity settlements.",
+                "salary": 92872,
+                "listings": 15,
+                "time": 5
+            }
+        },
+        {
+            "data": {
+                "name": "Managing Director",
+                "id": "IBMDIU",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "salary": 100000,
+                "listings": 2,
+                "time": 7
+            }
+        }
+    ]
+]

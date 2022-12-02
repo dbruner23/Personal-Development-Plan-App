@@ -34,7 +34,6 @@ return (
                                 <input
                                     className="mr-2 cursor-pointer"
                                     type="checkbox"
-                                    defaultChecked={true}
                                     checked={lifestyleInput.extrahours}
                                     name="extrahours"
                                     onChange={handleLifestyleChange}
@@ -45,7 +44,6 @@ return (
                                 <input
                                     className="mr-2 cursor-pointer"
                                     type="checkbox"
-                                    defaultChecked={true}
                                     checked={lifestyleInput.fulltimeEd}
                                     name="fulltimeEd"
                                     onChange={handleLifestyleChange}
@@ -56,7 +54,6 @@ return (
                                 <input
                                     className="mr-2 cursor-pointer"
                                     type="checkbox"
-                                    defaultChecked={true}
                                     checked={lifestyleInput.relocation}
                                     name="relocation"
                                     onChange={handleLifestyleChange}
@@ -67,7 +64,6 @@ return (
                                 <input
                                     className="mr-2 cursor-pointer"
                                     type="checkbox"
-                                    defaultChecked={true}
                                     checked={lifestyleInput.remotework}
                                     name="remotework"
                                     onChange={handleLifestyleChange}

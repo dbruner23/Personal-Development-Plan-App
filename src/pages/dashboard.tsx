@@ -79,7 +79,7 @@ const Dashboard = () => {
             case 's7':
                 return <S7 />
             case 's5New':
-                return <S5New />
+                return <S5New input={input} setPath={setPath} />
             default:
                 return <Loading />
         }
@@ -169,7 +169,7 @@ const Dashboard = () => {
     <div>
           <LeftSideBar setLIsCollapsed={setLIsCollapsed} persona={persona} prototypeId={prototypeId} setInput={setInput} />    
           <div className="flex justify-center h-0">
-            <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId} persona={persona}/>     
+            <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId} persona={persona} setPath={setPath}/>     
 
             <div className={`fixed top-16 ${prototypeId == 's5New' ? "-translate-x-60" : prototypeId == 's6' ? "-translate-x-60" : prototypeId == 's7' ? "-translate-x-16" : prototypeId == 's1' ? "-translate-x-16" : prototypeId == 'd4' ? "translate-x-24" : "translate-x-56"}`}>
             <FeedbackModal prototypeId={prototypeId} handleSubmit={() => handleSave()}></FeedbackModal>

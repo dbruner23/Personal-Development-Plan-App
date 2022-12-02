@@ -26,7 +26,7 @@
         "source": {
             "data": {
                 "name": "Wollongong Airport",
-                "postion": "Uni Degree Comp Sci",
+                "position": "Uni Degree Comp Sci",
                 "time": 3,
                 "cost": 20000,
                 "longitude": "150.789001464844",
@@ -100,7 +100,7 @@
         "target": {
             "data": {
                 "name": "Wollongong Airport",
-                "postion": "Uni Degree Comp Sci",
+                "position": "Uni Degree Comp Sci",
                 "time": 3,
                 "cost": 20000,
                 "longitude": "150.789001464844",
@@ -134,7 +134,7 @@
         "source": {
             "data": {
                 "name": "Wollongong Airport",
-                "postion": "Uni Degree Comp Sci",
+                "position": "Uni Degree Comp Sci",
                 "time": 3,
                 "cost": 20000,
                 "longitude": "150.789001464844",
@@ -177,7 +177,7 @@
         "source": {
             "data": {
                 "name": "Wollongong Airport",
-                "postion": "Uni Degree Comp Sci",
+                "position": "Uni Degree Comp Sci",
                 "time": 3,
                 "cost": 20000,
                 "longitude": "150.789001464844",
@@ -494,7 +494,7 @@
         "source": {
             "data": {
                 "name": "Wollongong Airport",
-                "postion": "Uni Degree Comp Sci",
+                "position": "Uni Degree Comp Sci",
                 "time": 3,
                 "cost": 20000,
                 "longitude": "150.789001464844",
@@ -503,12 +503,12 @@
         },
         "target": {
             "data": {
-                "name": "Sydney / J.A. Douglas McCurdy Airport",
+                "name": "Sydney Kingsford Smith International Airport",
                 "position": "Masters in Comp Sci",
                 "time": 1,
                 "cost": 10000,
-                "longitude": "-60.0477981567",
-                "latitude": "46.1613998413"
+                "longitude": "151.177001953125",
+                "latitude": "-33.9460983276367"
             }
         },
         "index": 22
@@ -516,12 +516,12 @@
     {
         "source": {
             "data": {
-                "name": "Sydney / J.A. Douglas McCurdy Airport",
+                "name": "Sydney Kingsford Smith International Airport",
                 "position": "Masters in Comp Sci",
                 "time": 1,
                 "cost": 10000,
-                "longitude": "-60.0477981567",
-                "latitude": "46.1613998413"
+                "longitude": "151.177001953125",
+                "latitude": "-33.9460983276367"
             }
         },
         "target": {
@@ -539,12 +539,12 @@
     {
         "source": {
             "data": {
-                "name": "Sydney / J.A. Douglas McCurdy Airport",
+                "name": "Sydney Kingsford Smith International Airport",
                 "position": "Masters in Comp Sci",
                 "time": 1,
                 "cost": 10000,
-                "longitude": "-60.0477981567",
-                "latitude": "46.1613998413"
+                "longitude": "151.177001953125",
+                "latitude": "-33.9460983276367"
             }
         },
         "target": {
@@ -715,5 +715,28 @@
             }
         },
         "index": 31
+    },
+    {
+        "source": {
+            "data": {
+                "name": "Hokitika Airfield",
+                "position": "Junior Frontend Developer",
+                "time": 1.5,
+                "salary": 65000,
+                "longitude": 170.985000610352,
+                "latitude": -42.7136001586914
+            }
+        },
+        "target": {
+            "data": {
+                "name": "Nelson Airport",
+                "position": "Intermediate Software Engineer",
+                "time": 2,
+                "salary": 90000,
+                "longitude": "173.220993041992",
+                "latitude": "-41.2983016967773"
+            }
+        },
+        "index": 32 
     }
 ]

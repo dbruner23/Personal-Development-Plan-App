@@ -8,10 +8,11 @@ type Props = {
   setPrototypeId: React.Dispatch<React.SetStateAction<string>>,
   prototypeId: string,
   persona: string,
+  setPath: React.Dispatch<React.SetStateAction<any>>
 }
 
 const PrototypeButtons = (props: Props) => {
-  const { setPrototypeId, prototypeId, persona } = props
+  const { setPrototypeId, prototypeId, persona, setPath } = props
   const router = useRouter();
   const [userName, setUserName] = useState("");
  
@@ -30,19 +31,19 @@ const PrototypeButtons = (props: Props) => {
   
       <div className="flex flex-wrap gap-4 mt-5 fixed">
 
-        <Button variant="outlined" className="bg-white" onClick={() => {(persona === 'Jean') ? setPrototypeId('s5New') : setPrototypeId('s6')}}>
+        <Button variant="outlined" className="bg-white" onClick={() => { setPath([]); (persona === 'Jean') ? setPrototypeId('s5New') : setPrototypeId('s6'); }}>
         {(persona === 'Jean') ? 'Sankey Chart' :'3D Career Tool'} 
         </Button>
 
-        <Button variant="outlined" className="bg-white" onClick={() => {(persona === 'Jean') ? setPrototypeId('s7') : setPrototypeId('s1')}}>
+        <Button variant="outlined" className="bg-white" onClick={() => { setPath([]); (persona === 'Jean') ? setPrototypeId('s7') : setPrototypeId('s1'); }}>
         {(persona === 'Jean') ? 'Career Timeline' :'Career Path'} 
         </Button>
 
-        <Button variant="outlined" className="bg-white" onClick={() => {setPrototypeId('d4')}}>
+        <Button variant="outlined" className="bg-white" onClick={() => { setPath([]); setPrototypeId('d4'); }}>
             Career Tree
         </Button>
         
-        <Button variant="outlined" className="opacity-90 bg-white" onClick={() => {setPrototypeId('d5')}}>
+        <Button variant="outlined" className="opacity-90 bg-white" onClick={() => { setPath([]); setPrototypeId('d5'); }}>
             Take Flight
         </Button>
       </div>
