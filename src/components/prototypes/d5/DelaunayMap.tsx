@@ -15,14 +15,14 @@ type Props = {
     persona: string,
     input: { currentPosition: string, goal: string },
     lifestyleInputStrings: { extrahours: string, fulltimeEd: string, relocation: string, remotework: string },
-    setPath: React.Dispatch<React.SetStateAction<never[]>>
+    setPath: React.Dispatch<React.SetStateAction<any[]>>
 }
 
 const DelaunayMap = ( props: Props ) => {
     const { persona, input, lifestyleInputStrings, setPath } = props; 
     const { extrahours, fulltimeEd, relocation, remotework } = lifestyleInputStrings; 
     const careerNodes = airports.filter((node: any) => {
-        return node.position != undefined
+        return node.data != undefined
     })
     const [data, setData] = useState<any[]>(careerNodes)
     // const latLngArr = Array.from(data, (airport) => [+airport.longitude, +airport.latitude])
@@ -124,7 +124,7 @@ const DelaunayMap = ( props: Props ) => {
             .join("text")
             .attr("class", "label")
             .text((d: any) => {
-                return d.position
+                return d.data.name
             })
             .attr("transform", (d: any) => {
                 // const adjustlong = parseFloat(d.longitude) + .2;
@@ -142,28 +142,29 @@ const DelaunayMap = ( props: Props ) => {
             nodes.attr("r", 5 / Math.sqrt(transform.k));
         });
 
-        let startData = { position: ""};
-        let destinationData = { position: ''};
+        let startData = { data: {name: ""}};
+        let destinationData = { data: { name: "" } };
+        let pathsStoD :any[] = []
         
+        // const getStartDestData = (inputCurrPos: any, inputGoal: any) => {
+        //     const startDataArr = data.filter((node: any) => { return node.data.name == inputCurrPos })
+        //     startData = startDataArr[0];
+        //     const destinationDataArr = data.filter((node: any) => { return node.data.name == inputGoal })
+        //     destinationData = destinationDataArr[0]
+        // }
+
         if (input.goal !== "") {
-            const startDataArr = data.filter((node: any) => { return node.position == input.currentPosition })
+            const startDataArr = data.filter((node: any) => { return node.data.name == input.currentPosition })
             startData = startDataArr[0];
-            const destinationDataArr = data.filter((node: any) => { return node.position == input.goal })
+            const destinationDataArr = data.filter((node: any) => { return node.data.name == input.goal })
             destinationData = destinationDataArr[0]
+            console.log(destinationData.data.name)
+            pathsStoD = getAllPaths(startData, destinationData)
         }
+
         
         // const startData = nodes._groups[0][17].__data__;
         // const destinationData = nodes._groups[0][0].__data__; 
-
-        function nodeColor(d: any) {
-            if ( d === startData ) {
-                return "#00B0FF";
-            } else if (d === destinationData) {
-                return "#39B681";
-            } else {
-                return "#fd8d3c";
-            }
-        }
         
         //recursive function to get all paths between any two nodes linked by "flights"
         function getAllPaths(start: any, destination: any) {
@@ -171,9 +172,9 @@ const DelaunayMap = ( props: Props ) => {
             const path: any[] = []
             const visited: any[] = []
             
-            const initialsources = (connections.filter(function (connection: any) {
-                return connection.target.data.position === destination.position
-            }))
+            const initialsources = connections.filter(function (connection: any) {
+                    return connection.target.data.position === destination.data.name
+            })
 
             initialsources.forEach((source: any) => {
                 tracePaths(source)
@@ -183,7 +184,7 @@ const DelaunayMap = ( props: Props ) => {
                 path.push(link);
                 visited.push(link);
 
-                if (link.source.data.position == start.position) {
+                if (link.source.data.position == start.data.name) {
                     result.push([...path])
                 }
 
@@ -200,13 +201,9 @@ const DelaunayMap = ( props: Props ) => {
                 path.pop()
             }
 
-            if (result.length === 0 && (destinationData.position !== '')) { alert("We're sorry, there are no defined paths between these points")}
+            if (result.length === 0 && (destinationData.data.name !== '')) { alert("We're sorry, there are no defined paths between these points")}
             return(result)
         }
-        
-        
-        const pathsStoD: any = getAllPaths(startData, destinationData)     
-        
 
         //utility to disable or enable paths based on user lifestyle preference input
         const lifestylefitpaths: any[] = []
@@ -223,7 +220,6 @@ const DelaunayMap = ( props: Props ) => {
                 lifestylefitpaths.push(pathsStoD[i])
             }
         }
-        
 
         //utility to find recommended paths 1-3 out of lifestyle fit paths based on minimum time
         let rec1path: any[] = []
@@ -259,22 +255,32 @@ const DelaunayMap = ( props: Props ) => {
             const rec1positions = nodearray.map((node:any) => { return node.target.data.position })
             let dataArray:any = []
             for (let i = 0; i < rec1positions.length; i++) {
-                const nodetoadd = data.find((node: any) => node.position === rec1positions[i])
+                const nodetoadd = data.find((node: any) => node.data.name === rec1positions[i])
                 dataArray.push(nodetoadd)
             } 
             setPath(dataArray)
         }
-
         console.log(rec1path)
         computeAndSetPath(rec1path)
 
+
+        function nodeColor(d: any) {
+            if (d === startData) {
+                return "#00B0FF";
+            } else if (d === destinationData) {
+                return "#39B681";
+            } else {
+                return "#fd8d3c";
+            }
+        }
+
         function flightColor(d: any) {
-            if (rec1path.includes(d)) {    
-                return "#39B681"
+            if (rec3path.includes(d)) {
+                return "#ff0000"
             } else if (rec2path.includes(d)) {
                 return "#fd8d3c";
-            } else if (rec3path.includes(d)) {
-                return "#ff0000"
+            } else if (rec1path.includes(d)) {
+                return "#39B681"
             } else if (nolifestylefitpaths.includes(d)) {
                 return "#cccc"
             } else { return "#cccc" }
@@ -321,7 +327,6 @@ const DelaunayMap = ( props: Props ) => {
                 flightdata.geometry.coordinates.push([[multiconnectionarr[i].source.data.longitude, multiconnectionarr[i].source.data.latitude],
                     [multiconnectionarr[i].target.data.longitude, multiconnectionarr[i].target.data.latitude]]) 
             }
-            const revarr = multiconnectionarr.reverse()
 
             const links = g
                 .append("path")
@@ -330,7 +335,7 @@ const DelaunayMap = ( props: Props ) => {
                 .attr("stroke", "#ddd")
                 .attr("stroke-width", 3)
                 .attr("fill", "none")
-                .attr("stroke", flightColor(revarr[0]))
+                .attr("stroke", flightColor(multiconnectionarr[multiconnectionarr.length-1]))
                 .attr("cursor", "pointer")
                 .on("mouseenter", function (e: any, d: any) {
                     d3.select(this)
@@ -341,15 +346,17 @@ const DelaunayMap = ( props: Props ) => {
                         .attr("stroke-width", 3)
                 })
                 .on("click", (d: any) => {
-                    computeAndSetPath(multiconnectionarr)
+                    computeAndSetPath(multiconnectionarr) 
                 })
         
 
         } 
         // addFlightPath(rec1path[0])
-        addMultiFlightPath(rec1path)
-        addMultiFlightPath(rec2path)
         addMultiFlightPath(rec3path)
+        addMultiFlightPath(rec2path)
+        addMultiFlightPath(rec1path)
+        
+        
         // for (let i = 0; i < rec1path.length; i++) {
         //     addFlightPath(rec1path[i])
         // }
@@ -360,7 +367,7 @@ const DelaunayMap = ( props: Props ) => {
 
         // let path: number[] = [];
         // console.log(nodes._groups[0].findIndex((node: any) => {
-        //     return node.__data__.position === "Senior Software Engineer"
+        //     return node.__data__.data.name === "Senior Software Engineer"
         // }))
             
             

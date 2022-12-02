@@ -5,6 +5,7 @@ import ChevronLeft from 'public/chevron-left.svg'
 import ChevronRight from 'public/chevron-right.svg'
 import Clock from 'public/clock.svg'
 import School from 'public/edit.svg'
+import { LocalConvenienceStoreOutlined } from '@mui/icons-material'
 import PlanModal from './PlanModal'
 
 
@@ -54,9 +55,9 @@ const RightSideBar = (props: Props) => {
                   </div>}
               </button>
               <div className="flex self-center text-lg mt-6 mb-4">Current Path Preview</div>
-              {path.length === 0 ? <div className="flex text-center justify-center items-center text-sm"></div> : (
+              {pathStartWithCurrent.length === 0 ? <div className="flex text-center justify-center items-center text-sm"></div> : (
                 <div className="flex flex-col justify-start items-center fit-content pt-4 w-full relative" >   
-                  {pathStartWithCurrent.map((step, index) => 
+                  {pathStartWithCurrent.length !== 0 ? pathStartWithCurrent.map((step, index) => 
                     <div className="flex gap-2 w-full justify-center">
                       <div className={`flex flex-col gap-1 justify-start absolute -translate-y-4 pl-1 ${(index % 2 === 0) ? 'left-0' : 'right-0'}`}>
                         <div className={`w-6.5rem text-xs text-center `}><strong>{step.data.name}</strong></div>
@@ -68,7 +69,7 @@ const RightSideBar = (props: Props) => {
                         { (index !== (pathStartWithCurrent.length - 1)) && (<div className="border-l-slate-400 border-l-2 h-10 w-0 "></div>)}
                       </div>
                     </div>     
-                    )}
+                    ) : ""}
                 </div>   
             )}
             {path.length === 0 ? <div className="flex text-center h-full justify-center items-center text-sm">No path currently selected</div> : (

@@ -39,7 +39,7 @@ type Props = {
     persona: string,
     input: { currentPosition: string, goal: string },
     lifestyleInputStrings: { extrahours: string, fulltimeEd: string, relocation: string, remotework: string },
-    setPath: React.Dispatch<React.SetStateAction<never[]>>
+    setPath: React.Dispatch<React.SetStateAction<any[]>>
 }
 
 const CollapsibleForce = ( props : Props ) => {
