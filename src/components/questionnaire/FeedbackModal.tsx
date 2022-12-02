@@ -64,6 +64,7 @@ export default function FeedbackModal(props: Props) {
   return (
     <>
       <Button
+        sx={{ m: 0.5 }}
         onClick={() => {
           handleOpen();
           // props.handleSubmit();

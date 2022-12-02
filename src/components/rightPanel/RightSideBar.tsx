@@ -5,6 +5,7 @@ import ChevronLeft from 'public/chevron-left.svg'
 import ChevronRight from 'public/chevron-right.svg'
 import Clock from 'public/clock.svg'
 import School from 'public/edit.svg'
+import PlanModal from './PlanModal'
 
 
 type Props = {
@@ -98,14 +99,9 @@ const RightSideBar = (props: Props) => {
                 </div>
               </div>
             )}
-              <Button
-                variant="contained"
-                disabled={path.length === 0 ? true : false}
-                sx={{ m: 0.5 }}
-              className="bottom-6 w-44 bg-[#81BD75] absolute"
-              >
-                Create Plan
-              </Button>
+
+            <PlanModal />
+
             
             {/* {infoData.salary !== 'undefined' && (
               <>
