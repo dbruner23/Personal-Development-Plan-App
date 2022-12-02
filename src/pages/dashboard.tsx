@@ -171,7 +171,7 @@ const Dashboard = () => {
           <div className="flex justify-center h-0">
             <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId} persona={persona}/>     
 
-            <div className={`fixed top-16 ${prototypeId == 's5New' ? "-translate-x-60" : prototypeId == 's6' ? "-translate-x-60" : prototypeId == 's7' ? "-translate-x-16" : prototypeId == 's1' ? "-translate-x-16" : prototypeId == 'd4' ? "translate-x-24" : "translate-x-56"}`}>
+            <div className={`fixed top-16 ${prototypeId == 's5New' ? "-translate-x-80" : prototypeId == 's6' ? "-translate-x-80" : prototypeId == 's7' ? "-translate-x-36" : prototypeId == 's1' ? "-translate-x-36" : prototypeId == 'd4' ? "translate-x-4" : "translate-x-40"}`}>
             <FeedbackModal prototypeId={prototypeId} handleSubmit={() => handleSave()}></FeedbackModal>
             </div>
         </div>
