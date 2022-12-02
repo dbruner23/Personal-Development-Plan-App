@@ -19,6 +19,7 @@ import goalsoftware from '../../data/goalsoftware.json'
 import ChevronLeft from 'public/chevron-left.svg'
 import ChevronRight from 'public/chevron-right.svg'
 import Link from 'next/link';
+import QuestionaireButton from '../questionnaire/QuestionaireButton';
 
 type Props = {
   setLIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>,
@@ -215,6 +216,7 @@ const LeftSideBar = (props: Props) => {
                 Settings
               </Button>
               </Link>
+
             </div>
           </div>
         </div>

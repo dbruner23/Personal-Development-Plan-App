@@ -46,6 +46,14 @@ const PrototypeButtons = (props: Props) => {
         <Button variant="outlined" className="opacity-90 bg-white" onClick={() => { setPath([]); setPrototypeId('d5'); }}>
             Take Flight
         </Button>
+
+        <Link href="/FinalFeedback">
+              <Button variant="contained" className="bg-[#81bd75]">
+                Final Feedback
+              </Button>
+        </Link>
+
+        
       </div>
     </>
   );
