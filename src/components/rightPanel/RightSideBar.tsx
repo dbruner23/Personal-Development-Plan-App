@@ -15,7 +15,9 @@ type Props = {
 
 const RightSideBar = (props: Props) => {
   const { path } = props;
-  const pathStartWithCurrent: any[] = path.reverse();
+  console.log(path)
+  const pathStartWithCurrent: any[] = [...path].reverse();
+  console.log(pathStartWithCurrent)
   const pathExcludeGoal: any[] = path.slice(1)
   const timeToGoal = pathExcludeGoal.reduce((acc: any, curr: { data: { time: any; }; }) => {
     return acc + curr.data.time
@@ -101,9 +103,10 @@ const RightSideBar = (props: Props) => {
               </div>
             )}
 
-            <div className='mt-8'>
-              <PlanModal />
-            </div>
+       <div className='mt-8'>
+            <PlanModal path={path} pathStartWithCurrent={pathStartWithCurrent} timeToGoal={timeToGoal} />
+       </div>
+
             
             {/* {infoData.salary !== 'undefined' && (
               <>

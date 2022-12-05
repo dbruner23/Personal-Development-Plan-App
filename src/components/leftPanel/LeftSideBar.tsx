@@ -39,8 +39,6 @@ const LeftSideBar = (props: Props) => {
   const [currentGoalData, setCurrentGoalData] = useState<{ position: string }[]>([]);
   const [inputForm, setInputForm] = useState({ currentPosition: "", goal: "" });
   const [inputValue, setInputValue] = useState('');  
-
-  console.log(currentPos)
   
   useEffect(() => {
     setInputForm({ currentPosition: currentPos, goal: goal})
@@ -55,19 +53,10 @@ const LeftSideBar = (props: Props) => {
     // };
 
     if (prototypeId) {
-      if (prototypeId === "d5") {
+      if (prototypeId === "d5" || prototypeId === "s6" || prototypeId === "s1") {
         setCurrentPosData(currentpossoftware);
         setCurrentGoalData(goalsoftware);
-      } 
-      else if (prototypeId === "s1") {
-        setCurrentPosData(currentpossoftware);
-        setCurrentGoalData(goalsoftware);
-      }
-      else if (prototypeId === "s6") {
-        setCurrentPosData(currentpossoftware);
-        setCurrentGoalData(goalsoftware);
-      }
-      else {
+      } else {
         setCurrentPosData(currentposfinance);
         setCurrentGoalData(goalfinance);
       }
