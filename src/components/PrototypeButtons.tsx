@@ -8,11 +8,13 @@ type Props = {
   setPrototypeId: React.Dispatch<React.SetStateAction<string>>,
   prototypeId: string,
   persona: string,
-  setPath: React.Dispatch<React.SetStateAction<any>>
+  setPath: React.Dispatch<React.SetStateAction<any>>,
+  setCurrentPos: React.Dispatch<React.SetStateAction<string>>,
+  setGoal: React.Dispatch<React.SetStateAction<string>>
 }
 
 const PrototypeButtons = (props: Props) => {
-  const { setPrototypeId, prototypeId, persona, setPath } = props
+  const { setPrototypeId, prototypeId, persona, setPath, setCurrentPos, setGoal } = props
   const router = useRouter();
   const [userName, setUserName] = useState("");
  
@@ -43,7 +45,7 @@ const PrototypeButtons = (props: Props) => {
             Career Tree
         </Button>
         
-        <Button variant="outlined" className="opacity-90 bg-white" onClick={() => { setPath([]); setPrototypeId('d5'); }}>
+        <Button variant="outlined" className="opacity-90 bg-white" onClick={() => { setPath([]); setPrototypeId('d5'); ((persona === 'Jean') ? setCurrentPos("Junior Fullstack Developer") : setCurrentPos("Senior Digital Marketing Director")); setGoal("") }}>
             Take Flight
         </Button>
 

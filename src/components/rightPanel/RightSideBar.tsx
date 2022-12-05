@@ -72,7 +72,7 @@ const RightSideBar = (props: Props) => {
                     ) : ""}
                 </div>   
             )}
-            {path.length === 0 ? <div className="flex text-center h-full justify-center items-center text-sm">No path currently selected</div> : (
+            {path.length === 0 ? <div className="flex text-center h-full justify-center items-center translate-y-36 text-sm">No path currently selected</div> : (
               <div className="flex flex-col justify-start items-center fit-content pt-3 w-full relative" >
                 <hr className="w-90% border-slate-400 border-1 mt-8"></hr>
                 <div className="flex justify-start items-center w-full px-5 py-2 gap-4">
@@ -96,7 +96,7 @@ const RightSideBar = (props: Props) => {
                     >
                     </Image>
                   </div>
-                  <div className="text-xs justify-center">Requires {edTimeToGoal} years ed. at<br></br>$<strong>{edCostToGoal}</strong> p/a</div>
+                  <div className="text-xs justify-center">{edTimeToGoal === 0 ? "No further higher ed. needed" : `${edTimeToGoal} yrs higher ed at $${edCostToGoal} p/a`}</div>
                 </div>
               </div>
             )}

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import AccessibilityIcon from '@mui/icons-material/Accessibility';
 import Image from 'next/future/image';
 import Lifestyle from "public/user-check.svg"
+import Selections from "public/map-pin.svg"
 
 type Props = {
     handleLifestyleChange: (event: any) => void,
@@ -73,8 +74,8 @@ return (
                         </div>
                     </div>
                   <div className="flex w-16 h-8 cursor-pointer bg-[#2B3B56] rounded-md">
-
-                  </div>
+                    
+                  </div>  
                   <div className="flex w-16 h-8 cursor-pointer bg-[#2B3B56] rounded-md">
 
                   </div>

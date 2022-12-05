@@ -17,7 +17,8 @@
                 "time": 1,
                 "cost": 10000,
                 "longitude": "150.143997192",
-                "latitude": "-35.8978004456"
+                "latitude": "-35.8978004456",
+                "fulltimeEd": "false"
             }
         },
         "index": 0
@@ -40,7 +41,8 @@
                 "time": 1,
                 "cost": 10000,
                 "longitude": "150.143997192",
-                "latitude": "-35.8978004456"
+                "latitude": "-35.8978004456",
+                "fulltimeEd": "false"
             }
         },
         "index": 1
@@ -62,7 +64,8 @@
                 "time": 1,
                 "cost": 10000,
                 "longitude": "150.143997192",
-                "latitude": "-35.8978004456"
+                "latitude": "-35.8978004456",
+                "fulltimeEd": "false"
             }
         },
         "index": 2
@@ -738,5 +741,28 @@
             }
         },
         "index": 32 
+    },
+    {   
+        "source": {
+            "data": {
+                "name": "Tauranga Airport",
+                "position": "Lead A.I. Inovation Researcher",
+                "time": 10,
+                "salary": 200000,
+                "longitude": "176.195999145508",
+                "latitude": "-37.6719017028809"
+            }
+        },
+        "target": {
+            "data": {
+                "name": "Kerikeri Airport",
+                "position": "A.I. Research Professor",
+                "time": 19,
+                "salary": 130000,
+                "longitude": "173.912002563477",
+                "latitude": "-35.2627983093262"
+            }
+        },
+        "index": 33
     }
 ]
