@@ -101,8 +101,9 @@ const RightSideBar = (props: Props) => {
               </div>
             )}
 
-            <PlanModal />
-
+            <div className='mt-8'>
+              <PlanModal />
+            </div>
             
             {/* {infoData.salary !== 'undefined' && (
               <>

@@ -66,5 +66,109 @@
                 "time": 1
             }
         }
+    ],
+    [
+        {
+            "data": {
+                "name": "Junior Investment Banker",
+                "id": "JIBIU",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
+                "time": 2,
+                "listings": 22,
+                "salary": 80000
+            } 
+        },
+        {
+            "data": {
+                "name": "Private Equity Associate",
+                 "id": "PEAIIU",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "An Associate's job is to lead deal processes from start to finish - raising capital, acquiring companies, improving companies, and selling companies.",
+                "salary": 90000,
+                "listings": 10,
+                "time": 3
+            }
+        },
+        {
+            "data": {
+                "name": "Private Equity Partner",
+                "id": "PEPartner",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "Rainmaker, Fundraiser, and Chief Representative.",
+                "salary": 100000,
+                "listings": 15,
+                "time": 6
+            }
+        },
+        {
+            "data": {
+                "name": "Senior Vice President",
+                "id": "SVPMBAU",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "salary": 120000,
+                "listings": 4,
+                "time": 5
+            }
+        }
+],
+[
+    {
+        "data": {
+            "name": "Junior Investment Banker",
+            "id": "JIBIU",
+            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+            "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
+            "time": 2,
+            "listings": 22,
+            "salary": 80000
+        } 
+    },
+    {
+        "data": {
+            "name": "Private Equity Associate",
+             "id": "PEAIIU",
+            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+            "summary": "An Associate's job is to lead deal processes from start to finish - raising capital, acquiring companies, improving companies, and selling companies.",
+            "salary": 90000,
+            "listings": 10,
+            "time": 3
+        }
+    }
+    ],
+    [
+        {
+            "data": {
+                "name": "Junior Investment Banker",
+                "id": "JIBIU",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
+                "time": 2,
+                "listings": 22,
+                "salary": 80000
+            } 
+        },
+        {
+            "data": {
+                "name": "Private Equity Associate",
+                 "id": "PEAIIU",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "An Associate's job is to lead deal processes from start to finish - raising capital, acquiring companies, improving companies, and selling companies.",
+                "salary": 90000,
+                "listings": 10,
+                "time": 3
+            }
+        },
+        {
+            "data": {
+                "name": "Private Equity Partner",
+                "id": "PEPartner",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "Rainmaker, Fundraiser, and Chief Representative.",
+                "salary": 100000,
+                "listings": 15,
+                "time": 6
+            }
+        }
     ]
 ]
