@@ -9,17 +9,17 @@ const planData = [
         name: "Aug 2023",
         pastInfo: " ",
         percentage: 30,
-        path1Info: "Senior Financial Management Accountant",
+        path1Info: "Data Analyst",
       },
       {
         name: "Jan 2024",
         percentage: 45,
-        path1Info: "Certifiate 2",
+        path1Info: "Dacreed CFA",
       },
       {
         name: "Aug 2024",
         percentage: 70,
-        path1Info: "Finance Manager",
+        path1Info: "Private Equity Partner",
       },
       {
         name: "Jan 2025",
@@ -39,7 +39,7 @@ const planData = [
       {
         name: "Aug 2026",
         percentage: 100,
-        path1Info: "Financial Controller",
+        path1Info: "Managing Director",
       },
   ];
   

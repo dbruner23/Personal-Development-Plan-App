@@ -1,0 +1,70 @@
+[
+    [
+        {
+            "data": {
+                "name": "Senior Digital Marketing Director",
+                "id": "SDMD",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "",
+                "time": 5,
+                "listings": 22,
+                "salary": 120000
+            } 
+        },
+        {
+            "data": {
+                "name": "Study Software Development with Mission Ready",
+                "cost": 7374,
+                "id": "FSDMR",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "At Mission Ready you will learn how to create responsive mobile-first web applications and be confident problem solver using code. If you are a hands-on creator and enjoy making, testing and seeing your creations come to life, then a career in full-stack and software development is for you.",
+                "time": 1
+            }
+        },
+        {
+            "data": {
+                "name": "Full Stack Developer",
+                "id": "FSD",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "A full stack web developer is a person who can develop both client and server software",
+                "salary": 85872,
+                "listings": 15,
+                "time": 1
+            }
+        }
+    ],
+    [
+        {
+            "data": {
+                "name": "Senior Digital Marketing Director",
+                "id": "SDMD",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "",
+                "time": 5,
+                "listings": 22,
+                "salary": 120000
+            } 
+        },
+        {
+            "data": {
+                "name": "Study UX Design with Mission Ready",
+                "cost": 4810,
+                "id": "UXMR",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "At Mission Ready you will learn how to combine technology, design, market research, psychology & business; and be confident at designing tech products & solutions; and meet inspiring industry mentors and speakers. If you enjoy understanding what makes humans tick and have a high level of empathy for people and their technology journey, then a career in UX design is for you.",
+                "time": 1
+            }
+        },
+        {
+            "data": {
+                "name": "UX Designer",
+                "id": "UXD",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "The UX designer role is to make a product or service usable, enjoyable, and accessible. While many companies design user experiences, the term is most often associated with digital design for websites and apps.",
+                "salary": 78000,
+                "listings": 15,
+                "time": 1
+            }
+        }
+    ]
+]
