@@ -87,7 +87,7 @@ export default function PlanModal(props: Props ) {
         sx={{ m: 0.5 }}
         className="bottom-6 w-44 bg-[#81BD75] absolute"
       >
-        Create Plan
+        Confirm Plan
       </Button>
 
       <Modal
