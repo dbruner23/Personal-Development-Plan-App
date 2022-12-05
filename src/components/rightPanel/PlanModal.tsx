@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import LineChart1 from "../prototypes/s7/LineChart1";
 import PlanLineChart from "./PlanLineChart";
+import { ContactEmergency, LocalConvenienceStoreOutlined } from "@mui/icons-material";
 
 
 const style = {
@@ -19,19 +20,60 @@ const style = {
   p: 4,
 };
 
+type Props = {
+  path: any[],
+  pathStartWithCurrent: any[],
+  timeToGoal: number
+}
+
 // type Props = {
 //   handleSubmit: () => void;
 //   prototypeId: string,
 //   path : any[]
 // };
 
-export default function PlanModal( ) {
-//   const { path } = props;
+export default function PlanModal(props: Props ) {
+  const { path, pathStartWithCurrent, timeToGoal } = props;
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  
+  const planData = Array(Math.ceil(timeToGoal * 2)).fill({ name: "", percentage: 0, pathInfo: ''})
+  const date = new Date('2022-07-01')
+  const addMonths = (numMonths:number) => {
+    date.setMonth(date.getMonth() + numMonths)
+  }
 
-//   const prototypeId = props.prototypeId;
+  
+
+  let positionChangeIndecies: any[] = []
+  for (let i = 0; i < pathStartWithCurrent.length; i++) {   
+    positionChangeIndecies.push(Math.ceil(pathStartWithCurrent[i].data.time * 2))  
+  }
+
+  let percentages: any[] = []
+  // const pathSWCExcludeGoal = pathStartWithCurrent.slice(0, (pathStartWithCurrent.length - 1))
+  for (let i = 0; i < pathStartWithCurrent.length - 1; i++) {
+    percentages.push((pathStartWithCurrent[i].data.time / timeToGoal) * 100)
+  }
+
+  let j = 0;
+  let k = 0;
+  let percentage = 0
+  for (let i = 0; i < planData.length; i++) {
+    addMonths(6)
+    planData[i].name = date.toLocaleString('default', { month: 'short' }) + " " + date.toLocaleString('default', { year: 'numeric' })
+    planData[i].percentage = percentage
+    let prevChangeIndex = i > 0 ? positionChangeIndecies[i - 1] : 0;
+    percentage += percentages[k] / (positionChangeIndecies[j] - prevChangeIndex)
+    if (i == positionChangeIndecies[j]) {
+      j++; k++;
+    }
+  }
+
+  console.log(planData)
+
+
 
   return (
     <>
@@ -41,7 +83,7 @@ export default function PlanModal( ) {
           // props.handleSubmit();
         }}
         variant="contained"
-        // disabled={path.length === 0 ? true : false}
+        disabled={path.length === 0 ? true : false}
         sx={{ m: 0.5 }}
         className="bottom-6 w-44 bg-[#81BD75] absolute"
       >
