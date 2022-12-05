@@ -1,5 +1,5 @@
 import graph2Data from "./data";
-import data from "./data2";
+// import data from "./data2";
 import {
   LineChart,
   Line,

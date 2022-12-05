@@ -1,20 +1,36 @@
 
 import Cubes from "./Cubes";
+import data from "./dataSoftware.json"
 
 
+type Props = {
+  input: { currentPosition: string, goal: string },
+  setPath: React.Dispatch<React.SetStateAction<any[]>>
+}
 
-const prototypeS6 = () => {
+
+const prototypeS6 = (props: Props) => {
+
+  const { input, setPath } = props;
+
+  const selectedPath = data.filter((path: any[]) => {
+   
+    return path[0].data.name === input.currentPosition && path[path.length - 1].data.name === input.goal
+  })
+
+  if ( selectedPath.length === 1 && selectedPath[0] !== undefined ) {
+    setPath(selectedPath[0])
+  } else if (input.goal !== "" ) {
+    alert("We're sorry but there is not a defined path from these points.")
+  }
+
   return (
     <>
       <main className="mx-auto w-1/2 flex justify-center mt-28">
 
         <div className="flex flex-col ">
 
-        {/* <div className="my-12 flex justify-center flex-col text-center">
-          <h2 className="text-5xl font-semibold">
-            Your Tech career pathways
-          </h2>
-        </div> */}
+
         
          <div className=" text-center text-l">
            <p>This prototype looks at a slightly more fun way to present you with 4 different pathways ways to further progress your career in tech.</p>
