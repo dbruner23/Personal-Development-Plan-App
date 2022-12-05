@@ -25,28 +25,34 @@ type Props = {
   setLIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>,
   persona: string,
   prototypeId: string,
-  setInput: React.Dispatch<React.SetStateAction<{ currentPosition: string, goal: string }>>
+  setInput: React.Dispatch<React.SetStateAction<{ currentPosition: string, goal: string }>>,
+  currentPos: string,
+  setCurrentPos: React.Dispatch<React.SetStateAction<string>>,
+  goal: string,
+  setGoal: React.Dispatch<React.SetStateAction<string>>,
 }
 
 const LeftSideBar = (props: Props) => {
-  const { setLIsCollapsed, persona, prototypeId, setInput } = props;
+  const { setLIsCollapsed, persona, prototypeId, setInput, currentPos, setCurrentPos, goal, setGoal} = props;
   const [leftCollapsed, setLeftCollapsed] = useState(false);
-
   const [currentPosData, setCurrentPosData] = useState<{ position: string }[]>([]);
   const [currentGoalData, setCurrentGoalData] = useState<{ position: string }[]>([]);
   const [inputForm, setInputForm] = useState({ currentPosition: "", goal: "" });
   const [inputValue, setInputValue] = useState('');  
+
+  console.log(currentPos)
   
   useEffect(() => {
-    if (persona) {
-      if ((persona === "Jean") && (prototypeId === "d5")) {
-        setInputForm({ currentPosition: "Junior Fullstack Developer", goal: "" })
-      } else if ((persona === "Jean") && (prototypeId !== "d5")) {
-        setInputForm({ currentPosition: "Junior Investment Banker", goal: "" })
-      } else {
-        setInputForm({ currentPosition: "Senior Digital Marketing Director", goal: "" })
-      }
-    };
+    setInputForm({ currentPosition: currentPos, goal: goal})
+    // if (persona) {
+    //   if ((persona === "Jean") && (prototypeId === "d5")) {
+    //     setInputForm({ currentPosition: "Junior Fullstack Developer", goal: "" })
+    //   } else if ((persona === "Jean") && (prototypeId !== "d5")) {
+    //     setInputForm({ currentPosition: "Junior Investment Banker", goal: "" })
+    //   } else {
+    //     setInputForm({ currentPosition: "Senior Digital Marketing Director", goal: "" })
+    //   }
+    // };
 
     if (prototypeId) {
       if (prototypeId === "d5") {
@@ -57,20 +63,16 @@ const LeftSideBar = (props: Props) => {
         setCurrentGoalData(goalfinance);
       }
     };
-  }, [persona, prototypeId])
-
+  }, [ prototypeId, currentPos, goal ])
 
   const handleChange = (event: any) => {
     setInputForm({ ...inputForm, [event.target.name]: event.target.value });
   }
 
-
-  const handleGoalChange = (event: any) => {
-    setInputForm({ ...inputForm, goal: event.target.value})
-  }
-
   const handleSubmit = () => {
-    setInput(inputForm)
+    setCurrentPos(inputForm.currentPosition)
+    setGoal(inputForm.goal)
+    setInput({ currentPosition: inputForm.currentPosition, goal: inputForm.goal })
   }
 
 

@@ -70,7 +70,7 @@ export default function FeedbackModal(props: Props) {
           // props.handleSubmit();
         }}
         variant="contained"
-        className="bg-[#1848C8]"
+        className="bg-[#1876D2]"
       >
         Give Feedback
       </Button>

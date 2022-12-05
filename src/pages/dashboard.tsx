@@ -41,9 +41,11 @@ const Dashboard = () => {
     const [recordWindow, setRecordWindow] = useState<IRecordWindow>()
     const [lIsCollapsed, setLIsCollapsed] = useState(false)
     const [input, setInput] = useState({ currentPosition: '', goal: '' })
+    const [currentPos, setCurrentPos] = useState('')
+    const [goal, setGoal] = useState('')
     const [lifestyleInput, setLifestyleInput] = useState({ extrahours: true, fulltimeEd: true, relocation: true, remotework: true })
     const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
-    const [path, setPath] = useState([])
+    const [path, setPath] = useState < any[]>([])
     
     const handleLifestyleChange = (event: any) => {
         setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
@@ -61,7 +63,7 @@ const Dashboard = () => {
             case 'd4':
                 return <CollapsibleForce lIsCollapsed={lIsCollapsed} persona={persona} input={input} lifestyleInputStrings={lifestyleInputStrings} setPath={setPath} />
             case 'd5':
-                return <DelaunayMap persona={persona} input={input} lifestyleInputStrings={lifestyleInputStrings} setPath={setPath} />
+                return <DelaunayMap persona={persona} input={input} lifestyleInputStrings={lifestyleInputStrings} setPath={setPath} currentPos={currentPos} setCurrentPos={setCurrentPos} goal={goal} setGoal={setGoal} />
             case 'd6':
                 return <NycMap />
             case 's1':
@@ -97,6 +99,21 @@ const Dashboard = () => {
         const windowdims = { width: window?.innerWidth, height: window?.innerHeight }
         setRecordWindow(windowdims)
     }, [])
+
+    useEffect(() => {
+        if (persona) {
+            if ((persona === "Jean") && (prototypeId === "d5")) {
+                setCurrentPos("Junior Fullstack Developer")
+                setGoal("")
+            } else if ((persona === "Jean") && (prototypeId !== "d5")) {
+                setCurrentPos("Junior Investment Banker")
+                setGoal("")
+            } else {
+                setCurrentPos("Senior Digital Marketing Director")
+                setGoal("")
+            }
+        };
+    }, [persona, prototypeId])
     
     const getMousemoveCoordinates = function () {
         const mousemovecoords: any[] = []
@@ -167,11 +184,11 @@ const Dashboard = () => {
   
   return (
     <div>
-          <LeftSideBar setLIsCollapsed={setLIsCollapsed} persona={persona} prototypeId={prototypeId} setInput={setInput} />    
+          <LeftSideBar setLIsCollapsed={setLIsCollapsed} persona={persona} prototypeId={prototypeId} setInput={setInput} currentPos={currentPos} setCurrentPos={setCurrentPos} goal={goal} setGoal={setGoal} />    
           <div className="flex justify-center h-0">
-            <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId} persona={persona} setPath={setPath}/>     
+              <PrototypeButtons setPrototypeId={setPrototypeId} prototypeId={prototypeId} persona={persona} setPath={setPath} setCurrentPos={setCurrentPos} setGoal={setGoal} />     
 
-            <div className={`fixed top-16 ${prototypeId == 's5New' ? "-translate-x-80" : prototypeId == 's6' ? "-translate-x-80" : prototypeId == 's7' ? "-translate-x-36" : prototypeId == 's1' ? "-translate-x-36" : prototypeId == 'd4' ? "translate-x-4" : "translate-x-40"}`}>
+            <div className={`fixed top-16 ${prototypeId == 's5New' ? "-translate-x-80" : prototypeId == 's6' ? "-translate-x-60" : prototypeId == 's7' ? "-translate-x-40" : prototypeId == 's1' ? "-translate-x-16" : prototypeId == 'd4' ? "translate-x-4" : "translate-x-40"}`}>
             <FeedbackModal prototypeId={prototypeId} handleSubmit={() => handleSave()}></FeedbackModal>
             </div>
         </div>

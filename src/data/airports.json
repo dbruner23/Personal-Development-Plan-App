@@ -8539,7 +8539,7 @@
    "data": {
     "name": "A.I. Architect",
     "time": 6,
-    "salaray": 150000
+    "salary": 150000
    },
    "longitude": "176.317001342773",
    "latitude": "-38.1091995239258"
@@ -14143,7 +14143,9 @@
    "data": {
     "name": "Mission Ready HQ",
     "time": 0.9,
-    "cost": 5000
+    "cost": 5000,
+    "photo": "public/Mission-Ready-Logo.jpeg",
+    "summary": "The accelerator is designed to deliver on our promise to employers to develop quality candidates that are in-demand."
    },
    "longitude": "149.901000977",
    "latitude": "-36.9085998535"
@@ -14198,7 +14200,8 @@
    "data": {
     "name": "Masters in Data Science",
     "time": 1,
-    "cost": 10000
+    "cost": 10000,
+    "fulltimeEd": "false"
    },
    "longitude": "150.143997192",
    "latitude": "-35.8978004456"
