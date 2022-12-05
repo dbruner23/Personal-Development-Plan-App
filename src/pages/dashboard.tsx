@@ -24,6 +24,7 @@ import RightSideBar from '../components/rightPanel/RightSideBar'
 import PrototypeButtons from '../components/PrototypeButtons'
 import Toolbar from '../components/toolbar/Toolbar'
 import FeedbackModal from '../components/questionnaire/FeedbackModal'
+import Welcome from '../components/Welcome'
 
 
 
@@ -36,7 +37,7 @@ interface IRecordWindow {
 const Dashboard = () => {
     const router = useRouter()
     const [persona, setPersona] = useState('')
-    const [prototypeId, setPrototypeId] = useState('s5New')
+    const [prototypeId, setPrototypeId] = useState('welcome')
     const [mus, setMus] = useState<any>('')
     const [recordWindow, setRecordWindow] = useState<IRecordWindow>()
     const [lIsCollapsed, setLIsCollapsed] = useState(false)
@@ -45,7 +46,7 @@ const Dashboard = () => {
     const [goal, setGoal] = useState('')
     const [lifestyleInput, setLifestyleInput] = useState({ extrahours: true, fulltimeEd: true, relocation: true, remotework: true })
     const [lifestyleInputStrings, setLifestyleInputStrings] = useState({ extrahours: "true", fulltimeEd: "true", relocation: "true", remotework: "true" })
-    const [path, setPath] = useState < any[]>([])
+    const [path, setPath] = useState<any[]>([])
     
     const handleLifestyleChange = (event: any) => {
         setLifestyleInput({ ...lifestyleInput, [event.target.name]: (event.target.checked) });
@@ -67,7 +68,7 @@ const Dashboard = () => {
             case 'd6':
                 return <NycMap />
             case 's1':
-                return <S1 />
+                return <S1 input={input} setPath={setPath}  />
             case 's2':
                 return <S2 />
             case 's3':
@@ -77,11 +78,13 @@ const Dashboard = () => {
             case 's5':
                 return <S5/>
             case 's6':
-                return <S6 />
+                return <S6 input={input} setPath={setPath} />
             case 's7':
-                return <S7 />
+                return <S7 input={input} setPath={setPath} />
             case 's5New':
                 return <S5New input={input} setPath={setPath} />
+            case 'welcome':
+                return <Welcome/>
             default:
                 return <Loading />
         }

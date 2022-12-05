@@ -34,8 +34,8 @@ export default function CubesModal1() {
           Study Full-Stack Development with Mission Ready
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          12 WEEKS.
-          NZQA-Approved Certificate in Digital Technology Product Solutions
+          8 Months.
+          NZQA-Approved Certificate in Technology Product Development Foundations (Level 4), Technology Product Solutions (Level 5) and in Applied Technology Product Solutions (Level 6)
           </Typography>
         </Box>
       </Modal>

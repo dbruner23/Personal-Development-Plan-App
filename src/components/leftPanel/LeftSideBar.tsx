@@ -58,10 +58,20 @@ const LeftSideBar = (props: Props) => {
       if (prototypeId === "d5") {
         setCurrentPosData(currentpossoftware);
         setCurrentGoalData(goalsoftware);
-      } else {
+      } 
+      else if (prototypeId === "s1") {
+        setCurrentPosData(currentpossoftware);
+        setCurrentGoalData(goalsoftware);
+      }
+      else if (prototypeId === "s6") {
+        setCurrentPosData(currentpossoftware);
+        setCurrentGoalData(goalsoftware);
+      }
+      else {
         setCurrentPosData(currentposfinance);
         setCurrentGoalData(goalfinance);
       }
+
     };
   }, [ prototypeId, currentPos, goal ])
 
