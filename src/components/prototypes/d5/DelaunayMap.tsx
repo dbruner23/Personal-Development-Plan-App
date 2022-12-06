@@ -147,7 +147,7 @@ const DelaunayMap = ( props: Props ) => {
                     d3.select("#tooltipSalary").html("Cost: $" + d.data.cost + "p/a")
                 } else if (d.data.salary) {
                     d3.select("#tooltipSalary").html("Salary: $" + d.data.salary + "p/a")
-                };
+                }
                 d3.select("#tooltipTime").html("Avg. time: " + d.data.time + "yrs");
                 d3.select("#tooltipSummary").html(d.data.summary);
                 
@@ -286,7 +286,7 @@ const DelaunayMap = ( props: Props ) => {
         
         function computeAndSetPath(nodearray:any) {
             const rec1positions = nodearray.map((node:any) => { return node.target.data.position })
-            let dataArray:any = []
+            const dataArray:any = []
             for (let i = 0; i < rec1positions.length; i++) {
                 const nodetoadd = data.find((node: any) => node.data.name === rec1positions[i])
                 dataArray.push(nodetoadd)
@@ -319,7 +319,7 @@ const DelaunayMap = ( props: Props ) => {
         }
 
         function addFlightPath(connection:any) {      
-            let geoInterpolator = d3.geoInterpolate([connection.source.data.longitude, connection.source.data.latitude],
+            const geoInterpolator = d3.geoInterpolate([connection.source.data.longitude, connection.source.data.latitude],
                 [connection.target.data.longitude, connection.target.data.latitude])
             let u = 0;
 
@@ -355,7 +355,7 @@ const DelaunayMap = ( props: Props ) => {
 
         
         function addMultiFlightPath(multiconnectionarr: any[]) {
-            let flightdata: any = ({
+            const flightdata: any = ({
                 type: 'Feature',
                 geometry: {
                     type: 'MultiLineString',
@@ -487,7 +487,7 @@ const DelaunayMap = ( props: Props ) => {
     return (
         <main className="flex justify-center items-center w-screen h-screen z-10">
             <svg className="w-full h-full" ref={svgRef}></svg>
-            <div ref={infobox} id="tooltip" className={`flex flex-col justify-start items-center absolute ${(infoboxClosed === true) ? 'opacity-0' : 'opacity-90'} w-60 h-fit bg-[#eff1f4] rounded-md p-2`}>
+            <div ref={infobox} id="tooltip" className={`flex flex-col justify-start items-center absolute ${(infoboxClosed === true) ? 'opacity-0' : 'opacity-90'} w-60 h-fit bg-[#eff1f4] rounded-md p-2 z-20`}>
                     <button onClick={() => setInfoBoxClosed(true) } className="flex self-end w-5 h-5">
                         <Image
                             alt="close"

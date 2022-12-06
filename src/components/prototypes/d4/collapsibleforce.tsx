@@ -179,7 +179,7 @@ const CollapsibleForce = ( props : Props ) => {
             // const upperCurrentJob = getTitleCase(input.currentPosition)
             // const upperGoal = getTitleCase(input.goal)
             let currentposition: any = root;
-            let currentPosInput: string = ""
+            let currentPosInput = ""
             let education = '';
             if (input.currentPosition.indexOf("via") !== -1 ) {
                 const index = input.currentPosition.indexOf("via") - 1
@@ -199,9 +199,9 @@ const CollapsibleForce = ( props : Props ) => {
             const nolifestylefitnodes: any[] = []
             let rec1path: any[] = []
             let rec2path: any[] = []
-            let tx = 0
-            let ty = 0
-            let k = 1
+            const tx = 0
+            const ty = 0
+            const k = 1
             //hacky solution to discerning current position based on input. 
             // const edtrack = (submitInput.educationfields.includes("finance") && submitInput.edlevel === 'bachelors') ? "INTERN" :
             //     (submitInput.certifications.includes('bachelors in finance') && submitInput.edlevel === "masters") ? "MBAFIN" :
