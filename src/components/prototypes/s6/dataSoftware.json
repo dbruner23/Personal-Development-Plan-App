@@ -66,108 +66,39 @@
                 "time": 1
             }
         }
-    ],
+    ]
+    ,
     [
         {
             "data": {
-                "name": "Junior Investment Banker",
-                "id": "JIBIU",
+                "name": "Senior Digital Marketing Director",
+                "id": "SDMD",
                 "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
-                "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
-                "time": 2,
+                "summary": "",
+                "time": 5,
                 "listings": 22,
-                "salary": 80000
+                "salary": 120000
             } 
         },
         {
             "data": {
-                "name": "Private Equity Associate",
-                 "id": "PEAIIU",
+                "name": "Study Software Development Major - Bachelor of Computer and Information Sciences",
+                "cost": 21000,
+                "id": "SDAUT",
                 "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
-                "summary": "An Associate's job is to lead deal processes from start to finish - raising capital, acquiring companies, improving companies, and selling companies.",
-                "salary": 90000,
-                "listings": 10,
+                "summary": "In the Software Development major in the Bachelor of Computer and Information Sciences you develop the skills to design and develop new and existing software solutions using common development tools",
                 "time": 3
             }
         },
         {
             "data": {
-                "name": "Private Equity Partner",
-                "id": "PEPartner",
+                "name": "Software Developer",
+                "id": "SDD",
                 "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
-                "summary": "Rainmaker, Fundraiser, and Chief Representative.",
-                "salary": 100000,
+                "summary": "Software developers create and maintain computer software, websites and software applications (apps).",
+                "salary": 80000,
                 "listings": 15,
-                "time": 6
-            }
-        },
-        {
-            "data": {
-                "name": "Senior Vice President",
-                "id": "SVPMBAU",
-                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
-                "salary": 120000,
-                "listings": 4,
-                "time": 5
-            }
-        }
-],
-[
-    {
-        "data": {
-            "name": "Junior Investment Banker",
-            "id": "JIBIU",
-            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
-            "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
-            "time": 2,
-            "listings": 22,
-            "salary": 80000
-        } 
-    },
-    {
-        "data": {
-            "name": "Private Equity Associate",
-             "id": "PEAIIU",
-            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
-            "summary": "An Associate's job is to lead deal processes from start to finish - raising capital, acquiring companies, improving companies, and selling companies.",
-            "salary": 90000,
-            "listings": 10,
-            "time": 3
-        }
-    }
-    ],
-    [
-        {
-            "data": {
-                "name": "Junior Investment Banker",
-                "id": "JIBIU",
-                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
-                "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
-                "time": 2,
-                "listings": 22,
-                "salary": 80000
-            } 
-        },
-        {
-            "data": {
-                "name": "Private Equity Associate",
-                 "id": "PEAIIU",
-                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
-                "summary": "An Associate's job is to lead deal processes from start to finish - raising capital, acquiring companies, improving companies, and selling companies.",
-                "salary": 90000,
-                "listings": 10,
-                "time": 3
-            }
-        },
-        {
-            "data": {
-                "name": "Private Equity Partner",
-                "id": "PEPartner",
-                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
-                "summary": "Rainmaker, Fundraiser, and Chief Representative.",
-                "salary": 100000,
-                "listings": 15,
-                "time": 6
+                "time": 1
             }
         }
     ]

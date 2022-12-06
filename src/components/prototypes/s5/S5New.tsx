@@ -1,5 +1,5 @@
 import SankeyChart from "./SankeyChart";
-import data from "./sankeyData5.json"
+import data from "../s7/data3.json"
 
 
 type Props = {

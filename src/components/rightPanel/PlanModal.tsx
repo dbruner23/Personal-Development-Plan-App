@@ -84,8 +84,8 @@ export default function PlanModal(props: Props ) {
         }}
         variant="contained"
         disabled={path.length === 0 ? true : false}
-        sx={{ m: 0.5 }}
-        className="bottom-6 w-44 bg-[#81BD75] absolute"
+        sx={{ m: 0.5, mb:6, mt: 10}}
+        className="w-40 bg-[#81BD75]"
       >
         Confirm Plan
       </Button>
