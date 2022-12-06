@@ -117,7 +117,7 @@ const Dashboard = () => {
                 setCurrentPos("Senior Digital Marketing Director")
                 setGoal("")
             }
-        };
+        }
     }, [persona, prototypeId])
     
     const getMousemoveCoordinates = function () {

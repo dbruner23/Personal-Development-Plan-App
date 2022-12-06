@@ -32,14 +32,14 @@ const RightSideBar = (props: Props) => {
     return acc + curr.data.cost
   }, 0)) / edTimeToGoal;
   
-  let skills: any[] = []
+  const skills: any[] = []
   let skillLevels: any[] = []
   for (let i = 0; i < pathStartWithCurrent.length; i++) {
     if (!skills.includes(pathStartWithCurrent[i].data.skill)) {
       skills.push(pathStartWithCurrent[i].data.skill);
       skillLevels.push(pathStartWithCurrent[i].data.skillLevel);
     } else {
-    let skillIndex = skills.indexOf(pathStartWithCurrent[i])
+    const skillIndex = skills.indexOf(pathStartWithCurrent[i])
       if (pathStartWithCurrent[i].data.skillLevel > skillLevels[skillIndex] ) {
         skillLevels[skillIndex] = pathStartWithCurrent[i].data.skillLevel
       } 
@@ -76,7 +76,7 @@ const RightSideBar = (props: Props) => {
               {pathStartWithCurrent.length === 0 ? <div className="flex text-center justify-center items-center text-sm"></div> : (
                 <div className="flex flex-col justify-start items-center fit-content pt-4 w-full relative" >   
                   {pathStartWithCurrent.length !== 0 ? pathStartWithCurrent.map((step, index) => 
-                    <div className="flex gap-2 w-full justify-center">
+                    <div key={index} className="flex gap-2 w-full justify-center">
                       <div className={`flex flex-col gap-1 justify-start absolute -translate-y-4 pl-1 ${(index % 2 === 0) ? 'left-0' : 'right-0'}`}>
                         <div className={`w-6.5rem text-xs text-center `}><strong>{step.data.name}</strong></div>
                         <div className={`w-6.5rem text-xs text-left `}>{ step.data.cost ? `Cost: $${step.data.cost}` : `Salary: $${step.data.salary}`}</div>
@@ -130,7 +130,7 @@ const RightSideBar = (props: Props) => {
                 </div>
                 {skills.length > 0 ? skills.map((skill: string, index: number) => {
                   return ( 
-                    <div className="flex justify-between w-full my-1 px-3 gap-2">
+                    <div key={index} className="flex justify-between w-full my-1 px-3 gap-2">
                       <div className="text-xs">{skill}</div>
                       <div className="flex justify-end gap-1">
                         <div className={`h-3 w-3 rounded-sm ${ skillLevels[index] >= 1 ? 'bg-[#39B681]' : 'bg-[#cccc]'}`}></div>

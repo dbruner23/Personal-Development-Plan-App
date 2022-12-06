@@ -61,7 +61,7 @@ const LeftSideBar = (props: Props) => {
         setCurrentGoalData(goalfinance);
       }
 
-    };
+    }
   }, [ prototypeId, currentPos, goal ])
 
   const handleChange = (event: any) => {
