@@ -46,15 +46,15 @@ export default function PlanModal(props: Props ) {
     date.setMonth(date.getMonth() + numMonths)
   }
 
-  let positionChangeIndecies: any[] = []
+  const positionChangeIndecies: any[] = []
   let accumTimeIndecies = 0
   for (let i = 0; i < pathSWCExcludeGoal.length; i++) {   
-    let addedTimeIndecies = Math.ceil(pathSWCExcludeGoal[i].data.time * 2)
+    const addedTimeIndecies = Math.ceil(pathSWCExcludeGoal[i].data.time * 2)
     positionChangeIndecies.push(Math.ceil(addedTimeIndecies + accumTimeIndecies))
     accumTimeIndecies += addedTimeIndecies
   }
 
-  let percentages: any[] = []
+  const percentages: any[] = []
   // const pathSWCExcludeGoal = pathStartWithCurrent.slice(0, (pathStartWithCurrent.length - 1))
   for (let i = 0; i < pathStartWithCurrent.length - 1; i++) {
     percentages.push((pathStartWithCurrent[i].data.time / timeToGoal) * 100)
@@ -65,12 +65,12 @@ export default function PlanModal(props: Props ) {
   let k = 0;
   let percentage = 0
   const planData = initPlanData.map((item: any, index: number) => {
-    let point = Object.assign({}, item);
+    const point = Object.assign({}, item);
     addMonths(6);  
     point.name = date.toLocaleString('default', { month: 'short' }) + " " + date.toLocaleString('default', { year: 'numeric' })
-    if (percentage > 100) { percentage = 100 };
+    if (percentage > 100) { percentage = 100 }
     point.percentage = Math.ceil(percentage);  
-    let prevChangeIndexVal = j > 0 ? positionChangeIndecies[j - 1] : 0;
+    const prevChangeIndexVal = j > 0 ? positionChangeIndecies[j - 1] : 0;
     percentage += percentages[k] / (positionChangeIndecies[j] - prevChangeIndexVal);
     if (index < positionChangeIndecies[j]) {
       point.path1Info = pathStartWithCurrent[j].data.name
