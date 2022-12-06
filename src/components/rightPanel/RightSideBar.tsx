@@ -6,7 +6,7 @@ import ChevronRight from 'public/chevron-right.svg'
 import Clock from 'public/clock.svg'
 import School from 'public/edit.svg'
 import briefcase from 'public/briefcase.svg'
-import { LocalConvenienceStoreOutlined } from '@mui/icons-material'
+import { ContactlessOutlined, LocalConvenienceStoreOutlined } from '@mui/icons-material'
 import PlanModal from './PlanModal'
 
 
@@ -45,15 +45,17 @@ const RightSideBar = (props: Props) => {
       } 
     }
   }
+  console.log(pathStartWithCurrent)
+  console.log(skillLevels)
 
   const [rightCollapsed, setRightCollapsed] = useState(false);
 
   return (
     <>
     <div className={`flex ${rightCollapsed ? 'h-10 w-6 overflow-hidden right-0 bg-[#eff1f4] rounded-xl' : 'h-screen w-64' } transition-all right-0 top-0 fixed justify-between items-center mx-auto flex-col p-0`} >
-      <div className="flex h-full w-full justify-start mx-auto flex-col bg-[#eff1f4] p-2">
-          <div className="flex flex-col justify-start items-center  h-1/2">
-              <button className="flex justify-center items-center absolute left-2 top-2" onClick={() => setRightCollapsed((prev) => { return !prev })}>
+      <div className="flex relative h-full w-full justify-between items-center mx-auto flex-col bg-[#eff1f4] p-2">
+        <div className="flex flex-col justify-start items-center overflow-scroll h-90vh">
+            <button className="flex justify-center items-center absolute left-2 top-2 z-20 bg-#eff1f4" onClick={() => setRightCollapsed((prev) => { return !prev })}>
                 {rightCollapsed ?
                   <div>
                     <Image
@@ -72,9 +74,9 @@ const RightSideBar = (props: Props) => {
                     </Image>
                   </div>}
               </button>
-              <div className="flex self-center text-lg mt-6 mb-4">Current Path Preview</div>
+            <div className="flex justify-center items-end absolute text-lg mt-6 mb-4 bg-[#eff1f4] w-52 z-10">Current Path Preview</div>
               {pathStartWithCurrent.length === 0 ? <div className="flex text-center justify-center items-center text-sm"></div> : (
-                <div className="flex flex-col justify-start items-center fit-content pt-4 w-full relative" >   
+                <div className="flex flex-col justify-start items-center fit-content mt-20  w-full relative" >   
                   {pathStartWithCurrent.length !== 0 ? pathStartWithCurrent.map((step, index) => 
                     <div className="flex gap-2 w-full justify-center">
                       <div className={`flex flex-col gap-1 justify-start absolute -translate-y-4 pl-1 ${(index % 2 === 0) ? 'left-0' : 'right-0'}`}>
@@ -90,7 +92,7 @@ const RightSideBar = (props: Props) => {
                     ) : ""}
                 </div>   
             )}
-            {path.length === 0 ? <div className="flex text-center h-full justify-center items-center translate-y-36 text-sm">No path currently selected</div> : (
+            {path.length === 0 ? <div className="flex text-center h-full justify-center items-center text-sm">No path currently selected</div> : (
               <div className="flex flex-col justify-start items-center fit-content pt-3 w-full relative" >
                 <hr className="w-90% border-slate-400 border-1 mt-8"></hr>
                 <div className="flex justify-start items-center w-full px-5 py-2 gap-4">
@@ -147,10 +149,8 @@ const RightSideBar = (props: Props) => {
                 }) : ""}
               </div>
               
-            )}
-
-       
-            <PlanModal path={path} pathStartWithCurrent={pathStartWithCurrent} timeToGoal={timeToGoal} />
+            )} 
+            
             
             {/* {infoData.salary !== 'undefined' && (
               <>
@@ -196,7 +196,8 @@ const RightSideBar = (props: Props) => {
             )} */}
               
           </div>
-      </div>
+          <PlanModal path={path} pathStartWithCurrent={pathStartWithCurrent} timeToGoal={timeToGoal} />
+      </div>  
     </div>
     </>
   )
