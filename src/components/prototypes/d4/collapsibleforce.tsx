@@ -600,9 +600,13 @@ const CollapsibleForce = ( props : Props ) => {
                     </Button>
                 </div>
             )} */}
-            <div className={`flex h-1/3 bottom-0 justify-start items-start mx-auto flex-col bg-transparent rounded-xl gap-2 fixed ${lIsCollapsed ? 'left-10' : 'left-72' }`}>
+            <div className={`flex h-1/3 bottom-2 justify-start items-start mx-auto flex-col bg-transparent rounded-xl gap-2 fixed ${lIsCollapsed ? 'left-10' : 'left-72' }`}>
                 <div className="">Key:</div>
                 <div className="flex flex-col justify-start items-start gap-2">
+                    <div className="flex items-center gap-2">
+                        <div className="border-[#11823b] border-4 rounded-sm h-0 w-5"></div>
+                        <div className="text-xs">- Click path to select</div>
+                    </div>
                     <div className="flex gap-2">
                         <div className="bg-[#11823b] border-[#3182BD] border-4 rounded-full h-5 w-5"></div>
                         <div className="text-xs">- Current position</div>

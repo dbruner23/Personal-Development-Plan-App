@@ -64,7 +64,7 @@ const Dashboard = () => {
             case 'd4':
                 return <CollapsibleForce lIsCollapsed={lIsCollapsed} persona={persona} input={input} lifestyleInputStrings={lifestyleInputStrings} setPath={setPath} />
             case 'd5':
-                return <DelaunayMap persona={persona} input={input} lifestyleInputStrings={lifestyleInputStrings} setPath={setPath} currentPos={currentPos} setCurrentPos={setCurrentPos} goal={goal} setGoal={setGoal} />
+                return <DelaunayMap persona={persona} input={input} lifestyleInputStrings={lifestyleInputStrings} setPath={setPath} currentPos={currentPos} setCurrentPos={setCurrentPos} goal={goal} setGoal={setGoal} lIsCollapsed={lIsCollapsed} />
             case 'd6':
                 return <NycMap />
             case 's1':
@@ -108,9 +108,11 @@ const Dashboard = () => {
             if ((persona === "Jean") && (prototypeId === "d5")) {
                 setCurrentPos("Junior Fullstack Developer")
                 setGoal("")
+                setInput({ currentPosition: "Junior Fullstack Developer", goal: ""})
             } else if ((persona === "Jean") && (prototypeId !== "d5")) {
                 setCurrentPos("Junior Investment Banker")
                 setGoal("")
+                setInput({ currentPosition: "Junior Investment Banker", goal: ""})
             } else {
                 setCurrentPos("Senior Digital Marketing Director")
                 setGoal("")
@@ -197,7 +199,7 @@ const Dashboard = () => {
         </div>
         {prototypeInsert(prototypeId)}
           <Toolbar handleLifestyleChange={handleLifestyleChange} lifestyleInput={lifestyleInput} />  
-          <RightSideBar path={path} />
+          <RightSideBar path={path} prototypeId={prototypeId} />
     </div>
   )
 }

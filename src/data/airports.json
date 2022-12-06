@@ -8409,7 +8409,10 @@
    "data": {
     "name": "Software Team Manager",
     "time": 7,
-    "salary": 200000
+    "salary": 200000,
+    "summary": "Software development managers are responsible for leading a team to design, troubleshoot, and optimize software programs.",
+    "skill": "Management",
+    "skillLevel": 5
    },
    "longitude": "174.792007446",
    "latitude": "-37.0080986023"
@@ -8424,7 +8427,10 @@
    "data": {
     "name": "Junior Data Scientist",
     "time": 1.5,
-    "salary": 50000
+    "salary": 50000,
+    "summary": "A routine part of junior data scientists' job description is to use programming to organize large and often unstructured swathes of data to make analysis possible.",
+    "skill": "Machine Learning",
+    "skillLevel": 2
    },
    "longitude": "172.531997680664",
    "latitude": "-43.4893989562988"
@@ -8449,7 +8455,10 @@
    "data": {
     "name": "Junior Frontend Developer",
     "time": 1.5,
-    "salary": 65000
+    "salary": 65000,
+    "summary": "A Front-End Developer closely work with Back-End Developers to create apps and/or sites that combine visual design with functionality.",
+    "skill": "FullStack Dev",
+    "skillLevel": 2
    },
    "longitude": "170.985000610352",
    "latitude": "-42.7136001586914"
@@ -8459,7 +8468,10 @@
    "data": {
     "name": "Technical Lead",
     "time": 4,
-    "salary": 131897
+    "salary": 131897,
+    "summary": "A technical lead is a professional who oversees a team of technical personnel at a software or technology company.",
+    "skill":"Computer Science",
+    "skillLevel": 5
    },
    "longitude": "175.332000732",
    "latitude": "-37.8666992188"
@@ -8469,7 +8481,10 @@
    "data": {
     "name": "A.I. Research Professor",
     "time": 19,
-    "salary": 130000
+    "salary": 130000,
+    "summary": "Participate in the core AI Methods research community. supervise graduate students, collaborate with other faculty members, obtain external funding, teach undergraduate and graduate Computer Science courses",
+    "skill":"Machine Learning",
+    "skillLevel": 6
    },
    "longitude": "173.912002563477",
    "latitude": "-35.2627983093262"
@@ -8479,7 +8494,10 @@
    "data": {
     "name": "Comp Sci Research Professor",
     "time": 20,
-    "salary": 130000
+    "salary": 130000,
+    "summary": "Participate in the core Comp Sci research community. supervise graduate students, collaborate with other faculty members, obtain external funding, teach undergraduate and graduate Computer Science courses",
+    "skill": "Computer Science",
+    "skillLevel": 6
    },
    "longitude": "173.285003662109",
    "latitude": "-35.0699996948242"
@@ -8489,7 +8507,10 @@
    "data": {
     "name": "Senior Software Engineer",
     "time": 5,
-    "salary": 120000
+    "salary": 120000,
+    "summary": "Develops software solutions by studying information needs, conferring with users, studying systems flow, data usage, and work processes",
+    "skill":"Computer Science",
+    "skillLevel": 4
    },
    "longitude": "174.179000854492",
    "latitude": "-39.0085983276367"
@@ -8499,7 +8520,10 @@
    "data": {
     "name": "Senior Machine Learning Engineer",
     "salary": 110000,
-    "time": 5
+    "time": 5,
+    "summary": "Designing and developing machine learning models. Running machine learning tests and experiments.",
+    "skill":"Machine Learning",
+    "skillLevel": 4
    },
    "longitude": "176.869995117188",
    "latitude": "-39.4658012390137"
@@ -8509,7 +8533,10 @@
    "data": {
     "name": "Intermediate Software Engineer",
     "time": 2,
-    "salary": 92000
+    "salary": 92000,
+    "summary": "The Intermediate Software Engineer is responsible for applying effective analysis, design, programming and testing skills to produce software systems.",
+    "skill":"Computer Science",
+    "skillLevel":3
    },
    "longitude": "173.220993041992",
    "latitude": "-41.2983016967773"
@@ -8539,7 +8566,10 @@
    "data": {
     "name": "A.I. Architect",
     "time": 6,
-    "salary": 150000
+    "salary": 150000,
+    "summary": "AI architects work in the field of information technology to develop and implement infrastructure for applications, databases, and computer networks.",
+    "skill":"Machine Learning",
+    "skillLevel": 5
    },
    "longitude": "176.317001342773",
    "latitude": "-38.1091995239258"
@@ -8549,7 +8579,10 @@
    "data": {
     "name": "Software Architect",
     "time": 12,
-    "salary": 200000
+    "salary": 200000,
+    "summary": "A Software Architect is a professional who is responsible for high-level concepts and UI designs for software applications.",
+    "skill":"Computer Science",
+    "skillLevel": 6
    },
    "longitude": "176.195999145508",
    "latitude": "-37.6719017028809"
@@ -8572,9 +8605,12 @@
  {
    "airport": "Whakatane Airport",
    "data": {
-    "name": "Lead A.I. Inovation Researcher",
+    "name": "Lead A.I. Innovation Researcher",
     "time": 10,
-    "salary": 200000
+    "salary": 200000,
+    "summary": "AI researchers explore new ways and create new systems of solving-problems, while data scientists tweak and apply these systems in real-world scenarios.",
+    "skill":"Machine Learning",
+    "skillLevel": 6
    },
    "longitude": "176.914001464844",
    "latitude": "-37.9206008911133"
@@ -8584,7 +8620,10 @@
    "data": {
     "name": "Machine Learning Engineer",
     "time": 2.5,
-    "salary": 85000
+    "salary": 85000,
+    "summary": "An ML Engineer builds artificial intelligence (AI) systems that leverage huge data sets to generate and develop algorithms capable of learning and eventually making predictions.",
+    "skill": "Machine Learning",
+    "skillLevel": 3
    },
    "longitude": "174.804992676",
    "latitude": "-41.3272018433"
@@ -8594,7 +8633,10 @@
    "data": {
     "name": "Chief Technical Officer",
     "time": 10,
-    "salary": 250000
+    "salary": 250000,
+    "summary": "A chief technology officer (CTO) is tasked with managing the technical aspects of an organisation to ensure that they're in line with the company's growth targets.",
+    "skill": "Management",
+    "skillLevel": 6
    },
    "longitude": "174.365005493164",
    "latitude": "-35.7682991027832"
@@ -8604,7 +8646,10 @@
    "data": {
     "name": "Junior Fullstack Developer",
     "time": 1.5,
-    "salary": 70000
+    "salary": 70000,
+    "summary": "You'll be involved in the entire product development lifecycle including the design, development, deployment and maintenance of new and existing features.",
+    "skill": "FullStack Dev",
+    "skillLevel": 2
    },
    "longitude": "171.580993652344",
    "latitude": "-41.7380981445312"
@@ -14017,8 +14062,12 @@
  {
    "airport": "Cooma Snowy Mountains Airport",
    "data": {
+    "photo": "https://online.usc.edu/wp-content/uploads/2021/09/hospitality-tourism-jobs-best-careers-masters.jpg",
     "name": "Senior Digital Marketing Director",
-    "time": 8
+    "time": 8,
+    "summary": "A senior digital marketing manager is a specialized type of marketer who works with online channels to promote products and services.",
+    "skill": "Marketing",
+    "skillLevel": 5
    },
    "longitude": "148.973999023",
    "latitude": "-36.3005981445"
@@ -14144,8 +14193,10 @@
     "name": "Mission Ready HQ",
     "time": 0.9,
     "cost": 5000,
-    "photo": "public/Mission-Ready-Logo.jpeg",
-    "summary": "The accelerator is designed to deliver on our promise to employers to develop quality candidates that are in-demand."
+    "photo": "data:image/jpeg;base64,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",
+    "summary": "Our accelerator is designed to deliver on our promise to employers to develop quality candidates that are in-demand.",
+    "skill": "FullStack Dev",
+    "skillLevel": 2
    },
    "longitude": "149.901000977",
    "latitude": "-36.9085998535"
@@ -14201,7 +14252,10 @@
     "name": "Masters in Data Science",
     "time": 1,
     "cost": 10000,
-    "fulltimeEd": "false"
+    "fulltimeEd": "false",
+    "summary": "This conversion Master's is designed to accommodate students from a range of backgrounds who want to enhance or build their data science capabilities.",
+    "skill": "Machine Learning",
+    "skillLevel": 1
    },
    "longitude": "150.143997192",
    "latitude": "-35.8978004456"
@@ -14296,7 +14350,10 @@
    "data": {
     "name": "Phd in A.I.",
     "time": 4,
-    "salary": 50000
+    "salary": 50000,
+    "summary": "The research and experiments you do may help you invent future A.I technology, develop advanced A.I. theories and change the world.",
+    "skill": "Machine Learning",
+    "skillLevel": 4
    },
    "longitude": "152.863006592",
    "latitude": "-31.4358005524"
@@ -14356,7 +14413,10 @@
    "data": {
     "name": "Masters in Comp Sci",
     "time": 1,
-    "cost": 10000
+    "cost": 10000,
+    "summary": "The Professional Master of Computer Science (PMCS) offers practical learning in the rapidly advancing area of computer technologies in need of skilled graduates.",
+    "skill":"Computer Science",
+    "skillLevel": 3
    },
    "longitude": "151.177001953125",
    "latitude": "-33.9460983276367"
@@ -14391,7 +14451,10 @@
    "data": {
     "name": "Phd in Computer Science",
     "time": 4,
-    "salary": 50000
+    "salary": 50000,
+    "summary": "The research and experiments you do may help you invent future technology, write new programming languages, or develop advanced computing theories.",
+    "skill": "Computer Science",
+    "skillLevel": 4
    },
    "longitude": "152.514007568",
    "latitude": "-31.8885993958"
@@ -14421,7 +14484,10 @@
    "data": {
     "name": "Uni Degree Comp Sci",
     "time": 3,
-    "cost": 20000
+    "cost": 20000,
+    "summary": "Computer Science is not only about programming or coding, but has many aspects such as human-computer interaction, A.I., and cybersecurity,",
+    "skill": "Computer Science",
+    "skillLevel": 2
    },
    "longitude": "150.789001464844",
    "latitude": "-34.5611000061035"

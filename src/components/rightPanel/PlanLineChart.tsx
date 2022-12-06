@@ -1,5 +1,5 @@
 
-import planData from "./planData";
+// import planData from "./planData";
 import {
   LineChart,
   Line,
@@ -30,7 +30,12 @@ const CustomTooltip = ({ active, payload }: any) => {
   return null;
 };
 
-const PlanLineChart = () => {
+type Props = {
+  planData: any[]
+}
+
+const PlanLineChart = (props: Props) => {
+  const { planData } = props
   return (
 <>
 <ResponsiveContainer width={"98%"} height={500} min-width={300}>

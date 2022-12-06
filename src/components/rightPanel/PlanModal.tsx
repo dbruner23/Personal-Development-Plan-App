@@ -34,21 +34,24 @@ type Props = {
 
 export default function PlanModal(props: Props ) {
   const { path, pathStartWithCurrent, timeToGoal } = props;
+  const pathSWCExcludeGoal = pathStartWithCurrent.slice(0, (pathStartWithCurrent.length - 1))
+  console.log(pathSWCExcludeGoal)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   
-  const planData = Array(Math.ceil(timeToGoal * 2)).fill({ name: "", percentage: 0, pathInfo: ''})
+  const initPlanData = Array(Math.ceil(timeToGoal * 2) +1).fill({ name: "", percentage: 0, path1Info: ''})
   const date = new Date('2022-07-01')
   const addMonths = (numMonths:number) => {
     date.setMonth(date.getMonth() + numMonths)
   }
 
-  
-
   let positionChangeIndecies: any[] = []
-  for (let i = 0; i < pathStartWithCurrent.length; i++) {   
-    positionChangeIndecies.push(Math.ceil(pathStartWithCurrent[i].data.time * 2))  
+  let accumTimeIndecies = 0
+  for (let i = 0; i < pathSWCExcludeGoal.length; i++) {   
+    let addedTimeIndecies = Math.ceil(pathSWCExcludeGoal[i].data.time * 2)
+    positionChangeIndecies.push(Math.ceil(addedTimeIndecies + accumTimeIndecies))
+    accumTimeIndecies += addedTimeIndecies
   }
 
   let percentages: any[] = []
@@ -57,23 +60,28 @@ export default function PlanModal(props: Props ) {
     percentages.push((pathStartWithCurrent[i].data.time / timeToGoal) * 100)
   }
 
+
   let j = 0;
   let k = 0;
   let percentage = 0
-  for (let i = 0; i < planData.length; i++) {
-    addMonths(6)
-    planData[i].name = date.toLocaleString('default', { month: 'short' }) + " " + date.toLocaleString('default', { year: 'numeric' })
-    planData[i].percentage = percentage
-    let prevChangeIndex = i > 0 ? positionChangeIndecies[i - 1] : 0;
-    percentage += percentages[k] / (positionChangeIndecies[j] - prevChangeIndex)
-    if (i == positionChangeIndecies[j]) {
-      j++; k++;
+  const planData = initPlanData.map((item: any, index: number) => {
+    let point = Object.assign({}, item);
+    addMonths(6);  
+    point.name = date.toLocaleString('default', { month: 'short' }) + " " + date.toLocaleString('default', { year: 'numeric' })
+    if (percentage > 100) { percentage = 100 };
+    point.percentage = Math.ceil(percentage);  
+    let prevChangeIndexVal = j > 0 ? positionChangeIndecies[j - 1] : 0;
+    percentage += percentages[k] / (positionChangeIndecies[j] - prevChangeIndexVal);
+    if (index < positionChangeIndecies[j]) {
+      point.path1Info = pathStartWithCurrent[j].data.name
+    } else if (index == positionChangeIndecies[j]) {
+      point.path1Info = pathStartWithCurrent[j + 1].data.name;
+      j++;
+      k++;
     }
-  }
-
-  console.log(planData)
-
-
+    return point
+  })
+  
 
   return (
     <>
@@ -87,7 +95,7 @@ export default function PlanModal(props: Props ) {
         sx={{ m: 0.5 }}
         className="bottom-6 w-44 bg-[#81BD75] absolute"
       >
-        Confirm Plan
+        Create Plan
       </Button>
 
       <Modal
@@ -102,13 +110,8 @@ export default function PlanModal(props: Props ) {
             <h2 className="text-3xl font-bold">
               Your career plan timeline
             </h2>
-          </div>
-
-          
-           <PlanLineChart/>
-       
-
-         
+          </div>   
+            <PlanLineChart planData={planData}/>
               <Button
                 variant="contained"
                 className="bg-[#81bd75]"

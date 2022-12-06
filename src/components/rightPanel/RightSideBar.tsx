@@ -5,16 +5,18 @@ import ChevronLeft from 'public/chevron-left.svg'
 import ChevronRight from 'public/chevron-right.svg'
 import Clock from 'public/clock.svg'
 import School from 'public/edit.svg'
+import briefcase from 'public/briefcase.svg'
 import { LocalConvenienceStoreOutlined } from '@mui/icons-material'
 import PlanModal from './PlanModal'
 
 
 type Props = {
-  path : any[]
+  path: any[],
+  prototypeId: string
 }
 
 const RightSideBar = (props: Props) => {
-  const { path } = props;
+  const { path, prototypeId } = props;
   console.log(path)
   const pathStartWithCurrent: any[] = [...path].reverse();
   console.log(pathStartWithCurrent)
@@ -28,7 +30,21 @@ const RightSideBar = (props: Props) => {
   }, 0);
   const edCostToGoal = (edNodesInPath.reduce((acc: any, curr: { data: { cost: any; }; }) => {
     return acc + curr.data.cost
-  }, 0))/edTimeToGoal;
+  }, 0)) / edTimeToGoal;
+  
+  let skills: any[] = []
+  let skillLevels: any[] = []
+  for (let i = 0; i < pathStartWithCurrent.length; i++) {
+    if (!skills.includes(pathStartWithCurrent[i].data.skill)) {
+      skills.push(pathStartWithCurrent[i].data.skill);
+      skillLevels.push(pathStartWithCurrent[i].data.skillLevel);
+    } else {
+    let skillIndex = skills.indexOf(pathStartWithCurrent[i])
+      if (pathStartWithCurrent[i].data.skillLevel > skillLevels[skillIndex] ) {
+        skillLevels[skillIndex] = pathStartWithCurrent[i].data.skillLevel
+      } 
+    }
+  }
 
   const [rightCollapsed, setRightCollapsed] = useState(false);
 
@@ -100,12 +116,42 @@ const RightSideBar = (props: Props) => {
                   </div>
                   <div className="text-xs justify-center">{edTimeToGoal === 0 ? "No further higher ed. needed" : `${edTimeToGoal} yrs higher ed at $${edCostToGoal} p/a`}</div>
                 </div>
+                <hr className="w-90% border-slate-400 border-1"></hr>
+                <div className="flex justify-start items-center w-full px-5 py-2 gap-4">
+                  <div>
+                    <Image
+                      src={briefcase}
+                      alt="Icon"
+                      className=""
+                    >
+                    </Image>
+                  </div>
+                  <div className="text-xs justify-center">Skills Gained:</div>
+                </div>
+                {skills.length > 0 ? skills.map((skill: string, index: number) => {
+                  return ( 
+                    <div className="flex justify-between w-full my-1 px-3 gap-2">
+                      <div className="text-xs">{skill}</div>
+                      <div className="flex justify-end gap-1">
+                        <div className={`h-3 w-3 rounded-sm ${ skillLevels[index] >= 1 ? 'bg-[#39B681]' : 'bg-[#cccc]'}`}></div>
+                        <div className={`h-3 w-3 rounded-sm ${ skillLevels[index] >= 2 ? 'bg-[#39B681]' : 'bg-[#cccc]'}`}></div>
+                        <div className={`h-3 w-3 rounded-sm ${ skillLevels[index] >= 3 ? 'bg-[#39B681]' : 'bg-[#cccc]'}`}></div>
+                        <div className={`h-3 w-3 rounded-sm ${ skillLevels[index] >= 4 ? 'bg-[#39B681]' : 'bg-[#cccc]'}`}></div>
+                        <div className={`h-3 w-3 rounded-sm ${ skillLevels[index] >= 5 ? 'bg-[#39B681]' : 'bg-[#cccc]'}`}></div>
+                        <div className={`h-3 w-3 rounded-sm ${ skillLevels[index] == 6 ? 'bg-[#39B681]' : 'bg-[#cccc]'}`}></div>
+                      </div>
+                      
+                    </div>
+                    
+                  )
+                }) : ""}
               </div>
+              
             )}
 
-       <div className='mt-8'>
+       
             <PlanModal path={path} pathStartWithCurrent={pathStartWithCurrent} timeToGoal={timeToGoal} />
-       </div>
+       
 
             
             {/* {infoData.salary !== 'undefined' && (
