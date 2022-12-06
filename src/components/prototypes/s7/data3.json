@@ -147,5 +147,322 @@
                     "time": 6
                 }
             }
-        ]
+        ],
+        [
+            {
+                "data": {
+                    "name": "Dacreed CFA",
+                    "id": "DCFAQ",
+                    "cost": 3000,
+                    "photo": "data:image/png;base64,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",
+                    "summary": "The CFA is widely considered as the leading qualification for the financial sector. There are currently more than 175,000 CFA charterholders globally. A sizable proportion of these are involved within the investment banking sector.",
+                    "time": 0.5
+                } 
+            },
+            {
+                "data": {
+                    "name": "Investment Banking Analyst",
+                    "id": "IBAD",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "Investment banking analysts raise capital for businesses and individuals by issuing debt and selling equity. They oversee mergers, conduct research, and assist in preparing legal and financial documents related to their transactions. Investment banking analysts conduct research and review financial information as well as market trends. They create and implement financial models to review deals and determine profitability. They oversee merger-and-acquisition, and supervise IPOs and private-equity settlements.",
+                    "salary": 81872,
+                    "time": 5
+                }
+            },
+            {
+                "data": {
+                    "name": "Senior Financial Advisor",
+                    "id": "SFAD",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "Senior financial advisors are responsible for providing clients with investment advice and guidance. They may work directly with individuals or small groups, but they also commonly provide services to large institutional clients such as pension funds or insurance companies.",
+                    "salary": 110000,
+                    "listings": 3,
+                    "time": 10
+                }
+            }
+        ],
+        [
+            {
+                "data": {
+                    "name": "Investment Banking Analyst",
+                    "id": "IBAD",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "Investment banking analysts raise capital for businesses and individuals by issuing debt and selling equity. They oversee mergers, conduct research, and assist in preparing legal and financial documents related to their transactions. Investment banking analysts conduct research and review financial information as well as market trends. They create and implement financial models to review deals and determine profitability. They oversee merger-and-acquisition, and supervise IPOs and private-equity settlements.",
+                    "salary": 81872,
+                    "time": 5
+                } 
+            },
+            {
+                "data": {
+                    "name": "Managing Director",
+                    "id": "MDD",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "salary": 100000,
+                    "listings": 2,
+                    "time": 7
+                }
+            },
+            {
+                "data": {
+                    "name": "Senior Vice President",
+                    "id": "SVPD",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "salary": 100000,
+                    "listings": 4,
+                    "time": 50
+                }
+            }
+        ],
+        [
+            {
+                "data": {
+                    "name": "MBA",
+                    "cost": 40000,
+                    "id": "MBANOFIN",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "Whether you already have an undergraduate degree in finance, or have a degree and/or previous work experience in another field, and MBA is a great option to advance your finance career. The link below provides information searchable by different criteria on global universities offering MBA programmes.",
+                    "link": "https://www.topuniversities.com/university-rankings/mba-rankings/global/2022",
+                    "time": 2
+                } 
+            },
+            {
+                "data": {
+                    "name": "Investment Banking Analyst",
+                    "id": "IBAD",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "Investment banking analysts raise capital for businesses and individuals by issuing debt and selling equity. They oversee mergers, conduct research, and assist in preparing legal and financial documents related to their transactions. Investment banking analysts conduct research and review financial information as well as market trends. They create and implement financial models to review deals and determine profitability. They oversee merger-and-acquisition, and supervise IPOs and private-equity settlements.",
+                    "salary": 81872,
+                    "time": 5
+                }
+            },
+            {
+                "data": {
+                    "name": "Senior Financial Advisor",
+                    "id": "SFAD",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "Senior financial advisors are responsible for providing clients with investment advice and guidance. They may work directly with individuals or small groups, but they also commonly provide services to large institutional clients such as pension funds or insurance companies.",
+                    "salary": 110000,
+                    "listings": 3,
+                    "time": 10
+                }
+            },
+            {
+                "data": {
+                    "name": "Managing Director",
+                    "id": "MDMBA",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "salary": 100000,
+                    "listings": 2,
+                    "time": 7
+                }
+            },
+            {
+                "data": {
+                    "name": "Senior Vice President",
+                    "id": "SVPMBA",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "salary": 100000,
+                    "listings": 4,
+                    "time": 5
+                }
+            }
+        ],
+        [
+            {
+                "data": {
+                    "name": "Junior Investment Banker",
+                    "id": "JIBIU",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
+                    "time": 2,
+                    "listings": 22,
+                    "salary": 80000
+                } 
+            },
+            {
+                "data": {
+                    "name": "Private Equity Associate",
+                     "id": "PEAIIU",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "An Associate's job is to lead deal processes from start to finish - raising capital, acquiring companies, improving companies, and selling companies.",
+                    "salary": 90000,
+                    "listings": 10,
+                    "time": 3
+                }
+            },
+            {
+                "data": {
+                    "name": "Private Equity Partner",
+                    "id": "PEPartner",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "Rainmaker, Fundraiser, and Chief Representative.",
+                    "salary": 100000,
+                    "listings": 15,
+                    "time": 6
+                }
+            },
+            {
+                "data": {
+                    "name": "Senior Vice President",
+                    "id": "SVPMBAU",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "salary": 120000,
+                    "listings": 4,
+                    "time": 5
+                }
+            }
+    ],
+    [
+        {
+            "data": {
+                "name": "Junior Investment Banker",
+                "id": "JIBIU",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
+                "time": 2,
+                "listings": 22,
+                "salary": 80000
+            } 
+        },
+        {
+            "data": {
+                "name": "Private Equity Associate",
+                 "id": "PEAIIU",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                "summary": "An Associate's job is to lead deal processes from start to finish - raising capital, acquiring companies, improving companies, and selling companies.",
+                "salary": 90000,
+                "listings": 10,
+                "time": 3
+            }
+        }
+        ],
+        [
+            {
+                "data": {
+                    "name": "Junior Investment Banker",
+                    "id": "JIBIU",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
+                    "time": 2,
+                    "listings": 22,
+                    "salary": 80000
+                } 
+            },
+            {
+                "data": {
+                    "name": "Private Equity Associate",
+                     "id": "PEAIIU",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "An Associate's job is to lead deal processes from start to finish - raising capital, acquiring companies, improving companies, and selling companies.",
+                    "salary": 90000,
+                    "listings": 10,
+                    "time": 3
+                }
+            },
+            {
+                "data": {
+                    "name": "Private Equity Partner",
+                    "id": "PEPartner",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "Rainmaker, Fundraiser, and Chief Representative.",
+                    "salary": 100000,
+                    "listings": 15,
+                    "time": 6
+                }
+            }
+        ],
+        [
+            {
+                "data": {
+                    "name": "Junior Investment Banker",
+                    "id": "JIBIU",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
+                    "time": 2,
+                    "listings": 22,
+                    "salary": 80000
+                } 
+            },
+            {
+                "data": {
+                    "name": "Investment Banking Associate",
+                    "id": "IBAIU",
+                    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                    "summary": "An investment banking associate is in charge of performing support tasks for clients, ensuring efficiency and client satisfaction. They are primarily responsible for identifying and meeting clients' needs, assisting them in reaching their financial goals.",
+                    "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                    "salary": 101000,
+                    "listings": 5,
+                    "time": 5
+                }
+            }
+            ],
+            [
+                {
+                    "data": {
+                        "name": "Junior Investment Banker",
+                        "id": "JIBIU",
+                        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                        "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
+                        "time": 2,
+                        "listings": 22,
+                        "salary": 80000
+                    } 
+                },
+                {
+                    "data": {
+                        "name": "Private Equity Associate",
+                         "id": "PEAIIU",
+                        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                        "summary": "An Associate's job is to lead deal processes from start to finish - raising capital, acquiring companies, improving companies, and selling companies.",
+                        "salary": 90000,
+                        "listings": 10,
+                        "time": 3
+                    }
+                }
+            ],
+            [
+                {
+                    "data": {
+                        "name": "University Degree in Finance",
+                        "id": "UNI",
+                        "photo": "https://upload.wikimedia.org/wikipedia/commons/c/cd/University-of-Alabama-EngineeringResearchCenter-01.jpg",
+                        "summary": "A 4-year university degree is the standard starting place for many carrers in finance. The link below provides information searchable by different criteria on global universities offering degrees in financial services.",
+                        "time": 4,
+                        "cost": 20000
+                    } 
+                },
+                {
+                    "data": {
+                        "name": "I. Banking Internship",
+                        "id": "INTERN",
+                        "salary": 0,
+                        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                        "summary": "The most direct path into Investment Banking directly from an undergraduate degreee is to do an internship with an investment banking firm",
+                        "time": 0.5
+                    }
+                },
+                {
+                    "data": {
+                        "name": "Junior Investment Banker",
+                        "id": "JIBIU",
+                        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                        "summary": "This is a common first role in the field of investment banking. You will work long hours and learn the fundamentals of what it takes to be an investment banker. See current seek.co.nz listings below.",
+                        "time" : 2,
+                        "listings": 22,
+                        "salary": 80000
+                    }
+                },
+                {
+                    "data": {
+                        "name": "Investment Banking Associate",
+                        "id": "IBAIU",
+                        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvFq8TVLP4_3lqCBunZWJSk_BqfMm5SfJVPw&usqp=CAU",
+                        "summary": "An investment banking associate is in charge of performing support tasks for clients, ensuring efficiency and client satisfaction. They are primarily responsible for identifying and meeting clients' needs, assisting them in reaching their financial goals.",
+                        "link": "https://www.seek.co.nz/jobs-in-banking-financial-services?subclassification=6178%2C6180",
+                        "salary": 101000,
+                        "listings": 5,
+                        "time": 5
+                    }
+                }
+                ]
 ]

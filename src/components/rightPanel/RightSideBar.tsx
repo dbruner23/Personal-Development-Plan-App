@@ -151,8 +151,6 @@ const RightSideBar = (props: Props) => {
 
        
             <PlanModal path={path} pathStartWithCurrent={pathStartWithCurrent} timeToGoal={timeToGoal} />
-       
-
             
             {/* {infoData.salary !== 'undefined' && (
               <>
