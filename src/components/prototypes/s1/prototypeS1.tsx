@@ -26,7 +26,7 @@ const prototypeS1 = (props: Props) => {
     <>
       <main className="mx-auto my-12 mt-32 max-w-full">
         <div className="flex justify-center">
-          <p>Click Start to see your career development options</p>
+          <p>Click Start to see your career pathways to becoming a Software developer </p>
         </div>
 
         <div className="my-2 flex max-h-full justify-center">

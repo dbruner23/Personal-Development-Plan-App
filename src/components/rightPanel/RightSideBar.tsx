@@ -103,9 +103,9 @@ const RightSideBar = (props: Props) => {
               </div>
             )}
 
-       <div className='mt-8'>
+       
             <PlanModal path={path} pathStartWithCurrent={pathStartWithCurrent} timeToGoal={timeToGoal} />
-       </div>
+     
 
             
             {/* {infoData.salary !== 'undefined' && (
