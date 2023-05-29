@@ -604,7 +604,7 @@ const CollapsibleForce = ( props : Props ) => {
                 <div className="">Key:</div>
                 <div className="flex flex-col justify-start items-start gap-2">
                     <div className="flex items-center gap-2">
-                        <div className="border-[#11823b] border-4 rounded-sm h-0 w-5"></div>
+                        <div className="border-[#11823b] border-2 rounded-sm h-0 w-5"></div>
                         <div className="text-xs">- Click path to select</div>
                     </div>
                     <div className="flex gap-2">

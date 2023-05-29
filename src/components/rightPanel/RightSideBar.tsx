@@ -17,7 +17,6 @@ type Props = {
 
 const RightSideBar = (props: Props) => {
   const { path, prototypeId } = props;
-  console.log(path)
   const pathStartWithCurrent: any[] = [...path].reverse();
   console.log(pathStartWithCurrent)
   const pathExcludeGoal: any[] = path.slice(1)
@@ -33,7 +32,7 @@ const RightSideBar = (props: Props) => {
   }, 0)) / edTimeToGoal;
   
   const skills: any[] = []
-  let skillLevels: any[] = []
+  let skillLevels: any[] = [] 
   for (let i = 0; i < pathStartWithCurrent.length; i++) {
     if (!skills.includes(pathStartWithCurrent[i].data.skill)) {
       skills.push(pathStartWithCurrent[i].data.skill);
@@ -45,8 +44,7 @@ const RightSideBar = (props: Props) => {
       } 
     }
   }
-  console.log(pathStartWithCurrent)
-  console.log(skillLevels)
+  
 
   const [rightCollapsed, setRightCollapsed] = useState(false);
 
